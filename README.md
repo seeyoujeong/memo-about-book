@@ -1,4 +1,4 @@
-# 용어 정리
+# 정리
 
 ## 값
 값<sup>value</sup>은 식(표현식<sup>expression</sup>)이 평가<sup>evaluate</sup>되어 생성된 결과를 말한다.
@@ -79,3 +79,17 @@ for (let i = 0; i < 2; i++) { console.log(i); }
 ```
 
 > *표현식인 문과 표현식이 아닌 문을 구별하는 가장 간단하고 명료한 방법은 변수에 할당해 보는 것이다.*
+
+---
+연산자<sup>operator</sup>  
+피연산자<sup>operand</sup>  
+부수 효과<sup>side effect</sup>  
+암묵적 타입 변환<sup>implicit coercion</sup> 또는 타입 강제 변환<sup>type coercion</sup>  
+동등 비교<sup>loose equality</sup>(값)  
+일치 비교<sup>strict equality</sup>(값과 타입)  
+삼항 조건 연산자<sup>temary operator</sup>(값으로 평가할 수 있는 표현식인 문)  
+폴스루<sup>fall through</sup>  
+레이블 문<sup>label statement</sup>  
+명시적 타입 변환<sup>explicit coercion</sup> 또는 타입 캐스팅<sup>type casting</sup>  
+단축 평가<sup>short-circuit evaluation</sup>  
+옵셔널 체이닝<sup>optional chaining</sup>
