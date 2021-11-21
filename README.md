@@ -92,4 +92,5 @@ for (let i = 0; i < 2; i++) { console.log(i); }
 레이블 문<sup>label statement</sup>  
 명시적 타입 변환<sup>explicit coercion</sup> 또는 타입 캐스팅<sup>type casting</sup>  
 단축 평가<sup>short-circuit evaluation</sup>  
-옵셔널 체이닝<sup>optional chaining</sup>
+옵셔널 체이닝<sup>optional chaining</sup>(?.)  
+null 병합<sup>nullish coalescing</sup>(??)
