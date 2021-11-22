@@ -80,6 +80,22 @@ for (let i = 0; i < 2; i++) { console.log(i); }
 
 > *표현식인 문과 표현식이 아닌 문을 구별하는 가장 간단하고 명료한 방법은 변수에 할당해 보는 것이다.*
 
+## 객체  
+객체는 프로퍼티의 집합이며, 프로퍼티는 키와 값으로 구성된다.  
+객체 타입<sup>object/reference type</sup>은 다양한 타입의 값을 하나의 단위로 구성한 복합적인 자료구조<sup>data structure</sup>다.  
+또한 원시 타입의 값, 즉 원시 값은 변경 불가능한 값<sup>immutable value</sup>이지만 객체 타입의 값, 즉 객체는 변경 가능한 값<sup>mutable value</sup>이다.
+
+```javascript
+var counter = {
+  num: 0,                 // 프로퍼티: 객체의 상태를 나타내는 값(data)
+  increase: function () { // 메서드: 프로퍼티(상태 데이터)를 참조하고 조작할 수 있는 동작(behavior)
+    this.num++;
+  }
+};
+```
+> *객체 리터럴의 중괄호는 코드 블록을 의미하지 않기 때문에 세미콜론을 붙인다.*
+> *프로퍼티 키는 식별자 네이밍 규칙을 따르지 않는 이름에는 반드시 따옴표를 사용해야 한다.
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
