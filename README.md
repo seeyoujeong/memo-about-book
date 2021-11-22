@@ -1,5 +1,9 @@
 # 정리
 
+## 식별자
+식별자<sup>identifier</sup>는 어떤 값을 구별해서 식별할 수 있는 고유한 이름을 말한다.  
+식별자는 값이 아니라 메모리 주소를 기억하고 있다.  
+
 ## 값
 값<sup>value</sup>은 식(표현식<sup>expression</sup>)이 평가<sup>evaluate</sup>되어 생성된 결과를 말한다.
 
@@ -109,4 +113,7 @@ var counter = {
 명시적 타입 변환<sup>explicit coercion</sup> 또는 타입 캐스팅<sup>type casting</sup>  
 단축 평가<sup>short-circuit evaluation</sup>  
 옵셔널 체이닝<sup>optional chaining</sup>(?.)  
-null 병합<sup>nullish coalescing</sup>(??)
+null 병합<sup>nullish coalescing</sup>(??)  
+계산된 프로퍼티 이름<sup>computed property name</sup>  
+유사 배열 객체<sup>array-like object</sup>  
+얕은 복사<sup>shallow copy</sup>와 깊은 복사<sup>deep copy</sup>
