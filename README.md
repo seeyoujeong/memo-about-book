@@ -100,6 +100,17 @@ var counter = {
 > *객체 리터럴의 중괄호는 코드 블록을 의미하지 않기 때문에 세미콜론을 붙인다.*  
 > *프로퍼티 키는 식별자 네이밍 규칙을 따르지 않는 이름에는 반드시 따옴표를 사용해야 한다.*
 
+## 함수
+함수는 일련의 과정을 문<sup>statement</sup>으로 구현하고 코드 블록으로 감싸서 하나의 실행 단위로 정의한 것이다.  
+함수 내부로 입력을 전달받는 변수를 **매개변수<sup>parameter</sup>**, 입력을 **인수<sup>argument</sup>**, 출력을 **반환값<sup>return value</sup>** 이라 한다.
+
+|함수 정의 방식|예시|
+|-----|-----|
+|함수 선언문|function add(x, y) {<br>&nbsp;&nbsp;return x + y;<br>}|
+|함수 표현식|var add = function (x, y) {<br>&nbsp;&nbsp;return x + y;<br>};|
+|Function 생성자 함수|var add = new Function('x', 'y', 'return x + y');|
+|화살표 함수|var add = (x, y) => x + y;|
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
