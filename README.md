@@ -102,7 +102,9 @@ var counter = {
 
 ## 함수
 함수는 일련의 과정을 문<sup>statement</sup>으로 구현하고 코드 블록으로 감싸서 하나의 실행 단위로 정의한 것이다.  
-함수 내부로 입력을 전달받는 변수를 **매개변수<sup>parameter</sup>**, 입력을 **인수<sup>argument</sup>**, 출력을 **반환값<sup>return value</sup>** 이라 한다.
+함수 내부로 입력을 전달받는 변수를 **매개변수<sup>parameter</sup>**, 입력을 **인수<sup>argument</sup>**, 출력을 **반환값<sup>return value</sup>** 이라 한다.  
+함수 이름은 함수 몸체 내부에서만 유효한 식별자이다.  
+함수는 함수 이름으로 호출하는 것이 아니라 함수 객체를 가리키는 식별자로 호출한다.  
 
 |함수 정의 방식|예시|
 |-----|-----|
@@ -110,6 +112,8 @@ var counter = {
 |함수 표현식|var add = function (x, y) {<br>&nbsp;&nbsp;return x + y;<br>};|
 |Function 생성자 함수|var add = new Function('x', 'y', 'return x + y');|
 |화살표 함수|var add = (x, y) => x + y;|
+> *함수 선언문이 코드의 선두로 끌어 올려진 것처럼 동작하는 자바스크립트 고유의 특징을 함수 호이스팅<sup>function hoisting</sup>이라 한다.*  
+> *함수 표현식으로 함수를 정의하면 함수 호이스팅이 발생하는 것이 아니라 변수 호이스팅이 발생한다.*  
 
 ---
 연산자<sup>operator</sup>  
@@ -127,4 +131,5 @@ var counter = {
 null 병합<sup>nullish coalescing</sup>(??)  
 계산된 프로퍼티 이름<sup>computed property name</sup>  
 유사 배열 객체<sup>array-like object</sup>  
-얕은 복사<sup>shallow copy</sup>와 깊은 복사<sup>deep copy</sup>
+얕은 복사<sup>shallow copy</sup>와 깊은 복사<sup>deep copy</sup>  
+생성자 함수<sup>constructor function</sup>(객체를 생성하는 함수)  
