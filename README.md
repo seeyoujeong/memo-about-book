@@ -117,6 +117,9 @@ var counter = {
 > *함수 선언문이 코드의 선두로 끌어 올려진 것처럼 동작하는 자바스크립트 고유의 특징을 함수 호이스팅<sup>function hoisting</sup>이라 한다.*  
 > *함수 표현식으로 함수를 정의하면 함수 호이스팅이 발생하는 것이 아니라 변수 호이스팅이 발생한다.*  
 
+**콜백 함수<sup>callback function</sup>**: 함수의 매개변수를 통해 다른 함수의 내부로 전달되는 함수  
+**고차 함수<sup>Higher-Order Function, HOF</sup>**: 매개변수를 통해 함수의 외부에서 콜백 함수를 전달받은 함수  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
@@ -135,3 +138,6 @@ null 병합<sup>nullish coalescing</sup>(??)
 유사 배열 객체<sup>array-like object</sup>  
 얕은 복사<sup>shallow copy</sup>와 깊은 복사<sup>deep copy</sup>  
 생성자 함수<sup>constructor function</sup>(객체를 생성하는 함수)  
+즉시 실행 함수<sup>IIFE, Immediately Invoked Function Expression</sup>  
+중첩 함수<sup>nested function</sup>또는 내부 함수<sup>inner function</sup>  
+순수 함수<sup>pure function<sup>와 비순수 함수<sup>impure function</sup>  
