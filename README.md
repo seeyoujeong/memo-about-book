@@ -120,6 +120,12 @@ var counter = {
 **콜백 함수<sup>callback function</sup>**: 함수의 매개변수를 통해 다른 함수의 내부로 전달되는 함수  
 **고차 함수<sup>Higher-Order Function, HOF</sup>**: 매개변수를 통해 함수의 외부에서 콜백 함수를 전달받은 함수  
 
+## 스코프
+전역 스코프<sup>global scope</sup>와 지역 스코프<sup>local scope</sup>  
+스코프 체인<sup>scope chain</sup>: 실행 컨텍스트의 렉시컬 환경을 단방향으로 연결<sup>chaining</sup>한 것이다.  
+함수 레벨 스코프<sup>function level scope</sup>: var키워드로 선언된 변수는 오로지 함수의 코드 블록만을 지역 스코프로 인정된다.  
+렉시컬 스코프<sup>lexical scope</sup>: 함수 정의가 평가되는 시점에 상위 스코프가 정적으로 결정된다.
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
@@ -140,4 +146,4 @@ null 병합<sup>nullish coalescing</sup>(??)
 생성자 함수<sup>constructor function</sup>(객체를 생성하는 함수)  
 즉시 실행 함수<sup>IIFE, Immediately Invoked Function Expression</sup>  
 중첩 함수<sup>nested function</sup>또는 내부 함수<sup>inner function</sup>  
-순수 함수<sup>pure function<sup>와 비순수 함수<sup>impure function</sup>  
+순수 함수<sup>pure function</sup>와 비순수 함수<sup>impure function</sup>  
