@@ -98,7 +98,9 @@ var counter = {
 };
 ```
 > *객체 리터럴의 중괄호는 코드 블록을 의미하지 않기 때문에 세미콜론을 붙인다.*  
-> *프로퍼티 키는 식별자 네이밍 규칙을 따르지 않는 이름에는 반드시 따옴표를 사용해야 한다.*
+> *프로퍼티 키는 식별자 네이밍 규칙을 따르지 않는 이름에는 반드시 따옴표를 사용해야 한다.*  
+
+전역 객체<sup>global object</sup>: 코드가 실행되기 이전 단계에 자바스크립트 엔진에 의해 어떤 객체보다도 먼저 생성되는 특수한 객체다.  
 
 ## 함수
 함수는 일련의 과정을 문<sup>statement</sup>으로 구현하고 코드 블록으로 감싸서 하나의 실행 단위로 정의한 것이다.  
@@ -124,7 +126,8 @@ var counter = {
 전역 스코프<sup>global scope</sup>와 지역 스코프<sup>local scope</sup>  
 스코프 체인<sup>scope chain</sup>: 실행 컨텍스트의 렉시컬 환경을 단방향으로 연결<sup>chaining</sup>한 것이다.  
 함수 레벨 스코프<sup>function level scope</sup>: var키워드로 선언된 변수는 오로지 함수의 코드 블록만을 지역 스코프로 인정된다.  
-렉시컬 스코프<sup>lexical scope</sup>: 함수 정의가 평가되는 시점에 상위 스코프가 정적으로 결정된다.
+렉시컬 스코프<sup>lexical scope</sup>: 함수 정의가 평가되는 시점에 상위 스코프가 정적으로 결정된다.  
+호이스팅은 스코프를 단위로 동작한다.  
 
 ---
 연산자<sup>operator</sup>  
@@ -147,3 +150,4 @@ null 병합<sup>nullish coalescing</sup>(??)
 즉시 실행 함수<sup>IIFE, Immediately Invoked Function Expression</sup>  
 중첩 함수<sup>nested function</sup>또는 내부 함수<sup>inner function</sup>  
 순수 함수<sup>pure function</sup>와 비순수 함수<sup>impure function</sup>  
+암묵적 결합<sup>implicit coupling</sup>  
