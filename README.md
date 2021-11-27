@@ -129,6 +129,23 @@ var counter = {
 렉시컬 스코프<sup>lexical scope</sup>: 함수 정의가 평가되는 시점에 상위 스코프가 정적으로 결정된다.  
 호이스팅은 스코프를 단위로 동작한다.  
 
+## var 키워드
+변수 중복 선언이 가능하고 중복 선언된 초기화문이 있는 변수 선언문은 자바스크립트 엔진에 의해 var 키워드가 없는 것처럼 동작한다.  
+함수의 코드 블록만을 지역 스코프로 인정한다.  
+변수 호이스팅에 의해 변수 선언문이 스코프의 선두로 끌어 올려진 것처럼 동작한다.  
+
+## let 키워드
+변수를 중복 선언하면 문법 에러<sup>SyntaxError</sup>가 발생한다.  
+모든 코드 블록을 지역 스코프로 인정하는 블록 레벨 스코프<sup>block-level scope</sup>를 따른다.  
+선언 단계와 초기화 단계가 분리되어 진행된다. 초기화 단계는 변수 선언문에 도달했을 때 실행된다.  
+let 키워드로 선언한 전역 변수는 전역 객체의 프로퍼티가 아니다.  
+
+## const 키워드
+상수<sup>constant</sup>를 선언하기 위해 사용한다. *예) const TAX_RATE = 0.1;*  
+const 키워드로 선언한 변수는 반드시 선언과 동시에 초기화해야 하고 재할당이 금지된다.  
+원시 값을 할당한 경우 할당된 값을 변경할 수 있는 방법은 없다.  
+const 키워드로 선언된 변수에 객체를 할당한 경우 값을 변경할 수 있다.  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
@@ -151,3 +168,5 @@ null 병합<sup>nullish coalescing</sup>(??)
 중첩 함수<sup>nested function</sup>또는 내부 함수<sup>inner function</sup>  
 순수 함수<sup>pure function</sup>와 비순수 함수<sup>impure function</sup>  
 암묵적 결합<sup>implicit coupling</sup>  
+일시적 사각지대<sup>Temporal Dead Zone, TDZ</sup>(스코프 시작 시점부터 초기화 시작 시점까지 변수를 참조할 수 없는 구간)  
+
