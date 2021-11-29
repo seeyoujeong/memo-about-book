@@ -123,6 +123,7 @@ var counter = {
 **고차 함수<sup>Higher-Order Function, HOF</sup>**: 매개변수를 통해 함수의 외부에서 콜백 함수를 전달받은 함수  
 
 ## 스코프
+모든 식별자는 자신이 선언된 위치에 의해 다른 코드가 식별자 자신을 참조할 수 있는 유효 범위가 결정된다.  
 전역 스코프<sup>global scope</sup>와 지역 스코프<sup>local scope</sup>  
 호이스팅은 스코프를 단위로 동작한다.  
 
