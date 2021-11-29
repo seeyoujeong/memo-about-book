@@ -218,7 +218,7 @@ Object.defineProperty(person, 'fullName' {
 |enumerable|[[Enumerable]]|false|
 |configurable|[[Configurable]]|false|
 
-자바스크립트는 객체의 변경을 방지하는 다양한 메서드를 제공한다.
+자바스크립트는 객체의 변경을 방지하는 다양한 메서드(얕은 변경 방지<sup>shallow only</sup>)를 제공한다.
 |구분|메서드|추가|삭제|값 읽기|값 쓰기|어트리뷰트 재정의|
 |---|---|:---:|:---:|:---:|:---:|:---:|
 |객체 확장 금지|Object.preventExtensions|Χ|Ο|Ο|Ο|Ο|
