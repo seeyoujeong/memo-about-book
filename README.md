@@ -237,6 +237,7 @@ this는 객체 자신의 프로퍼티나 메서들 참조하기 위한 자기 �
 |메서드로서 호출|메서드를 호출한 객체(마침표 앞의 객체)|
 |생성자 함수로서 호출|생성자 함수가 (미래에) 생성할 인스턴스|
 
+**new.target**: constructor인 모든 함수 내부에 암묵적인 지역 변수와 같이 사용되며 메타 프로퍼티라고 부른다.  
 
 ---
 연산자<sup>operator</sup>  
@@ -263,3 +264,4 @@ null 병합<sup>nullish coalescing</sup>(??)
 일시적 사각지대<sup>Temporal Dead Zone, TDZ</sup>(스코프 시작 시점부터 초기화 시작 시점까지 변수를 참조할 수 없는 구간)  
 프로퍼티 디스크립터<sup>PropertyDescriptor</sup> 객체  
 바인딩<sup>name binding</sup>(식별자와 값을 연결하는 과정을 의미)  
+스코프 세이프 생성자 패턴<sup>scope-safe constructor</sup>
