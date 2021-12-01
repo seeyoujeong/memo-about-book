@@ -109,6 +109,8 @@ var counter = {
 함수는 함수 이름으로 호출하는 것이 아니라 함수 객체를 가리키는 식별자로 호출한다.  
 함수는 함수를 가리키는 식별자와 한 쌍의 소괄호인 함수 호출 연산자로 호출한다.  
 함수는 매개변수와 인수의 개수가 일치하는지 확인하지 않고 매개변수의 타입을 사전에 지정할 수 없다.  
+일반 객체는 호출할 수 없지만 함수는 호출할 수 있다.  
+함수 객체는 callable이면서 constructor이거나 callable이면서 non-constructor다.  
 
 |함수 정의 방식|예시|
 |-----|-----|
@@ -121,6 +123,7 @@ var counter = {
 
 **콜백 함수<sup>callback function</sup>**: 함수의 매개변수를 통해 다른 함수의 내부로 전달되는 함수  
 **고차 함수<sup>Higher-Order Function, HOF</sup>**: 매개변수를 통해 함수의 외부에서 콜백 함수를 전달받은 함수  
+**생성자 함수<sup>constructor</sup>**: new 연산자와 함께 호출하여 객체(인스턴스)를 생성하는 함수  
 
 ## 스코프
 모든 식별자는 자신이 선언된 위치에 의해 다른 코드가 식별자 자신을 참조할 수 있는 유효 범위가 결정된다.  
@@ -225,6 +228,16 @@ Object.defineProperty(person, 'fullName' {
 |객체 밀봉|Object.seal|Χ|Χ|Ο|Ο|Χ|
 |객체 동결|Object.freeze|Χ|Χ|Ο|Χ|Χ|
 
+## this
+this는 객체 자신의 프로퍼티나 메서들 참조하기 위한 자기 참조 변수<sup>self-referenceing variable</sup>다.  
+
+|함수 호출 방식|this가 가리키는 값(this 바인딩)|
+|---|---|
+|일반 함수로서 호출|전역 객체|
+|메서드로서 호출|메서드를 호출한 객체(마침표 앞의 객체)|
+|생성자 함수로서 호출|생성자 함수가 (미래에) 생성할 인스턴스|
+
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
@@ -249,3 +262,4 @@ null 병합<sup>nullish coalescing</sup>(??)
 암묵적 결합<sup>implicit coupling</sup>  
 일시적 사각지대<sup>Temporal Dead Zone, TDZ</sup>(스코프 시작 시점부터 초기화 시작 시점까지 변수를 참조할 수 없는 구간)  
 프로퍼티 디스크립터<sup>PropertyDescriptor</sup> 객체  
+바인딩<sup>name binding</sup>(식별자와 값을 연결하는 과정을 의미)  
