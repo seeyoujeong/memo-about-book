@@ -247,10 +247,31 @@ Object.defineProperty(person, 'fullName' {
 |객체 동결|Object.freeze|Χ|Χ|Ο|Χ|Χ|
 
 ## 프로토타입
+자바스크립트는 프로토타입<sup>prototype</sup>을 기반으로 상속을 구현한다.
+
+```javascript
+function Circle(radius) {
+  this.radius = radius;
+}
+
+Circle.prototype.getArea = function () {
+  return Math.PI * this.radius ** 2;
+};
+```
+모든 객체가 가지고 있는 \_\_proto__ 접근자 프로퍼티와 함수 객체만 가지고 있는 prototype 프로퍼티는 결국 동일한 프로토타입을 가리킨다.  
 |구분|소유|값|사용 주체|사용 목적|
 |---|---|---|---|---|
-|\_\_proto__ <br>접근자 프로퍼티|모든 객체|프로토타입의 참조|모든 객체|객체 자신의 프로토타입에 접근 또는 교체하기 위해 사용|
-|prototype <br>프로퍼티|constructor|프로토타입의 참조|생성자 함수|생성자 함수가 자신의 생성할 객체(인스턴스)의 프로토타입을 할당하기 위해 사용|
+|\_\_proto__ <br>접근자 프로퍼티|모든 객체|프로토타입의 참조|모든 객체|객체 자신의 프로토타입에 접근 또는 교체하기<br> 위해 사용|
+|prototype <br>프로퍼티|constructor|프로토타입의 참조|생성자 함수|생성자 함수가 자신의 생성할 객체(인스턴스)의<br> 프로토타입을 할당하기 위해 사용|
+
+프로토타입과 생성자 함수는 단독으로 존재할 수 없고 언제나 쌍<sup>pair</sup>으로 존재한다.  
+프로토타입은 생성자 함수가 생성되는 시점에 더불어 생성된다.  
+생성자 함수로서 호출할 수 있는 함수, 즉 constructor는 함수 정의가 평가되어 함수 객체를 생성하는 시점에 프로토타입도 더불어 생성된다.  
+사용자 정의 생성자 함수와 더불어 생성된 프로토타입은 오직 constructor 프로퍼티만을 갖는 객체다.  
+프로토타입도 객체이고 모든 객체는 프로토타입을 가지므로 프로토타입도 자신의 프로토타입을 갖는다.  
+하위 객체를 통해 프로토타입의 프로퍼티를 변경 또는 삭제하는 것은 불가능하다.  
+
+**프로토타입 체인**: 객체의 프로퍼티(메서드 포함)에 접근하려고 할 때 해당 객체에 접근하려는 프로퍼티가 없다면 [[Prototype]] 내부 슬롯의 참조를 따라 자신의 부모 역할을 하는 프로토타입의 프로퍼티를 순차적으로 검색한다.  
 
 ## this
 this는 객체 자신의 프로퍼티나 메서들 참조하기 위한 자기 참조 변수<sup>self-referenceing variable</sup>다.  
@@ -289,3 +310,4 @@ null 병합<sup>nullish coalescing</sup>(??)
 프로퍼티 디스크립터<sup>PropertyDescriptor</sup> 객체  
 바인딩<sup>name binding</sup>(식별자와 값을 연결하는 과정을 의미)  
 스코프 세이프 생성자 패턴<sup>scope-safe constructor</sup>
+프로퍼티 섀도잉<sup>property shadowing</sup>  
