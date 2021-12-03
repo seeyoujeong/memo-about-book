@@ -309,5 +309,5 @@ null 병합<sup>nullish coalescing</sup>(??)
 일시적 사각지대<sup>Temporal Dead Zone, TDZ</sup>(스코프 시작 시점부터 초기화 시작 시점까지 변수를 참조할 수 없는 구간)  
 프로퍼티 디스크립터<sup>PropertyDescriptor</sup> 객체  
 바인딩<sup>name binding</sup>(식별자와 값을 연결하는 과정을 의미)  
-스코프 세이프 생성자 패턴<sup>scope-safe constructor</sup>
+스코프 세이프 생성자 패턴<sup>scope-safe constructor</sup>  
 프로퍼티 섀도잉<sup>property shadowing</sup>  
