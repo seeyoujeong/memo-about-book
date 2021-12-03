@@ -86,9 +86,11 @@ for (let i = 0; i < 2; i++) { console.log(i); }
 > *표현식인 문과 표현식이 아닌 문을 구별하는 가장 간단하고 명료한 방법은 변수에 할당해 보는 것이다.*
 
 ## 객체  
+자바스크립트를 이루고 있는 거의 *모든 것*이 객체다.  
 객체는 프로퍼티의 집합이며, 프로퍼티는 키와 값으로 구성된다.  
 객체 타입<sup>object/reference type</sup>은 다양한 타입의 값을 하나의 단위로 구성한 복합적인 자료구조<sup>data structure</sup>다.  
-또한 원시 타입의 값, 즉 원시 값은 변경 불가능한 값<sup>immutable value</sup>이지만 객체 타입의 값, 즉 객체는 변경 가능한 값<sup>mutable value</sup>이다.
+객체는 상태 데이터와 동작을 하나의 논리적인 단위로 묶은 복합적인 자료구조라고 할 수 있다.  
+원시 타입의 값, 즉 원시 값은 변경 불가능한 값<sup>immutable value</sup>이지만 객체 타입의 값, 즉 객체는 변경 가능한 값<sup>mutable value</sup>이다.  
 
 ```javascript
 var counter = {
@@ -127,6 +129,7 @@ var counter = {
 |함수 표현식|var add = function (x, y) {<br>&nbsp;&nbsp;return x + y;<br>};|
 |Function 생성자 함수|var add = new Function('x', 'y', 'return x + y');|
 |화살표 함수|var add = (x, y) => x + y;|
+|메서드 축약 표현|const obj = {<br>&nbsp;&nbsp;foo() {}<br>};|  
 > *함수 선언문이 코드의 선두로 끌어 올려진 것처럼 동작하는 자바스크립트 고유의 특징을 함수 호이스팅<sup>function hoisting</sup>이라 한다.*  
 > *함수 표현식으로 함수를 정의하면 함수 호이스팅이 발생하는 것이 아니라 변수 호이스팅이 발생한다.*  
 
@@ -242,6 +245,12 @@ Object.defineProperty(person, 'fullName' {
 |객체 확장 금지|Object.preventExtensions|Χ|Ο|Ο|Ο|Ο|
 |객체 밀봉|Object.seal|Χ|Χ|Ο|Ο|Χ|
 |객체 동결|Object.freeze|Χ|Χ|Ο|Χ|Χ|
+
+## 프로토타입
+|구분|소유|값|사용 주체|사용 목적|
+|---|---|---|---|---|
+|\_\_proto__ <br>접근자 프로퍼티|모든 객체|프로토타입의 참조|모든 객체|객체 자신의 프로토타입에 접근 또는 교체하기 위해 사용|
+|prototype <br>프로퍼티|constructor|프로토타입의 참조|생성자 함수|생성자 함수가 자신의 생성할 객체(인스턴스)의 프로토타입을 할당하기 위해 사용|
 
 ## this
 this는 객체 자신의 프로퍼티나 메서들 참조하기 위한 자기 참조 변수<sup>self-referenceing variable</sup>다.  
