@@ -1,6 +1,13 @@
 # 정리
 
-[문](#문)
+## 목차  
+- [식별자](#식별자)  
+- [값](#값)  
+- [리터럴](#리터럴)  
+- [표현식](#표현식)  
+- [문](#문)  
+- [객체](#객체)  
+- [함수](#함수)  
 
 ## 식별자
 식별자<sup>identifier</sup>는 어떤 값을 구별해서 식별할 수 있는 고유한 이름을 말한다.  
@@ -66,7 +73,7 @@ person.getName()
 ## 문
 문<sup>statement</sup>은 프로그램을 구성하는 기본 단위이자 최소 실행 단위다.  
 문은 여러 토큰으로 구성된다.
-  - 토큰<sup>token</sup>이란 문법적인 의미를 가지며, 문법적으로 더 이상 나눌 수 없는 코드의 기본 요소를 의미한다.
+- 토큰<sup>token</sup>이란 문법적인 의미를 가지며, 문법적으로 더 이상 나눌 수 없는 코드의 기본 요소를 의미한다.
 
 ```javascript
 // 변수 선언문
@@ -185,7 +192,7 @@ console.log(Object.getOwnPropertyDescriptor(person, 'name'));
 ```
 
 **접근자 프로퍼티<sup>accessor property</sup>**: 자체적으로는 값을 갖지 않고 다른 데이터 프로퍼티의 값을 읽거나 저장할 때 호출되는 접근자 함수로 구성된 프로퍼티다.  
-  - __proto__는 Object.prototype 객체의 접근자 프로퍼티다.  
+- __proto__는 Object.prototype 객체의 접근자 프로퍼티다.  
 
 ```javascript
 const person = {
@@ -276,7 +283,7 @@ Circle.prototype.getArea = function () {
 **프로토타입 체인**: 객체의 프로퍼티(메서드 포함)에 접근하려고 할 때 해당 객체에 접근하려는 프로퍼티가 없다면 [[Prototype]] 내부 슬롯의 참조를 따라 자신의 부모 역할을 하는 프로토타입의 프로퍼티를 순차적으로 검색한다.  
 
 객체 **instanceof** 생성자 함수
-  - 우변의 생성자 함수의 prototype에 바인딩된 객체가 좌변의 객체의 프로토타입 체인 상에 존재하면 true로 평가된다.  
+- 우변의 생성자 함수의 prototype에 바인딩된 객체가 좌변의 객체의 프로토타입 체인 상에 존재하면 true로 평가된다.  
 
 ## this
 this는 객체 자신의 프로퍼티나 메서들 참조하기 위한 자기 참조 변수<sup>self-referenceing variable</sup>다.  
