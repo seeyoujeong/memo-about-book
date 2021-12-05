@@ -264,12 +264,18 @@ Object.defineProperty(person, 'fullName' {
 자바스크립트는 프로토타입<sup>prototype</sup>을 기반으로 상속을 구현한다.
 
 ```javascript
-function Circle(radius) {
-  this.radius = radius;
+function Person(name) {
+  this.name = name;
 }
 
-Circle.prototype.getArea = function () {
-  return Math.PI * this.radius ** 2;
+Person.prototype.sayHello = function () {
+  console.log(`Hi! My name is ${this.name}`);
+};
+
+Person.staticProp = 'static prop';
+
+Person.staticMethod = function () {
+  console.log('staticMethod');
 };
 ```
 모든 객체가 가지고 있는 \_\_proto__ 접근자 프로퍼티와 함수 객체만 가지고 있는 prototype 프로퍼티는 결국 동일한 프로토타입을 가리킨다.  
@@ -290,6 +296,8 @@ Circle.prototype.getArea = function () {
 객체 **instanceof** 생성자 함수
 - 우변의 생성자 함수의 prototype에 바인딩된 객체가 좌변의 객체의 프로토타입 체인 상에 존재하면 true로 평가된다.  
 - 생성자 함수의 prototype에 바인딩된 객체가 프로토타입 체인 상에 존재하는지 확인한다.  
+
+**정적<sup>static</sup>프로퍼티/메서드**: 생성자 함수로 인스턴스를 생성하지 않아도 참조/호출할 수 있는 프로퍼티/메서드를 말한다.  
 
 ## this
 this는 객체 자신의 프로퍼티나 메서들 참조하기 위한 자기 참조 변수<sup>self-referenceing variable</sup>다.  
