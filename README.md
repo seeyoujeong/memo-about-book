@@ -260,6 +260,11 @@ Object.defineProperty(person, 'fullName' {
 |객체 밀봉|Object.seal|Χ|Χ|Ο|Ο|Χ|
 |객체 동결|Object.freeze|Χ|Χ|Ο|Χ|Χ|
 
+**in 연산자**: 객체 내에 특정 프로퍼티가 존재하는지 여부를 확인한다.(확인 대상 객체가 상속받은 모든 프로토타입의 프로퍼티를 확인)  
+**Object.prototype.hasOwnProperty 메서드**: 전달받은 프로퍼티 키가 객체 고유의 프로퍼티 키인 경우에만 true를 반환한다.  
+**for...in 문**: 객체의 프로토타입 체인 상에 존재하는 모든 프로토타입의 프로퍼티 중에서 프로퍼티 어트리뷰트 [[Enumerable]]의 값이 true인 프로퍼티를 순회하며 열거한다.   
+**Object.keys/values/entries 메서드**: keys 메서드는 객체 자신의 열거 가능한 프로퍼티 키를, values 메서드는 프로퍼티 값을, entries 메서드는 프로퍼티 키와 값의 쌍의 배열을 배열로 반환한다.  
+
 ## 프로토타입
 자바스크립트는 프로토타입<sup>prototype</sup>을 기반으로 상속을 구현한다.
 
