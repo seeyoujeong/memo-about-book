@@ -124,6 +124,11 @@ var counter = {
 3. 함수의 매개변수에 전달할 수 있다.
 4. 함수의 반환값으로 사용할 수 있다.
 
+표준 빌트인 객체<sup>standard built-in objects/native objects/global objects</sup>  
+호스트 객체<sup>host objects</sup>  
+사용자 정의 객체<sup>user-defined objects</sup>  
+래퍼 객체<sup>wrapper object</sup>  
+
 ## 함수
 함수는 일련의 과정을 문<sup>statement</sup>으로 구현하고 코드 블록으로 감싸서 하나의 실행 단위로 정의한 것이다.  
 함수 내부로 입력을 전달받는 변수를 **매개변수<sup>parameter</sup>(인자)**, 입력을 **인수<sup>argument</sup>**, 출력을 **반환값<sup>return value</sup>** 이라 한다.  
@@ -148,11 +153,15 @@ var counter = {
 
 **콜백 함수<sup>callback function</sup>**: 함수의 매개변수를 통해 다른 함수의 내부로 전달되는 함수  
 **고차 함수<sup>Higher-Order Function, HOF</sup>**: 매개변수를 통해 함수의 외부에서 콜백 함수를 전달받은 함수  
-**생성자 함수<sup>constructor</sup>**: new 연산자와 함께 호출하여 객체(인스턴스)를 생성하는 함수  
+**생성자 함수<sup>constructor function</sup>**: new 연산자와 함께 호출하여 객체(인스턴스)를 생성하는 함수  
 
 ### prototype 프로퍼티
 prototype 프로퍼티는 생성자 함수로 호출할 수 있는 함수 객체, 즉 constructor만이 소유하는 프로퍼티다.  
 prototype 프로퍼티는 함수가 객체를 생성하는 생성자 함수로 호출될 때 생성자 함수가 생성할 인스턴스의 프로토타입 객체를 가리킨다.  
+
+즉시 실행 함수<sup>IIFE, Immediately Invoked Function Expression</sup>  
+중첩 함수<sup>nested function</sup>또는 내부 함수<sup>inner function</sup>  
+순수 함수<sup>pure function</sup>와 비순수 함수<sup>impure function</sup>  
 
 ## 스코프
 모든 식별자는 자신이 선언된 위치에 의해 다른 코드가 식별자 자신을 참조할 수 있는 유효 범위가 결정된다.  
@@ -305,7 +314,7 @@ Person.staticMethod = function () {
 **정적<sup>static</sup>프로퍼티/메서드**: 생성자 함수로 인스턴스를 생성하지 않아도 참조/호출할 수 있는 프로퍼티/메서드를 말한다.  
 
 ## this
-this는 객체 자신의 프로퍼티나 메서들 참조하기 위한 자기 참조 변수<sup>self-referenceing variable</sup>다.  
+this는 객체 자신의 프로퍼티나 메서드를 참조하기 위한 자기 참조 변수<sup>self-referenceing variable</sup>다.  
 
 |함수 호출 방식|this가 가리키는 값(this 바인딩)|
 |---|---|
@@ -332,13 +341,10 @@ null 병합<sup>nullish coalescing</sup>(??)
 계산된 프로퍼티 이름<sup>computed property name</sup>  
 유사 배열 객체<sup>array-like object</sup>  
 얕은 복사<sup>shallow copy</sup>와 깊은 복사<sup>deep copy</sup>  
-생성자 함수<sup>constructor function</sup>(객체를 생성하는 함수)  
-즉시 실행 함수<sup>IIFE, Immediately Invoked Function Expression</sup>  
-중첩 함수<sup>nested function</sup>또는 내부 함수<sup>inner function</sup>  
-순수 함수<sup>pure function</sup>와 비순수 함수<sup>impure function</sup>  
 암묵적 결합<sup>implicit coupling</sup>  
 일시적 사각지대<sup>Temporal Dead Zone, TDZ</sup>(스코프 시작 시점부터 초기화 시작 시점까지 변수를 참조할 수 없는 구간)  
 프로퍼티 디스크립터<sup>PropertyDescriptor</sup> 객체  
 바인딩<sup>name binding</sup>(식별자와 값을 연결하는 과정을 의미)  
 스코프 세이프 생성자 패턴<sup>scope-safe constructor</sup>  
 프로퍼티 섀도잉<sup>property shadowing</sup>  
+암묵적 전역<sup>implicit global</sup>  
