@@ -15,6 +15,7 @@
 - [this](#this)  
 - [실행 컨텍스트](#실행-컨텍스트)  
 - [클로저](#클로저)
+- [클래스](#클래스)  
 
 ## 식별자
 식별자<sup>identifier</sup>는 어떤 값을 구별해서 식별할 수 있는 고유한 이름을 말한다.  
@@ -438,6 +439,32 @@ let, const 키워드로 선언한 변수는 모든 코드 블록을 지역 스�
 클로저는 상태가 의도치 않게 변경되지 않도록 안전하게 은닉<sup>information hiding</sup>하고 특정 함수에게만 상태 변경을 허용하여 상태를 안전하게 변경하고 유지하기 위해 사용한다.  
 
 **자유 변수<sup>free variable</sup>**: 클로저에 의해 참조되는 상위 스코프의 변수  
+
+## 클래스
+클래스는 값으로 사용할 수 있는 일급 객체이다.  
+클래스 몸체에서 정의할 수 있는 메서드는 constructor(생성자), 프로토타입 메서드, 정적 메서드의 세 가지가 있다.  
+```javascript
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+  
+  sayHi() {
+    console.log(`Hi! My name is ${this.name}`);
+  }
+  
+  static sayHello() {
+    console.log('Hello!');
+  }
+}
+```
+
+클래스와 생성자 함수에는 몇 가지 차이가 있다.
+1. 클래스를 new 연산자 없이 호출하면 에러가 발생한다. 
+2. 클래스는 상속을 지원하는 extends와 super 키워드를 제공한다.
+3. 클래스는 호이스팅이 발생하지 않는 것처럼 동작한다.
+4. 클래스 내의 모든 코드에는 암묵적으로 strict mode가 지정되어 실행되며 strict mode를 해제할 수 없다.
+5. 클래스의 constructor, 프로토타입 메서드, 정적 메서드는 모두 프로퍼티 어트리뷰트 [[Enumerable]]의 값이 false다. 
 
 ---
 연산자<sup>operator</sup>  
