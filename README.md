@@ -13,7 +13,8 @@
 - [프로퍼티 어트리뷰트](#프로퍼티-어트리뷰트)  
 - [프로토타입](#프로토타입)  
 - [this](#this)  
-- [실행 컨텍스트](#실행-컨텍스트)
+- [실행 컨텍스트](#실행-컨텍스트)  
+- [클로저](#클로저)
 
 ## 식별자
 식별자<sup>identifier</sup>는 어떤 값을 구별해서 식별할 수 있는 고유한 이름을 말한다.  
@@ -130,6 +131,7 @@ var counter = {
 3. 함수의 매개변수에 전달할 수 있다.
 4. 함수의 반환값으로 사용할 수 있다.
 
+---
 표준 빌트인 객체<sup>standard built-in objects/native objects/global objects</sup>  
 호스트 객체<sup>host objects</sup>  
 사용자 정의 객체<sup>user-defined objects</sup>  
@@ -177,7 +179,19 @@ var counter = {
 prototype 프로퍼티는 생성자 함수로 호출할 수 있는 함수 객체, 즉 constructor만이 소유하는 프로퍼티다.  
 prototype 프로퍼티는 함수가 객체를 생성하는 생성자 함수로 호출될 때 생성자 함수가 생성할 인스턴스의 프로토타입 객체를 가리킨다.  
 
-즉시 실행 함수<sup>IIFE, Immediately Invoked Function Expression</sup>  
+### 즉시 실행 함수<sup>IIFE, Immediately Invoked Function Expression</sup>  
+함수 정의와 동시에 즉시 호출되는 함수를 말하고 단 한 번만 호출되며 다시 호출할 수 없다.  
+```javascript
+const counter = (function () {
+  let counter = 0;
+  
+  return function (predicate) {
+    counter = predicate(counter)
+    return counter;
+  };
+}());
+```
+---
 중첩 함수<sup>nested function</sup>또는 내부 함수<sup>inner function</sup>  
 순수 함수<sup>pure function</sup>와 비순수 함수<sup>impure function</sup>  
 
@@ -421,6 +435,7 @@ let, const 키워드로 선언한 변수는 모든 코드 블록을 지역 스�
 외부 함수보다 중첩 함수가 더 오래 유지되는 경우 중첩 함수는 이미 생명 주기가 종료한 외부 함수의 변수를 참조할 수 있다.  
 중첩 함수가 상위 스코프의 식별자를 참조하고 있고 중첩 함수가 외부 함수보다 더 오래 유지되는 경우에 한정하는 것이 일반적이다.  
 "함수가 자유 변수에 대해 닫혀있다.", 쉽게 의역하면 "자유 변수에 묶여있는 함수"라고 할 수 있다.  
+클로저는 상태가 의도치 않게 변경되지 않도록 안전하게 은닉<sup>information hiding</sup>하고 특정 함수에게만 상태 변경을 허용하여 상태를 안전하게 변경하고 유지하기 위해 사용한다.  
 
 **자유 변수<sup>free variable</sup>**: 클로저에 의해 참조되는 상위 스코프의 변수  
 
