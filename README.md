@@ -445,10 +445,17 @@ let, const 키워드로 선언한 변수는 모든 코드 블록을 지역 스�
 클래스는 생성자 함수와 마찬가지로 프로토타입 기반의 객체 생성 메커니즘이다.  
 클래스 몸체에서 정의할 수 있는 메서드는 constructor(생성자), 프로토타입 메서드, 정적 메서드의 세 가지가 있다.  
 클래스의 constructor 메서드와 프로토타입의 constructor 프로퍼티는 직접적인 관련이 없다.  
+서브클래스는 자신이 직접 인스턴스를 생성하지 않고 수퍼클래스에게 인스턴스를 생성을 위임한다.  
 ```javascript
 class Person {
-  constructor(name) {
+  // private 필드 정의
+  #age = '';
+  // static private 필드 정의
+  static #tribe = 'human';
+  
+  constructor(name, age) {
     this.name = name;
+    this.#age = age;
   }
   
   sayHi() {
@@ -479,6 +486,16 @@ class Person {
 3. 암묵적으로 strict mode로 실행된다.
 4. for...in 문이나 Object.keys 메서드 등으로 열거할 수 없다.
 5. 내부 메서드 [[Construct]]를 갖지 않는 non-constructor다.  
+
+**super 키워드**
+- super를 호출하면 수퍼클래스의 constructor(super-constructor)를 호출한다.  
+  - 서브클래스에서 constructor를 생략하지 않는 경우 서브클래스의 constructor에서 반드시 super를 호출해야한다.
+  - 서브클래스의 constructor에서 super를 호출하기 전에는 this를 참조할 수 없다.
+  - super는 반드시 서브클래스의 constructor에서만 호출한다.
+- super를 참조하면 수퍼클래스의 메서드를 호출할 수 있다.
+  - 서브클래스의 프로토타입 메서드 내에서 super.method는 수퍼클래스의 프로토타입 메서드 method를 가리킨다.
+  - ES6의 메서드 축약 표현으로 정의된 함수만이 [[HomeObject]]를 갖는다는 것이다.  
+  - 서브클래스의 정적 메서드 내에서 super.method는 수퍼클래스의 정적 메서드 method를 가리킨다.
 
 ---
 연산자<sup>operator</sup>  
