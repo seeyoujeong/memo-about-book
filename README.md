@@ -554,12 +554,18 @@ class Person {
 
 **Array.isArray 메서드**: 전달된 인수가 배열이면 true, 배열이 아니면 false를 반환한다.  
 **Array.prototype.indexOf 메서드**: 원본 배열에서 인수로 전달된 요소를 검색하여 인덱스를 반환한다.  
-**Array.prototype.includes 메서드**: 원본 배열에서 인수로 전달된 요소를 검색하여 존재하면 true를 반환한다.  
 **Array.prototype.push 메서드<sup>m</sup>**: 인수로 전달받은 모든 값을 원본 배열의 마지막 요소로 추가하고 변경된 length 프로퍼티 값을 반환한다.  
 **Array.prototype.pop 메서드<sup>m</sup>**: 원본 배열에서 마지막 요소를 제거하고 제거한 요소를 반환한다.  
 **Array.prototype.unshift 메서드<sup>m</sup>**: 인수로 전달받은 모든 값을 원본 배열의 선두에 요소로 추가하고 변경된 length 프로퍼티 값을 반환한다.  
 **Array.prototype.shift 메서드<sup>m</sup>**: 원본 배열에서 첫 번째 요소를 제거하고 제거한 요소를 반환한다.  
 **Array.prototype.concat 메서드**: 인수로 전달된 값들(배열 또는 원시값)을 원본 배열의 마지막 요소로 추가한 새로운 배열을 반환한다. 인수로 전달한 값이 배열인 경우 배열을 해체하여 새로운 배열의 요소로 추가한다.  
+**Array.prototype.splice 메서드<sup>m</sup>**: 원본 배열의 중간에 요소를 추가하거나 중간에 있는 요소를 제거하고 제거한 요소를 반환한다.  
+**Array.prototype.slice 메서드**: 첫 번째 인수로 전달받은 인덱스부터 두 번째 인수로 전달받은 인덱스 이전까지 요소들을 복사하여 배열로 반환한다.  
+**Array.prototype.join 메서드**: 원본 배열의 모든 요소를 문자열로 변환한 후, 인수로 전달받은 문자열로 연결한 문자열을 반환한다.  
+**Array.prototype.reverse 메서드<sup>m</sup>**: 원본 배열의 순서를 반대로 뒤집고 변경된 배열을 반환한다.  
+**Array.prototype.fill 메서드<sup>m</sup>**: 인수로 전달받은 값을 배열의 처음부터 끝까지 요소로 채운다.  
+**Array.prototype.includes 메서드**: 배열 내에 특정 요소가 포함되어 있는지 확인하여 true 또는 false를 반환한다.  
+**Array.prototype.flat 메서드**: 인수로 전달한 깊이만큼 재귀적으로 배열을 평탄화한다.  
 
 ---
 연산자<sup>operator</sup>  
