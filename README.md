@@ -567,6 +567,18 @@ class Person {
 **Array.prototype.includes 메서드**: 배열 내에 특정 요소가 포함되어 있는지 확인하여 true 또는 false를 반환한다.  
 **Array.prototype.flat 메서드**: 인수로 전달한 깊이만큼 재귀적으로 배열을 평탄화한다.  
 
+### 배열 고차 함수
+**Array.prototype.sort 메서드<sup>m</sup>**: 유니코드 코드 포인트의 순서로 배열의 요소를 정렬하고 정렬된 배열을 반환한다.  
+**Array.prototype.forEach 메서드**: 내부에서 반복문을 통해 자신을 호출한 배열을 순회하면서 수행해야 할 처리를 콜백 함수로 전달받아 반복 호출한다.  
+**Array.prototype.map 메서드**: 자신을 호출한 배열의 모든 요소를 순회하면서 인수로 전달받은 콜백 함수를 반복 호출하고 콜백 함수의 반환값들로 구성된 새로운 배열을 반환한다.  
+**Array.prototype.filter 메서드**: 콜백 함수의 true인 요소로만 구성된 새로운 배열을 반환한다.  
+**Array.prototype.reduce 메서드**: 콜백 함수의 반환값을 다음 순회 시에 콜백 함수의 첫 번째 인수로 전달하면서 콜백 함수를 호출하여 하나의 결과값을 만들어 반환한다.  
+**Array.prototype.some 메서드**: 콜백 함수의 반환값이 단 한 번이라도 참이면 true, 모두 거짓이면 false를 반환한다.  
+**Array.prototype.every 메서드**: 콜백 함수의 반환값이 모두 참이면 true, 단 한 번이라도 거짓이면 false를 반환한다.  
+**Array.prototype.find 메서드**: 콜백 함수의 반환값이 true인 첫 번째 요소를 반환하고 true인 요소가 없으면 undefined를 반환한다.  
+**Array.prototype.findIndex 메서드**: 콜백 함수의 반환값이 true인 첫 번째 요소의 인덱스를 반환하고 true인 요소가 없으면 -1을 반환한다.  
+**Array.prototype.flatMap 메서드**: map 메서드를 통해 생성된 새로운 배열을 1단계만 평탄화한다.  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
