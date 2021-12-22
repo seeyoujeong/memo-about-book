@@ -17,6 +17,7 @@
 - [클로저](#클로저)
 - [클래스](#클래스)  
 - [배열](#배열)  
+- [Number](#number)
 
 ## 식별자
 식별자<sup>identifier</sup>는 어떤 값을 구별해서 식별할 수 있는 고유한 이름을 말한다.  
@@ -578,6 +579,28 @@ class Person {
 **Array.prototype.find 메서드**: 콜백 함수의 반환값이 true인 첫 번째 요소를 반환하고 true인 요소가 없으면 undefined를 반환한다.  
 **Array.prototype.findIndex 메서드**: 콜백 함수의 반환값이 true인 첫 번째 요소의 인덱스를 반환하고 true인 요소가 없으면 -1을 반환한다.  
 **Array.prototype.flatMap 메서드**: map 메서드를 통해 생성된 새로운 배열을 1단계만 평탄화한다.  
+
+## Number
+### Number 프로퍼티
+**Number.EPSILON**: 1과 1보다 큰 숫자 중에서 가장 작은 숫자와의 차이와 같다.  
+**Number.MAX_VALUE**: 자바스크립트에서 표현할 수 있는 가장 큰 양수 값이다.  
+**Number.MIN_VALUE**: 자바스크립트에서 표현할 수 있는 가장 작은 양수 값이다.  
+**Number.MAX_SAFE_INTEGER**: 자바스크립트에서 안전하게 표현할 수 있는 가장 큰 정수값이다.  
+**Number.MIN_SAFE_INTEGER**: 자바스크립트에서 안전하게 표현할 수 있는 가장 작은 정수값이다.  
+**Number.POSITIVE_INFINITY**: 양의 무한대를 나타내는 숫자값 Infinity와 같다.  
+**Number.NEGATIVE_INFINITY**: 음의 무한대를 나타내는 숫자값 -Infinity와 같다.  
+
+### Number 메서드
+**Number.isFinite 메서드**: 인수로 전달된 숫자값을 암묵적으로 타입 변환하지 않고 정상적인 유한수인지 검사하여 불리언 값을 반환한다.  
+**Number.isInteger 메서드**: 인수로 전달된 숫자값을 암묵적으로 타입 변환하지 않고 정수인지 검사하여 불리언 값을 반환한다.  
+**Number.isNaN 메서드**: 인수로 전달된 숫자값을 암묵적으로 타입 변환하지 않고 NaN인지 검사하여 불리언 값을 반환한다.  
+**Number.isSafeInteger 메서드**: 인수로 전달된 숫자값을 암묵적으로 타입 변환하지 않고 안전한 정수인지 검사하여 불리언 값을 반환한다.  
+**Number.prototype.toExponential 메서드**: 숫자를 지수 표기법으로 변환하여 문자열로 반환한다.  
+**Number.prototype.toFixed 메서드**: 숫자를 반올림하여 문자열로 반환한다.  
+**Number.prototype.toPrecision 메서드**: 인수로 전달받은 전체 자릿수까지 유효하도록 나머지 자릿수를 반올림하여 문자열로 반환한다.  
+**Number.prototype.toString 메서드**: 진법을 나타내는 정수값을 인수로 전달하여 숫자를 문자열로 변환하여 반환한다.  
+
+**지수 표기법**: 매우 크거나 작은 숫자를 표기할 때 주로 사용하며 e(Exponent) 앞에 있는 숫자에 10의 n승을 곱하는 형식으로 수를 나타내는 방식이다.  
 
 ---
 연산자<sup>operator</sup>  
