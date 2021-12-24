@@ -630,6 +630,34 @@ Date 생성자 함수로 생성한 Date 객체는 내부적으로 날짜와 시�
 **new Date(dateString)**: 날짜와 시간을 나타내는 문자열을 인수로 전달하면 지정된 날짜와 시간을 나타내는 Date 객체를 반환한다.  
 **new Date(year, month[, day, hour, minute, second, millisecond])**: 연, 월(0부터 시작), 일, 시, 분, 초, 밀리초를 의미하는 숫자를 인수로 전달하면 지정된 날짜와 시간을 나타내는 Date 객체를 반환한다.  
 
+### Date 메서드
+**Date.now 메서드**: 1970년 1월 1일 00:00:00(UTC)을 기점으로 현재 시간까지 경과한 밀리초를 숫자로 반환한다.  
+**Date.parse 메서드**: 1970년 1월 1일 00:00:00(UTC)을 기점으로 인수로 전달된 지정 시간까지의 밀리초를 숫자로 반환한다.  
+**Date.UTC 메서드**: 1970년 1월 1일 00:00:00(UTC)을 기점으로 인수로 전달된 지정 시간까지의 밀리초를 숫자로 반환한다.  
+**Date.prototype.getFullYear 메서드**: Date 객체의 연도를 나타내는 정수를 반환한다.  
+**Date.prototype.setFullYear 메서드**: Date 객체에 연도를 나타내는 정수를 설정한다.  
+**Date.prototype.getMonth 메서드**: Date 객체의 월을 나타내는 0 ~ 11의 정수를 반환한다.  
+**Date.prototype.setMonth 메서드**: Date 객체에 월을 나타내는 0 ~ 11의 정수를 설정한다.  
+**Date.prototype.getDate 메서드**: Date 객체의 날짜를 나타내는 정수를 반환한다.  
+**Date.prototype.setDate 메서드**: Date 객체에 날짜를 나타내는 정수를 설정한다.  
+**Date.prototype.getDay 메서드**: Date 객체의 요일(0 ~ 6)을 나타내는 정수를 반환한다.  
+**Date.prototype.getHours 메서드**: Date 객체의 시간(0 ~ 23)dmf 나타내는 정수를 반환한다.  
+**Date.prototype.setHours 메서드**: Date 객체에 시간을 나타내는 정수를 설정한다.  
+**Date.prototype.getMinutes 메서드**: Date 객체의 분(0 ~ 59)을 나타내는 정수를 반환한다.  
+**Date.prototype.setMinutes 메서드**: Date 객체에 분을 나타내는 정수를 설정한다.  
+**Date.prototype.getSeconds 메서드**: Date 객체의 초(0 ~ 59)를 나타내는 정수를 반환한다.  
+**Date.prototype.setSeconds 메서드**: Date 객체에 초를 나타내는 정수를 설정한다.  
+**Date.prototype.getMilliseconds 메서드**: Date 객체의 밀리초(0 ~ 999)를 나타내는 정수를 반환한다.  
+**Date.prototype.setMilliseconds 메서드**: Date 객체에 밀리초를 나타내는 정수를 설정한다.  
+**Date.prototype.getTime 메서드**: 1970년 1월 1일 00:00:00(UTC)를 기점으로 Date 객체의 시간까지 경과된 밀리초를 반환한다.  
+**Date.prototype.setTime 메서드**: Date 객체에 1970년 1월 1일 00:00:00(UTC)를 기점으로 경과된 밀리초를 설정한다.  
+**Date.prototype.getTimezoneOffset 메서드**: UTC와 Date 객체에 지정된 로캘<sup>locale</sup> 시간과의 차이를 분 단위로 반환한다.  
+**Date.prototype.toDateString 메서드**: 사람이 읽을 수 있는 형식의 문자열로 Date 객체의 날짜를 반환한다.  
+**Date.prototype.toTimeString 메서드**: 사람이 읽을 수 있는 형식으로 Date 객체의 시간을 표현한 문자열을 반환한다.  
+**Date.prototype.toISOString 메서드**: ISO 8601 형식으로 Date 객체의 날짜와 시간을 표현한 문자열을 반환한다.  
+**Date.prototype.toLocaleString 메서드**: 인수로 전달된 로캘을 기준으로 Date 객체의 날짜와 시간을 표현한 문자열을 반환한다.  
+**Date.prototype.toLocaleTimeString 메서드**: 인수로 전달된 로캘을 기준으로 Date 객체의 시간을 표현한 문자열을 반환한다.  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
