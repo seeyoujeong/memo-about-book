@@ -20,6 +20,7 @@
 - [Number](#number)  
 - [Math](#math)  
 - [Date](#date)
+- [RegExp](#regexp)
 
 ## 식별자
 식별자<sup>identifier</sup>는 어떤 값을 구별해서 식별할 수 있는 고유한 이름을 말한다.  
@@ -657,6 +658,27 @@ Date 생성자 함수로 생성한 Date 객체는 내부적으로 날짜와 시�
 **Date.prototype.toISOString 메서드**: ISO 8601 형식으로 Date 객체의 날짜와 시간을 표현한 문자열을 반환한다.  
 **Date.prototype.toLocaleString 메서드**: 인수로 전달된 로캘을 기준으로 Date 객체의 날짜와 시간을 표현한 문자열을 반환한다.  
 **Date.prototype.toLocaleTimeString 메서드**: 인수로 전달된 로캘을 기준으로 Date 객체의 시간을 표현한 문자열을 반환한다.  
+
+## RegExp
+정규 표현식<sup>regular expression</sup>은 일정한 패턴을 가진 문자열의 집합을 표현하기 위해 사용하는 형식 언어(formal language)다.  
+정규 표현식 리터럴은 패턴과 플래그로 구성된다.  
+```javascript
+const regexp = /is/i; // /pattern/flag
+```
+
+### RegExp 메서드
+**RegExp.prototype.exec 메서드**: 인수로 전달받은 문자열에 대해 정규 표현식의 패턴을 검색하여 매칭 결과를 배열로 반환한다.  
+**RegExp.prototype.test 메서드**: 인수로 전달받은 문자열에 대해 정규 표현식의 패턴을 검색하여 매칭 결과를 값으로 반환한다.  
+**String.prototype.match 메서드**: 대상 문자열과 인수로 전달받은 정규 표현식과의 매칭 결과를 배열로 반환한다.  
+
+### 플래그
+|플래그|의미|설명|
+|:---:|---|---|
+|i|Ignore case|대소문자를 구별하지 않고 패턴을 검색한다.|
+|g|Global|대상 문자열 내에서 패턴과 일치하는 모든 문자열을 전역 검색한다.|
+|m|Multi line|문자열의 행이 바뀌더라도 패턴 검색을 계속한다.|
+> *플래그는 옵션이므로 선택적으로 사용할 수 있다.*  
+> *순서와 상관없이 하나 이상의 플래그를 동시에 설정할 수 있다.*  
 
 ---
 연산자<sup>operator</sup>  
