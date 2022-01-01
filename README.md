@@ -833,6 +833,17 @@ console.log('next' in iterator);
 
 console.log(iterator.next());
 ```
+
+### 빌트인 이터러블
+|빌트인 이터러블|Symbol.iterator 메서드|
+|---|---|
+|Array|Array.prototype[Symbol.iterator]|
+|String|String.prototype[Symbol.iterator]|
+|Map|Map.prototype[Symbol.iterator]|
+|Set|Set.prototype[Symbol.iterator]|
+|TypeArray|TypeArray.prototype[Symbol.iterator]|
+|arguments|arguments[Symbol.iterator]|
+|DOM 컬렉션|NodeList.prototype[Symbol.iterator]<br>HTMLCollection.prototype[Symbol.iterator]|
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
