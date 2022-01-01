@@ -844,6 +844,15 @@ console.log(iterator.next());
 |TypeArray|TypeArray.prototype[Symbol.iterator]|
 |arguments|arguments[Symbol.iterator]|
 |DOM 컬렉션|NodeList.prototype[Symbol.iterator]<br>HTMLCollection.prototype[Symbol.iterator]|
+
+### for ... of 문
+for ... of 문은 이터러블을 순회하면서 이터러블의 요소를 변수에 할당한다.  
+for ... of 문은 내부적으로 이터레이터의 next 메서드를 호출하여 이터러블을 순회하며 next 메서드가 반환한 이터레이터 리절트 객체의 value 프로퍼티 값을 for ... of 문의 변수에 할당한다.  
+이터레이터 리절트 객체의 done 프로퍼티 값이 false이면 이터러블의 순회를 계속하고 true이면 이터러블의 순회를 중단한다.  
+```javascript
+for (변수선언문 of 이터러블) { ... }
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
