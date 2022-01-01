@@ -23,7 +23,7 @@
 - [RegExp](#regexp)
 - [String](#string)
 - [Symbol](#symbol)
-- [이터러블](#이터러블)
+- [Iterable](#iterable)
 
 ## 식별자
 식별자<sup>identifier</sup>는 어떤 값을 구별해서 식별할 수 있는 고유한 이름을 말한다.  
@@ -800,7 +800,7 @@ Array.prototype[Symbol.for('sum')] = function () {
 
 **Symbol.keyFor 메서드**: 전역 심벌 레지스트리에 저장된 심벌 값의 키를 추출할 수 있다.  
 
-## 이터러블
+## Iterable
 ### 이터레이션 프로토콜<sup>iteration protocol</sup>
 ES6에서 도입된 이터레이션 프로토콜은 순회 가능한 데이터 컬렉션(자료구조)을 만들기 위해 ECMAScript 사양에 정의하여 미리 약속한 규칙이다.  
 이터레이션 프로토콜에는 이터러블 프로토콜과 이터레이터 프로토콜이 있다.  
