@@ -554,7 +554,11 @@ class Person {
 **Array.of 메서드**: 전달된 인수를 요소로 갖는 배열을 생성한다.  
 **Array.from 메서드**: 유사 배열 객체 또는 이터러블 객체를 인수로 전달받아 배열로 변환하여 반환한다. 두 번째 인수로 전달한 콜백 함수를 통해 값을 만들면서 요소를 채울 수 있다.  
 
-**유사 배열 객체<sup>array-like object</sup>**: 마치 배열처럼 인덱스로 프로퍼티 값에 접근할 수 있고 length 프로퍼티를 갖는 객체를 말한다.  
+- **유사 배열 객체<sup>array-like object</sup>**  
+마치 배열처럼 인덱스로 프로퍼티 값에 접근할 수 있고 length 프로퍼티를 갖는 객체를 말한다.  
+유사 배열 객체는 length 프로퍼티를 갖기 때문에 for 문으로 순회할 수 있다.  
+인덱스를 나타내는 숫자 형식의 문자열을 프로퍼티 키로 가지므로 마치 배열처럼 인덱스로 프로퍼티 값에 접근할 수 있다.  
+유사 배열 객체는 이터러블이 아닌 일반 객체이므로 Symbol.iterator 메서드가 없기 때문에 for...of 문으로 순회할 수 없다.  
 
 ### 배열 메서드
 배열에는 원본 배열(배열 메서드를 호출한 배열, 즉 배열 메서드의 구현체 내부에서 this가 가리키는 객체)을 직접 변경하는 메서드<sup>mutator method</sup>와 원본 배열을 직접 변경하지 않고 새로운 배열을 생성하여 반환하는 메서드<sup>accessor method</sup>가 있다.  
@@ -868,7 +872,6 @@ for (변수선언문 of 이터러블) { ... }
 옵셔널 체이닝<sup>optional chaining</sup>(?.)  
 null 병합<sup>nullish coalescing</sup>(??)  
 계산된 프로퍼티 이름<sup>computed property name</sup>  
-유사 배열 객체<sup>array-like object</sup>  
 얕은 복사<sup>shallow copy</sup>와 깊은 복사<sup>deep copy</sup>  
 암묵적 결합<sup>implicit coupling</sup>  
 일시적 사각지대<sup>Temporal Dead Zone, TDZ</sup>(스코프 시작 시점부터 초기화 시작 시점까지 변수를 참조할 수 없는 구간)  
