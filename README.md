@@ -807,6 +807,7 @@ Array.prototype[Symbol.for('sum')] = function () {
 ## Iterable
 ### 이터레이션 프로토콜<sup>iteration protocol</sup>
 ES6에서 도입된 이터레이션 프로토콜은 순회 가능한 데이터 컬렉션(자료구조)을 만들기 위해 ECMAScript 사양에 정의하여 미리 약속한 규칙이다.  
+다양한 데이터 공급자가 하나의 순회 방식을 갖도록 규정하여 데이터 소비자가 효율적으로 다양한 데이터 공급자를 사용할 수 있도록 데이터 소비자와 데이터 공급자를 연결하는 인터페이스의 역할을 한다.  
 이터레이션 프로토콜에는 이터러블 프로토콜과 이터레이터 프로토콜이 있다.  
 
 - **이터러블 프로토콜<sup>iterable protocol</sup>**  
@@ -818,6 +819,7 @@ Well-Known Symbol인 Symbol.iterator를 프로퍼티 키로 사용한 메서드�
 ### 이터러블
 이터러블 프로토콜을 준수한 객체를 이터러블이라 한다.  
 이터러블은 Symbol.iterator를 프로퍼티 키로 사용한 메서드를 직접 구현하거나 프로토타입 체인을 통해 상속받은 객체를 말한다.  
+이터러블은 for ... of 문, 스프레드 문법, 배열 디스트럭처링 할당과 같은 데이터 소비자<sup>data consumer</sup>에 의해 사용되므로 데이터 공급자<sup>data provider</sup>의 역할을 한다고 할 수 있다.  
 ```javascript
 const isIterable = v => v !== null && typeof v[Symbol.iterator] === 'function';
 ```
