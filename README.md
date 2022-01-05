@@ -840,6 +840,19 @@ console.log('next' in iterator);
 console.log(iterator.next());
 ```
 
+**이터러블이면서 이터레이터인 객체**  
+이터러블이면서 이터레이터인 객체를 생성하면 Symbol.iterator 메서드를 호출하지 않아도 된다.  
+이터레이터를 반환하는 Symbol.iterator 메서드와 이터레이션 리절트 객체를 반환하는 next 메서드를 소유한다.  
+Symbol.iterator 메서드는 this를 반환하므로 next 메서드를 갖는 이터레이터를 반환한다.  
+```javascript
+{
+  [Symbol.iterator]() { return this; },
+  next() {
+    return { value: any, done: boolean };
+  }
+}
+```
+
 ### 빌트인 이터러블
 |빌트인 이터러블|Symbol.iterator 메서드|
 |---|---|
@@ -858,6 +871,8 @@ for ... of 문은 내부적으로 이터레이터의 next 메서드를 호출하
 ```javascript
 for (변수선언문 of 이터러블) { ... }
 ```
+
+**지연 평가<sup>lazy evaluation</sup>**: 데이터가 필요한 시점 이전까지는 미리 데이터를 생성하지 않다가 데이터가 필요한 시점이 되면 그때야 비로소 데이터를 생성하는 기법이다.  
 
 ---
 연산자<sup>operator</sup>  
