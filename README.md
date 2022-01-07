@@ -909,7 +909,18 @@ const [one, two, three] = arr;
 
 ### 객체 디스트럭처링 할당
 ES5에서 객체의 각 프로퍼티를 객체로부터 디스트럭처링하여 변수에 할당하기 위해서는 프로퍼티 키를 사용해야 한다.  
+ES6의 객체 디스트럭처링 할당은 객체의 각 프로퍼티를 객체로부터 추출하여 1개 이상의 변수에 할당한다.  
+객체 디스트럭처링 할당의 대상(할당문의 우변)은 객체이어야 하며, 할당 기준은 프로퍼티 키다.  
+```javascript
+const user = { firstName: 'Ungmo', lastName: 'Lee' };
 
+// ES5
+var firstName = user.firstName;
+var lastName = user.lastName;
+
+// ES6
+const { lastName, firstName } = user;
+```
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
