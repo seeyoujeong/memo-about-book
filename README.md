@@ -891,6 +891,13 @@ ES6에서 도입된 스프레드 문법<sup>spread syntax</sup>(전개 문법) .
 ## 디스트럭처링 할당
 디스트럭처링 할당<sup>destructuring assignment</sup>(구조 분해 할당)은 구조화된 배열과 같은 이터러블 또는 객체를 destructuring(비구조화, 구조 파괴)하여 1개 이상의 변수에 개별적으로 할당하는 것을 말한다.  
 
+### 배열 디스트럭처링 할당
+배열 디스트럭처링 할당의 대상(할당문의 우변)은 이터러블이어야 하며, 할당 기준은 배열의 인덱스다.  
+```javascript
+const arr = [1, 2, 3];
+
+const [one, two, three] = arr;
+```
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
