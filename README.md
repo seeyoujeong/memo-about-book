@@ -933,6 +933,20 @@ Set 객체는 중복되지 않는 유일한 값들의 집합<sup>set</sup>이다
 |요소 순서에 의미가 있다.|Ο|Χ|
 |인덱스로 요소에 접근할 수 있다.|Ο|Χ|
 
+**Set 객체의 생성**  
+Set 생성자 함수는 이터러블을 인수로 전달 받아 Set 객체를 생성한다. 이때 이터러블의 중복된 값은 Set 객체에 요소로 저장되지 않는다.  
+```javascript
+const set = new Set([1, 2, 3, 3]);
+console.log(set); // Set(3) {1, 2, 3}
+```
+
+**Set.prototype.size 프로퍼티**: Set 객체의 요소 개수를 확인한다.  
+**Set.prototype.add 메서드**: Set 객체에 요소를 추가할 때 사용하며 연속적으로 호출할 수 있다.  
+**Set.prototype.has 메서드**: Set 객체에 특정 요소가 존재하는지 확인할 때 사용하며 불리언 값을 반환한다.  
+**Set.prototype.delete 메서드**: Set 객체의 특정 요소를 삭제하고 삭제 성공 여부를 불리언 값으로 반환한다.  
+**Set.prototype.clear 메서드**: Set 객체의 모든 요소를 일괄 삭제하고 언제나 undefined를 반환한다.  
+**Set.prototype.forEach 메서드**: Set 객체의 요소를 순회할 때 사용하며 콜백 함수와 콜백 함수 내부에 3개의 인수를 전달한다.  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
