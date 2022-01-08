@@ -920,6 +920,8 @@ var lastName = user.lastName;
 
 // ES6
 const { lastName, firstName } = user;
+// 위와 아래는 동치다.
+const { lastName: lastName, firstName: firstName } = user;
 ```
 ---
 연산자<sup>operator</sup>  
