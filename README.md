@@ -26,6 +26,7 @@
 - [Iterable](#iterable)
 - [스프레드 문법](#스프레드-문법)
 - [디스트럭처링 할당](#디스트럭처링-할당)
+- [Set](#Set)
 
 ## 식별자
 식별자<sup>identifier</sup>는 어떤 값을 구별해서 식별할 수 있는 고유한 이름을 말한다.  
@@ -923,6 +924,15 @@ const { lastName, firstName } = user;
 // 위와 아래는 동치다.
 const { lastName: lastName, firstName: firstName } = user;
 ```
+
+## Set
+Set 객체는 중복되지 않는 유일한 값들의 집합<sup>set</sup>이다. 
+|구분|배열|Set 객체|
+|---|:---:|:---:|
+|동일한 값을 중복하여 포함할 수 있다.|Ο|Χ|
+|요소 순서에 의미가 있다.|Ο|Χ|
+|인덱스로 요소에 접근할 수 있다.|Ο|Χ|
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
