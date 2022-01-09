@@ -947,6 +947,22 @@ console.log(set); // Set(3) {1, 2, 3}
 **Set.prototype.clear 메서드**: Set 객체의 모든 요소를 일괄 삭제하고 언제나 undefined를 반환한다.  
 **Set.prototype.forEach 메서드**: Set 객체의 요소를 순회할 때 사용하며 콜백 함수와 콜백 함수 내부에 3개의 인수를 전달한다.  
 
+### 집합 연산
+Set 객체는 수학적 집합을 구현하기 위한 자료구조다.  
+
+**교집합**  
+```javascript
+Set.prototype.intersection = function (set) {
+  return new Set([...this].filter(v => set.has(v)));
+};
+```
+
+**합집합**
+```javascript
+Set.prototype.union = function (set) {
+  return new Set([...this, ...set]);
+};
+```  
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
