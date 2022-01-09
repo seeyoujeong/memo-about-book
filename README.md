@@ -963,6 +963,21 @@ Set.prototype.union = function (set) {
   return new Set([...this, ...set]);
 };
 ```  
+
+**차집합**
+```javascript
+Set.prototype.difference = function (set) {
+  return new Set([...this].filter(v => !set.has(v)));
+};
+```
+
+**부분 집합과 상위 집합**
+```javascript
+Set.prototype.isSuperset = function (subset) {
+  const supersetArr = [...this];
+  return [...subset].every(v => supersetArr.includes(v));
+};
+```
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
