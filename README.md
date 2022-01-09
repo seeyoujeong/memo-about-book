@@ -26,7 +26,8 @@
 - [Iterable](#iterable)
 - [스프레드 문법](#스프레드-문법)
 - [디스트럭처링 할당](#디스트럭처링-할당)
-- [Set](#Set)
+- [Set](#set)
+- [Map](#map)
 
 ## 식별자
 식별자<sup>identifier</sup>는 어떤 값을 구별해서 식별할 수 있는 고유한 이름을 말한다.  
@@ -978,6 +979,36 @@ Set.prototype.isSuperset = function (subset) {
   return [...subset].every(v => supersetArr.includes(v));
 };
 ```
+
+## Map
+Map 객체는 키와 값의 쌍으로 이루어진 컬렉션이다.  
+<table>
+    <thead>
+        <tr>
+            <th align="center">구분</th>
+            <th align="center">객체</th>
+            <th align="center">Map 객체</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left">키로 사용할 수 있는 값</td>
+            <td align="left">문자열 또는 심벌 값</td>
+            <td align="left">객체를 포함한 모든 값</td>
+        </tr>
+        <tr>
+            <td align="left">이터러블</td>
+            <td align="center">Χ</td>
+            <td align="center">Ο</td>
+        </tr>
+        <tr>
+            <td align="left">요소 개수 확인</td>
+            <td align="left">Object.keys(obj).length</td>
+            <td align="left">map.size</td>
+        </tr>
+    </tbody>
+</table>
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
