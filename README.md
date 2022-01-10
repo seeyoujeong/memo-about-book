@@ -1017,6 +1017,17 @@ const map = new Map([['key1', 'value1'], ['key2', 'value2']]);
 console.log(map); // Map(2) {"key1" => "value1", "key2" => "value2"}
 ```  
 
+**Map.prototype.size 프로퍼티**: Map 객체의 요소 개수를 확인한다.  
+**Map.prototype.set 메서드**: Map 객체에 요소를 추가할 때 사용하며 연속적으로 호출할 수 있다.  
+**Map.prototype.get 메서드**: Map 객체에서 특정 요소를 취득할 때 사용하며 인수에 키를 전달하면 인수로 전달한 키를 갖는 값을 반환한다.  
+**Map.prototype.has 메서드**: Map 객체에 특정 요소가 존재하는 확인할 때 사용하며 존재 여부를 나타내는 불리언 값을 반환한다.  
+**Map.prototype.delete 메서드**: Map 객체의 요소를 삭제할 때 사용하며 삭제 성공 여부를 나타내는 불리언 값을 반환한다.  
+**Map.prototype.clear 메서드**: Map 객체의 요소를 일괄 삭제할 때 사용하며 언제나 undefined를 반환한다.  
+**Map.prototype.forEach 메서드**: Map 객체의 요소를 순회할 때 사용하며 콜백 함수와 콜백 함수 내부에 3개의 인수를 전달한다.  
+**Map.prototype.keys 메서드**: Map 객체에서 요소키를 값으로 갖는 이터러블이면서 동시에 이터레이터인 객체를 반환한다.  
+**Map.prototype.values 메서드**: Map 객체에서 요소값을 값으로 갖는 이터러블이면서 동시에 이터레이터인 객체를 반환한다.  
+**Map.prototype.entries 메서드**: Map 객체에서 요소키와 요소값을 값으로 갖는 이터러블이면서 동시에 이터레이터인 객체를 반환한다.  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
