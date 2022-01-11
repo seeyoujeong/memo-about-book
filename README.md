@@ -28,6 +28,7 @@
 - [디스트럭처링 할당](#디스트럭처링-할당)
 - [Set](#set)
 - [Map](#map)
+- [브라우저의 렌더링 과정](#브라우저의-렌더링-과정)
 
 ## 식별자
 식별자<sup>identifier</sup>는 어떤 값을 구별해서 식별할 수 있는 고유한 이름을 말한다.  
@@ -1027,6 +1028,13 @@ console.log(map); // Map(2) {"key1" => "value1", "key2" => "value2"}
 **Map.prototype.keys 메서드**: Map 객체에서 요소키를 값으로 갖는 이터러블이면서 동시에 이터레이터인 객체를 반환한다.  
 **Map.prototype.values 메서드**: Map 객체에서 요소값을 값으로 갖는 이터러블이면서 동시에 이터레이터인 객체를 반환한다.  
 **Map.prototype.entries 메서드**: Map 객체에서 요소키와 요소값을 값으로 갖는 이터러블이면서 동시에 이터레이터인 객체를 반환한다.  
+
+## 브라우저의 렌더링 과정
+1. 브라우저는 HTML, CSS, 자바스크립트, 이미지, 폰트 파일 등 렌더링에 필요한 리소스를 요청하고 서버로부터 응답을 받는다.  
+2. 브라우저의 렌더링 엔진은 서버로부터 응답된 HTML과 CSS를 파싱하여 DOM과 CSSOM을 생성하고 이들을 결합하여 렌더 트리를 생성한다.  
+3. 브라우저의 자바스크립트 엔진은 서버로부터 응답된 자바스크립트를 파싱하여 AST<sup>Abstract Syntax Tree</sup>를 생성하고 바이트코드로 변환하여 실행한다. 이때 자바스크립트는 DOM API를 통해 DOM이나 CSSOM을 변경할 수 있다. 변경된 DOM과 CSSOM은 다시 렌더 트리로 결합된다. 
+4. 렌더 트리를 기반으로 HTML 요소의 레이아웃(위치와 크기)을 계산하고 브라우저 화면에 HTML 요소를 페인팅한다.  
+![rendering](https://user-images.githubusercontent.com/40534414/148952952-69d4f9f0-5253-47f2-8cd8-a9ea4c01cbb9.png)
 
 ---
 연산자<sup>operator</sup>  
