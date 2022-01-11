@@ -1043,6 +1043,11 @@ console.log(map); // Map(2) {"key1" => "value1", "key2" => "value2"}
 **렌더링<sup>rendering</sup>**  
 렌더링은 HTML, CSS, 자바스크립트로 작성된 문서를 파싱하여 브라우저에 시각적으로 출력하는 것을 말한다.  
 
+### 요청과 응답
+브라우저의 핵심 기능은 필요한 리소스(HTML, CSS, 자바스크립트, 이미지, 폰트 등의 정적 파일 또는 서버가 동적으로 생성한 데이터)를 서버에 요청<sup>request</sup>하고 서버로부터 응답<sup>response</sup>받아 브라우저에 시각적으로 렌더링한다.  
+서버에 요청을 전송하기 위해 브라우저는 주소창을 제공한다. 브라우저의 주소창에 URL을 입력하고 엔터 키를 누르면 URL의 호스트 이름이 DNS를 통해 IP 주소로 변환되고 이 IP 주소를 갖는 서버에게 요청을 전송한다.  
+![uri](https://user-images.githubusercontent.com/40534414/148959988-2115cb45-b9a4-4006-b090-d765a05d4586.png)
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
