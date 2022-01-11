@@ -1030,11 +1030,18 @@ console.log(map); // Map(2) {"key1" => "value1", "key2" => "value2"}
 **Map.prototype.entries 메서드**: Map 객체에서 요소키와 요소값을 값으로 갖는 이터러블이면서 동시에 이터레이터인 객체를 반환한다.  
 
 ## 브라우저의 렌더링 과정
+브라우저는 다음과 같은 과정을 거쳐 렌더링을 수행한다.  
 1. 브라우저는 HTML, CSS, 자바스크립트, 이미지, 폰트 파일 등 렌더링에 필요한 리소스를 요청하고 서버로부터 응답을 받는다.  
 2. 브라우저의 렌더링 엔진은 서버로부터 응답된 HTML과 CSS를 파싱하여 DOM과 CSSOM을 생성하고 이들을 결합하여 렌더 트리를 생성한다.  
 3. 브라우저의 자바스크립트 엔진은 서버로부터 응답된 자바스크립트를 파싱하여 AST<sup>Abstract Syntax Tree</sup>를 생성하고 바이트코드로 변환하여 실행한다. 이때 자바스크립트는 DOM API를 통해 DOM이나 CSSOM을 변경할 수 있다. 변경된 DOM과 CSSOM은 다시 렌더 트리로 결합된다. 
 4. 렌더 트리를 기반으로 HTML 요소의 레이아웃(위치와 크기)을 계산하고 브라우저 화면에 HTML 요소를 페인팅한다.  
 ![rendering](https://user-images.githubusercontent.com/40534414/148952952-69d4f9f0-5253-47f2-8cd8-a9ea4c01cbb9.png)
+
+**파싱<sup>parsing</sup>**  
+파싱(구문 분석<sup>syntax analysis</sup>)은 프로그래밍 언어의 문법에 맞게 작성된 텍스트 문서를 읽어 들여 실행하기 위해 텍스트 문서의 문자열을 토큰으로 분해(어휘 분석<sup>lexical analysis</sup>)하고, 토큰에 문법적 의미와 구조를 반영하여 트리 구조의 자료구조인 파스 트리<sup>parse tree/syntax tree</sup>를 생성하는 일련의 과정을 말한다. 일반적으로 파싱이 완료된 이후에는 파스 트리를 기반으로 중간 언어<sup>intermediate code</sup>인 바이트코드를 생성하고 실행한다.  
+
+**렌더링<sup>rendering</sup>**  
+렌더링은 HTML, CSS, 자바스크립트로 작성된 문서를 파싱하여 브라우저에 시각적으로 출력하는 것을 말한다.  
 
 ---
 연산자<sup>operator</sup>  
