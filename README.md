@@ -1048,6 +1048,12 @@ console.log(map); // Map(2) {"key1" => "value1", "key2" => "value2"}
 서버에 요청을 전송하기 위해 브라우저는 주소창을 제공한다. 브라우저의 주소창에 URL을 입력하고 엔터 키를 누르면 URL의 호스트 이름이 DNS를 통해 IP 주소로 변환되고 이 IP 주소를 갖는 서버에게 요청을 전송한다.  
 ![uri](https://user-images.githubusercontent.com/40534414/148959988-2115cb45-b9a4-4006-b090-d765a05d4586.png)
 
+### HTTP 1.1과 HTTP 2.0
+HTTP<sup>HyperText Transfer Protocol</sup>는 웹에서 브라우저와 서버가 통신하기 위한 프로토콜이다.  
+HTTP/1.1은 기본적으로 커넥션<sup>connection</sup>당 하나의 요청과 응답만 처리한다.  
+HTTP/2.0은 커넥션당 여러 개의 요청과 응답, 즉 다중 요청/응답이 가능하다.  
+![http1 1](https://user-images.githubusercontent.com/40534414/149084933-7f2b0686-e226-45b2-b092-3d1a21c09983.png) ![http2 0](https://user-images.githubusercontent.com/40534414/149084949-56873cb6-ee04-4373-abd3-dde5dc6f6024.png)
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
