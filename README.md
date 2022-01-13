@@ -1054,6 +1054,12 @@ HTTP/1.1은 기본적으로 커넥션<sup>connection</sup>당 하나의 요청�
 HTTP/2.0은 커넥션당 여러 개의 요청과 응답, 즉 다중 요청/응답이 가능하다.  
 ![http1 1](https://user-images.githubusercontent.com/40534414/149084933-7f2b0686-e226-45b2-b092-3d1a21c09983.png) ![http2 0](https://user-images.githubusercontent.com/40534414/149084949-56873cb6-ee04-4373-abd3-dde5dc6f6024.png)
 
+### HTML 파싱과 DOM 생성
+브라우저의 렌더링 엔진은 응답받은 HTML 문서를 파싱하여 브라우저가 이해할 수 있는 자료구조인 DOM<sup>Document Object Model</sup>을 생성한다.  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/40534414/149338518-70b951de-b375-457b-9b8d-55e03543852e.png" />
+</p>
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
