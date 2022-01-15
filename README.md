@@ -1070,6 +1070,18 @@ HTTP/2.0은 커넥션당 여러 개의 요청과 응답, 즉 다중 요청/응�
 ### CSS 파싱과 CSSOM 생성
 렌더링 엔진은 DOM을 생성해 나가다가 CSS를 로드하는 link 태그나 style 태그를 만나면 DOM 생성을 일시 중단하고 link 태그의 href 어트리뷰트에 지정된 CSS 파일을 서버에 요청하여 로드한 CSS 파일이나 style 태그 내의 CSS를 HTML과 동일한 파싱 과정(바이트 → 문자 → 토큰 → 노드 → CSSOM)을 거치며 해석하여 CSSOM<sup>CSS Object Model</sup>을 생성한다.  
 
+### 렌더 트리 생성
+렌더링 엔진은 서버로부터 응답된 HTML과 CSS를 파싱하여 각각 DOM과 CSSOM를 생성하고 DOM과 CSSOM은 렌더링을 위해 렌더 트리<sup>render tree</sup>로 결합한다.  
+렌더 트리는 렌더링을 위한 트리 구조의 자료구조이고 브라우저 화면에 렌더링되는 노드만으로 구성된다.  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/40534414/149624849-d207da1f-3630-4650-9df7-e572f0487afa.png" />
+</p>
+
+*다음과 같은 경우 반복해서 레이아웃 계산과 페인팅이 재차 실행된다.*  
+- *자바스크립트에 의한 노드 추가 또는 삭제*
+- *브라우저 창의 리사이징에 의한 뷰포트<sup>viewport</sup>크기 변경*
+- *HTML 요소의 레이아웃(위치, 크기)에 변경을 발생시키는 width/height, margin, padding, border, display, position, top/right/bottom/left 등의 스타일 변경*
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
