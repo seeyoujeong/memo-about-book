@@ -1083,6 +1083,14 @@ HTTP/2.0은 커넥션당 여러 개의 요청과 응답, 즉 다중 요청/응�
 > - *브라우저 창의 리사이징에 의한 뷰포트<sup>viewport</sup> 크기 변경*
 > - *HTML 요소의 레이아웃(위치, 크기)에 변경을 발생시키는 width/height, margin, padding, border, display, position, top/right/bottom/left 등의 스타일 변경*
 
+### 자바스크립트 파싱과 실행
+자바스크립트 파싱과 실행은 브라우저의 렌더링 엔진이 아닌 자바스크립트 엔진이 처리한다.  
+자바스크립트 엔진은 자바스크립트 코드를 파싱하여 CPU가 이해할 수 있는 저수준 언어<sup>low-level language</sup>로 변환하고 실행하는 역할을 한다.  
+자바스크립트 엔진은 자바스크립트를 해석하여 AST<sup>Abstract Syntax Tree</sup>(추상적 구문 트리)를 생성하고 AST를 기반으로 인터프리터가 실행할 수 있는 중간 코드<sup>intermediate code</sup>인 바이트코드를 생성하여 실행한다.  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/40534414/149661660-93fecdd4-94da-47eb-aecd-8673afec390f.png" />
+</p>
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
