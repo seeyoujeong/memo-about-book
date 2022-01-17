@@ -1035,7 +1035,9 @@ console.log(map); // Map(2) {"key1" => "value1", "key2" => "value2"}
 2. 브라우저의 렌더링 엔진은 서버로부터 응답된 HTML과 CSS를 파싱하여 DOM과 CSSOM을 생성하고 이들을 결합하여 렌더 트리를 생성한다.  
 3. 브라우저의 자바스크립트 엔진은 서버로부터 응답된 자바스크립트를 파싱하여 AST<sup>Abstract Syntax Tree</sup>를 생성하고 바이트코드로 변환하여 실행한다. 이때 자바스크립트는 DOM API를 통해 DOM이나 CSSOM을 변경할 수 있다. 변경된 DOM과 CSSOM은 다시 렌더 트리로 결합된다. 
 4. 렌더 트리를 기반으로 HTML 요소의 레이아웃(위치와 크기)을 계산하고 브라우저 화면에 HTML 요소를 페인팅한다.  
-![rendering](https://user-images.githubusercontent.com/40534414/148952952-69d4f9f0-5253-47f2-8cd8-a9ea4c01cbb9.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/40534414/148952952-69d4f9f0-5253-47f2-8cd8-a9ea4c01cbb9.png">
+</p>
 
 **파싱<sup>parsing</sup>**  
 파싱(구문 분석<sup>syntax analysis</sup>)은 프로그래밍 언어의 문법에 맞게 작성된 텍스트 문서를 읽어 들여 실행하기 위해 텍스트 문서의 문자열을 토큰으로 분해(어휘 분석<sup>lexical analysis</sup>)하고, 토큰에 문법적 의미와 구조를 반영하여 트리 구조의 자료구조인 파스 트리<sup>parse tree/syntax tree</sup>를 생성하는 일련의 과정을 말한다. 일반적으로 파싱이 완료된 이후에는 파스 트리를 기반으로 중간 언어<sup>intermediate code</sup>인 바이트코드를 생성하고 실행한다.  
@@ -1046,19 +1048,23 @@ console.log(map); // Map(2) {"key1" => "value1", "key2" => "value2"}
 ### 요청과 응답
 브라우저의 핵심 기능은 필요한 리소스(HTML, CSS, 자바스크립트, 이미지, 폰트 등의 정적 파일 또는 서버가 동적으로 생성한 데이터)를 서버에 요청<sup>request</sup>하고 서버로부터 응답<sup>response</sup>받아 브라우저에 시각적으로 렌더링한다.  
 서버에 요청을 전송하기 위해 브라우저는 주소창을 제공한다. 브라우저의 주소창에 URL을 입력하고 엔터 키를 누르면 URL의 호스트 이름이 DNS를 통해 IP 주소로 변환되고 이 IP 주소를 갖는 서버에게 요청을 전송한다.  
-![uri](https://user-images.githubusercontent.com/40534414/148959988-2115cb45-b9a4-4006-b090-d765a05d4586.png)
-
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/40534414/148959988-2115cb45-b9a4-4006-b090-d765a05d4586.png">
+</p>
+  
 ### HTTP 1.1과 HTTP 2.0
 HTTP<sup>HyperText Transfer Protocol</sup>는 웹에서 브라우저와 서버가 통신하기 위한 프로토콜이다.  
 HTTP/1.1은 기본적으로 커넥션<sup>connection</sup>당 하나의 요청과 응답만 처리한다.  
 HTTP/2.0은 커넥션당 여러 개의 요청과 응답, 즉 다중 요청/응답이 가능하다.  
-![http1 1](https://user-images.githubusercontent.com/40534414/149084933-7f2b0686-e226-45b2-b092-3d1a21c09983.png) ![http2 0](https://user-images.githubusercontent.com/40534414/149084949-56873cb6-ee04-4373-abd3-dde5dc6f6024.png)
-
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/40534414/149084933-7f2b0686-e226-45b2-b092-3d1a21c09983.png">
+  <img src="https://user-images.githubusercontent.com/40534414/149084949-56873cb6-ee04-4373-abd3-dde5dc6f6024.png">
+</p>
+  
 ### HTML 파싱과 DOM 생성
 브라우저의 렌더링 엔진은 응답받은 HTML 문서를 파싱하여 브라우저가 이해할 수 있는 자료구조인 DOM<sup>Document Object Model</sup>을 생성한다.  
-
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/149338518-70b951de-b375-457b-9b8d-55e03543852e.png" />
+  <img src="https://user-images.githubusercontent.com/40534414/149338518-70b951de-b375-457b-9b8d-55e03543852e.png">
 </p>
 
 1. 서버에 존재하던 HTML 파일이 브라우저의 요청에 의해 응답된다. 이때 서버는 브라우저가 요청한 HTML 파일을 읽어 들여 메모리에 저장한 다음 메모리에 저장된 바이트(2진수)를 인터넷을 경유하여 응답한다.  
@@ -1075,7 +1081,7 @@ HTTP/2.0은 커넥션당 여러 개의 요청과 응답, 즉 다중 요청/응�
 렌더 트리는 렌더링을 위한 트리 구조의 자료구조이고 브라우저 화면에 렌더링되는 노드만으로 구성된다.  
 완성된 렌더 트리는 각 HTML 요소의 레이아웃(위치, 크기)을 계산하는 데 사용되며 브라우저 화면에 픽셀을 렌더링하는 페인팅<sup>painting</sup> 처리에 입력된다.  
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/149624849-d207da1f-3630-4650-9df7-e572f0487afa.png" />
+  <img src="https://user-images.githubusercontent.com/40534414/149624849-d207da1f-3630-4650-9df7-e572f0487afa.png">
 </p>
 
 > *다음과 같은 경우 반복해서 레이아웃 계산과 페인팅이 재차 실행된다.*  
@@ -1088,7 +1094,7 @@ HTTP/2.0은 커넥션당 여러 개의 요청과 응답, 즉 다중 요청/응�
 자바스크립트 엔진은 자바스크립트 코드를 파싱하여 CPU가 이해할 수 있는 저수준 언어<sup>low-level language</sup>로 변환하고 실행하는 역할을 한다.  
 자바스크립트 엔진은 자바스크립트를 해석하여 AST<sup>Abstract Syntax Tree</sup>(추상적 구문 트리)를 생성하고 AST를 기반으로 인터프리터가 실행할 수 있는 중간 코드<sup>intermediate code</sup>인 바이트코드를 생성하여 실행한다.  
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/149661660-93fecdd4-94da-47eb-aecd-8673afec390f.png" />
+  <img src="https://user-images.githubusercontent.com/40534414/149661660-93fecdd4-94da-47eb-aecd-8673afec390f.png">
 </p>
 
 **토크나이징<sup>tokenizing</sup>**  
