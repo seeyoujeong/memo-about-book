@@ -1135,6 +1135,13 @@ async와 defer 어트리뷰트를 사용하면 HTML 파싱과 외부 자바스�
   <img src="https://user-images.githubusercontent.com/40534414/150136090-d7fa2f97-8113-4d65-8dac-af2c4976f403.png">
 </p>
 
+**defer 어트리뷰트**  
+자바스크립트의 파싱과 실행은 HTML 파싱이 완료된 직후, 즉 DOM 생성이 완료된 직후(이때 DOMContentLoaded 이벤트가 발생한다) 진행된다.  
+DOM 생성이 완료된 이후 실행되어야 할 자바스크립트에 유용하다.  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/40534414/150136771-f0987b28-a37b-4989-8ae4-a35d606004b7.png">
+</p>
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
