@@ -1146,6 +1146,15 @@ DOM 생성이 완료된 이후 실행되어야 할 자바스크립트에 유용�
 ## DOM
 DOM<sup>Document Object Model</sup>은 HTML 문서의 계층적 구조와 정보를 표현하며 이를 제어할 수 있는 API, 즉 프로퍼티와 메서드를 제공하는 트리 자료구조다.  
 
+### 노드
+HTML 요소<sup>HTML element</sup>는 HTML 문서를 구성하는 개별적인 요소를 의미한다.  
+HTML 요소는 렌더링 엔진에 의해 파싱되어 DOM을 구성하는 요소 노드 객체로 변환된다.  
+HTML 요소의 어트리뷰트는 어트리뷰트 노드로, HTML 요소의 텍스트 콘텐츠는 텍스트 노드로 변환된다.  
+<p>
+  <img src="https://user-images.githubusercontent.com/40534414/150340473-18ffdd99-5c4b-4634-8fbd-557219a5da8a.png" width="630">
+  <img src="https://user-images.githubusercontent.com/40534414/150340480-b48d437f-631d-4dd2-96b2-87d6da6ff691.png" width="332">
+</p>
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
