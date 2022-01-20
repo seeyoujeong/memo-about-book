@@ -1155,6 +1155,10 @@ HTML 요소의 어트리뷰트는 어트리뷰트 노드로, HTML 요소의 텍�
   <img src="https://user-images.githubusercontent.com/40534414/150340480-b48d437f-631d-4dd2-96b2-87d6da6ff691.png" width="332">
 </p>
 
+**트리 자료구조<sup>tree data structure</sup>**  
+트리 자료구조는 부모 노드<sup>parent node</sup>와 자식 노드<sup>child node</sup>로 구성되어 노드 간의 계층적 구조(부자, 형제 관계)를 표현하는 비선형 자료구조를 말한다. 트리 자료구조는 하나의 최상위 노드에서 시작한다. 최상위 노드는 부모 노드가 없으며, 루트 노드<sup>root node</sup>라 한다. 루트 노드는 0개 이상의 자식 노드를 갖는다. 자식 노드가 없는 노드를 리프 노드<sup>leaf node</sup>라 한다.  
+> *비선형<sup>nonlinear</sup> 자료구조는 하나의 자료 뒤에 여러 개의 자료가 존재할 수 있는 자료구조다. (e.g. 트리, 그래프)*  
+> *선형<sup>linear</sup> 자료구조는 하나의 자료 뒤에 하나의 자료만 존재하는 자료구조다. (e.g. 배열, 스택, 큐, 링크드 리스트, 해시 테이블)*  
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
