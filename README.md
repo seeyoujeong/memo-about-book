@@ -29,6 +29,7 @@
 - [Set](#set)
 - [Map](#map)
 - [브라우저의 렌더링 과정](#브라우저의-렌더링-과정)
+- [DOM](#dom)
 
 ## 식별자
 식별자<sup>identifier</sup>는 어떤 값을 구별해서 식별할 수 있는 고유한 이름을 말한다.  
@@ -1141,6 +1142,9 @@ DOM 생성이 완료된 이후 실행되어야 할 자바스크립트에 유용�
 <p align="center">
   <img src="https://user-images.githubusercontent.com/40534414/150136771-f0987b28-a37b-4989-8ae4-a35d606004b7.png">
 </p>
+
+## DOM
+DOM<sup>Document Object Model</sup>은 HTML 문서의 계층적 구조와 정보를 표현하며 이를 제어할 수 있는 API, 즉 프로퍼티와 메서드를 제공하는 트리 자료구조다.  
 
 ---
 연산자<sup>operator</sup>  
