@@ -1145,6 +1145,8 @@ DOM 생성이 완료된 이후 실행되어야 할 자바스크립트에 유용�
 
 ## DOM
 DOM<sup>Document Object Model</sup>은 HTML 문서의 계층적 구조와 정보를 표현하며 이를 제어할 수 있는 API, 즉 프로퍼티와 메서드를 제공하는 트리 자료구조다.  
+DOM을 구성하는 노드 객체는 ECMAScript 사양에 정의된 표준 빌트인 객체<sup>standard built-in objects</sup>가 아니라 브라우저 환경에서 추가적으로 제공하는 호스트 객체다.  
+DOM은 HTML 문서의 계층적 구조와 정보를 표현하는 것은 물론 노드 객체의 종류, 즉 노드 타입에 따라 필요한 기능을 프로퍼티와 메서드의 집합인 DOM API<sup>Application Programming Interface</sup> 로 제공한다. 
 
 ### 노드
 HTML 요소<sup>HTML element</sup>는 HTML 문서를 구성하는 개별적인 요소를 의미한다.  
@@ -1171,6 +1173,14 @@ HTML 요소의 어트리뷰트는 어트리뷰트 노드로, HTML 요소의 텍�
 
 **텍스트 노드<sup>text node</sup>**  
 텍스트 노드는 HTML 요소의 텍스트를 가리키는 객체다. 요소 노드가 문서의 구조를 표현한다면 텍스트 노드는 문서의 정보를 표현한다고 할 수 있다. 텍스트 노드는 요소 노드의 자식 노드이며, 자식 노드를 가질 수 없는 리프 노드<sup>leaf node</sup>다. 즉, 텍스트 노드는 DOM 트리의 최종단이다. 따라서 텍스트 노드에 접근하려면 먼저 부모 노드인 요소 노드에 전급해야 한다.  
+
+**노드 객체의 상속 구조**  
+노드 객체도 자바스크립트 객체이므로 프로토타입에 의한 상속 구조를 갖느다.  
+노드 객체에는 노드 객체의 종류, 즉 노드 타입에 상관없이 모든 노드 객체가 공통으로 갖는 기능도 있고, 노드 타입에 따라 고유한 기능도 있다.  
+<p>
+  <img src="https://user-images.githubusercontent.com/40534414/150641637-a2ed5cde-f25e-44dd-9ac6-2bba537b0d30.png" height="343">
+  <img src="https://user-images.githubusercontent.com/40534414/150641775-92608ac2-1e1f-436e-ad63-ee862c27f160.png" height="343">
+</p>
 
 ---
 연산자<sup>operator</sup>  
