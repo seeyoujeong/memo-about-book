@@ -1152,7 +1152,7 @@ DOM은 HTML 문서의 계층적 구조와 정보를 표현하는 것은 물론 �
 HTML 요소<sup>HTML element</sup>는 HTML 문서를 구성하는 개별적인 요소를 의미한다.  
 HTML 요소는 렌더링 엔진에 의해 파싱되어 DOM을 구성하는 요소 노드 객체로 변환된다.  
 HTML 요소의 어트리뷰트는 어트리뷰트 노드로, HTML 요소의 텍스트 콘텐츠는 텍스트 노드로 변환된다.  
-<p>
+<p align="cneter">
   <img src="https://user-images.githubusercontent.com/40534414/150340473-18ffdd99-5c4b-4634-8fbd-557219a5da8a.png" width="630">
   <img src="https://user-images.githubusercontent.com/40534414/150340480-b48d437f-631d-4dd2-96b2-87d6da6ff691.png" width="332">
 </p>
@@ -1177,7 +1177,7 @@ HTML 요소의 어트리뷰트는 어트리뷰트 노드로, HTML 요소의 텍�
 **노드 객체의 상속 구조**  
 노드 객체도 자바스크립트 객체이므로 프로토타입에 의한 상속 구조를 갖느다.  
 노드 객체에는 노드 객체의 종류, 즉 노드 타입에 상관없이 모든 노드 객체가 공통으로 갖는 기능도 있고, 노드 타입에 따라 고유한 기능도 있다.  
-<p>
+<p align="center">
   <img src="https://user-images.githubusercontent.com/40534414/150641637-a2ed5cde-f25e-44dd-9ac6-2bba537b0d30.png" height="343">
   <img src="https://user-images.githubusercontent.com/40534414/150641775-92608ac2-1e1f-436e-ad63-ee862c27f160.png" height="343">
 </p>
