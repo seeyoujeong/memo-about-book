@@ -1182,6 +1182,18 @@ HTML 요소의 어트리뷰트는 어트리뷰트 노드로, HTML 요소의 텍�
   <img src="https://user-images.githubusercontent.com/40534414/150641775-92608ac2-1e1f-436e-ad63-ee862c27f160.png" height="343">
 </p>
 
+### 요소 노드 취득
+HTML의 구조나 내용 또는 스타일 등을 동적으로 조작하려면 먼저 요소 노드를 취득해야 한다.  
+요소 노드의 취득은 HTML 요소를 조작하는 시작점이다.  
+
+**id를 이용한 요소 노드 취득**  
+Document.prototype.getElementById 메서드는 인수로 전달한 id 어트리뷰트 값을 갖는 하나의 요소 노드를 탐색하여 반환한다.  
+id 값은 HTML 문서 내에서 유일한 값이어야 하며, class 어트리뷰트와는 달리 공백 문자로 구분하여 여러 개의 값을 가질 수 없다.  
+getElementById 메서드는 인수로 전달된 id 값을 갖는 첫 번째 요소 노드만 반환한다.  
+인수로 전달된 id 값을 갖는 HTML 요소가 존재하지 않는 경우 getElementById 메서드는 null을 반환한다.  
+HTML 요소에 id 어트리뷰트를 부여하면 id 값과 동일한 이름의 전역 변수가 암묵적으로 선언되고 해당 노드 객체가 할당되는 부수 효과가 있다.  
+id 값과 동일한 이름의 전역 변수가 이미 선언되어 있으면 이 전역 변수에 노드 객체가 재할당되지 않는다.  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
