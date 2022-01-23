@@ -1193,6 +1193,26 @@ getElementById 메서드는 인수로 전달된 id 값을 갖는 첫 번째 요�
 인수로 전달된 id 값을 갖는 HTML 요소가 존재하지 않는 경우 getElementById 메서드는 null을 반환한다.  
 HTML 요소에 id 어트리뷰트를 부여하면 id 값과 동일한 이름의 전역 변수가 암묵적으로 선언되고 해당 노드 객체가 할당되는 부수 효과가 있다.  
 id 값과 동일한 이름의 전역 변수가 이미 선언되어 있으면 이 전역 변수에 노드 객체가 재할당되지 않는다.  
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="foo"></div>
+    <div id="boo"></div>
+    <script>
+      let foo = 1;
+      // id 값과 동일한 이름의 전역 변수가 이미 선언되어 있으면 노드 객체가 재할당되지 않는다.
+      console.log(foo); // 1
+      
+      // id 값과 동일한 이름의 전역 변수가 암묵적으로 선언되고 해당 노드 객체가 할당된다.  
+      console.log(boo === document.getElementById('boo')); // true     
+      // 암묵적 전역으로 생성된 전역 프로퍼티는 삭제되지만 전역 변수는 삭제되지 않는다.  
+      delete boo;
+      console.log(boo); // <div id="boo"></div>
+    </script>
+  </body>
+</html>
+```
 
 ---
 연산자<sup>operator</sup>  
