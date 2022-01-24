@@ -1214,6 +1214,36 @@ id 값과 동일한 이름의 전역 변수가 이미 선언되어 있으면 이
 </html>
 ```
 
+**태그 이름을 이용한 요소 노드 취득**  
+Document.prototype/Element.prototype.getElementsByTagName 메서드는 인수로 전달한 태그 이름을 갖는 모든 요소 노드들을 탐색하여 반환한다.  
+getElementsByTagName 메서드가 반환하는 DOM 컬렉션 객체인 HTMLCollection 객체는 유사 배열 객체이면서 이터러블이다.  
+인수로 전달된 태그 이름을 갖는 요소가 존재하지 않는 경우 getElementsByTagName 메서드는 빈 HTMLCollection 객체를 반환한다.  
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <ul id="fruits">
+      <li>Apple</li>
+      <li>Banana</li>
+      <li>Orange</li>
+    </ul>
+    <ul>
+      <li>HTML</li>
+    </ul>
+    <script>
+      // DOM 전체에서 태그 이름이 li인 요소 노드를 모두 탐색하여 반환한다. 
+      const $lisFromDocument = document.getElementsByTagName('li');
+      console.log($lisFromDocument); // HTMLCollection(4) [li, li, li, li]
+      
+      // ul#fruits 요소의 자손 노드 중에서 태그 이름이 li인 요소 노드를 모두 탐색하여 반환한다.
+      const $fruits = document.getElementById('fruits');
+      const $lisFromFruits = $fruits.getElementsByTagName('li');
+      console.log($lisFromFruits); // HTMLCollection(3) [li, li, li]
+    </script>
+  </body>
+</html>
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
