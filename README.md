@@ -1244,6 +1244,35 @@ getElementsByTagName 메서드가 반환하는 DOM 컬렉션 객체인 HTMLColle
 </html>
 ```
 
+**class를 이용한 요소 노드 취득**  
+Document.prototype/Element.prototype.getElementByClassName 메서드는 인수로 전달한 class 어트리뷰트 값을 갖는 모든 요소 노드들을 탐색하여 반환한다.  
+인수로 전달할 class 값은 공백으로 구분하여 여러 개의 class를 지정할 수 있다.  
+getElementsByClassName 메서드는 여러 개의 요소 노드 객체를 갖는 DOM 컬렉션 객체인 HTMLCollection 객체를 반환한다.  
+인수로 전달된 class 값을 갖는 요소가 존재하지 않는 경우 getElementByClassName 메서드는 빈 HTMLCollection 객체를 반환한다.  
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <ul id="fruits">
+      <li class="apple">Apple</li>
+      <li class="banana">Banana</li>
+      <li class="orange">Orange</li>
+    </ul>
+    <div class="banana">Banana</div>
+    <script>
+      // DOM 전체에서 class 값이 'banana'인 요소 노드를 모두 탐색하여 반환한다.
+      const $bananasFromDocument = document.getElementsByClassName('banana');
+      console.log($bananasFromDocument); // HTMLCollection(2) [li.banana, div.banana]
+      
+      // #fruits 요소의 자손 노드 중에서 class 값이 'banana'인 요소 노드를 모두 탐색하여 반환한다.
+      const $fruits = document.getElementById('fruits');
+      const $bananasFromFruits = $fruits.getElementsByClassName('banana');
+      console.log($bananasFromFruits); // HTMLCollection [li.banana]
+    </script>
+  </body>
+</html>
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
