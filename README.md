@@ -1289,8 +1289,10 @@ querySelectorAll 메서드는 여러 개의 요소 노드 객체를 갖는 DOM �
 **HTMLCollection과 NodeList**  
 HTMLCollection과 NodeList는 모두 유사 배열 객체이면서 이터러블이다.  
 for ... of 문으로 순회할 수 있으며 스프레드 문법을 사용하여 간단히 배열로 변환할 수 있다.  
+노드 객체의 상태 변경과 상관없이 안전하게 DOM 컬렉션을 사용하려면 HTMLCollection이나 NodeList 객체를 배열로 변환하여 사용하는 것을 권장한다.  
 
 **HTMLCollection**  
+getElementsByTagName, getElementsByClassName 메서드가 반환하는 노드 객체의 상태 변화를 실시간으로 반영하는 살아 있는 DOM 컬렉션 객체다.  
 HTMLCollection 객체는 실시간으로 노드 객체의 상태 변경을 반영하여 요소를 제거할 수 있기 때문에 HTMLCollection 객체를 for 문으로 순회하면서 노드 객체의 상태를 변경해야 할 때 주의해야한다.  
 ```javascript
 // for 문을 역방향으로 순회
@@ -1306,6 +1308,37 @@ while ($elems.length > i) {
 
 // 유사 배열 객체이면서 이터러블인 HTMLCollection을 배열로 변환하여 순회
 [...$elems].forEach(elem => elem.className = 'blue');
+```
+
+**NodeList**  
+querySelectorAll 메서드가 반환하는 객체다.  
+실시간으로 노드 객체의 상태 변경을 반영하지 않는 객체다.  
+NodeList.prototype.forEach 메서드를 상속받아 사용할 수 있다.  
+childNodes 프로퍼티가 반환하는 NodeList 객체는 실시간으로 노드 객체의 상태 변경을 반영하는 live 객체로 동작하므로 주의가 필요하다.  
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <ul id="fruits">
+      <li>Apple</li>
+      <li>Banana</li>
+    </ul>
+    <script>
+      const $fruits = document.getElementById('fruits');
+      
+      // childNodes 프로퍼티는 NodeList 객체(live)를 반환한다.
+      const { childNodes } = $fruits;
+      console.log(childNodes); // NodeList(5) [text, li, text, li, text]
+      
+      for (let i = 0; i < childNodes.length; i++) {
+        $fruits.removeChild(childNodes[i]);
+      }
+      
+      // 예상과 다르게 $fruits 요소의 모든 자식 노드가 삭제되지 않는다. 
+      console.log(childNodes); // NodeList(2) [li, li]
+    </script>
+  </body>
+</html>
 ```
 
 ---
