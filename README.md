@@ -1341,6 +1341,14 @@ childNodes 프로퍼티가 반환하는 NodeList 객체는 실시간으로 노�
 </html>
 ```
 
+### 노드 탐색
+요소 노드를 취득한 다음, 취득한 요소 노드를 기점으로 DOM 트리의 노드를 옮겨 다니며 부모, 형제, 자식 노드 등을 탐색<sup>traversing, node walking</sup>해야 할 때가 있다.  
+DOM 트리 상의 노드를 탐색할 수 있도록 Node, Element 인터페이스는 트리 탐색 프로퍼티를 제공한다.  
+노드 탐색 프로퍼티는 setter없이 getter만 존재하여 참조만 가능한 읽기 전용 접근자 프로퍼티다.  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/40534414/151559250-638897c8-70ab-448b-a979-9d0dedb65212.png">
+</p>
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
