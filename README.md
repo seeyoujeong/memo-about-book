@@ -985,30 +985,30 @@ Set.prototype.isSuperset = function (subset) {
 ## Map
 Map 객체는 키와 값의 쌍으로 이루어진 컬렉션이다.  
 <table>
-    <thead>
-        <tr>
-            <th align="center">구분</th>
-            <th align="center">객체</th>
-            <th align="center">Map 객체</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td align="left">키로 사용할 수 있는 값</td>
-            <td align="left">문자열 또는 심벌 값</td>
-            <td align="left">객체를 포함한 모든 값</td>
-        </tr>
-        <tr>
-            <td align="left">이터러블</td>
-            <td align="center">Χ</td>
-            <td align="center">Ο</td>
-        </tr>
-        <tr>
-            <td align="left">요소 개수 확인</td>
-            <td align="left">Object.keys(obj).length</td>
-            <td align="left">map.size</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th align="center">구분</th>
+      <th align="center">객체</th>
+      <th align="center">Map 객체</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="left">키로 사용할 수 있는 값</td>
+      <td align="left">문자열 또는 심벌 값</td>
+      <td align="left">객체를 포함한 모든 값</td>
+    </tr>
+    <tr>
+      <td align="left">이터러블</td>
+      <td align="center">Χ</td>
+      <td align="center">Ο</td>
+    </tr>
+    <tr>
+      <td align="left">요소 개수 확인</td>
+      <td align="left">Object.keys(obj).length</td>
+      <td align="left">map.size</td>
+    </tr>
+  </tbody>
 </table>
 
 **Map 객체의 생성**  
