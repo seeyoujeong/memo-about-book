@@ -1401,6 +1401,11 @@ hasChildNodes 메서드는 자식 노드가 존재하면 true, 자식 노드가 
 hasChildNodes 메서드는 childNodes 프로퍼티와 마찬가지와 텍스트 노드를 포함하여 자식 노드의 존재를 확인한다.  
 텍스트 노드가 아닌 요소 노드가 존재하는지는 확인하려면 children.length 또는 Element 인터페이스의 childElementCount 프로퍼티를 사용한다.  
 
+**요소 노드의 텍스트 노드 탐색**  
+요소 노드의 텍스트 노드는 요소 노드의 자식 노드다.  
+요소 노드의 텍스트 노드는 firstChild 프로퍼티로 접근할 수 있다.  
+
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
