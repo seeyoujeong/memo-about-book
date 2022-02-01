@@ -1368,13 +1368,13 @@ HTML 요소 사이의 스페이스, 탭, 줄바꿈(개행) 등의 공백<sup>whi
   <tbody>
     <tr>
       <td align="left">Node.prototype.childNodes</td>
-      <td align="left">자식노드를 모두 탐색하여 DOM 컬렉션 객체인 NodeList에 담아 반환한다. childNodes 프로퍼티가 
-                       반환한 NodeList에는 요소 노드뿐만 아니라 텍스트 노드도 포함되어 있을 수 있다.</td>
+      <td align="left">자식노드를 모두 탐색하여 DOM 컬렉션 객체인 NodeList에 담아 반환한다. 
+        childNodes 프로퍼티가 반환한 NodeList에는 요소 노드뿐만 아니라 텍스트 노드도 포함되어 있을 수 있다.</td>
     </tr>
     <tr>
       <td align="left">Element.prototype.children</td>
       <td align="left">자식 노드 중에서 요소 노드만 모두 탐색하여 DOM 컬렉션 객체인 HTMLCollection에 담아 반환한다. 
-                       children 프로퍼티가 반환한 HTMLCollection에는 텍스트 노드가 포함되지 않는다.</td>
+        children 프로퍼티가 반환한 HTMLCollection에는 텍스트 노드가 포함되지 않는다.</td>
     </tr>
     <tr>
       <td align="left">Node.prototype.firstChild</td>
