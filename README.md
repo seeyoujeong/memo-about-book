@@ -1409,6 +1409,38 @@ hasChildNodes 메서드는 childNodes 프로퍼티와 마찬가지와 텍스트 
 부모 노드를 탐색하려면 Node.prototype.parentNode 프로퍼티를 사용한다.  
 텍스트 노드는 DOM 트리의 최종단 노드인 리프 노드이므로 부모 노드가 텍스트 노드인 경우는 없다.  
 
+**형제 노드 탐색**  
+<table>
+  <thead>
+    <tr>
+      <th align="center">프로퍼티</th>
+      <th align="center">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="left">Node.prototype.previousSibling</td>
+      <td align="left">부모 노드가 같은 형제 노드 중에서 자신의 이전 형제 노드를 탐색하여 반환한다.
+        previousSibling 프로퍼티가 반환하는 형제 노드는 요소 노드뿐만 아니라 텍스트 노드일 수도 있다.</td>
+    </tr>
+    <tr>
+      <td align="left">Node.prototype.nextSibling</td>
+      <td align="left">부모 노드가 같은 형제 노드 중에서 자신의 다음 형제 노드를 탐색하여 반환한다. 
+        nextSibling 프로퍼티가 반환하는 형제 노드는 요소 노드뿐만 아니라 텍스트 노드일 수도 있다.</td>
+    </tr>
+    <tr>
+      <td align="left">Element.prototype.previousElementSibling</td>
+      <td align="left">부모 노드가 같은 형제 요소 노드 중에서 자신의 이전 형제 요소 노드를 탐색하여 반환한다. 
+        previousElementSibling 프로퍼티는 요소 노드만 반환한다.</td>
+    </tr>
+    <tr>
+      <td align="left">Element.prototype.nextElementSibling</td>
+      <td align="left">부모 노드가 같은 형제 요소 노드 중에서 자신의 다음 형제 요소 노드를 탐색하여 반환한다. 
+        nextElementSibling 프로퍼티는 요소 노드만 반환한다.</td>
+    </tr>
+  </tbody>
+</table>
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
