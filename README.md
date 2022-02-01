@@ -1405,6 +1405,9 @@ hasChildNodes 메서드는 childNodes 프로퍼티와 마찬가지와 텍스트 
 요소 노드의 텍스트 노드는 요소 노드의 자식 노드다.  
 요소 노드의 텍스트 노드는 firstChild 프로퍼티로 접근할 수 있다.  
 
+**부모 노드 탐색**  
+부모 노드를 탐색하려면 Node.prototype.parentNode 프로퍼티를 사용한다.  
+텍스트 노드는 DOM 트리의 최종단 노드인 리프 노드이므로 부모 노드가 텍스트 노드인 경우는 없다.  
 
 ---
 연산자<sup>operator</sup>  
