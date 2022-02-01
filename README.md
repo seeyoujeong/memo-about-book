@@ -1395,6 +1395,12 @@ HTML 요소 사이의 스페이스, 탭, 줄바꿈(개행) 등의 공백<sup>whi
   </tbody>
 </table>
 
+**자식 노드 존재 확인**  
+자식 노드가 존재하는지 확인하려면 Node.prototype.hasChildNodes 메서드를 사용한다.  
+hasChildNodes 메서드는 자식 노드가 존재하면 true, 자식 노드가 존재하지 않으면 false를 반환한다.  
+hasChildNodes 메서드는 childNodes 프로퍼티와 마찬가지와 텍스트 노드를 포함하여 자식 노드의 존재를 확인한다.  
+텍스트 노드가 아닌 요소 노드가 존재하는지는 확인하려면 children.length 또는 Element 인터페이스의 childElementCount 프로퍼티를 사용한다.  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
