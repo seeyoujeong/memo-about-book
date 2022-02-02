@@ -1441,6 +1441,40 @@ hasChildNodes 메서드는 childNodes 프로퍼티와 마찬가지와 텍스트 
   </tbody>
 </table>
 
+**노드 정보 취득**  
+<table>
+  <thead>
+    <tr>
+      <th align="left">프로퍼티</th>
+      <th align="left">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="left">Node.prototype.nodeType</td>
+      <td align="left">
+        <p>노드 객체의 종류, 즉 노드 타입을 나타태는 상수를 반환한다. 노드 타입 상수는 Node에 정의되어 있다.</p>
+        <ul type="square">
+          <li>Node.ELEMENT_NODE: 요소 노드 타입을 나타내는 상수 1을 반환</li>
+          <li>Node.TEXT_NODE: 텍스트 노드 타입을 나타내는 상수 3을 반환</li>
+          <li>Node.DOCUMENT_NODE: 문서 노드 타입을 나타내는 상수 9를 반환</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td align="left">Node.prototype.nodeName</td>
+      <td align="left">
+        <p>노드의 이름을 문자열로 반환한다.</p>
+        <ul type="square">
+          <li>요소 노드: 대문자 문자열로 태그 이름("UL", "LI" 등)을 반환</li>
+          <li>텍스트 노드: 문자열 "#text"를 반환</li>
+          <li>문서 노드: 문자열 "#document"를 반환</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+  
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
