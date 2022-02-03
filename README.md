@@ -1484,6 +1484,23 @@ hasChildNodes 메서드는 childNodes 프로퍼티와 마찬가지와 텍스트 
 > 요소 노드의 텍스트를 변경하려면 다음과 같은 순서의 처리가 필요하다.  
 > 1. 텍스트를 변경할 요소 노드를 취득한 다음, 취득한 요소 노드의 텍스트 노드를 탐색한다. 텍스트 노드는 요소 노드의 자식 노드이므로 firstChild 프로퍼티를 사용하여 탐색한다.
 > 2. 탐색한 텍스트 노드의 nodeValue 프로퍼티를 사용하여 텍스트 노드의 값을 변경한다.  
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="foo">Hello</div>
+  </body>
+  <script>
+    // #foo 요소 노드의 자식 노드인 텍스트 노드를 취득한다.
+    const $textNode = document.getElementById('foo').firstChild;
+    
+    // nodeValue 프로퍼티를 사용하여 텍스트 노드의 값을 변경한다.
+    $textNode.nodeValue = 'World';
+    
+    console.log($textNode.nodeValue); // World
+  </script>
+</html>
+```
 
 ---
 연산자<sup>operator</sup>  
