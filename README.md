@@ -1502,6 +1502,26 @@ hasChildNodes 메서드는 childNodes 프로퍼티와 마찬가지와 텍스트 
 </html>
 ```
 
+**textContent**  
+Node.prototype.textContent 프로퍼티는 요소 노드의 텍스트와 모든 자손 노드의 텍스트를 모두 취득하거나 변경한다.  
+요소 노드의 childNodes 프로퍼티가 반환한 모든 노드들의 텍스트 노드의 값을 모두 반환하는데 HTML 마크업은 무시된다.  
+요소 노드의 textContent 프로퍼티에 문자열을 할당하면 요소 노드의 모든 자식 노드가 제거되고 할당한 문자열이 텍스트로 추가된다.  
+할당한 문자열에 HTML 마크업이 포함되어 있더라도 문자열 그대로 인식되어 텍스트로 취급된다.  
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="foo">Hello <span>world!</span></div>
+  </body>
+  <script>
+    console.log(document.getElementById('foo').textContent); // Hello world!
+    
+    // HTML 마크업이 파싱되지 않는다.
+    document.getElementById('foo').textContent = 'Hi <span>there!</span>';
+  </script>
+</html>
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
