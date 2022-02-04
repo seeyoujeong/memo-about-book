@@ -1521,6 +1521,9 @@ Node.prototype.textContent 프로퍼티는 요소 노드의 텍스트와 모든 
   </script>
 </html>
 ```
+> textContent 프로퍼티와 유사한 동작을 하는 innerText 프로퍼티는 다음과 같은 이유로 사용하지 않는 것이 좋다.  
+> - innerText 프로퍼티는 CSS에 순종적이다. 예를 들어, innerText 프로퍼티는 CSS에 의해 비표시(visibility: hidden;)로 지정된 요소 노드의 텍스트를 반환하지 않는다.  
+> - innerText 프로퍼티는 CSS를 고려해야 하므로 textContent 프로퍼티보다 느리다.  
 
 ---
 연산자<sup>operator</sup>  
