@@ -1552,6 +1552,13 @@ HTML5는 innerHTML 프로퍼티로 삽입된 script 요소 내의 자바스크�
   </script>
 </html>
 ```
+> HTML 새니티제이션<sup>HTML sanitization</sup>  
+> HTML 새니티제이션은 사용자로부터 입력받은 데이터에 의해 발생할 수 있는 크로스 사이트 스크립팅 공격을 예방하기 위해 잠재적 위험을 제거하는 기능을 말한다.  
+> DOMPurify는 잠재적 위험을 내포한 HTML 마크업을 새니티제이션(살균)하여 잠재적 위험을 제거한다.  
+> ```javascript
+> DOMPurify.sanitize('<img src="x" onerror="alert(document.cookie)">'); 
+> // => <img src="x">
+> ```
 
 ---
 연산자<sup>operator</sup>  
