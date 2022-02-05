@@ -1537,6 +1537,21 @@ Element.prototype.innerHTML 프로퍼티는 요소 노드의 HTML 마크업을 �
 HTML5는 innerHTML 프로퍼티로 삽입된 script 요소 내의 자바스크립트 코드를 실행하지 않는다.  
 요소 노드의 innerHTML 프로퍼티에 HTML 마크업 문자열을 할당하는 경우 요소 노드의 모든 자식 노드를 제거하고 할당한 HTML 마크업 문자열을 파싱하여 DOM을 변경한다.
 새로운 요소를 삽입할 때 삽입될 위치를 지정할 수 없다.  
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="foo">Hello <span>world!</span></div>
+  </body>
+  <script>
+    // #foo 요소의 콘텐츠 영역 내의 HTML 마크업을 문자열로 취득한다.
+    console.log(document.getElementById('foo').innerHTML); // "Hello <span>world!</span>"
+    
+    // HTML 마크업이 파싱되어 요소 노드의 자식 노드로 DOM에 반영된다.  
+    document.getElementById('foo').innerHTML = 'Hi <span>there!</span>';
+  </script>
+</html>
+```
 
 ---
 연산자<sup>operator</sup>  
