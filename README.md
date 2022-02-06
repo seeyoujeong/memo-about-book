@@ -1560,6 +1560,14 @@ HTML5는 innerHTML 프로퍼티로 삽입된 script 요소 내의 자바스크�
 > // => <img src="x">
 > ```
 
+**insertAdjacentHTML 메서드**
+Element.prototype.insertAdjacentHTML(position, DOMString) 메서드는 기존 요소를 제거하지 않으면서 위치를 지정해 새로운 요소를 삽입한다.  
+두 번째 인수로 전달한 HTML 마크업 문자열을 파싱하고 그 결과로 생성된 노드를 첫 번째 인수로 전달한 위치에 삽입하여 DOM에 반영한다.  
+innerHTML 프로퍼티보다 효율적이지만 크로스 사이트 스크립팅 공격에 취약하다는 점은 동일하다.  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/40534414/152683631-739f41a6-0880-44ce-990c-5665b0bb00f2.png">
+</p>
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
