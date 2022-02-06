@@ -1568,6 +1568,22 @@ innerHTML 프로퍼티보다 효율적이지만 크로스 사이트 스크립팅
   <img src="https://user-images.githubusercontent.com/40534414/152683631-739f41a6-0880-44ce-990c-5665b0bb00f2.png">
 </p>
 
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="foo">
+      text
+    </div>
+  </body>
+  <script>
+    const $foo = document.getElementById('foo');
+    
+    $foo.insertAdjacentHTML('afterbegin', '<p>afterbegin</p>');
+  </script>
+</html>
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
