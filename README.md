@@ -1584,6 +1584,36 @@ innerHTML 프로퍼티보다 효율적이지만 크로스 사이트 스크립팅
 </html>
 ```
 
+**노드 생성과 추가**  
+DOM은 노드를 직접 생성/삽입/삭제/치환하는 메서드로 제공한다.  
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <ul id="fruits">
+      <li>Apple</li>
+    </ul>
+  </body>
+  <script>
+    const $fruits = document.getElementById('fruits');
+    
+    // 요소 노드 생성
+    const $li = document.createElement('li');
+    
+    // 텍스트 노드 생성
+    const textNode = document.createTextNode('Banana');
+    
+    // 텍스트 노드를 $li 요소 노드의 자식 노드로 추가
+    // 기존 DOM에 추가되지 않은 상태
+    $li.appendChild(textNode);
+    
+    // $li 요소 노드를 #fruits 요소 노드의 마지막 자식 노드로 추가
+    $fruits.appendChild($li);
+  </script>
+</html>
+```
+> *createElement 메서드와 createTextNode 메서드는 요소 노드를 생성할 뿐 DOM에 추가하지는 않는다.*  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
