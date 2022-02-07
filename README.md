@@ -1604,7 +1604,7 @@ DOM은 노드를 직접 생성/삽입/삭제/치환하는 메서드로 제공한
     const textNode = document.createTextNode('Banana');
     
     // 3. 텍스트 노드를 $li 요소 노드의 자식 노드로 추가
-    // 기존 DOM에 추가되지 않은 상태
+    // 아직 기존 DOM에 추가되지는 않은 상태
     $li.appendChild(textNode);
     
     // 4. $li 요소 노드를 #fruits 요소 노드의 마지막 자식 노드로 추가
