@@ -1614,6 +1614,15 @@ DOM은 노드를 직접 생성/삽입/삭제/치환하는 메서드로 제공한
 ```
 > *createElement 메서드와 createTextNode 메서드는 요소 노드를 생성할 뿐 DOM에 추가하지는 않는다.*  
 
+**복수의 노드 생성과 추가**  
+DocumentFragment 노드는 문서, 요소, 어트리뷰트, 텍스트 노드와 같은 노드 객체의 일종으로, 부모 노드가 없어서 기존 DOM과는 별도로 존재한다는 특징이 있다.  
+DocumentFragment 노드는 자식 노드들의 부모 노드로서 별도의 서브 DOM을 구성하여 기존 DOM에 추가하기 위한 용도로 사용한다.  
+DocumentFragment 노드는 기존 DOM과는 별도로 존재하므로 DocumentFragment 노드에 자식 노드를 추가하여도 기존 DOM에는 어떠한 변경도 발생하지 않는다.  
+DocumentFragment 노드를 DOM에 추가하면 자신은 제거되고 자신의 자식 노드만 DOM에 추가된다.  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/40534414/152927922-ceb6c3c7-1430-4488-84fe-b98b1585449c.png">
+</p>
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
