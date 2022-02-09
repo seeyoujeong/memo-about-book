@@ -1623,6 +1623,31 @@ DocumentFragment 노드를 DOM에 추가하면 자신은 제거되고 자신의 
   <img src="https://user-images.githubusercontent.com/40534414/152927922-ceb6c3c7-1430-4488-84fe-b98b1585449c.png">
 </p>
 
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <ul id="fruits"></ul>
+  </body>
+  <script>
+    const $fruits = document.getElementById('fruits');
+    
+    // DocumentFragment 노드 생성
+    const $fragment = document.createDocumentFragment();
+    
+    ['Apple', 'Banana', 'Orange'].forEach(text => {
+      const $li = document.createElement('li');
+      const textNode = document.createTextNode(text);
+      
+      $li.appendChild(textNode);
+      $fragment.appendChild($li);
+    });
+    
+    $fruits.appendChild($fragment);
+  </script>
+</html>
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
