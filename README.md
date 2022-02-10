@@ -1651,6 +1651,27 @@ DocumentFragment 노드를 DOM에 추가하면 자신은 제거되고 자신의 
 **노드 삽입**  
 **Node.prototype.appendChild 메서드**: 인수로 전달받은 노드를 자신을 호출한 노드의 마지막 자식 노드로 DOM에 추가한다.  
 **Node.prototype.insertBefore(newNode, childNode) 메서드**: 첫 번째 인수로 전달받은 노드를 두 번째 인수로 전달받은 노드 앞에 삽입한다.  
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <ul id="fruits">
+      <li>Apple</li>
+      <li>Banana</li>
+    </ul>
+  </body>
+  <script>
+    const $fruits = document.getElementById('fruits');
+    const $li = document.createElement('li');
+    
+    $li.appendChild(document.createTextNode('Orange'));
+    
+    // $li 요소 노드를 #fruits 요소 노드의 마지막 자식 요소 앞에 삽입
+    $fruits.insertBefore($li, $fruits.lastElementChild);
+    // Apple - Orange - Banana
+  </script>
+</html>
+```
 
 ---
 연산자<sup>operator</sup>  
