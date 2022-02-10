@@ -1648,6 +1648,10 @@ DocumentFragment 노드를 DOM에 추가하면 자신은 제거되고 자신의 
 </html>
 ```
 
+**노드 삽입**  
+**Node.prototype.appendChild 메서드**: 인수로 전달받은 노드를 자신을 호출한 노드의 마지막 자식 노드로 DOM에 추가한다.  
+**Node.prototype.insertBefore(newNode, childNode) 메서드**: 첫 번째 인수로 전달받은 노드를 두 번째 인수로 전달받은 노드 앞에 삽입한다.  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
