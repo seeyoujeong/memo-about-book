@@ -1667,6 +1667,8 @@ DocumentFragment 노드를 DOM에 추가하면 자신은 제거되고 자신의 
     $li.appendChild(document.createTextNode('Orange'));
     
     // $li 요소 노드를 #fruits 요소 노드의 마지막 자식 요소 앞에 삽입
+    // 두 번째 인수로 전달받은 노드는 반드시 insertBefore 메서드를 호출한 노드의 자식 노드이어야 한다.
+    // 두 번째 인수로 전달받은 노드가 null이면 첫 번째 인수로 전달받은 노드를 insertBefore 메서드를 호출한 노드의 마지막 자식 노드로 추가된다.
     $fruits.insertBefore($li, $fruits.lastElementChild);
     // Apple - Orange - Banana
   </script>
