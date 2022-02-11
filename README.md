@@ -1701,6 +1701,41 @@ DOM에 이미 존재하는 노드를 appendChild 또는 insertBefore 메서드�
 </html>
 ```
 
+**노드 복사**  
+Node.prototype.cloneNode([deep: true | false]) 메서드는 노드의 사본을 생성하여 반환한다.  
+매개변수 deep에 true를 인수로 전달하면 노드를 깊은 복사하여 모든 자손 노드가 포함된 사본을 생성하고, false를 인수로 전달하거나 생략하면 노드를 얕은 복사하여 노드 자신만의 사본을 생성한다.  
+얕은 복사로 생성된 요소 노드는 자손 노드를 복사하지 않으므로 텍스트 노드도 없다.  
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <ul id="fruits">
+      <li>Apple</li>
+    </ul>
+  </body>
+  <script>
+    const $fruits = document.getElementById('fruits');
+    const $apple = $fruits.firstElementChild;
+    
+    // $apple 요소를 얕은 복사하여 사본을 생성. 텍스트 노드가 없는 사본이 생성된다.
+    const $shallowClone = $apple.cloneNode();
+    // 사본 요소 노드에 텍스트 추가
+    $shallowClone.textContent = 'Banana';
+    // 사본 요소 노드를 #fruits 요소 노드의 마지막 노드로 추가
+    $fruits.appendChild($shallowClone);
+    
+    // #fruits 요소를 깊은 복사하여 모든 자손 노드가 포함된 사본을 생성
+    const $deepClone = $fruits.cloneNode(true);
+    // 사본 요소 노드를 #fruits 요소 노드의 마지막 노드로 추가
+    $fruits.appendChild($deepClone);
+    // ◼ Apple
+    // ◼ Banana
+    //      ◻ Apple
+    //      ◻ Banana
+  </script>
+</html>
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
