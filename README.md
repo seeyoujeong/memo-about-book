@@ -1674,6 +1674,32 @@ DocumentFragment 노드를 DOM에 추가하면 자신은 제거되고 자신의 
   </script>
 </html>
 ```
+**노드 이동**  
+DOM에 이미 존재하는 노드를 appendChild 또는 insertBefore 메서드를 사용하여 DOM에 다시 추가하면 현재 위치에서 노드를 제거하고 새로운 위치에 노드를 추가한다.  
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <ul id="fruits">
+      <li>Apple</li>
+      <li>Banana</li>
+      <li>Orange</li>
+    </ul>
+  </body>
+  <script>
+    const $fruits = document.getElementById('fruits');
+    
+    // 이미 존재하는 요소 노드를 취득
+    const [$apple, $banana, ] = $fruits.children;
+    
+    // 이미 존재하는 $apple 요소 노드를 #fruits 요소 노드의 마지막 노드로 이동
+    $fruits.appendChild($apple); // Banana - Orange - Apple
+    
+    // 이미 존재하는 $banana 요소 노드를 #fruits 요소의 마지막 자식 노드 앞으로 이동
+    $fruits.insertBefore($banana, $fruits.lastElementChild); // Orange - Banana - Apple
+  </script>
+</html>
+```
 
 ---
 연산자<sup>operator</sup>  
