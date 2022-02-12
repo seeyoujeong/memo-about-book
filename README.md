@@ -1761,6 +1761,10 @@ oldChild 매개변수에 인수로 전달한 노드는 replaceChild 메서드를
 </html>
 ```
 
+**노드 삭제**  
+Node.prototype.removeChild(child) 메서드는 child 매개변수에 인수로 전달한 노드를 DOM에서 삭제한다.  
+인수로 전달한 노드는 removeChild 메서드를 호출한 노드의 자식 노드이어야 한다.  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
