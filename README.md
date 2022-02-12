@@ -1736,6 +1736,11 @@ Node.prototype.cloneNode([deep: true | false]) 메서드는 노드의 사본을 
 </html>
 ```
 
+**노드 교체**  
+Node.prototype.replaceChild(newChild, oldChild) 메서드는 자신을 호출한 노드의 자식 노드를 다른 노드로 교체한다.  
+첫 번째 매개변수 newChild에는 교체할 새로운 노드를 인수로 전달하고, 두 번째 매개 변수 oldChild에는 이미 존재하는 교체될 노드를 인수로 전달한다.  
+oldChild 매개변수에 인수로 전달한 노드는 replaceChild 메서드를 호출한 노드의 자식 노드이어야 한다.  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
