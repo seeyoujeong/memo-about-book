@@ -1764,6 +1764,23 @@ oldChild 매개변수에 인수로 전달한 노드는 replaceChild 메서드를
 **노드 삭제**  
 Node.prototype.removeChild(child) 메서드는 child 매개변수에 인수로 전달한 노드를 DOM에서 삭제한다.  
 인수로 전달한 노드는 removeChild 메서드를 호출한 노드의 자식 노드이어야 한다.  
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <ul id="fruits">
+      <li>Apple</li>
+      <li>Banana</li>
+    </ul>
+  </body>
+  <script>
+    const $fruits = document.getElementById('fruits');
+    
+    // #fruits 요소 노드의 마지막 요소를 DOM에서 삭제
+    $fruits.removeChild($fruits.lastElementChild);
+  </script>
+</html>
+```
 
 ---
 연산자<sup>operator</sup>  
