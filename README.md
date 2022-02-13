@@ -1816,6 +1816,34 @@ HTML 어트리뷰트 값을 참조하려면 Element.prototype.getAttribute(attri
 HTML 어트리뷰트 값을 변경하려면 Element.prototype.setAttribute(attributeName, attributeValue) 메서드를 사용한다.  
 특정 HTML 어트리뷰트가 존재하는지 확인하려면 Element.prototype.hasAttribute(attributeName) 메서드를 사용한다.  
 특정 HTML 어트리뷰트를 삭제하려면 Element.prototype.removeAttribute(attributeName) 메서드를 사용한다.  
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <input id="user" type="text" value="value1">
+  <script>
+    const $input = document.getElementById('user');
+
+    // value 어트리뷰트 값을 취득
+    const inputValue = $input.getAttribute('value');
+    console.log(inputValue); // value1
+
+    // value 어트리뷰트 값을 변경
+    $input.setAttribute('value', 'foo');
+    console.log($input.getAttribute('value')); // foo
+
+    // value 어트리뷰트의 존재 확인
+    if ($input.hasAttribute('value')) {
+      // value 어트리뷰트 삭제
+      $input.removeAttribute('value');
+    }
+
+    // value 어트리뷰트의 삭제 확인
+    console.log($input.hasAttribute('value')); // false
+  </script>
+</body>
+</html>
+```
 
 ---
 연산자<sup>operator</sup>  
