@@ -1789,6 +1789,7 @@ HTML 어트리뷰트는 HTML 요소의 시작 태그<sup>start/opening tag</sup>
 HTML 문서가 파싱될 때 HTML 요소의 어트리뷰트는 어트리뷰트 노드로 변환되어 요소 노드와 연결되고 이때 HTML 어트리뷰트당 하나의 어트리뷰트 노드가 생성된다.  
 모든 어트리뷰트 노드의 참조는 유사 배열 객체이자 이터러블인 NamedNodeMap 객체에 담겨서 요소 노드의 attributes 프로퍼티에 저장된다.  
 요소 노드의 모든 어트리뷰트 노드는 요소 노드의 Element.prototype.attributes 프로퍼티로 취득할 수 있다.  
+attributes 프로퍼티는 getter만 존재하는 읽기 전용 접근자 프로퍼티이다.  
 ```html
 <!DOCTYPE html>
 <html>
@@ -1808,7 +1809,6 @@ HTML 문서가 파싱될 때 HTML 요소의 어트리뷰트는 어트리뷰트 �
 </body>
 </html>
 ```
-
 
 ---
 연산자<sup>operator</sup>  
