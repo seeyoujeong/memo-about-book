@@ -1810,6 +1810,13 @@ attributes 프로퍼티는 getter만 존재하는 읽기 전용 접근자 프로
 </html>
 ```
 
+**HTML 어트리뷰트 조작**  
+Element.prototype.getAttribute/setAttribute 메서드를 사용하면 attributes 프로퍼티를 통하지 않고 요소 노드에서 메서드를 통해 직접 HTML 어트리뷰트 값을 취득하거나 변경할 수 있어서 편리하다.  
+HTML 어트리뷰트 값을 참조하려면 Element.prototype.getAttribute(attributeName) 메서드를 사용한다.  
+HTML 어트리뷰트 값을 변경하려면 Element.prototype.setAttribute(attributeName, attributeValue) 메서드를 사용한다.  
+특정 HTML 어트리뷰트가 존재하는지 확인하려면 Element.prototype.hasAttribute(attributeName) 메서드를 사용한다.  
+특정 HTML 어트리뷰트를 삭제하려면 Element.prototype.removeAttribute(attributeName) 메서드를 사용한다.  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
