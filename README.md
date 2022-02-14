@@ -1845,6 +1845,15 @@ HTML 어트리뷰트 값을 변경하려면 Element.prototype.setAttribute(attri
 </html>
 ```
 
+**HTML 어트리뷰트 vs DOM 프로퍼티**  
+요소 노드 객체에는 HTML 어트리뷰트에 대응하는 프로퍼티(이하 DOM 프로퍼티)가 존재한다.  
+DOM 프로퍼티들은 HTML 어트리뷰트 값을 초기값으로 가지고 있다.  
+DOM 프로퍼티는 setter와 getter 모두 존재하는 접근자 프로퍼티다.  
+HTML 어트리뷰트의 역할은 HTML 요소의 초기 상태를 지정하는 것이다.  
+HTML 어트리뷰트 값은 HTML 요소의 초기 상태를 의미하며 이는 변하지 않는다.  
+요소 노드는 2개의 상태, 즉 초기 상태와 최신 상태를 관리해야 한다.  
+요소 노드의 초기 상태는 어트리뷰트 노드가 관리하며, 요소 노드의 최신 상태는 DOM 프로퍼티가 관리한다.  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
