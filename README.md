@@ -1863,6 +1863,23 @@ HTML 어트리뷰트로 지정한 HTML 요소의 초기 상태는 어트리뷰�
 DOM 프로퍼티는 사용자의 입력에 의한 상태 변화에 반응하여 언제나 최신 상태를 유지한다.  
 최신 상태 값은 사용자의 입력에 의해 언제든지 동적으로 변경되어 최신 상태를 유지한다.  
 사용자 입력에 의한 상태 변화와 관계있는 DOM 프로퍼티만 최신 상태 값을 관리한다.  
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <input id="user" type="text" value="value1">
+  <script>
+    const $input = document.getElementById('user');
+    
+    // 사용자가 input 요소의 입력 필드에 값을 입력할 때마다 input 요소 노드의 value 프로퍼티 값, 즉 최신 상태 값을 취득한다.
+    // value 프로퍼티 값은 사용자의 입력에 의해 동적으로 변경된다.  
+    $input.oninput = () => {
+      console.log('value 프로퍼티 값', $input.value);
+    };
+  </script>
+</body>
+</html>
+```
 
 ---
 연산자<sup>operator</sup>  
