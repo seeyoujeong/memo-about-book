@@ -1891,6 +1891,28 @@ DOM 프로퍼티는 사용자의 입력에 의한 상태 변화에 반응하여 
 - td 요소의 colspan 어트리뷰트는 대응하는 프로퍼티가 존재하지 않는다.
 - textContent 프로퍼티는 대응하는 어트리뷰트가 존재하지 않는다.  
 - 어트리뷰트 이름은 대소문자를 구별하지 않지만 대등하는 프로퍼티 키는 카멜 케이스를 따른다.  
+
+**DOM 프로퍼티 값의 타입**  
+getAttribute 메서드로 취득한 어트리뷰트 값은 언제나 문자열이다.  
+DOM 프로퍼티로 취득한 최신 상태 값은 문자열이 아닐 수도 있다.  
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <input type="checkbox" checked>
+  <script>
+    const $checkbox = document.querySelector('input[type=checkbox]');
+    
+    // getAttribute 메서드로 취득한 어트리뷰트 값은 언제나 문자열이다. 
+    console.log($checkbox.getAttribute('checked')); // ''
+    
+    // DOM 프로퍼티로 취득한 최신 상태 값은 문자열이 아닐 수도 있다.
+    console.log($checkbox.checked); // true
+  </script>
+</body>
+</html>
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
