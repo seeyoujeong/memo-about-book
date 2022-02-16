@@ -1913,6 +1913,21 @@ DOM 프로퍼티로 취득한 최신 상태 값은 문자열이 아닐 수도 �
 </html>
 ```
 
+**data 어트리뷰트와 dataset 프로퍼티**  
+data 어트리뷰트와 dataset 프로퍼티를 사용하면 HTML 요소에 정의한 사용자 정의 어트리뷰트와 자바스크립트 간에 데이터를 교환할 수 있다.  
+data 어트리뷰트는 data- 접두사 다음에 임의의 이름을 붙여 사용한다.  
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <ul class="users">
+    <li id="1" data-user-id="1234" data-role="admin">Lee</li>
+    <li id="2" data-user-id="5678" data-role="subscriber">Kim</li>
+  </ul>
+</body>
+</html>
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
