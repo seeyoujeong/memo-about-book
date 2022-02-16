@@ -1916,6 +1916,9 @@ DOM 프로퍼티로 취득한 최신 상태 값은 문자열이 아닐 수도 �
 **data 어트리뷰트와 dataset 프로퍼티**  
 data 어트리뷰트와 dataset 프로퍼티를 사용하면 HTML 요소에 정의한 사용자 정의 어트리뷰트와 자바스크립트 간에 데이터를 교환할 수 있다.  
 data 어트리뷰트는 data- 접두사 다음에 임의의 이름을 붙여 사용한다.  
+data 어트리뷰트의 값은 HTMLElement.dataset 프로퍼티로 취득할 수 있다.  
+dataset 프로퍼티는 HTML 요소의 모든 data 어트리뷰트의 정보를 제공하는 DOMStringMap 객체를 반환한다.  
+DOMStringMap 객체는 data 어트리뷰트의 data- 접두사 다음에 붙인 임의의 이름을 카멜 케이스로 변환한 프로퍼티를 가지고 있다.  
 ```html
 <!DOCTYPE html>
 <html>
@@ -1924,6 +1927,16 @@ data 어트리뷰트는 data- 접두사 다음에 임의의 이름을 붙여 사
     <li id="1" data-user-id="1234" data-role="admin">Lee</li>
     <li id="2" data-user-id="5678" data-role="subscriber">Kim</li>
   </ul>
+  <script>
+    const users = [...document.querySelector('.users').children];
+    
+    const user = users.find(user => user.dataset.userId === '1234');
+    console.log(user.dataset.role); // "admin"
+    
+    // user-id가 '1234'인 요소 노드의 data-role 값을 변경한다.
+    user.dataset.role = 'subscriber';
+    console.log(user.dataset); // DOMStringMap {userId: "1234", role: "subscriber"}
+  </script>
 </body>
 </html>
 ```
