@@ -1728,10 +1728,12 @@ Node.prototype.cloneNode([deep: true | false]) 메서드는 노드의 사본을 
     const $deepClone = $fruits.cloneNode(true);
     // 사본 요소 노드를 #fruits 요소 노드의 마지막 노드로 추가
     $fruits.appendChild($deepClone);
-    // ◼ Apple
-    // ◼ Banana
-    //      ◻ Apple
-    //      ◻ Banana
+    /*
+    ◼ Apple
+    ◼ Banana
+          ◻ Apple
+          ◻ Banana
+    */
   </script>
 </html>
 ```
@@ -1919,6 +1921,7 @@ data 어트리뷰트는 data- 접두사 다음에 임의의 이름을 붙여 사
 data 어트리뷰트의 값은 HTMLElement.dataset 프로퍼티로 취득할 수 있다.  
 dataset 프로퍼티는 HTML 요소의 모든 data 어트리뷰트의 정보를 제공하는 DOMStringMap 객체를 반환한다.  
 DOMStringMap 객체는 data 어트리뷰트의 data- 접두사 다음에 붙인 임의의 이름을 카멜 케이스로 변환한 프로퍼티를 가지고 있다.  
+data 어트리뷰트의 data- 접두사 다음에 존재하지 않는 이름을 키로 사용하여 dataset 프로퍼티에 값을 할당하면 HTML 요소에 data 어트리뷰트가 추가된다.  
 ```html
 <!DOCTYPE html>
 <html>
@@ -1936,6 +1939,14 @@ DOMStringMap 객체는 data 어트리뷰트의 data- 접두사 다음에 붙인 
     // user-id가 '1234'인 요소 노드의 data-role 값을 변경한다.
     user.dataset.role = 'subscriber';
     console.log(user.dataset); // DOMStringMap {userId: "1234", role: "subscriber"}
+    
+    // user-id가 '1234'인 요소 노드에 새로운 data 어트리뷰트를 추가한다.
+    user.dataset.password = '4321';
+    console.log(user.dataset);
+    /*
+    DOMStringMap {userId: "1234", role: "subscriber", password: "4321"}
+    → <li id="1" data-user-id="1234" data-role="subscriber" data-password="4321">Lee</li>
+    */
   </script>
 </body>
 </html>
