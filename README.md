@@ -1960,6 +1960,28 @@ CSSStyleDeclaration 객체는 다양한 CSS 프로퍼티에 대응하는 프로�
 CSS 프로퍼티는 케밥 케이스<sup>kebab-case</sup>를 따른다.  
 CSSStyleDeclaration 객체의 프로퍼티는 카멜 케이스를 따른다.  
 단위 지정이 필요한 CSS 프로퍼티의 값은 반드시 단위를 지정해야 한다.  
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <div style="color: red">Hello World</div>
+  <script>
+    const $div = document.querySelector('div');
+
+    // 인라인 스타일 취득
+    console.log($div.style); // CSSStyleDeclaration { 0: "color", ... }
+
+    // 인라인 스타일 변경
+    $div.style.color = 'blue';
+
+    // 인라인 스타일 추가
+    $div.style.width = '100px';
+    $div.style.height = '100px';
+    $div.style.backgroundColor = 'yellow';
+  </script>
+</body>
+</html>
+```
 
 ---
 연산자<sup>operator</sup>  
