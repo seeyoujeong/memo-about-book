@@ -1952,6 +1952,15 @@ data 어트리뷰트의 data- 접두사 다음에 존재하지 않는 이름을 
 </html>
 ```
 
+### 스타일
+**인라인 스타일 조작**  
+HTMLElement.prototype.style 프로퍼티는 setter와 getter 모두 존재하는 접근자 프로퍼티로서 요소 노드의 인라인 스타일<sup>inline style</sup>을 취득하거나 추가 또는 변경한다.  
+style 프로퍼티를 참조하면 CSSStyleDeclaration 타입의 객체를 반환한다.  
+CSSStyleDeclaration 객체는 다양한 CSS 프로퍼티에 대응하는 프로퍼티를 가지고 있으며, 이 프로퍼티에 값을 할당하면 CSS 프로퍼티가 인라인 스타일로 HTML 요소에 추가되거나 변경된다.  
+CSS 프로퍼티는 케밥 케이스<sup>kebab-case</sup>를 따른다.  
+CSSStyleDeclaration 객체의 프로퍼티는 카멜 케이스를 따른다.  
+단위 지정이 필요한 CSS 프로퍼티의 값은 반드시 단위를 지정해야 한다.  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
