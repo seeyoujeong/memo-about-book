@@ -1978,6 +1978,10 @@ CSSStyleDeclaration 객체의 프로퍼티는 카멜 케이스를 따른다.
     $div.style.width = '100px';
     $div.style.height = '100px';
     $div.style.backgroundColor = 'yellow';
+    /*
+    CSS 프로퍼티를 그대로 사용하려면 객체의 마침표 표기법 대신 대괄호 표기법을 사용한다.
+    $div.style['background-color'] = 'yellow';
+    */
   </script>
 </body>
 </html>
