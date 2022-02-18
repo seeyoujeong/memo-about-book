@@ -1987,6 +1987,11 @@ CSSStyleDeclaration 객체의 프로퍼티는 카멜 케이스를 따른다.
 </html>
 ```
 
+**클래스 조작**  
+.으로 시작하는 클래스 선택자를 사용하여 CSS class를 미리 정의한 다음, HTML 요소의 class 어트리뷰트 값을 변경하여 HTML 요소의 스타일을 변경할 수도 있다.  
+class 어트리뷰트에 대응하는 DOM 프로퍼티는 class가 아니라 className과 classList다.  
+
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
