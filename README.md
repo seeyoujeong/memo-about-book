@@ -2024,6 +2024,10 @@ className 프로퍼티는 문자열을 반환하므로 공백으로 구분된 �
 </html>
 ```
 
+**classList**  
+Element.prototype.classList 프로퍼티는 class 어트리뷰트의 정보를 담은 DOMTokenList 객체를 반환한다.  
+DOMTokenList 객체는 class 어트리뷰트의 정보를 나타내는 컬렉션 객체로서 유사 배열 객체이면서 이터러블이다.  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
