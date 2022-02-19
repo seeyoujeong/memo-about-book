@@ -2027,7 +2027,22 @@ className 프로퍼티는 문자열을 반환하므로 공백으로 구분된 �
 **classList**  
 Element.prototype.classList 프로퍼티는 class 어트리뷰트의 정보를 담은 DOMTokenList 객체를 반환한다.  
 DOMTokenList 객체는 class 어트리뷰트의 정보를 나타내는 컬렉션 객체로서 유사 배열 객체이면서 이터러블이다.  
-
+```html
+...
+<script>
+  const $box = document.querySelector('.box');
+  
+  // .box 요소의 class 어트리뷰트 정보를 담은 DOMTokenList 객체를 취득
+  // classList가 반환하는 DOMTokenList 객체는 HTMLCollection과 NodeList와 같이
+  // 노드 객체의 상태 변화를 실시간으로 반영하는 살아 있는(live) 객체다.
+  console.log($box.classList);
+  // DOMTokenList(2) [length: 2, value: "box blue", 0: "box", 1: "blue"]
+  
+  // .box 요소의 class 어트리뷰트 값 중에서 'red'만 'blue'로 변경
+  $box.classList.replace('red', 'blue');
+</script>
+...
+```
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
