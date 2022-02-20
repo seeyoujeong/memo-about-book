@@ -2113,12 +2113,17 @@ getComputedStyle 메서드의 두 번째 인수로 :after, :before와 같은 의
       background-color: cornsilk;
       border: 1px solid black;
     }
+    .case:before {
+      content: 'Hello';
+    }
   </style>
 </head>
 <body>
   <div class="box">Box</div>
+  <div class="case">Case</div>
   <script>
-    cosnt $box = document.querySelector('.box');
+    const $box = document.querySelector('.box');
+    const $case = document.querySelector('.case');
     
     // .box 요소에 적용된 모든 CSS 스타일을 담고 있느 CSSStyleDeclaration 객체를 취득
     const computedStyle = window.getComputedStyle($box);
@@ -2135,6 +2140,10 @@ getComputedStyle 메서드의 두 번째 인수로 :after, :before와 같은 의
     
     // 기본 스타일
     console.log(computedStyle.display); // block
+    
+    // 의사 요소 :before의 스타일을 취득한다.
+    const computedStylePseudo = window.getComputedStyle($case, ':before');
+    console.log(computedStylePseudo.content); // "Hello"
   </script>
 </body>
 </html>
