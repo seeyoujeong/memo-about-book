@@ -2043,6 +2043,16 @@ DOMTokenList 객체는 class 어트리뷰트의 정보를 나타내는 컬렉션
 </script>
 ...
 ```
+
+**DOMTokenList 객체의 유용한 메서드들**  
+- add(...className)  
+  add 메서드는 인수로 전달한 1개 이상의 문자열을 class 어트리뷰트 값으로 추가한다.  
+  
+  ```javascript
+  $box.classList.add('foo');  // → class="box red foo"
+  $box.classList.add('bar', 'baz'); // → class="box red foo bar baz"
+  ```
+  
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
