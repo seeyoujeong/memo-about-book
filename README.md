@@ -2101,7 +2101,7 @@ window.getComputedStyle(element[, pseudo]) 메서드는 첫 번째 인수로 전
 > *평가 스타일<sup>computed style</sup>*  
 > *요소 노드에 적용되어 있는 모든 스타일, 즉 링크 스타일, 임베딩 스타일, 인라인 스타일, 자바스크립트에서 적용한 스타일, 상속된 스타일, 기본(user agent) 스타일 등 모든 스타일이 조합되어 최종적으로 적용된 스타일을 말한다.*  
 
-getComputedStyle 메서드의 두 번째 인수로 :after, :before와 같은 의사 요소를 지정하는 문자열을 전달할 수 있다. 의사 요소가 아닌 일반 요소의 경우 두 번째 인수는 생략한다.  
+getComputedStyle 메서드의 두 번째 인수로 ::after, ::before와 같은 의사 요소를 지정하는 문자열을 전달할 수 있다. 의사 요소가 아닌 일반 요소의 경우 두 번째 인수는 생략한다.  
 ```html
 <!DOCTYPE html>
 <html>
@@ -2116,7 +2116,7 @@ getComputedStyle 메서드의 두 번째 인수로 :after, :before와 같은 의
       background-color: cornsilk;
       border: 1px solid black;
     }
-    .case:before {
+    .case::before {
       content: 'Hello';
     }
   </style>
@@ -2145,7 +2145,7 @@ getComputedStyle 메서드의 두 번째 인수로 :after, :before와 같은 의
     console.log(computedStyle.display); // block
     
     // 의사 요소 :before의 스타일을 취득한다.
-    const computedStylePseudo = window.getComputedStyle($case, ':before');
+    const computedStylePseudo = window.getComputedStyle($case, '::before');
     console.log(computedStylePseudo.content); // "Hello"
   </script>
 </body>
