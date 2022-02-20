@@ -2060,6 +2060,12 @@ DOMTokenList 객체는 class 어트리뷰트의 정보를 나타내는 컬렉션
   $box.classList.remove('bar', 'baz') // → class="box red"
   $box.classList.remove('x'); // → class="box red"
   ```
+- item(index)  
+  item 메서드는 인수로 전달한 index에 해당하는 클래스를 class 어트리뷰트에서 반환한다.   
+  
+  ```javascript
+  $box.classList.item(0); // → "box"
+  $box.classList.item(1); // → "red"
   
 ---
 연산자<sup>operator</sup>  
