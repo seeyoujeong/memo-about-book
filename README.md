@@ -2074,7 +2074,12 @@ DOMTokenList 객체는 class 어트리뷰트의 정보를 나타내는 컬렉션
   $box.classList.contains('box'); // → true
   $box.classList.contains('blue'); // → false
   ```
+- replace(oldClassName, newClassName)  
+  replace 메서드는 class 어트리뷰트에서 첫 번째 인수로 전달한 문자열을 두 번째 인수로 전달한 문자열로 변경한다.
   
+  ```javascript
+  $box.classList.replace('red', 'blue'); // → class="box blue"
+  ```
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
