@@ -2066,6 +2066,14 @@ DOMTokenList 객체는 class 어트리뷰트의 정보를 나타내는 컬렉션
   ```javascript
   $box.classList.item(0); // → "box"
   $box.classList.item(1); // → "red"
+  ```
+- contains(className)  
+  contains 메서드는 인수로 전달한 문자열과 일치하는 클래스가 class 어트리뷰트에 포함되어 있는지 확인한다.  
+  
+  ```javascript
+  $box.classList.contains('box'); // → true
+  $box.classList.contains('blue'); // → false
+  ```
   
 ---
 연산자<sup>operator</sup>  
