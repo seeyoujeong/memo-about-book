@@ -2052,6 +2052,14 @@ DOMTokenList 객체는 class 어트리뷰트의 정보를 나타내는 컬렉션
   $box.classList.add('foo');  // → class="box red foo"
   $box.classList.add('bar', 'baz'); // → class="box red foo bar baz"
   ```
+- remove(...className)  
+  remove 메서드는 인수로 전달한 1개 이상의 문자열과 일치하는 클래스를 class 어트리뷰트에서 삭제한다. 인수로 전달한 문자열과 일치하는 클래스가 class 어트리뷰트에 없으면 에러 없이 무시된다.  
+  
+  ```javascript
+  $box.classList.remove('foo'); // → class="box red bar baz"
+  $box.classList.remove('bar', 'baz') // → class="box red"
+  $box.classList.remove('x'); // → class="box red"
+  ```
   
 ---
 연산자<sup>operator</sup>  
