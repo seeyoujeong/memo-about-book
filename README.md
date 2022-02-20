@@ -2080,6 +2080,19 @@ DOMTokenList 객체는 class 어트리뷰트의 정보를 나타내는 컬렉션
   ```javascript
   $box.classList.replace('red', 'blue'); // → class="box blue"
   ```
+- toggle(className[, force])  
+  toggle 메서드는 class 어트리뷰트에 인수로 전달한 문자열과 일치하는 클래스가 존재하면 제거하고, 존재하지 않으면 추가한다.  
+  
+  ```javascript
+  $box.classList.toggle('foo'); // → class="box blue foo"
+  $box.classList.toggle('foo'); // → class="box blue"
+  ```
+  두 번째 인수로 불리언 값으로 평가되는 조건식을 전달할 수 있다. 이때 조건식의 평가 결과가 true이면 class 어트리뷰트에 강제로 첫 번째 인수로 전달받은 문자열을 추가하고, false이면 class 어트리뷰트에서 강제로 첫 번째 인수로 전달받은 문자열을 제거한다.  
+  
+  ```javascript
+  $box.classList.toggle('foo', true); // → class="box blue foo"
+  $box.classList.toggle('foo', false); // → class="box blue"
+  ```
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
