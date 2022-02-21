@@ -2167,7 +2167,7 @@ getComputedStyle 메서드의 두 번째 인수로 ::after, ::before와 같은 �
   <thead>
     <tr>
       <th align="left">이벤트 타입<img width="60px"></th>
-      <th align="left">이벤트 발생 시점<img width="680px"></th>
+      <th align="left">이벤트 발생 시점<img width="600px"></th>
     </tr>
   </thead>
   <tbody>
