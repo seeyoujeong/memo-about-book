@@ -2159,6 +2159,57 @@ getComputedStyle 메서드의 두 번째 인수로 ::after, ::before와 같은 �
 이벤트와 그에 대응하는 함수(이벤트 핸들러)를 통해 사용자와 애플리케이션은 상호작용을 할 수 있다.  
 함수를 언제 호출할지 알 수 없으므로 개발자가 명시적으로 함수를 호출하는 것이 아니라 브라우저에게 함수 호출을 위임하는 것이다.  
 
+### 이벤트 타입
+이벤트 타입<sup>event type</sup>은 이벤트의 종류를 나타내는 문자열이다.  
+
+**마우스 이벤트**  
+<table>
+  <thead>
+    <tr>
+      <th align="left">이벤트 타입<img width="60px"></th>
+      <th align="left">이벤트 발생 시점<img width="690px"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>click</td>
+      <td>마우스 버튼을 클릭했을 때</td>
+    </tr>
+    <tr>
+      <td>dblclick</td>
+      <td>마우스 버튼을 더블 클릭했을 때</td>
+    </tr>
+    <tr>
+      <td>mousedown</td>
+      <td>마우스 버튼을 눌렀을 때</td>
+    </tr>
+    <tr>
+      <td>mouseup</td>
+      <td>누르고 있던 마우스 버튼을 놓았을 때</td>
+    </tr>
+    <tr>
+      <td>mousemove</td>
+      <td>마우스 커서를 움직였을 때</td>
+    </tr>
+    <tr>
+      <td>mouseenter</td>
+      <td>마우스 커서를 HTML 요소 안으로 이동했을 때(버블링되지 않는다)</td>
+    </tr>
+    <tr>
+      <td>mouseover</td>
+      <td>마우스 커서를 HTML 요소 안으로 이동했을 때(버블링된다)</td>
+    </tr>
+    <tr>
+      <td>mouseleave</td>
+      <td>마우스 커서를 HTML 요소 밖으로 이동했을 때(버블링되지 않는다)</td>
+    </tr>
+    <tr>
+      <td>mouseout</td>
+      <td>마우스 커서를 HTML 요소 밖으로 이동했을 때(버블링된다)</td>
+    </tr>
+  </tbody>
+</table>
+  
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
