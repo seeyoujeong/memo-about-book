@@ -2166,8 +2166,8 @@ getComputedStyle 메서드의 두 번째 인수로 ::after, ::before와 같은 �
 <table>
   <thead>
     <tr>
-      <th align="left">이벤트 타입<img width="60px"></th>
-      <th align="left">이벤트 발생 시점<img width="490px"></th>
+      <th><img width="30px">이벤트 타입<img width="30px"></th>
+      <th><img width="300px">이벤트 발생 시점<img width="300px"></th>
     </tr>
   </thead>
   <tbody>
@@ -2210,6 +2210,31 @@ getComputedStyle 메서드의 두 번째 인수로 ::after, ::before와 같은 �
   </tbody>
 </table>
   
+**키보드 이벤트**  
+<table>
+  <thead>
+    <tr>
+      <th><img width="30px">이벤트 타입<img width="30px"></th>
+      <th><img width="300px">이벤트 발생 시점<img width="300px"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>keydown</td>
+      <td>모든 키를 눌렀을 때 발생한다.</td>
+    </tr>
+    <tr>
+      <td>keypress(❌)</td>
+      <td>문자 키를 눌렀을 때 연속적으로 발생한다.</td>
+    </tr>
+    <tr>
+      <td>keyup</td>
+      <td>누르고 있던 키를 놓았을 때 한 번만 발생한다.</td>
+    </tr>
+  </tbody>
+</table>
+  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
