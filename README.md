@@ -2166,7 +2166,7 @@ getComputedStyle 메서드의 두 번째 인수로 ::after, ::before와 같은 �
 <table>
   <thead>
     <tr>
-      <th>이벤트 타입</th>
+      <th><img width="20px">이벤트 타입<img width="20px"></th>
       <th>이벤트 발생 시점</th>
     </tr>
   </thead>
@@ -2214,7 +2214,7 @@ getComputedStyle 메서드의 두 번째 인수로 ::after, ::before와 같은 �
 <table>
   <thead>
     <tr>
-      <th>이벤트 타입</th>
+      <th><img width="20px">이벤트 타입<img width="20px"></th>
       <th>이벤트 발생 시점</th>
     </tr>
   </thead>
