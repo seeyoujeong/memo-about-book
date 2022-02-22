@@ -2238,6 +2238,34 @@ getComputedStyle 메서드의 두 번째 인수로 ::after, ::before와 같은 �
   </tbody>
 </table>
   
+**포커스 이벤트**  
+<table>
+  <thead>
+    <tr>
+      <th><img width="20px">이벤트 타입<img width="20px"></th>
+      <th>이벤트 발생 시점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>focus</td>
+      <td>HTML 요소가 포커스를 받았을 때(버블링되지 않는다)</td>
+    </tr>
+    <tr>
+      <td>blur</td>
+      <td>HTML 요소가 포커스를 잃었을 때(버블링되지 않는다)</td>
+    </tr>
+    <tr>
+      <td>focusin</td>
+      <td>HTML 요소가 포커스를 받았을 때(버블링된다)</td>
+    </tr>
+    <tr>
+      <td>focusout</td>
+      <td>HTML 요소가 포커스를 잃었을 때(버블링된다)</td>
+    </tr>
+  </tbody>
+<table>
+    
 
 ---
 연산자<sup>operator</sup>  
