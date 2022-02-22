@@ -2166,8 +2166,8 @@ getComputedStyle 메서드의 두 번째 인수로 ::after, ::before와 같은 �
 <table>
   <thead>
     <tr>
-      <th><img width="30px">이벤트 타입<img width="30px"></th>
-      <th><img width="300px">이벤트 발생 시점<img width="300px"></th>
+      <th>이벤트 타입</th>
+      <th>이벤트 발생 시점</th>
     </tr>
   </thead>
   <tbody>
@@ -2214,14 +2214,18 @@ getComputedStyle 메서드의 두 번째 인수로 ::after, ::before와 같은 �
 <table>
   <thead>
     <tr>
-      <th><img width="30px">이벤트 타입<img width="30px"></th>
-      <th><img width="300px">이벤트 발생 시점<img width="300px"></th>
+      <th>이벤트 타입</th>
+      <th>이벤트 발생 시점</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>keydown</td>
-      <td>모든 키를 눌렀을 때 발생한다.</td>
+      <td>
+        모든 키를 눌렀을 때 발생한다.<br>
+        ※ 문자, 숫자, 특수 문자, enter 키를 눌렀을 때는 연속적으로 발생하지만<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;그 외의 키를 눌렀을 때는 한 번만 발생한다.
+      </td>
     </tr>
     <tr>
       <td>keypress(❌)</td>
