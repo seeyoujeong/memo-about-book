@@ -2264,8 +2264,28 @@ getComputedStyle 메서드의 두 번째 인수로 ::after, ::before와 같은 �
       <td>HTML 요소가 포커스를 잃었을 때(버블링된다)</td>
     </tr>
   </tbody>
+</table>
+
+**폼 이벤트**  
 <table>
-    
+  <thead>
+    <tr>
+      <th><img width="20px">이벤트 타입<img width="20px"></th>
+      <th><img width="20px">이벤트 발생 시점<img width="20px"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>submit</td>
+      <td>form 요소 내의 submit 버튼을 클릭했을 때</td>
+    </tr>
+    <tr>
+      <td>reset</td>
+      <td>form 요소 내의 reset 버튼을 클릭했을 때(최근에는 사용 안 함)</td>
+    </tr>
+  </tbody>
+</table>
+  
 
 ---
 연산자<sup>operator</sup>  
