@@ -2318,6 +2318,22 @@ getComputedStyle 메서드의 두 번째 인수로 ::after, ::before와 같은 �
   </tbody>
 </table>
   
+**DOM 뮤테이션 이벤트**  
+<table>
+  <thead>
+    <tr>
+      <th><img width="20px">이벤트 타입<img width="20px"></th>
+      <th>이벤트 발생 시점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DOMContentLoaded</td>
+      <td>HTML 문서의 로드와 파싱이 완료되어 DOM 생성이 완료되었을 때</td>
+    </tr>
+  </tbody>
+</table>
+  
   
 ---
 연산자<sup>operator</sup>  
