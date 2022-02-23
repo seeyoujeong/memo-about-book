@@ -2356,6 +2356,37 @@ getComputedStyle 메서드의 두 번째 인수로 ::after, ::before와 같은 �
   </tbody>
 </table>
 
+**리소스 이벤트**  
+<table>
+  <thead>
+    <tr>
+      <th><img width="20px">이벤트 타입<img width="20px"></th>
+      <th>이벤트 발생 시점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>load</td>
+      <td>
+        DOMContentLoaded 이벤트가 발생한 이후, 모든 리소스(이미지, 폰트 등)의 로딩이<br>
+        완료되었을 때(주로 window 객체에서 발생)
+      </td>
+    </tr>
+    <tr>
+      <td>unload</td>
+      <td>리소스가 언로드될 때(주로 새로운 웹페이지를 요청한 경우)</td>
+    </tr>
+    <tr>
+      <td>abort</td>
+      <td>리소스 로딩이 중단되었을 때</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>리소스 로딩이 실패했을 때</td>
+    </tr>
+  </tbody>
+</table>
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
