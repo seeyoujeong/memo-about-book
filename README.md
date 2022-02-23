@@ -2334,7 +2334,28 @@ getComputedStyle 메서드의 두 번째 인수로 ::after, ::before와 같은 �
   </tbody>
 </table>
   
-  
+**뷰 이벤트**  
+<table>
+  <thead>
+    <tr>
+      <th><img width="20px">이벤트 타입<img width="20px"></th>
+      <th>이벤트 발생 시점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>resize</td>
+      <td>
+        브라우저 윈도우의 크기를 리사이즈할 때 연속적으로 발생한다.<br>
+        ※ 오직 window 객체에서만 발생한다.
+      </td>
+    </tr>
+    <tr>
+      <td>scroll</td>
+      <td>웹페이지(document) 또는 HTML 요소를 스크롤할 때 연속적으로 발생한다.</td>
+  </tbody>
+</table>
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
