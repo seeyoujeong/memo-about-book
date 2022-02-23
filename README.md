@@ -2387,6 +2387,10 @@ getComputedStyle 메서드의 두 번째 인수로 ::after, ::before와 같은 �
   </tbody>
 </table>
 
+### 이벤트 핸들러 등록
+이벤트 핸들러<sup>event handler 또는 event listener</sup>는 이벤트가 발생했을 때 브라우저에 호출을 위임한 함수(브라우저에 의해 호출될 함수)다.  
+이벤트가 발생했을 때 브라우저에게 이벤트 핸들러의 호출을 위임하는 것을 이벤트 핸들러 등록이라 한다.  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
