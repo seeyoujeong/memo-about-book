@@ -2271,7 +2271,7 @@ getComputedStyle 메서드의 두 번째 인수로 ::after, ::before와 같은 �
   <thead>
     <tr>
       <th><img width="20px">이벤트 타입<img width="20px"></th>
-      <th><img width="20px">이벤트 발생 시점<img width="20px"></th>
+      <th>이벤트 발생 시점</th>
     </tr>
   </thead>
   <tbody>
@@ -2286,7 +2286,39 @@ getComputedStyle 메서드의 두 번째 인수로 ::after, ::before와 같은 �
   </tbody>
 </table>
   
-
+**값 변경 이벤트**  
+<table>
+  <thead>
+    <tr>
+      <th><img width="20px">이벤트 타입<img width="20px"></th>
+      <th>이벤트 발생 시점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>input</td>
+      <td>input(text, checkbox, radio), select, textarea 요소의 값이 입력되었을 때</td>
+    </tr>
+    <tr>
+      <td>change</td>
+      <td>
+        input(text, checkbox, radio), select, textarea 요소의 값이 변경되었을 때<br>
+        ※ change 이벤트는 input 이벤트와는 달리 HTML 요소가 포커스를 잃었을 때<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;사용자 입력이 종료되었다고 인식하여 발생한다. 즉, 사용자가 입력을 하고 있을 때는<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;input 이벤트가 발생하고 사용자 입력이 종료되어 값이 변경되면 change 이벤트가 발생한다.
+      </td>
+    </tr>
+    <tr>
+      <td>readystatechange</td>
+      <td>
+        HTML 문서의 로드와 파싱 상태를 나타내는 document.readyState 프로퍼티<br>
+        값('loading', 'interactive', 'complete')이 변경될 때
+      </td>
+    </tr>
+  </tbody>
+</table>
+  
+  
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
