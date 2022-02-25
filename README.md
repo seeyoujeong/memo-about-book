@@ -2403,7 +2403,26 @@ HTML 요소의 어트리뷰트 중에는 이벤트에 대응하는 이벤트 핸
 이벤트 핸들러 어트리뷰트 값으로 여러 개의 문을 할당할 수 있다.  
 이벤트 핸들러 어트리뷰트 방식은 더는 사용하지 않는 것이 좋다.  
 CBD<sup>Component Based Development</sup>에서는 이벤트 핸들러 어트리뷰트 방식으로 이벤트를 처리한다.  
-
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <button onclick="sayHi('Jeong')">Click me!</button>
+  <script>
+    function sayHi(name) {
+      console.log(`Hi! ${name}.`);
+    }
+    
+    /*
+    암묵적으로 생성
+    function onclick(event) {
+      sayHi('Jeong');
+    }
+    */
+  </script>
+</body>
+</html>
+```
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
