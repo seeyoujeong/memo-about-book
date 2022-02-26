@@ -2436,6 +2436,29 @@ window 객체와 Document, HTMLElement 타입의 DOM 노드 객체는 이벤트�
   <img src="https://user-images.githubusercontent.com/40534414/155829819-4a6c20f6-a97d-4cc6-bdae-bfb9f4945bbd.png">
 </p>
 
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <button>Click me!</button>
+  <script>
+    const $button = document.querySelector('button');
+    
+    // 이벤트 핸들러 프로퍼티에 이벤트 핸들러를 바인딩
+    // 첫 번째로 바인딩된 이벤트 핸들러는 두 번째 바인딩된 이벤트 핸들러에 의해 재할당되어 실행되지 않는다.
+    $button.onclick = function () {
+      console.log('Button click');
+    };
+    
+    // 두 번째로 바인딩된 이벤트 핸들러
+    $button.onclick = function () {
+      console.log('Button clicked 2');
+    };
+  </script>
+</body>
+</html>
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
