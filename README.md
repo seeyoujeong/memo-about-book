@@ -2468,6 +2468,43 @@ addEventListener 메서드의 첫 번째 매개변수에는 이벤트의 종류�
   <img src="https://user-images.githubusercontent.com/40534414/155881536-1f4ef5ca-b685-4cdd-9237-6141c154a558.png">
 </p>
   
+addEventListener 메서드 방식은 이벤트 핸들러 프로퍼티에 바인딩된 이벤트 핸들러에 아무런 영향을 주지 않는다.  
+addEventListener 메서드는 하나 이상의 이벤트 핸들러를 등록할 수 있고 등록된 순서대로 호출된다.  
+addEventListener 메서드를 통해 참조가 동일한 이벤트 핸들러를 중복 등록하면 하나의 이벤트 핸들러만 등록된다.  
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <button>Click me!</button>
+  <script>
+    const $button = document.querySelector('button');
+    
+    $button.onclick = function () {
+      console.log('[이벤트 핸들러 프로퍼티 방식]button click');
+    };
+    
+    $button.addEventListener('click', function () {
+      console.log('[addEventListener 메서드 방식]button click');
+    });
+    
+    // 동일한 요소에서 발생한 동일한 이벤트에 대해 하나 이상의 이벤트 핸들러를 등록할 수 있다.  
+    $button.addEventListener('click', function () {
+      console.log('[1]button click');
+    });
+    
+    $button.addEventListener('click', function () {
+      console.log('[2]button click);
+    });
+    
+    const handleClick = () => console.log('button click');
+    
+    // 참조가 동일한 이벤트 핸들러를 중복 등록하면 하나의 핸들러만 등록된다.
+    $button.addEventListener('click', handleClick);
+    $button.addEventListener('click', handleClick);
+  </script>
+</body>
+</html>
+```
 
 ---
 연산자<sup>operator</sup>  
