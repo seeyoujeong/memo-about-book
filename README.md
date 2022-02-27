@@ -2459,6 +2459,16 @@ window 객체와 Document, HTMLElement 타입의 DOM 노드 객체는 이벤트�
 </html>
 ```
 
+**addEventListener 메서드 방식**  
+DOM Level 2에서 도입된 EventTarget.prototype.addEventListener 메서드를 사용하여 이벤트 핸들러를 등록할 수 있다.  
+addEventListener 메서드의 첫 번째 매개변수에는 이벤트의 종류를 나타내는 문자열인 이벤트 타입을 전달하는데 on 접두사를 붙이지 않는다.  
+두 번째 매개변수에는 이벤트 핸들러를 전달한다.  
+마지막 매개변수에는 이벤트를 캐치할 이벤트 전파 단계(캡처링 또는 버블링)를 지정하는데 생략하거나 false를 지정하면 버블링 단계에서 이벤트를 캐치하고, true를 지정하면 캡처링 단계에서 이벤트를 캐치한다.  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/40534414/155881536-1f4ef5ca-b685-4cdd-9237-6141c154a558.png">
+</p>
+  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
