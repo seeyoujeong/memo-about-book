@@ -2493,7 +2493,7 @@ addEventListener 메서드를 통해 참조가 동일한 이벤트 핸들러를 
     });
     
     $button.addEventListener('click', function () {
-      console.log('[2]button click);
+      console.log('[2]button click');
     });
     
     const handleClick = () => console.log('button click');
