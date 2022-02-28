@@ -2514,7 +2514,42 @@ addEventListener 메서드에 전달한 인수와 removeEventListener 메서드�
 기명 이벤트 핸들러 내부에서 removeEventListener 메서드를 호출하여 이벤트 핸들러를 제거하는 것은 가능하다.  
 이벤트 핸들러 프로퍼티 방식으로 등록한 이벤트 핸들러는 removeEventListener 메서드로 제거할 수 없다.  
 이벤트 핸들러 프로퍼티 방식으로 등록한 이벤트 핸들러를 제거하려면 이벤트 핸들러 프로퍼티에 null을 할당한다.  
-
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <button>Click me!</button>
+  <script>
+    const $button = document.querySelector('button');
+    
+    const handleClick = () => console.log('button click');
+    
+    $button.addEventListener('click', handleClick);
+    
+    // 이벤트 핸들러 제거
+    // addEventListener 메서드에 전달한 인수와 removeEventListener 메서드에 
+    // 전달한 인수가 일치하지 않으면 이벤트 핸들러가 제거되지 않는다. 
+    $button.removeEventListener('click', handleClick, true); // 실패
+    $button.removeEventListener('click', handleClick); // 성공
+    
+    // 무명 함수는 제거할 수 없다.
+    $button.addEventListener('click', () => console.log('button click'));
+    
+    // 기명 함수를 이벤트 핸들러로 등록
+    $button.addEventListener('click', function foo() {
+      console.log('button click');
+      // 이벤트 핸들러를 제거한다. 따라서 이벤트 핸들러는 단 한 번만 호출된다.
+      $button.removeEventListener('click', foo);
+    });
+    
+    $button.onclick = handleClick;
+    
+    // 이벤트 핸들러 프로퍼티에 null을 할당하여 이벤트 핸들러를 제거한다.
+    $button.onclick = null;
+  </script>
+</body>
+</html>
+```
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
