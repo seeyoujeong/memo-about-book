@@ -2505,6 +2505,15 @@ addEventListener 메서드를 통해 참조가 동일한 이벤트 핸들러를 
 </body>
 </html>
 ```
+**이벤트 핸들러 제거**  
+addEventListener 메서드로 등록한 이벤트 핸들러를 제거하려면 EventTarget.prototype.removeEventListener 메서드를 사용한다.  
+removeEventListener 메서드에 전달한 인수는 addEventListener 메서드와 동일하다.  
+addEventListener 메서드에 전달한 인수와 removeEventListener 메서드에 전달한 인수가 일치하지 않으면 이벤트 핸들러가 제거되지 않는다.  
+무명 함수를 이벤트 핸들러로 등록한 경우 제거할 수 없다.  
+이벤트 핸들러를 제거하려면 이벤트 핸들러의 참조를 변수나 자료구조에 저장하고 있어야 한다.  
+기명 이벤트 핸들러 내부에서 removeEventListener 메서드를 호출하여 이벤트 핸들러를 제거하는 것은 가능하다.  
+이벤트 핸들러 프로퍼티 방식으로 등록한 이벤트 핸들러는 removeEventListener 메서드로 제거할 수 없다.  
+이벤트 핸들러 프로퍼티 방식으로 등록한 이벤트 핸들러를 제거하려면 이벤트 핸들러 프로퍼티에 null을 할당한다.  
 
 ---
 연산자<sup>operator</sup>  
