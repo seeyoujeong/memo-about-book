@@ -2556,6 +2556,34 @@ addEventListener 메서드에 전달한 인수와 removeEventListener 메서드�
 생성된 이벤트 객체는 이벤트 핸들러의 첫 번째 인수로 전달된다.  
 이벤트 객체를 전달받으려면 이벤트 핸들러를 정의할 때 이벤트 객체를 전달받을 매개변수를 명시적으로 선언해야 한다.  
 이벤트 핸들러 어트리뷰트 방식의 경우 이벤트 객체를 전달받으려면 이벤트 핸들러의 첫 번째 매개변수 이름이 반드시 event이어야 한다.  
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <p>클릭하세요. 클릭한 곳의 좌표가 표시됩니다.</p>
+  <em class="message1"></em>
+  <hr>
+  <!-- 이벤트 핸들러 어트리뷰트 방식의 경우 event가 아닌 다른 이름으로는 이벤트 객체를 전달받지 못한다. -->
+  <div onclick="showCoords2(event)" style="width: 300px; height: 300px; background-color: blue;">
+    <em id="message2" style="color: white"></em>
+  </div>
+  <script>
+    const $msg1 = document.querySelector('.message1');
+    const $msg2 = document.getElementById('message2');
+    
+    function showCoords1(e) {
+      $msg1.textContent = `clientX: ${e.clientX}, clientY: ${e.clientY}`;
+    }
+
+    function showCoords2(e) {
+      $msg2.textContent = `clientX: ${e.clientX}, clientY: ${e.clientY}`;
+    }
+    
+    document.onclick = showCoords1;
+  </script>
+</body>
+</html>
+```
 
 ---
 연산자<sup>operator</sup>  
