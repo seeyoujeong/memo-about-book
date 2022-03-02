@@ -2585,6 +2585,15 @@ addEventListener 메서드에 전달한 인수와 removeEventListener 메서드�
 </html>
 ```
 
+**이벤트 객체의 상속 구조**  
+이벤트가 발생하면 이벤트 타입에 따라 다양한 타입의 이벤트 객체가 생성된다.  
+이벤트가 발생하면 암묵적으로 생성되는 이벤트 객체도 생성자 함수에 의해 생성된다.  
+생성된 이벤트 객체는 생성자 함수와 더불어 생성되는 프로토타입으로 구성된 프로토타입 체인의 일원이 된다.  
+이벤트 객체 중 일부는 사용자의 행위에 의해 생성된 것이고 일부는 자바스크립트 코드에 의해 인위적으로 생성된 것이다.  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/40534414/156312736-8be54941-c58f-4a24-9da4-4a1d211d0b0d.png">
+</p>
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
