@@ -2594,6 +2594,82 @@ addEventListener 메서드에 전달한 인수와 removeEventListener 메서드�
   <img src="https://user-images.githubusercontent.com/40534414/156312736-8be54941-c58f-4a24-9da4-4a1d211d0b0d.png">
 </p>
 
+**이벤트 객체의 공통 프로퍼티**  
+Event 인터페이스의 이벤트 관련 프로퍼티는 모든 이벤트 객체가 상속받는 공통 프로퍼티다.  
+<table>
+  <thead>
+    <tr>
+      <th>공통 프로퍼티</th>
+      <th>설명</th>
+      <th>타입</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>type</td>
+      <td>이벤트 타입</td>
+      <td>string</td>
+    </tr>
+    <tr>
+      <td>target</td>
+      <td>이벤트를 발생시킨 DOM 요소</td>
+      <td>DOM 요소 노드</td>
+    </tr>
+    <tr>
+      <td>currentTarget</td>
+      <td>이벤트 핸들러가 바인딩된 DOM 요소</td>
+      <td>DOM 요소 노드</td>
+    </tr>
+    <tr>
+      <td>eventPhase</td>
+      <td>
+        이벤트 전파 단계<br>
+        0: 이벤트 없음, 1: 캡처링 단계, 2: 타깃 단계, 3: 버블링 단계
+      </td>
+      <td>number</td>
+    </tr>
+    <tr>
+      <td>bubbles</td>
+      <td>
+        <p>이벤트를 버블링으로 전파하는지 여부. 다음 이벤트는 bubbles: false로 버블링하지 않는다.</p>
+        <ul type="square">
+          <li>포커스 이벤트 focus/blur</li>
+          <li>리소스 이벤트 load/unload/abort/error</li>
+          <li>마우스 이벤트 mouseenter/mouseleave</li>
+        </ul>
+      </td>
+      <td>boolean</td>
+    </tr>
+    <tr>
+      <td>cancelable</td>
+      <td>
+        <p>preventDefault 메서드를 호출하여 이벤트의 기본 동작을 취소할 수 있는지 여부. 다음 이벤트는 cancelable: false로 취소할 수 없다.</p>
+        <ul type="square">
+          <li>포커스 이벤트 focus/blur</li>
+          <li>리소스 이벤트 load/unload/abort/error</li>
+          <li>마우스 이벤트 dblclick/mouseenter/mouseleave</li>
+        </ul>
+      </td>
+      <td>boolean</td>
+    </tr>
+    <tr>
+      <td>defaultPrevented</td>
+      <td>preventDefault 메서드를 호출하여 이벤트를 취소했는지 여부</td>
+      <td>boolean</td>
+    </tr>
+    <tr>
+      <td>isTrusted</td>
+      <td>사용자의 행위에 의해 발생한 이벤트인지 여부. 인위적으로 발생시킨 이벤트인 경우 false다.</td>
+      <td>boolean</td>
+    </tr>
+    <tr>
+      <td>timeStamp</td>
+      <td>이벤트가 발생한 시각(1970/01/01/00:00:0부터 경과한 밀리초)</td>
+      <td>number</td>
+    </tr>
+  </tbody>
+</table>
+    
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
