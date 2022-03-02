@@ -2669,7 +2669,12 @@ Event 인터페이스의 이벤트 관련 프로퍼티는 모든 이벤트 객�
     </tr>
   </tbody>
 </table>
-    
+
+**마우스 정보 취득**  
+click, dblclick, mousedown, mousemove, mouseenter, mouseleave 이벤트가 발생하면 생성되는 MouseEvent 타입의 이벤트 객체는 다음과 같은 고유의 프로퍼티를 갖는다.  
+- 마우스 포인터의 좌표 정보를 나타내는 프로퍼티: screenX/screenY, clientX/clientY, pageX/pageY, offsetX/offsetY
+- 버튼 정보를 나타내는 프로퍼티: altKey, ctrlKey, shiftKey, button
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
