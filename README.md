@@ -2675,6 +2675,9 @@ click, dblclick, mousedown, mousemove, mouseenter, mouseleave 이벤트가 발�
 - 마우스 포인터의 좌표 정보를 나타내는 프로퍼티: screenX/screenY, clientX/clientY, pageX/pageY, offsetX/offsetY
 - 버튼 정보를 나타내는 프로퍼티: altKey, ctrlKey, shiftKey, button
 
+**키보드 정보 취득**  
+keydown, keyup, keypress 이벤트가 발생하면 생성되는 KeyboardEvent 타입의 이벤트 객체는 altKey, ctrlKey, shiftKey, metaKey, key 같은 프로퍼티를 갖는다.  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
