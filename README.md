@@ -2678,6 +2678,14 @@ click, dblclick, mousedown, mousemove, mouseenter, mouseleave 이벤트가 발�
 **키보드 정보 취득**  
 keydown, keyup, keypress 이벤트가 발생하면 생성되는 KeyboardEvent 타입의 이벤트 객체는 altKey, ctrlKey, shiftKey, metaKey, key 같은 프로퍼티를 갖는다.  
 
+### 이벤트 전파
+DOM 트리 상에 존재하는 DOM 요소 노드에서 발생한 이벤트는 DOM 트리를 통해 전파되는데 이를 이벤트 전파<sup>event propagation</sup>라고 한다.  
+생성된 이벤트 객체는 이벤트를 발생시킨 DOM 요소인 이벤트 타깃<sup>event target</sup>을 중심으로 DOM 트리를 통해 전파된다.  
+이벤트 전파는 이벤트 객체가 전파되는 방향에 따라 3단계로 구분할 수 있다.  
+- 캡처링 단계<sup>capturing phase</sup>: 이벤트가 상위 요소에서 하위 요소 방향으로 전파
+- 타깃 단계<sup>target phase</sup>: 이벤트가 이벤트 타깃에 도달
+- 버블링 단계<sup>bubbling phase</sup>: 이벤트가 하위 요소에서 상위 요소 방향으로 전파
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
