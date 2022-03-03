@@ -2695,6 +2695,43 @@ addEventListener 메서드 방식으로 등록한 이벤트 핸들러는 타깃 
 이벤트를 발생시킨 이벤트 타깃과 이벤트 핸들러가 바인딩된 커런트 타깃이 같은 DOM 요소라면 이벤트 핸들러는 타깃 단계의 이벤트 객체를 캐치한다.  
 이벤트는 이벤트를 발생시킨 이벤트 타깃은 물론 상위 DOM 요소에서도 캐치할 수 있다.  
 대부분의 이벤트는 캡처링과 버블링을 통해 전파된다.  
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <ul id="fruits">
+    <li id="apple">Apple</li>
+    <li id="banana">Banana</li>
+    <li id="orange">Orange</li>
+  </ul>
+  <script>
+    const $fruits = document.getElementById('fruits');
+    const $banana = document.getElementById('banana');
+    
+    // 캡처링 단계의 이벤트를 캐치한다.
+    $fruits.addEventListener('click', e => {
+      console.log(`이벤트 단계: ${e.eventPhase}`); // 1: 캡처링 단계
+      console.log(`이벤트 타깃: ${e.target}`); // [object HTMLLIElement]
+      console.log(`커런트 타깃: ${e.currentTarget}`); // [object HTMLUListElement]
+    }, true);
+    
+    // 타깃 단계의 이벤트를 캐치한다.
+    $banana.addEventListener('click', e => {
+      console.log(`이벤트 단계: ${e.eventPhase}`); // 2: 타깃 단계
+      console.log(`이벤트 타깃: ${e.target}`); // [object HTMLLIElement]
+      console.log(`커런트 타깃: ${e.currentTarget}`); // [object HTMLLIElement]
+    });
+    
+    // 버블링 단계의 이벤트를 캐치한다.
+    $fruits.addEventListener('click', e => {
+      console.log(`이벤트 단계: ${e.eventPhase}`); // 3: 버블링 단계
+      console.log(`이벤트 타깃: ${e.target}`); // [object HTMLLIElement]
+      console.log(`커런트 타깃: ${e.currentTarget}`); // [object HTMLUListElement]
+    });
+  </script>
+</body>
+</html>
+```
 
 ---
 연산자<sup>operator</sup>  
