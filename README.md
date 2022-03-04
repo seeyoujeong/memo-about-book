@@ -2737,6 +2737,59 @@ addEventListener 메서드 방식으로 등록한 이벤트 핸들러는 타깃 
 이벤트 위임<sup>event delegation</sup>은 여러 개의 하위 DOM 요소에 각각 이벤트 핸들러를 등록하는 대신 하나의 상위 DOM 요소에 이벤트 핸들러를 등록하는 방법을 말한다.  
 이벤트 위임을 통해 상위 DOM 요소에 이벤트 핸들러를 등록하면 여러 개의 하위 DOM 요소에 이벤트 핸들러를 등록할 필요가 없다.  
 동적으로 하위 DOM 요소를 추가하더라도 일일이 추가된 DOM 요소에 이벤트 핸들러를 등록할 필요가 없다.  
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #fruits {
+      display: flex;
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #fruits li {
+      width: 100px;
+      cursor: pointer;
+    }
+
+    #fruits .active {
+      color: red;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul id="fruits">
+      <li id="apple">Apple</li>
+      <li id="banana">Banana</li>
+      <li id="orange">Orange</li>
+    </ul>
+  </nav>
+  <div>선택된 내비게이션 아이템: <em class="msg"></em></div>
+  <script>
+    const $fruits = document.getElementById('fruits');
+    const $msg = document.querySelector('.msg');
+
+    // 사용자 클릭에 의해 선택된 내비게이션 아이템(li 요소)에 active 클래스를 추가하고
+    // 그 외의 모든 내비게이션 아이템의 active 클래스를 제거한다.
+    function activate({ target }) {
+      // 이벤트를 발생시킨 요소(target)가 ul#fruits의 자식 요소가 아니라면 무시한다.
+      if (!target.matches('#fruits > li')) return;
+
+      [...$fruits.children].forEach($fruit => {
+        $fruit.classList.toggle('active', $fruit === target);
+        $msg.textContent = target.id;
+      });
+    }
+
+    // 이벤트 위임: 상위 요소는 하위 요소의 이벤트를 캐치할 수 있다.
+    $fruits.onclick = activate;
+  </script>
+</body>
+</html>
+```
 
 ---
 연산자<sup>operator</sup>  
