@@ -2809,6 +2809,33 @@ addEventListener 메서드 방식으로 등록한 이벤트 핸들러는 타깃 
 </html>
 ```
 
+**이벤트 전파 방지**  
+이벤트 객체의 stopPropagation 메서드는 이벤트 전파를 중지시킨다.  
+stopPropagation 메서드는 하위 DOM 요소의 이벤트를 개별적으로 처리하기 위해 이벤트의 전파를 중단시킨다.  
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <div class="container">
+    <button class="btn1">Button 1</button>
+    <button class="btn2">Button 2</button>
+    <button class="btn3">Button 3</button>
+  </div>
+  <script>
+    document.querySelector('.container').onclick = ({ target }) => {
+      if (!target.matches('.container > button')) return;
+      target.style.color = 'red';
+    };
+
+    document.querySelector('.btn2').onclick = e => {
+      e.stopPropagation(); // 이벤트 전파 중단
+      e.target.style.color = 'blue';
+    };
+  </script>
+</body>
+</html>
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
