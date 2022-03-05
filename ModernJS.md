@@ -2791,6 +2791,24 @@ addEventListener 메서드 방식으로 등록한 이벤트 핸들러는 타깃 
 </html>
 ```
 
+### DOM 요소의 기본 동작 조작
+**DOM 요소의 기본 동작 중단**  
+이벤트 객체의 preventDefault 메서드는 이러한 DOM 요소의 기본 동작을 중단시킨다.  
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <a href="https://www.google.com">google</a>
+  <script>
+    document.querySelector('a').onclick = e => {
+      // a 요소의 기본 동작을 중단한다.
+      e.preventDefault();
+    };
+  </script>
+</body>
+</html>
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
