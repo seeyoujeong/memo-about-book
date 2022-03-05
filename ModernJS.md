@@ -2826,7 +2826,8 @@ stopPropagation 메서드는 하위 DOM 요소의 이벤트를 개별적으로 �
       if (!target.matches('.container > button')) return;
       target.style.color = 'red';
     };
-
+  
+    // .btn2 요소는 이벤트를 전파하지 않으므로 상위 요소에서 이벤트를 캐치할 수 없다.
     document.querySelector('.btn2').onclick = e => {
       e.stopPropagation(); // 이벤트 전파 중단
       e.target.style.color = 'blue';
