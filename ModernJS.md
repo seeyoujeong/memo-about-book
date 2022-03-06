@@ -2837,6 +2837,30 @@ stopPropagation 메서드는 하위 DOM 요소의 이벤트를 개별적으로 �
 </html>
 ```
 
+### 이벤트 핸들러 내부의 this
+**이벤트 핸들러 어트리뷰트 방식**  
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <button onclick="handleClick1()">Click me</button>
+  <button onclick="handleClick2(this)">Click me</button>
+  <script>
+    function handleClick1() {
+      console.log(this); // window
+    }
+
+    function handleClick2(button) {
+      console.log(button); // 이벤트를 바인딩한 button 요소
+      console.log(this);
+    }
+  </script>
+</body>
+</html>
+```
+handleClick 함수는 이벤트 핸들러에 의해 일반 함수로 호출된다.  
+이벤트 핸들러를 호출할 때 인수로 전달한 this는 이벤트를 바인딩한 DOM 요소를 가리킨다.  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
