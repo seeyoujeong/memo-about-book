@@ -2861,6 +2861,50 @@ stopPropagation 메서드는 하위 DOM 요소의 이벤트를 개별적으로 �
 handleClick 함수는 이벤트 핸들러에 의해 일반 함수로 호출된다.  
 이벤트 핸들러를 호출할 때 인수로 전달한 this는 이벤트를 바인딩한 DOM 요소를 가리킨다.  
 
+**이벤트 핸들러 프로퍼티 방식과 addEventListener 메서드 방식**  
+이벤트 핸들러 프로퍼티 방식과 addEventListener 메서드 방식 모두 이벤트 핸들러 내부의 this는 이벤트를 바인딩한 DOM 요소를 가리킨다.  
+이벤트 핸들러 내부의 this는 이벤트 객체의 currentTarget 프로퍼티와 같다.  
+화살표 함수로 정의한 이벤트 핸들러 내부의 this는 상위 스코프의 this를 가리킨다.  
+
+클래스에서 이벤트 핸들러를 바인딩하는 경우 this에 주의해야한다.  
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <button class="btn">0</button>
+  <script>
+    class App {
+      constructor() {
+        this.$button = document.querySelector('.btn');
+        this.count = 0;
+    
+        this.$button.onclick = this.increase;
+        /*
+        해결방법1
+        this.$button.onclick = this.increase.bind(this);
+        */
+      }
+      
+      increase() {
+        // 이벤트 핸들러 increase 내부의 this는 DOM 요소(this.$button)를 가리킨다. 
+        // 따라서 this.$button은 this.$button.$button과 같다.
+        this.$button.textContent = ++this.count; // -> TypeError
+      }
+      
+      /* 
+      해결방법2
+      클래스 필드 정의
+      이때 이벤트 핸들러 increase는 프로토타입 메서드가 아닌 인스턴스 메서드가 된다. 
+      increase = () => this.$button.textContent = ++this.count;
+      */
+    }
+    
+    new App();
+  </script>
+</body>
+</html>
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
