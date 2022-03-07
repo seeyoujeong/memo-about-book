@@ -2910,6 +2910,41 @@ handleClick 함수는 이벤트 핸들러에 의해 일반 함수로 호출된�
 - 이벤트 핸들러 내부에서 함수를 호출하면서 인수를 전달한다.  
 - 이벤트 핸들러를 반환하는 함수를 호출하면서 인수를 전달한다.  
 
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <label>User name <input type='text'></label>
+  <em class="message"></em>
+  <script>
+    const MIN_USER_NAME_LENGTH = 5;
+    const $input = document.querySelector('input[type=text]');
+    const $msg = document.querySelector('.message');
+    
+    const checkUserNameLength = min => {
+      $msg.textContent 
+        = $input.value.length < min ? `이름은 ${min}자 이상 입력해 주세요` : '';
+    };
+    
+    // 이벤트 핸들러 내부에서 함수를 호출하면서 인수를 전달한다.                               
+    $input.onblur = () => {
+      checkUserNameLength(MIN_USER_NAME_LENGTH);
+    };
+    
+    /*
+    // 이벤트 핸들러를 반환하는 함수
+    const checkUserNameLength = min => e => {
+      $msg.textContent 
+        = $input.value.length < min ? `이름은 ${min}자 이상 입력해 주세요` : '';
+    };
+    
+    // 이벤트 핸들러를 반환하는 함수를 호출하면서 인수를 전달한다.                               
+    $input.onblur = checkUserNameLength(MIN_USER_NAME_LENGTH);
+    */
+  </script>
+</body>
+</html>
+```
 
 ---
 연산자<sup>operator</sup>  
