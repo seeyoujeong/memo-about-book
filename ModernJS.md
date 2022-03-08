@@ -2954,7 +2954,16 @@ CustomEvent 이벤트 생성자 함수를 사용한다.
 커스텀 이벤트 객체는 bubbles와 cancelable 프로퍼티의 값이 false로 기본 설정된다.  
 이벤트 객체 고유의 프로퍼티 값을 지정하려면 이벤트 생성자 함수의 두 번째 인수로 프로퍼티를 전달한다.  
 이벤트 생성자 함수로 생성한 커스텀 이벤트는 isTrusted 프로퍼티의 값이 언제나 false다.  
+```javascript
+// CustomEvent 생성자 함수로 foo 이벤트 타입의 커스텀 이벤트 객체를 생성
+const customEvent = new CustomEvent('foo');
 
+// MouseEvent 생성자 함수로 click 이벤트 타입의 커스텀 이벤트 객체를 생성
+const mouseEvent = new MouseEvent('click', {
+  bubbles: true,
+  cancelable: true
+});
+```
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
