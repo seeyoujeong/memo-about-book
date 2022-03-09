@@ -2964,6 +2964,13 @@ const mouseEvent = new MouseEvent('click', {
   cancelable: true
 });
 ```
+
+**커스텀 이벤트 디스패치**  
+생성된 커스텀 이벤트는 dispatchEvent 메서드로 디스패치(이벤트를 발생시키는 행위)할 수 있다.  
+dispatchEvent 메서드에 이벤트 객체를 인수로 전달하면서 호출하면 인수로 전달한 이벤트 타입의 이벤트가 발생한다.  
+dispatchEvent 메서드는 이벤트 핸들러를 동기<sup>synchronous</sup> 처리 방식으로 호출하기 때문에 이벤트를 디스패치하기 이전에 커스텀 이벤트를 처리할 이벤트 핸들러를 등록해야 한다.  
+기존 이벤트 타입이 아닌 임의의 이벤트 타입을 지정하여 커스텀 이벤트 객체를 생성한 경우 반드시 addEventListener 메서드 방식으로 이벤트 핸들러를 등록해야 한다.  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
