@@ -3004,6 +3004,26 @@ dispatchEvent 메서드는 이벤트 핸들러를 동기<sup>synchronous</sup> �
 브라우저 환경과 Node.js 환경에서 모두 전역 객체의 메서드로서 타이머 함수를 제공한다.  
 자바스크립트 엔진은 싱글 스레드로 동작하기 때문에 타이머 함수 setTimeout과 setInterval은 비동기<sup>asynchronous</sup> 처리 방식으로 동작한다.  
 
+### 타이머 함수
+**setTimeout / clearTimeout**  
+setTimeout 함수는 두 번째 인수로 전달받은 시간(ms)으로 단 한 번 동작하는 타이머를 생성한다.  
+타이머가 만료되면 첫 번째 인수로 전달받은 콜백 함수가 호출된다.  
+호출 스케줄링된 콜백 함수에 전달해야 할 인수가 존재하는 경우 세 번째 이후의 인수로 전달할 수 있다.  
+setTimeout 함수는 생성된 타이머를 식별할 수 있는 고유한 타이머 id를 반환한다.  
+setTimeout 함수가 반환한 타이머 id는 브라우저 환경인 경우 숫자이며 Node.js 환경인 경우 객체다.  
+setTimeout 함수가 반환한 타이머 id를 clearTimeout 함수의 인수로 전달하여 타이머를 취소할 수 있다.  
+```javascript
+setTimeout(() => console.log('Hi!'), 1000);
+
+setTimeout(name => console.log(`Hi! ${name}.`), 1000, 'jeong');
+
+// 두 번째 인수(delay)를 생략하면 기본값이 0이 지정된다.  
+setTimeout(() => console.log('Hello!'));
+
+const timerId = setTimeout(() => console.log('Hi!'), 1000);
+
+clearTimeout(timerId);
+```
 
 ---
 연산자<sup>operator</sup>  
