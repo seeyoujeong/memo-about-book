@@ -31,6 +31,7 @@
 - [브라우저의 렌더링 과정](#브라우저의-렌더링-과정)
 - [DOM](#dom)
 - [이벤트](#이벤트)
+- [타이머](#타이머)
 
 ## 식별자
 식별자<sup>identifier</sup>는 어떤 값을 구별해서 식별할 수 있는 고유한 이름을 말한다.  
@@ -2995,6 +2996,15 @@ dispatchEvent 메서드는 이벤트 핸들러를 동기<sup>synchronous</sup> �
   </script>
 </body>
 </html>
+```
+
+## 타이머
+### 호출 스케줄링
+함수를 명시적으로 호출하지 않고 일정 시간이 경과된 이후에 호출되도록 함수 호출을 예약하려면 타이머 함수를 사용하는데 이를 호출 스케줄링<sup>scheduling a call</sup>이라 한다.  
+브라우저 환경과 Node.js 환경에서 모두 전역 객체의 메서드로서 타이머 함수를 제공한다.  
+자바스크립트 엔진은 싱글 스레드로 동작하기 때문에 타이머 함수 setTimeout과 setInterval은 비동기<sup>asynchronous</sup> 처리 방식으로 동작한다.  
+
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
