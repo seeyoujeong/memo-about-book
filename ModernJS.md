@@ -3041,6 +3041,18 @@ const timeoutId = setInterval(() => {
 }, 1000);
 ```
 
+### 디바운스와 스로틀
+scroll, resize, input, mousemove 같은 이벤트는 짧은 시간 간격으로 연속해서 발생하는데 이러한 이벤트에 바인딩한 이벤트 핸들러는 과도하게 호출되어 성능에 문제를 일으킬 수 있다.  
+디바운스와 스로틀은 짧은 시간 간격으로 연속해서 발생하는 이벤트를 그룹화해서 과도한 이벤트 핸들러의 호출을 방지하는 프로그래밍 기법이다.  
+
+**디바운스**  
+디바운스<sup>debounce</sup>는 짧은 시간 간격으로 이벤트가 연속해서 발생하면 이벤트 핸들러를 호출하지 않다가 일정 시간이 경과한 이후에 이벤트 핸들러가 한 번만 호출되도록 한다.  
+resize 이벤트 처리나 input 요소에 입력된 값으로 ajax 요청하는 입력 필드 자동완성<sup>autocomplete</sup> UI 구현, 버튼 중복 클릭 방지 처리 등에 유용하게 사용된다.  
+실무에서는 Underscore의 debounce 함수나 Lodash의 debounce 함수를 사용하는 것을 권장한다.  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/40534414/157873564-52baac30-46b2-46bb-aaad-ae880b26a33f.png">
+</p>
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
