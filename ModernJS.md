@@ -3053,6 +3053,14 @@ resize 이벤트 처리나 input 요소에 입력된 값으로 ajax 요청하는
   <img src="https://user-images.githubusercontent.com/40534414/157873564-52baac30-46b2-46bb-aaad-ae880b26a33f.png">
 </p>
 
+**스로틀**  
+스로틀<sup>throttle</sup>은 짧은 시간 간격으로 이벤트가 연속해서 발생하더라도 일정 시간 간격으로 이벤트 핸들러가 최대 한 번만 호출되도록 한다.  
+스트롤은 scroll 이벤트 처리나 무한 스크롤<sup>infinite scrolling</sup> UI 구현 등에 유용하게 사용된다.  
+실무에서는 Underscore의 throttle 함수나 Lodash의 throttle 함수를 사용하는 것을 권장한다.  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/40534414/158018746-be98583a-cf97-4c32-96ee-1fcf1808210a.png">
+</p>
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
