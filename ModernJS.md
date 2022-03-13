@@ -32,6 +32,7 @@
 - [DOM](#dom)
 - [이벤트](#이벤트)
 - [타이머](#타이머)
+- [비동기 프로그래밍](#비동기-프로그래밍)
 
 ## 식별자
 식별자<sup>identifier</sup>는 어떤 값을 구별해서 식별할 수 있는 고유한 이름을 말한다.  
@@ -3059,6 +3060,24 @@ resize 이벤트 처리나 input 요소에 입력된 값으로 ajax 요청하는
 실무에서는 Underscore의 throttle 함수나 Lodash의 throttle 함수를 사용하는 것을 권장한다.  
 <p align="center">
   <img src="https://user-images.githubusercontent.com/40534414/158018746-be98583a-cf97-4c32-96ee-1fcf1808210a.png">
+</p>
+
+## 비동기 프로그래밍
+### 동기 처리와 비동기 처리
+**동기<sup>synchronous</sup> 처리**  
+현재 실행 중인 태스크가 종료할 때까지 다음에 실행될 태스크가 대기하는 방식이다.  
+태스크를 순서대로 하나씩 처리하므로 실행 순서가 보장된다는 장점이 있다.  
+앞선 태스크가 종료할 때까지 이후 태스크들이 블로킹되는 단점이 있다.  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/40534414/158062813-24cd0b0b-615d-42ee-8f0a-878a07d61ee1.png">
+</p>
+
+**비동기<sup>asynchronous</sup> 처리**  
+현재 실행 중인 태스크가 종료되지 않은 상태라 해도 다음 태스크를 곧바로 실행하는 방식이다.  
+블로킹이 발생하지 않는다는 장점이 있지만, 태스크의 실행 순서가 보장되지 않는 단점이 있다.  
+타이머 함수인 setTimeout과 setInterval, HTTP 요청, 이벤트 핸들러는 비동기 처리 방식으로 동작한다.  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/40534414/158062863-20a3f751-f50b-4c0b-ab84-c61fd4cf568d.png">
 </p>
 
 ---
