@@ -3149,6 +3149,11 @@ JSON의 키는 반드시 큰따옴표(작은따옴표 사용 불가)로 묶어�
 }
 ```
 
+**JSON.stringify**  
+JSON.stringify 메서드는 객체를 JSON 포맷의 문자열로 변환한다.  
+클라이언트가 서버로 객체를 전송하려면 객체를 문자열화해야 하는데 이를 직렬화<sup>serializing</sup>라 한다.  
+JSON.stringify 메서드는 객체뿐만 아니라 배열도 JSON 포맷의 문자열로 변환한다.  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
