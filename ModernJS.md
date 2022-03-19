@@ -3153,6 +3153,33 @@ JSON의 키는 반드시 큰따옴표(작은따옴표 사용 불가)로 묶어�
 JSON.stringify 메서드는 객체를 JSON 포맷의 문자열로 변환한다.  
 클라이언트가 서버로 객체를 전송하려면 객체를 문자열화해야 하는데 이를 직렬화<sup>serializing</sup>라 한다.  
 JSON.stringify 메서드는 객체뿐만 아니라 배열도 JSON 포맷의 문자열로 변환한다.  
+```javascript
+const obj = {
+  name: 'Jeong',
+  age: 20,
+  alive: true, 
+  hobby: ['traveling', 'tennis']
+};
+
+const json = JSON.stringify(obj);
+console.log(typeof json, json);
+// string {"name":"Jeong","age":20,"alive":true,"hobby":["traveling","tennis"]}
+
+// 객체를 JSON 포맷의 문자열로 변환하면서 들여쓰기 한다.
+const prettyJson = JSON.stringify(obj, null, 2);
+console.log(typeof prettyJson, prettyJson);
+/*
+string {
+  "name": "Jeong",
+  "age": 20,
+  "alive": true,
+  "hobby": [
+    "traveling",
+    "tennis"
+  ]
+}
+*/
+```
 
 ---
 연산자<sup>operator</sup>  
