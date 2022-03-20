@@ -3181,6 +3181,26 @@ string {
 */
 ```
 
+**JSON.parse**  
+JSON.parse 메서드는 JSON 포맷의 문자열을 객체로 변환한다.  
+서버로부터 클라이언트에게 전송된 JSON 데이터는 문자열인데 이 문자열을 객체로서 사용하려면 JSON 포맷의 문자열을 객체화해야 하는데 이를 역직렬화<sup>deserializing</sup>라 한다.  
+배열이 JSON 포맷의 문자열로 변환되어 있는 경우 JSON.parse는 문자열을 배열 객체로 변환하고 배열의 요소가 객체인 경우 배열의 요소까지 객체로 변환한다.  
+```javascript
+const obj = {
+  name: 'Jeong',
+  age: 20, 
+  alive: true,
+  hobby: ['traveling', 'tennis']
+};
+
+const json = JSON.stringify(obj);
+
+const parsed = JSON.parse(json);
+
+console.log(typeof parsed, parsed);
+// object {name: "Jeong", age: 20, alive: true, hobby: ["traveling", "tennis"]}
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
