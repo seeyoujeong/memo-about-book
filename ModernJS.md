@@ -3277,6 +3277,72 @@ XMLHttpRequest 객체는 브라우저에서 제공하는 Web API이므로 브라
     </tr>
   </tbody>
 </table>
+
+**XMLHttpRequest 객체의 메서드**  
+<table>
+  <thead>
+    <tr>
+      <th>메서드</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>open</td>
+      <td>HTTP 요청 초기화</td>
+    </tr>
+    <tr>
+      <td>send</td>
+      <td>HTTP 요청 전송</td>
+    </tr>
+    <tr>
+      <td>abort</td>
+      <td>이미 전송된 HTTP 요청 중단</td>
+    </tr>
+    <tr>
+      <td>setRequestHeader</td>
+      <td>특정 HTTP 요청 헤더의 값을 설정</td>
+    </tr>
+  </tbody>
+</table>
+  
+**XMLHttpRequest 객체의 정적 프로퍼티**  
+<table>
+  <thead>
+    <tr>
+      <th>정적 프로퍼티</th>
+      <th>값</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>UNSENT</td>
+      <td align="center">0</td>
+      <td>open 메서드 호출 이전</td>
+    </tr>
+    <tr>
+      <td>OPENED</td>
+      <td align="center">1</td>
+      <td>open 메서드 호출 이후</td>
+    </tr>
+    <tr>
+      <td>HEADERS_RECEIVED</td>
+      <td align="center">2</td>
+      <td>send 메서드 호출 이후</td>
+    </tr>
+    <tr>
+      <td>OPENED</td>
+      <td align="center">3</td>
+      <td>서버 응답 중(응답 데이터 미완성 상태)</td>
+    </tr>
+    <tr>
+      <td>DONE</td>
+      <td align="center">4</td>
+      <td>서버 응답 완료</td>
+    </tr>
+  </tbody>
+</table>
   
 ---
 연산자<sup>operator</sup>  
