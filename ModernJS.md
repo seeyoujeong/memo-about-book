@@ -3210,7 +3210,54 @@ Web API인 XMLHttpRequest 객체는 HTTP 요청 전송과 HTTP 응답 수신을 
 XMLHttpRequest 객체는 XMLHttpRequest 생성자 함수를 호출하여 생성한다.  
 XMLHttpRequest 객체는 브라우저에서 제공하는 Web API이므로 브라우저 환경에서만 정상적으로 실행된다.  
 
-
+**XMLHttpRequest 객체의 포로토타입 프로퍼티**  
+<table>
+  <thead>
+    <tr>
+      <th>프로토타입 프로퍼티</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>readyState</td>
+      <td>
+        <p>HTTP 요청의 현재 상태를 나타내는 정수. 다음과 같은 XMLHttpRequest의 정적 프로퍼티를 값으로 갖는다.</p>  
+        <ul type="square">
+          <li>UNSENT: 0</li>
+          <li>OPENED: 1</li>
+          <li>HEADERS_RECEIVED: 2</li>
+          <li>LOADING: 3</li>
+          <li>DONE: 4</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>status</td>
+      <td>HTTP 요청에 대한 응답 상태(HTTP 상태 코드)를 나타내는 정수</td>
+    </tr>
+    <tr>
+      <td>statusText</td>
+      <td>HTTP 요청에 대한 응답 메시지를 나타내는 문자열</td>
+    </tr>
+    <tr>
+      <td>responseType</td>
+      <td>
+        HTTP 응답 타입 <br>  
+        예) document, json, text, blob, arraybuffer
+      </td>
+    </tr>
+    <tr>
+      <td>response</td>
+      <td>HTTP 요청에 대한 응답 몸체, responseType에 따라 타입이 다르다.</td>
+    </tr>
+    <tr>
+      <td>responseText</td>
+      <td>서버가 전송한 HTTP 요청에 대한 응답 문자열</td>
+    </tr>
+  </tbody>
+</table>
+ 
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
