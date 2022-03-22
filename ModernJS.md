@@ -3251,13 +3251,33 @@ XMLHttpRequest 객체는 브라우저에서 제공하는 Web API이므로 브라
       <td>response</td>
       <td>HTTP 요청에 대한 응답 몸체, responseType에 따라 타입이 다르다.</td>
     </tr>
+  </tbody>
+</table>
+
+**XMLHttpRequest 객체의 이벤트 핸들러 프로퍼티**  
+<table>
+  <thead>
     <tr>
-      <td>responseText</td>
-      <td>서버가 전송한 HTTP 요청에 대한 응답 문자열</td>
+      <th>이벤트 핸들러 프로퍼티</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>onreadystatechange</td>
+      <td>readyState 프로퍼티 값이 변경된 경우</td>
+    </tr>
+    <tr>
+      <td>onerror</td>
+      <td>HTTP 요청에 에러가 발생한 경우</td>
+    </tr>
+    <tr>
+      <td>onlead</td>
+      <td>HTTP 요청이 성공적으로 완료한 경우</td>
     </tr>
   </tbody>
 </table>
- 
+  
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
