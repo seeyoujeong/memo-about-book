@@ -3343,7 +3343,23 @@ XMLHttpRequest 객체는 브라우저에서 제공하는 Web API이므로 브라
     </tr>
   </tbody>
 </table>
-  
+
+**HTTP 요청 전송**  
+HTTP 요청을 전송하는 경우 다음 순서를 따른다.  
+```javascript
+const xhr = new XMLHttpRequest();
+
+// 1. HTTP 요청 초기화
+xhr.open('GET', '/users');
+
+// 2. 필요에 따라 특정 HTTP 요청의 헤더 값 설정
+// 클라이언트가 서버로 전송할 데이터의 MIME 타입 지정: json
+xhr.setRequestHeader('content-type', 'application/json');
+
+// 3. HTTP 요청 전송
+xhr.send();
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
