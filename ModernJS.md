@@ -3360,6 +3360,79 @@ xhr.setRequestHeader('content-type', 'application/json');
 xhr.send();
 ```
 
+**XMLHttpRequest.prototype.open**
+open 메서드는 서버에 전송할 HTTP 요청을 초기화한다.  
+```javascript
+xhr.open(method, url[, async])
+```
+<table>
+  <thead>
+    <tr>
+      <th>매개변수</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>method</td>
+      <td>HTTP 요청 메서드("GET", "POST", "PUT", "DELETE" 등)</td>
+    </tr>
+    <tr>
+      <td>url</td>
+      <td>HTTP 요청을 전송할 URL</td>
+    </tr>
+    <tr>
+      <td>async</td>
+      <td>비동기 요청 여부. 옵션으로 기본값은 true이며, 비동기 방식으로 동작한다.</td>
+    </tr>
+  </tbody>
+</table>
+  
+HTTP 요청 메서드는 클라이언트가 서버에게 요청의 종류와 목적(리소스에 대한 행위)을 알리는 방법이다.  
+
+<table>
+  <thead>
+    <tr>
+      <th>HTTP 요청 메서드</th>
+      <th>종류</th>
+      <th>목적</th>
+      <th>페이로드</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GET</td>
+      <td>index/retrieve</td>
+      <td>모든/특정 리소스 취득</td>
+      <td align="center">Χ</td>
+    </tr>
+    <tr>
+      <td>POST</td>
+      <td>create</td>
+      <td>리소스 생성</td>
+      <td align="center">Ο</td>
+    </tr>
+    <tr>
+      <td>PUT</td>
+      <td>replace</td>
+      <td>리소스의 전체 교체</td>
+      <td align="center">Ο</td>
+    </tr>
+    <tr>
+      <td>PATCH</td>
+      <td>modify</td>
+      <td>리소스의 일부 수정</td>
+      <td align="center">Ο</td>
+    </tr>
+    <tr>
+      <td>DELETE</td>
+      <td>delete</td>
+      <td>모든/특정 리소스 삭제</td>
+      <td align="center">Χ</td>
+    </tr>
+  </tbody>
+</table>
+   
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
