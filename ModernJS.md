@@ -3446,6 +3446,13 @@ xhr.send(JSON.stringify({ id: 1, content: 'HTML', completed: false }));
 ```
 HTTP 요청 메서드가 GET인 경우 send 메서드에 페이로드로 전달한 인수는 무시되고 요청 몸체는 null로 설정된다.  
 
+**XMLHttpRequest.prototype.setRequestHeader**  
+setRequestHeader 메서드는 특정 HTTP 요청의 헤더 값을 설정한다.  
+setRequestHeader 메서드는 반드시 open 메서드를 호출한 이후에 호출해야 한다.  
+Content-type은 요청 몸체에 담아 전송할 데이터의 MIME 타입의 정보를 표현한다.  
+HTTP 클라이언트가 서버에 요청할 때 서버가 응답할 데이터의 MIME 타입을 Accept로 지정할 수 있다.  
+Accept 헤더를 설정하지 않으면 send 메서드가 호출될 때 Accept 헤더가 */\*으로 전송된다.  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
