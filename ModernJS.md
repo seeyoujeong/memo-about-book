@@ -3452,6 +3452,33 @@ setRequestHeader 메서드는 반드시 open 메서드를 호출한 이후에 �
 Content-type은 요청 몸체에 담아 전송할 데이터의 MIME 타입의 정보를 표현한다.  
 HTTP 클라이언트가 서버에 요청할 때 서버가 응답할 데이터의 MIME 타입을 Accept로 지정할 수 있다.  
 Accept 헤더를 설정하지 않으면 send 메서드가 호출될 때 Accept 헤더가 */\*으로 전송된다.  
+<table>
+  <thead>
+    <tr>
+      <th>MIME 타입</th>
+      <th>서버타입</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>text</td>
+      <td>text/plain, text/html, text/css, text/javascript</td>
+    </tr>
+    <tr>
+      <td>application</td>
+      <td>application/json, application/x-www-form-urlencode</td>
+    </tr>
+    <tr>
+      <td>multipart</td>
+      <td>multipart/formed-data</td>
+    </tr>
+  </tbody>
+</table>
+
+```javascript
+xhr.setRequestHeader('content-type', 'application/json');
+xhr.setRequestHeader('accept', 'application/json');
+```
 
 ---
 연산자<sup>operator</sup>  
