@@ -3483,9 +3483,30 @@ xhr.setRequestHeader('accept', 'application/json');
 **HTTP 응답 처리**  
 서버가 전송한 응답을 처리하려면 XMLHttpRequest 객체가 발생시키는 이벤트를 캐치해야 한다.  
 readystatechange 이벤트를 통해 HTTP 요청의 현재 상태를 확인해야 한다.  
+```javascript
+...
+xhr.onreadystatechange = () => {
+  if (xhr.readyState !== XMLHttpRequest.DONE) return;
+  
+  if (xhr.status === 200) {
+    console.log(JSON.parse(xhr.response));
+  } else {
+    console.error('Error', xhr.status, xhr.statusText);
+  }
+};
+```
 readystatechange 이벤트 대신 load 이벤트를 캐치해도 좋다.  
 load 이벤트를 캐치하는 경우 xhr.readyState가 XMLHttpRequest.DONE인지 확인할 필요가 없다.  
-
+```javascript
+...
+xhr.onload = () => {
+  if (xhr.status === 200) {
+    console.log(JSON.parse(xhr.response));
+  } else {
+    console.error('Error', xhr.status, xhr.statusText);
+  }
+};
+```
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
