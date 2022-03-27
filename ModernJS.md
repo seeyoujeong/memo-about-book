@@ -34,6 +34,7 @@
 - [타이머](#타이머)
 - [비동기 프로그래밍](#비동기-프로그래밍)
 - [Ajax](#ajax)
+- [REST API](#rest-api)
 
 ## 식별자
 식별자<sup>identifier</sup>는 어떤 값을 구별해서 식별할 수 있는 고유한 이름을 말한다.  
@@ -3507,6 +3508,41 @@ xhr.onload = () => {
   }
 };
 ```
+
+## REST API
+REST<sup>Representational State Transfer</sup>는 HTTP를 기반으로 클라이언트가 서버의 리소스에 접근하는 방식을 규정한 아키텍처다.  
+REST API는 REST를 기반으로 서비스 API를 구현한 것을 의미한다.  
+
+### REST API의 구성
+REST API는 자원<sup>resource</sup>, 행위<sup>verb</sup>, 표현<sup>representations</sup>의 3가지 요소로 구성된다.  
+REST는 자체 표현 구조<sup>self-descriptiveness</sup>로 구성되어 REST API만으로 HTTP 요청의 내용을 이해할 수 있다.  
+<table>
+  <thead>
+    <tr>
+      <th>구성 요소</th>
+      <th>내용</th>
+      <th>표현 방법</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>자원<sup>resource</sup></td>
+      <td>자원</td>
+      <td>URI(엔드포인트)</td>
+    </tr>
+    <tr>
+      <td>행위<sup>verb</sup></td>
+      <td>자원에 대한 행위</td>
+      <td>HTTP 요청 메서드</td>
+    </tr>
+    <tr>
+      <td>표현<sup>representations</sup></td>
+      <td>자원에 대한 행위의 구체적 내용</td>
+      <td>페이로드</td>
+    </tr>
+  </tbody>
+</table>
+  
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
