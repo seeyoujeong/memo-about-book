@@ -3542,7 +3542,32 @@ REST는 자체 표현 구조<sup>self-descriptiveness</sup>로 구성되어 REST
     </tr>
   </tbody>
 </table>
-  
+
+## REST API 설계 원칙
+URI는 리소스를 표현하는 데 집중하고 행위에 대한 정의는 HTTP 요청 메서드를 통해 하는 것이 RESTful API를 설계하는 중심 규칙이다.  
+
+**URI는 리소스를 표현해야 한다.**  
+리소스를 식별할 수 있는 이름은 동사보다는 명사를 사용한다.  
+이름에 get 같은 행위에 대한 표현이 들어가서는 안 된다.  
+```
+# bad
+GET /getTodos/1
+GET /todos/show/1
+
+# good
+GET /todos/1
+```
+
+**리소스에 대한 행위는 HTTP 요청 메서드로 표현한다.**  
+리소스에 대한 행위는 HTTP 요청 메서드를 통해 표현하며 URI에 표현하지 않는다.  
+```
+# bad
+GET /todos/delete/1
+
+# good
+DELETE /todos/1
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
