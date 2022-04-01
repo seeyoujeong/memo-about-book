@@ -3595,6 +3595,20 @@ setTimeout 함수의 콜백 함수가 실행될 때 setTimeout 함수는 이미 
 에러는 호출자<sup>caller</sup> 방향으로 전파된다. 즉, 콜 스택의 아래 방향(실행 중인 실행 컨텍스트가 푸시되기 직전에 푸시된 실행 컨텍스트 방향)으로 전파된다.  
 콜백 함수의 실행 컨텍스트의 하위 실행 컨텍스트가 setTimeout 함수여야 하는데 setTimeout 함수의 콜백 함수를 호출한 것은 setTimeout 함수가 아니기 때문에 setTimeout 함수의 콜백 함수가 발생시킨 에러는 catch 블록에서 캐치되지 않는다.  
 
+### 프로미스의 생성
+Promise 생성자 함수를 new 연산자와 함께 호출하면 프로미스(Promise 객체)를 생성한다.  
+Promise 생성자 함수는 비동기 처리를 수행할 콜백 함수를 인수로 전달받는데 이 콜백 함수는 resolve와 reject 함수를 인수로 전달받는다.  
+```javascript
+const promise = new Promise((resolve, reject) => {
+  // Promise 함수의 콜백 함수 내부에서 비동기 처리를 수행한다.  
+  if (/* 비동기 처리 성공 */) {
+    resolve('result');
+  } else { /* 비동기 처리 실패 */
+    reject('failure reason');
+  }
+});
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
