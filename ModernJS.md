@@ -3570,6 +3570,7 @@ DELETE /todos/1
 ```
 
 ## 프로미스
+프로미스는 비동기 처리 상태와 처리 결과를 관리하는 객체다.  
 ES6에서 비동기 처리를 위한 패턴으로 프로미스<sup>Promise</sup>를 도입했다.  
 프로미스는 전통적인 콜백 패턴이 가진 단점을 보완하며 비동기 처리 시점을 명확하게 표현할 수 있다는 장점이 있다.  
 
@@ -3608,6 +3609,15 @@ const promise = new Promise((resolve, reject) => {
   }
 });
 ```
+프로미스는 현재 비동기 처리가 어떻게 진행되고 있는지를 나타내는 상태<sup>state</sup> 정보를 갖는다.  
+|프로미스의 상태 정보|의미|상태 변경 조건|
+|---|---|---|
+|pending|비동기 처리가 아직 수행되지 않은 상태|프로미스가 생성된 직후 기본 상태|
+|fulfilled|비동기 처리가 수행된 상태(성공)|resolve 함수 호출|
+|rejected|비동기 처리가 수행된 상태(실패)|reject 함수 호출|
+> fulfilled 또는 rejected 상태를 settled 상태라고 한다.  
+> settled 상태는 fulfilled 또는 rejected 상태와 상관없이 pending이 아닌 상태로 비동기 처리가 수행된 상태를 말한다.  
+> 일단 settled 상태가 되면 더는 다른 상태로 변화할 수 없다.  
 
 ---
 연산자<sup>operator</sup>  
