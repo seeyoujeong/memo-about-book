@@ -3645,6 +3645,15 @@ new Promise((_, rejcet) => reject(new Error('rejected')))
   .catch(e => console.log(e)); // Error: rejected
 ```
 
+**Promise.prototype.finally**  
+finally 메서드는 한 개의 콜백 함수를 인수로 전달받는다.  
+finally 메서드의 콜백 함수는 프로미스의 성공 또는 실패와 상관없이 무조건 한 번 호출된다.  
+finally 메서드도 언제나 프로미스를 반환한다.  
+```javascript
+new Promise(() => {})
+  .finally(() => console.log('finally')); // finally
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
