@@ -3212,7 +3212,7 @@ Web API인 XMLHttpRequest 객체는 HTTP 요청 전송과 HTTP 응답 수신을 
 XMLHttpRequest 객체는 XMLHttpRequest 생성자 함수를 호출하여 생성한다.  
 XMLHttpRequest 객체는 브라우저에서 제공하는 Web API이므로 브라우저 환경에서만 정상적으로 실행된다.  
 
-**XMLHttpRequest 객체의 포로토타입 프로퍼티**  
+**XMLHttpRequest 객체의 프로토타입 프로퍼티**  
 <table>
   <thead>
     <tr>
