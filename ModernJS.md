@@ -3619,6 +3619,32 @@ const promise = new Promise((resolve, reject) => {
 > settled 상태는 fulfilled 또는 rejected 상태와 상관없이 pending이 아닌 상태로 비동기 처리가 수행된 상태를 말한다.  
 > 일단 settled 상태가 되면 더는 다른 상태로 변화할 수 없다.  
 
+### 프로미스의 후속 처리 메서드
+프로미스의 비동기 처리 상태가 변화하면 후속 처리 메서드에 인수로 전달한 콜백 함수가 선택적으로 호출된다.  
+
+**Promise.prototype.then**  
+then 메서드는 두 개의 콜백 함수를 인수로 전달받는다.  
+첫 번째 콜백 함수는 비동기 처리가 성공했을 때 호출되는 성공 처리 콜백 함수다.  
+두 번째 콜백 함수는 비동기 처리가 실패했을 때 호출되는 실패 처리 콜백 함수다.  
+then 메서드는 언제나 프로미스를 반환한다.  
+```javascript
+new Promise(resolve => resolve('fulfilled'))
+  .then(v => console.log(v), e => console.error(e)); // fulfilled
+  
+new Promise((_, reject) => reject(new Error('rejected')))
+  .then(v => console.log(v), e => console.error(e)); // Error: rejected
+```
+
+**Promise.prototype.catch**  
+catch 메서드는 한 개의 콜백 함수를 인수로 전달받는다.  
+catch 메서드의 콜백 함수는 프로미스가 rejected 상태인 경우만 호출된다.  
+catch 메서드는 then(undefined, onRejected)과 동일하게 동작한다.  
+then 메서드와 마찬가지로 언제나 프로미스를 반환한다.  
+```javascript
+new Promise((_, rejcet) => reject(new Error('rejected')))
+  .catch(e => console.log(e)); // Error: rejected
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
