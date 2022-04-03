@@ -3544,7 +3544,7 @@ REST는 자체 표현 구조<sup>self-descriptiveness</sup>로 구성되어 REST
   </tbody>
 </table>
 
-## REST API 설계 원칙
+### REST API 설계 원칙
 URI는 리소스를 표현하는 데 집중하고 행위에 대한 정의는 HTTP 요청 메서드를 통해 하는 것이 RESTful API를 설계하는 중심 규칙이다.  
 
 **URI는 리소스를 표현해야 한다.**  
