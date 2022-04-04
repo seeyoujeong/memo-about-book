@@ -3654,6 +3654,30 @@ new Promise(() => {})
   .finally(() => console.log('finally')); // finally
 ```
 
+### 프로미스의 에러 처리
+비동기 처리에서 발생한 에러는 then 메서드의 두 번째 콜백 함수로 처리할 수 있다.  
+비동기 처리에서 발생한 에러는 프로미스의 후속 처리 메서드 catch를 사용해 처리할 수도 있다.  
+catch 메서드를 모든 then 메서드를 호출한 이후에 호출하면 비동기 처리에서 발생한 에러(rejected 상태)뿐만 아니라 then 메서드 내부에서 발생한 에러까지 모두 캐치할 수 있다.  
+```javascript
+promiseGet(wrongUrl).then(
+  res => console.log(res),
+  err => console.error(err)
+); // Error: 404
+
+promiseGet(wrongUrl)
+  .then(res => console.log(res))
+  .catch(err => console.error(err)); // Error: 404
+
+promiseGet(wrongUrl).then(
+  res => console.xxx(res),
+  err => console.error(err)
+); // 두 번째 콜백 함수는 첫 번째 콜백 함수에서 발생한 에러를 캐치하지 못한다. 
+
+promiseGet(wrongUrl)
+  .then(res => console.xxx(res))
+  .catch(err => console.error(err)); // TypeError: console.xxx is not a function
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
