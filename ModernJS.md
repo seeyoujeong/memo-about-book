@@ -3678,6 +3678,16 @@ promiseGet(wrongUrl)
   .catch(err => console.error(err)); // TypeError: console.xxx is not a function
 ```
 
+### 프로미스 체이닝
+then, catch, finally 후속 처리 메서드는 언제나 프로미스를 반환하므로 연속적으로 호출할 수 있는데 이를 프로미스 체이닝<sup>promise chaining</sup>이라 한다.  
+프로미스는 프로미스 체이닝을 통해 비동기 처리 결과를 전달받아 후속 처리를 하므로 비동기 처리를 위한 콜백 패턴에서 발생하던 콜백 헬이 발생하지 않는다.  
+```javascript
+promiseGet(`${url}/posts/1`)
+  .then(({ userId }) => promiseGet(`${url}/users/${userId}`))
+  .then(userInfo => console.log(userInfo))
+  .catch(err => console.error(err));
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
