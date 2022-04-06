@@ -3688,6 +3688,25 @@ promiseGet(`${url}/posts/1`)
   .catch(err => console.error(err));
 ```
 
+### 프로미스의 정적 메서드
+**Promise.resolve / Promise.reject**  
+Promise.resolve와 Promise.reject 메서드는 이미 존재하는 값을 래핑하여 프로미스를 생성하기 위해 사용한다.  
+
+Promise.resolve 메서드는 인수로 전달받은 값을 resolve하는 프로미스를 생성한다.  
+```javascript
+const resolvedPromise = Promise.resolve([1, 2, 3]);
+// const resolvedPromise = new Promise(resolve => resolve([1, 2, 3]));
+
+resolvedPromise.then(console.log); // [1, 2, 3]
+```
+
+Promise.reject 메서드는 인수로 전달받은 값을 reject하는 프로미스를 생성한다.  
+```javascript
+const rejectedPromise = Promise.reject(new Error('Error!'));
+// const rejectedPromise = new Promise((_, reject) => reject(new Error('Error!')));
+
+rejectedPromise.catch(console.log); // Error: Error!
+```
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
