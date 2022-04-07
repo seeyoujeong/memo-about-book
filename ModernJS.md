@@ -3707,6 +3707,42 @@ const rejectedPromise = Promise.reject(new Error('Error!'));
 
 rejectedPromise.catch(console.log); // Error: Error!
 ```
+
+**Promise.all**  
+Promise.all 메서드는 여러 개의 비동기 처리를 모두 병렬<sup>parallel</sup> 처리할 때 사용한다.  
+Promise.all 메서드는 프로미스를 요소로 갖는 배열 등의 이터러블을 인수로 전달받는다.  
+전달받은 모든 프로미스가 모두 fulfilled 상태가 되면 모든 처리 결과를 배열에 저장해 새로운 프로미스를 반환한다.  
+Promise.all 메서드는 처리 순서가 보장된다.  
+Promise.all 메서드는 인수로 전달받은 배열의 프로미스가 하나라도 rejected 상태가 되면 나머지 프로미스가 fulfilled 상태가 되는 것을 기다리지 않고 즉시 종료한다.  
+Promise.all 메서드는 인수로 전달받은 이터러블의 요소가 프로미스가 아닌 경우 Promise.resolve 메서드를 통해 프로미스로 래핑한다.  
+```javascript
+const requestData1 = () => 
+  new Promise(resolve => setTimeout(() => resolve(1), 3000));
+const requestData2 = () => 
+  new Promise(resolve => setTimeout(() => resolve(2), 2000));
+const requestData3 = () => 
+  new Promise(resolve => setTimeout(() => resolve(3), 1000));
+  
+Promise.all([requestData1(), requestData2(), requestData3()])
+  .then(console.log) // [ 1, 2, 3 ] => 약 3초 소요
+  .catch(console.error);
+  
+Promise.all([
+  new Promise((_, reject) => setTimeout(() => reject(new Error('Error 1')), 3000)), 
+  new Promise((_, reject) => setTimeout(() => reject(new Error('Error 2')), 2000)), 
+  new Promise((_, reject) => setTimeout(() => reject(new Error('Error 3')), 1000))
+])
+  .then(console.log)
+  .catch(console.log); // Error: Error 3
+  
+Promise.all([
+  1, // → Promise.resolve(1)
+  2, // → Promise.resolve(2)
+  3, // → Promise.resolve(3)
+])
+  .then(console.log) // [1, 2, 3]
+  .catch(console.log);
+```
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
