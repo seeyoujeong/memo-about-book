@@ -3743,6 +3743,29 @@ Promise.all([
   .then(console.log) // [1, 2, 3]
   .catch(console.log);
 ```
+
+**Promise.race**  
+Promise.race 메서드는 프로미스를 요소로 갖는 배열 등의 이터러블을 인수로 전달 받는다.  
+Promise.race 메서드는 가장 먼저 fulfilled 상태가 된 프로미스의 처리 결과를 resolve하는 새로운 프로미스를 반환한다.  
+Promise.race 메서드에 전달된 프로미스가 하나라도 rejected 상태가 되면 에러를 reject하는 새로운 프로미스를 즉시 반환한다.  
+```javascript
+Promise.race([
+  new Promise(resolve => setTimeout(() => resolve(1), 3000)),
+  new Promise(resolve => setTimeout(() => resolve(2), 2000)),
+  new Promise(resolve => setTimeout(() => resolve(3), 1000))
+])
+  .then(console.log) // 3
+  .catch(console.log);
+  
+Promise.race([
+  new Promise((_, reject) => setTimeout(() => reject(new Error('Error 1')), 3000)),
+  new Promise((_, reject) => setTimeout(() => reject(new Error('Error 2')), 2000)),
+  new Promise((_, reject) => setTimeout(() => reject(new Error('Error 3')), 1000))
+])
+  .then(console.log)
+  .catch(console.log); Error: Error 3
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
