@@ -3766,6 +3766,25 @@ Promise.race([
   .catch(console.log); // Error: Error 3
 ```
 
+**Promise.allSettled**  
+Promise.allSettled 메서드는 프로미스를 요소로 갖는 배열 등의 이터러블을 인수로 전달받는다.  
+전달받은 프로미스가 모두 settled 상태가 되면 처리 결과를 배열로 반환한다.  
+Promise.allSettled 메서드가 반환한 배열에는 fulfilled 또는 rejected 상태와는 상관없이 Promise.allSettled 메서드가 인수로 전달받은 모든 프로미스들의 처리 결과가 모두 담겨 있다.  
+- 프로미스가 fulfilled 상태인 경우 비동기 처리 상태를 나타내는 status 프로퍼티와 처리 결과를 나타내는 value 프로퍼티를 갖느다.  
+- 프로미스가 rejected 상태인 경우 비동기 처리 상태를 나타내는 status 프로퍼티와 에러를 나타내는 reason 프로퍼티를 갖는다.  
+```javascript
+Promise.allSettled([
+  new Promise(resolve => setTimeout(() => resolve(1), 2000)),
+  new Promise((_, reject) => setTimeout(() => reject(new Error('Error!')), 1000))
+]).then(console.log);
+/* 
+[
+  {status: "fulfilled", value: 1},
+  {status: "rejected", reason: Error: Error! at <anonymous>:3:54}
+]
+*/
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
