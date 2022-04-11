@@ -3362,7 +3362,7 @@ xhr.setRequestHeader('content-type', 'application/json');
 xhr.send();
 ```
 
-**XMLHttpRequest.prototype.open**
+**XMLHttpRequest.prototype.open**  
 open 메서드는 서버에 전송할 HTTP 요청을 초기화한다.  
 ```javascript
 xhr.open(method, url[, async])
@@ -3790,6 +3790,14 @@ Promise.allSettled([
 마이크로태스크 큐에는 프로미스의 후속 처리 메서드의 콜백 함수가 일시 저장된다.  
 마이크로태스크 큐는 태스크 큐보다 우선순위가 높다.  
 이벤트 루프는 콜 스택이 비면 먼저 마이크로태스크 큐에서 대기하고 있는 함수를 가져와 실행한다.  
+
+### fetch
+fetch 함수는 XMLHttpRequest 객체와 마찬가지로 HTTP 요청 전송 기능을 제공하는 클라이언트 사이드 Web API다.  
+fetch 함수는 XMLHttpRequest 객체보다 사용법이 간단하고 프로미스를 지원하기 때문에 비동기 처리를 위한 콜백 패턴의 단점에서 자유롭다.  
+fetch 함수에는 HTTP 요청을 전송할 URL과 HTTP 요청 메서드, HTTP 요청 헤더, 페이로드 등을 설정한 객체를 전달한다.  
+```javascript
+const promise = fetch(url [, options])
+```
 
 ---
 연산자<sup>operator</sup>  
