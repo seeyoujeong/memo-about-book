@@ -36,6 +36,7 @@
 - [Ajax](#ajax)
 - [REST API](#rest-api)
 - [프로미스](#프로미스)
+- [제너레이터와 async/await](#generator_and_async/await)
 
 ## 식별자
 식별자<sup>identifier</sup>는 어떤 값을 구별해서 식별할 수 있는 고유한 이름을 말한다.  
@@ -3806,6 +3807,13 @@ fetch('https://jsonplaceholder.typicode.com/todos/1')
   .then(json => console.log(json));
   // {userId: 1, id: 1, title: "delectus aut autem", completed: false}
 ```
+
+## 제너레이터와 async/await <a name="generator_and_async/await"></a>
+### 제너레이터란?
+ES6에서 도입된 제너레이터<sup>generator</sup>는 코드 블록의 실행을 일시 중지했다가 필요한 시점에 재개할 수 있는 특수한 함수다.  
+- 제너레이터 함수는 함수 호출자에게 함수 실행의 제어권을 양도<sup>yield</sup>할 수 있다.  
+- 제너레이터 함수는 함수 호출자와 함수의 상태를 주고받을 수 있다.  
+- 제너레이터 함수를 호출하면 제너레이터 객체를 반환한다.  
 
 ---
 연산자<sup>operator</sup>  
