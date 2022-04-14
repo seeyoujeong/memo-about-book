@@ -3845,6 +3845,35 @@ class MyClass {
 }
 ```
 
+### 제너레이터 객체
+제너레이터 함수를 호출하면 일반 함수처럼 함수 코드 블록을 실행하는 것이 아니라 제너레이터 객체를 생성해 반환한다.  
+제너레이터 함수가 반환한 제너레이터 객체는 이터러블이면서 동시에 이터레이터다.  
+제너레이터 객체는 next 메서드를 갖는 이터레이터이지만 이터레이터에는 없는 return, throw 메서드를 갖는다.  
+- next 메서드를 호출하면 제너레이터 함수의 yield 표현식까지 코드 블록을 실행하고 yield된 값을 value 프로퍼티 값으로, false를 done 프로퍼티 값으로 갖는 이터레이터 리절트 객체를 반환한다.  
+- return 메서드를 호출하면 인수로 전달받은 값을 value 프로퍼티 값으로, true를 done 프로퍼티 값으로 갖는 이터레이터 리절트 객체를 반환한다.  
+- throw 메서드를 호출하면 인수로 전달받은 에러를 발생시키고 undefined를 value 프로퍼티 값으로, true를 done 프로퍼티 값으로 갖는 이터레이터 리절트 객체를 반환한다.  
+```javascript
+function* genFunc() {
+  try {
+    yield 1;
+    yield 2;
+    yield 3;
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+const generator1 = genFunc();
+
+console.log(generator1.next()); // {value: 1, done: false}
+console.log(generator1.return('End!')); // {value: "End!", done: true}
+
+const generator2 = genFunc();
+
+console.log(generator2.next()); // {value: 1, done: false}
+console.log(generator2.throw('Error!')); // {value: undefined, done: true}
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
