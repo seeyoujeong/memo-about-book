@@ -3880,6 +3880,31 @@ yield 키워드는 제너레이터 함수의 실행을 일시 중지시키거나
 제너레이터 객체의 next 메서드는 value, done 프로퍼티를 갖는 이터레이터 리절트 객체를 반환한다.  
 이터레이터의 next 메서드와 달리 제너레이터 객체의 next 메서드에는 인수를 전달할 수 있다.  
 제너레이터 객체의 next 메서드에 전달한 인수는 제너레이터 함수의 yield 표현식을 할당받는 변수에 할당된다.  
+```javascript
+function* genFunc() {
+  const x = yield 1;
+  
+  const y = yield (x + 10);
+  
+  // 일반적으로 제너레이터의 반환값은 의미가 없다.  
+  // 제너레이터에서는 값을 반환할 필요가 없고 return은 종료의 의미로만 사용해야 한다.
+  return x + y;
+}
+
+const generator = genFunc(0);
+
+// 처음 호출하는 next 메서드에 인수를 전달하면 무시된다.
+let res = generator.next();
+console.log(res); // {value: 1, done: false}
+
+// next 메서드에 인수로 전달한 10은 genFunc 함수의 x 변수에 할당된다.
+res = generator.next(10);
+console.log(res); // {value: 20, done: false}
+
+// next 메서드에 인수로 전달한 20은 genFunc 함수의 y 변수에 할당된다.
+res = generator.next(20);
+console.log(res); // {value: 30, done: true}
+```
 
 ---
 연산자<sup>operator</sup>  
