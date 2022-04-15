@@ -3874,6 +3874,13 @@ console.log(generator2.next()); // {value: 1, done: false}
 console.log(generator2.throw('Error!')); // {value: undefined, done: true}
 ```
 
+### 제너레이터의 일시 중지와 재개
+yield 키워드는 제너레이터 함수의 실행을 일시 중지시키거나 yield 키워드 뒤에 오는 표현식의 평가 결과를 제너레이터 함수 호출자에게 반환한다.  
+제너레이터 객체의 next 메서드를 호출하면 yield 표현식까지 실행되고 일시 중지<sup>suspend</sup>되고 함수의 제어권이 호출자로 양도된다.  
+제너레이터 객체의 next 메서드는 value, done 프로퍼티를 갖는 이터레이터 리절트 객체를 반환한다.  
+이터레이터의 next 메서드와 달리 제너레이터 객체의 next 메서드에는 인수를 전달할 수 있다.  
+제너레이터 객체의 next 메서드에 전달한 인수는 제너레이터 함수의 yield 표현식을 할당받는 변수에 할당된다.  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
