@@ -3906,6 +3906,25 @@ res = generator.next(20);
 console.log(res); // {value: 30, done: true}
 ```
 
+### 제너레이터의 활용
+**이터러블의 구현**  
+제너레이터 함수를 사용하면 이터레이션 프로토콜을 준수해 이터러블을 생성하는 방식보다 간단히 이터러블을 구현할 수 있다.  
+```javascript
+const infiniteFibonacci = (function* () {
+  let [pre, cur] = [0, 1];
+  
+  while (true) {
+    [pre, cur] = [cur, pre + cur];
+    yield cur;
+  }
+}());
+
+for (const num of infiniteFibonacci) {
+  if (num > 1000) break;
+  console.log(num);
+}
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
