@@ -3925,6 +3925,11 @@ for (const num of infiniteFibonacci) {
 }
 ```
 
+**비동기 처리**  
+제너레이터 함수는 next 메서드와 yield 표현식을 통해 함수 호출자와 함수의 상태를 주고받을 수 있다.  
+제너레이터 함수의 특성을 활용하면 프로미스를 사용한 비동기 처리를 동기 처리처럼 구현할 수 있다.  
+프로미스의 후속 처리 메서드 then/catch/finally 없이 비동기 처리 결과를 반환하도록 구현할 수 있다.  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
