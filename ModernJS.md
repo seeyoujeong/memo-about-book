@@ -3930,6 +3930,43 @@ for (const num of infiniteFibonacci) {
 제너레이터 함수의 특성을 활용하면 프로미스를 사용한 비동기 처리를 동기 처리처럼 구현할 수 있다.  
 프로미스의 후속 처리 메서드 then/catch/finally 없이 비동기 처리 결과를 반환하도록 구현할 수 있다.  
 
+### async/await
+ES8에서는 제너레이터보다 간단하고 가독성 좋게 비동기 처리를 동기 처리처럼 동작하도록 구현할 수 있는 async/await가 도입되었다.  
+async/await는 프로미스의 후속 처리 메서드 없이 마치 동기 처리처럼 프로미스가 처리 결과를 반환하도록 구현할 수 있다.  
+
+**async 함수**  
+async 함수는 async 키워드를 사용해 정의하며 언제나 프로미스를 반환한다.  
+async 함수가 명시적으로 프로미스를 반환하지 않더라도 async 함수는 암묵적으로 반환값을 resolve하는 프로미스를 반환한다.  
+클래스의 constructor 메서드는 async 메서드가 될 수 없는데 constructor 메서드는 인스턴스를 반환해야 하지만 async 함수는 언제나 프로미스를 반환해야 한다.  
+await 키워드는 반드시 async 함수 내부에서 사용해야 한다.  
+```javascript
+async function foo(n) { return n; }
+foo.(1).then(v => console.log(v)); // 1
+
+const bar = async function (n) { return n; };
+bar(2).then(v => console.log(v)); // 2
+
+const baz = async n => n;
+baz(3).then(v => console.log(v)); // 3
+
+const obj = {
+  async foo(n) { return n; }
+};
+obj.foo(4).then(v => console.log(v)); // 4
+
+class MyClass {
+  async bar(n) { return n; }
+}
+const myClass = new MyClass();
+myClass.bar(5).then(v => console.log(v)); // 5
+
+class ErrorClass {
+  async constructor() { }
+   //  SyntaxError: Class constructor may not be an async method
+}
+const errorClass = new ErrorClass();
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
