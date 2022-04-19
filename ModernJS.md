@@ -3938,7 +3938,6 @@ async/await는 프로미스의 후속 처리 메서드 없이 마치 동기 처�
 async 함수는 async 키워드를 사용해 정의하며 언제나 프로미스를 반환한다.  
 async 함수가 명시적으로 프로미스를 반환하지 않더라도 async 함수는 암묵적으로 반환값을 resolve하는 프로미스를 반환한다.  
 클래스의 constructor 메서드는 async 메서드가 될 수 없는데 constructor 메서드는 인스턴스를 반환해야 하지만 async 함수는 언제나 프로미스를 반환해야 한다.  
-await 키워드는 반드시 async 함수 내부에서 사용해야 한다.  
 ```javascript
 async function foo(n) { return n; }
 foo.(1).then(v => console.log(v)); // 1
@@ -3965,6 +3964,34 @@ class ErrorClass {
    //  SyntaxError: Class constructor may not be an async method
 }
 const errorClass = new ErrorClass();
+```
+
+**await 키워드**  
+await 키워드는 프로미스가 settled 상태가 될 때까지 대기하다가 settled 상태가 되면 프로미스가 resolve한 처리 결과를 반환한다.  
+await 키워드는 반드시 async 함수 내부에서 사용해야 한고 프로미스 앞에서 사용해야 한다.  
+모든 프로미스에 await 키워드를 사용하는 것은 주의해야 한다.  
+```javascript
+async function foo() {
+  const a = await new Promise(resolve => setTimeout(() => resolve(1), 3000));
+  const b = await new Promise(resolve => setTimeout(() => resolve(2), 2000));
+  const c = await new Promise(resolve => setTimeout(() => resolve(3), 1000));
+  
+  console.log([a, b, c]); // [1, 2, 3]
+}
+
+foo(); // 약 6초 소요
+
+async function boo() {
+  const res = await Promise.all([
+    new Promise(resolve => setTimeout(() => resolve(1), 3000)),
+    new Promise(resolve => setTimeout(() => resolve(2), 2000)),
+    new Promise(resolve => setTimeout(() => resolve(3), 1000))
+  ]);
+  
+  console.log(res); // [1, 2, 3]
+}
+
+boo(); // 약 3초 소요
 ```
 
 ---
