@@ -3994,6 +3994,11 @@ async function boo() {
 boo(); // 약 3초 소요
 ```
 
+**에러 처러**  
+async/await에서 에러 처리는 try...catch 문을 사용할 수 있다.  
+콜백 함수를 인수로 전달받는 비동기 함수와는 달리 프로미스를 반환하는 비동기 함수는 명시적으로 호출할 수 있기 때문에 호출자가 명확하다.  
+async 함수 내에서 catch 문을 사용해서 에러 처리를 하지 않으면 async 함수는 발생한 에러를 reject하는 프로미스를 반환한다.  
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
