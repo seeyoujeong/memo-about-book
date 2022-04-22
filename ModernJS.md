@@ -4024,6 +4024,20 @@ Error 생성자 함수를 포함해 7가지의 에러 객체를 생성할 수 �
 |URIError|encodeURI 또는 decodeURI 함수에 부적절한 인수를 전달했을 때 발생하는 에러 객체|
 |EvalError|eval 함수에서 발생하는 에러 객체|
 
+### throw 문
+Error 생성자 함수로 에러 객체를 생성한다고 에러가 발생하는 것은 아니다.  
+에러 객체 생성과 에러 발생은 의미가 다르다.  
+에러를 발생시키려면 try 코드 블록에서 throw 문으로 에러 객체를 던져야 한다.  
+throw 문의 표현식은 어떤 값이라도 상관없지만 일반적으로 에러 객체를 지정한다.  
+에러를 던지면 catch 문의 에러 변수가 생성되고 던져진 에러 객체가 할당되고 catch 코드 블록이 실행되기 시작한다.  
+```javascript
+try {
+  throw new Error('something wrong');
+} catch (error) {
+  console.log(error);
+}
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
