@@ -38,6 +38,7 @@
 - [프로미스](#프로미스)
 - [제너레이터와 async/await](#generator_and_async/await)
 - [에러 처리](#에러-처리)
+- [모듈](#모듈)
 
 ## 식별자
 식별자<sup>identifier</sup>는 어떤 값을 구별해서 식별할 수 있는 고유한 이름을 말한다.  
@@ -4043,6 +4044,37 @@ try {
 throw된 에러를 캐치하지 않으면 호출자 방향으로 전파된다.  
 throw된 에러를 캐치하여 적절히 대응하면 프로그램을 강제 종료시키지 않고 코드의 실행 흐름을 복구할 수 있다.  
 throw된 에러를 어디에서도 캐치하지 않으면 프로그램은 강제 종료된다.  
+
+## 모듈
+### ES6 모듈(ESM)
+script 태그에 type="module" 어트리뷰트를 추가하면 로드된 자바스크립트 파일은 모듈로서 동작한다.  
+일반적인 자바스크립트 파일이 아닌 ESM임을 명확히 하기 위해 ESM의 파일 확장자는 mjs를 사용할 것을 권장한다.  
+ESM에는 클래스와 마찬가지로 기본적으로 strict mode가 적용된다.  
+
+**모듈 스코프**  
+ESM은 독자적인 모듈 스코프를 갖는다.  
+ESM이 아닌 일반적인 자바스크립트 파일은 script 태그로 분리해서 로드해도 독자적인 모듈 스코프를 갖지 않는다.  
+모듈 내에서 var 키워드로 선언한 변수는 더는 전역 변수가 아니며 window 객체의 프로퍼티도 아니다.  
+모듈 내에서 선언한 식별자는 모듈 외부에서 참조할 수 없다.  
+```javascript
+// foo.mjs
+var x = 'foo';
+console.log(x); // foo
+console.log(window.x); // undefined
+```
+```javascript
+// bar.mjs
+console.log(x); // ReferenceError: x is not defined
+```
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <script type="module" src="foo.mjs"></script>
+  <script type="module" src="bar.mjs"></script>
+</body>
+</html>
+```
 
 ---
 연산자<sup>operator</sup>  
