@@ -4076,6 +4076,26 @@ console.log(x); // ReferenceError: x is not defined
 </html>
 ```
 
+**export 키워드**  
+모듈 내부에서 선언한 식별자를 외부에 공개하여 다른 모듈들이 재사용할 수 있게 하려면 export 키워드를 사용한다.  
+export 키워드는 선언문 앞에 사용하고 변수, 함수, 클래스 등 모든 식별자를 export할 수 있다.  
+export할 대상을 하나의 객체로 구성하여 한 번에 export할 수도 있다.  
+```javascript
+export const pi = Math.PI;
+
+function square(x) {
+  return x * x;
+}
+
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+export { square, Person };
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
