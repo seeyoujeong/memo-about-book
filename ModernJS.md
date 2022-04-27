@@ -4096,6 +4096,46 @@ class Person {
 export { square, Person };
 ```
 
+**import 키워드**  
+다른 모듈에서 공개한 식별자를 자신의 모듈 스코프 내부로 로드하려면 import 키워드를 사용한다.  
+다른 모듈이 export한 식별자 이름으로 import해야 하며 ESM의 경우 파일 확장자를 생략할 수 없다.  
+모듈이 export한 식별자 이름을 일일이 지정하지 않고 하나의 이름으로 한 번에 import할 수도 있다.  
+모듈이 export한 식별자 이름을 변경하여 import할 수도 있다.  
+```javascript
+import { pi, square, Person } from './lib.mjs';
+// import * as lib from './lib.mjs';
+// import { pi as PI, square as sq, Person as P } from './lib.mjs';
+
+console.log(pi);
+//console.log(lib.pi);
+//console.log(PI);
+
+console.log(square(10));
+// console.log(lib.square(10));
+// console.log(sq(10));
+
+console.log(new Person('Jeong'));
+// console.log(new lib.Person('Jeong'));
+// console.log(new P('Jeong'));
+```
+
+모듈에서 하나의 값만 export한다면 default 키워드를 사용할 수 있다.  
+default 키워드를 사용하는 경우 기본적으로 이름 없이 하나의 값을 export한다.  
+default 키워드를 사용하는 경우 var, let, const 키워드는 사용할 수 없다.  
+default 키워드와 함께 export한 모듈은 {} 없이 임의의 이름으로 import한다.  
+```javascript
+// test.mjs
+export default x => x * x;
+
+// export default const foo = () => {};
+// => SyntaxError: Unexpected token 'const'
+```
+```javascript
+import square from './test.mjs';
+
+console.log(square(3);
+```
+
 ---
 연산자<sup>operator</sup>  
 피연산자<sup>operand</sup>  
