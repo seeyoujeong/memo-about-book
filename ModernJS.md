@@ -793,7 +793,11 @@ String 객체의 메서드는 언제나 새로운 문자열을 반환한다.
 심벌 값은 암묵적으로 문자열이나 숫자 타입(불리언 타입은 예외)으로 변환되지 않는다.  
 심벌 값을 프로퍼티 키로 사용하여 생성한 프로퍼티는 for ... in 문이나 Object.keys, Object.getOwnPropertyNames 메서드로 찾을 수 없다.  
 ```javascript
-const mySymbol = Symbol();
+const mySymbol = Symbol('name');
+
+console.log(mySymbol.description); // name
+console.log(mySymbol.toString()); // Symbol(name)
+
 // 인수로 전달받은 문자열은 생성된 심벌 값에 대한 설명으로 디버깅 용도로만 사용된다.
 const mySymbol1 = Symbol('mySymbol');
 const mySymbol2 = Symbol('mySymbol');
@@ -813,11 +817,19 @@ Array.prototype[Symbol.for('sum')] = function () {
 [1, 2][Symbol.for('sum')]();
 ```
 
-**Symbol.for 메서드**: 인수로 전달받은 문자열을 키로 사용하여 키와 심벌 값의 쌍들이 저장되어 있는 전역 심벌 레지스트리<sup>global symbol registry</sup>에서 해당 키와 일치하는 심벌 값을 검색한다.  
+**Symbol.for 메서드**  
+인수로 전달받은 문자열을 키로 사용하여 키와 심벌 값의 쌍들이 저장되어 있는 전역 심벌 레지스트리<sup>global symbol registry</sup>에서 해당 키와 일치하는 심벌 값을 검색한다.  
+Symbol.for 메서드를 사용하면 애플리케이션 전역에서 중복되지 않는 유일무이한 상수인 심벌 값을 단 하나만 생성하여 전역 심벌 레지스트리를 통해 공유할 수 있다.  
 - 검색에 성공하면 새로운 심벌 값을 생성하지 않고 검색된 심벌 값을 반환한다.  
 - 검색에 실패하면 새로운 심벌 값을 생성하여 Symbol.for 메서드의 인수로 전달된 키로 전역 심벌 레지스트리에 저장한 후, 생성된 심벌 값을 반환한다.  
 
-**Symbol.keyFor 메서드**: 전역 심벌 레지스트리에 저장된 심벌 값의 키를 추출할 수 있다.  
+**Symbol.keyFor 메서드**  
+전역 심벌 레지스트리에 저장된 심벌 값의 키를 추출할 수 있다.  
+```javascript
+const s1 = Symbol.for('mySymbol');
+
+Symbol.keyFor(s1); // mySymbol
+```
 
 ## Iterable
 ### 이터레이션 프로토콜<sup>iteration protocol</sup>
