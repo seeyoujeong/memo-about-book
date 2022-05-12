@@ -423,7 +423,38 @@ this는 객체 자신의 프로퍼티나 메서드를 참조하기 위한 자기
 
 ### Function.prototype.apply/call/bind 메서드
 apply와 call 메서드의 본질적인 기능은 함수를 호출하는 것이다.  
+apply와 call 메서드의 대표적인 용도는 arguments 객체와 같은 유사 배열 객체에 배열 메서드를 사용하는 경우다.  
+```javascript
+function getThisBinding() {
+  console.log(arguments);
+  return this;
+}
+
+// this로 사용할 객체
+const thisArg = { a: 1 };
+
+console.log(getThisBinding.apply(thisArg, [1, 2, 3]));
+// Arguments(3) [1, 2, 3, callee: f, Symbol(Symbol.iterator): f]
+// {a: 1}
+
+console.log(getThisBinding.call(thisArg, 1, 2, 3));
+// Arguments(3) [1, 2, 3, callee: f, Symbol(Symbol.iterator): f]
+// {a: 1}
+```
+
 bind 메서드는 apply와 call 메서드와 달리 함수를 호출하지 않고 this로 사용할 객체만 전달한다.  
+bind 메서드는 메서드의 this와 메서드 내부의 중첩 함수 또는 콜백 함수의 this가 불일치하는 문제를 해결하기 위해 유용하게 사용된다.  
+```javascript
+function getThisBinding() {
+  return this;
+}
+
+const thisArg = { a: 1 };
+
+console.log(getThisBinding.bind(thisArg)); // getThisBinding
+// 명시적으로 호출해야 한다.
+console.log(getThisBinding.bind(thisArg)()); // {a: 1}
+```
 
 **new.target**: constructor인 모든 함수 내부에 암묵적인 지역 변수와 같이 사용되며 메타 프로퍼티라고 부른다.  
 this 바인딩은 전역 환경 레코드와 함수 환경 레코드에만 존재한다.  
