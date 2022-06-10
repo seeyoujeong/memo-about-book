@@ -3,6 +3,7 @@
 ## 목차
 - [리액트 시작](#리액트-시작)  
 - [JSX](#jsx)
+- [컴포넌트](#컴포넌트)
 
 ## 리액트 시작
 리액트는 자바스크립트 라이브러리로 사용자 인터페이스를 만드는 데 사용합니다.  
@@ -43,3 +44,85 @@ JSX는 편리한 문법이지만, 올바르게 사용하려면 몇 가지 규칙
 - JSX에서는 class가 아닌 className으로 설정해 주어야 합니다.  
 - JSX에서는 태그를 닫지 않으면 오류가 발생합니다.  
 - JSX 내부에서 주석을 작성할 때는 {/\* ⋯ \*/}와 같은 형식으로 작성합니다.
+
+## 컴포넌트
+리액트를 사용하여 애플리케이션의 인터페이스를 설계할 때 사용자가 볼 수 있는 요소는 여러 가지 컴포넌트로 구성되어 있습니다.  
+컴포넌트의 기능은 단순한 템플릿 이상입니다. 데이터가 주어졌을 때 이에 맞추어 UI를 만들어 주는 것은 물론이고, 라이프사이클 API를 이용하여 컴포넌트가 화면에서 나타날 때, 사라질 때, 변화가 일어날 때 주어진 작업들을 처리할 수 있으며, 임의 메서드를 만들어 특별한 기능을 붙여 줄 수 있습니다.  
+
+**클래스형 컴포넌트**  
+```javascript
+import { Component } from 'react';
+
+class App extends Component {
+  render() {
+    const name = 'react';
+    return <div className="react">{name}</div>
+  }
+}
+```
+
+**모듈 내보내기<sup>export</sup>**  
+```javascript
+export default MyComponent;
+```
+
+**모듈 불러오기<sup>import</sup>**  
+```javascript
+import MyComponent from './MyComponent';
+```
+
+**props**  
+props는 properties를 줄인 표현으로 컴포넌트 속성을 설정할 때 사용하는 요소입니다.  
+props 값은 해당 컴포넌트를 불러와 사용하는 부모 컴포넌트에서 설정할 수 있습니다.  
+props 값은 컴포넌트 함수의 파라미터로 받아 와서 사용할 수 있습니다.  
+```javascript
+const MyComponent = props => {
+  return (
+    <div>{props.name}</div>
+  );
+};
+```
+defaultProps를 설정하면 props 값을 따로 지정하지 않았을 때 보여 줄 기본값을 설정할 수 있습니다.  
+children은 컴포넌트 태그 사이의 내용을 보여 주는 props입니다.  
+비구조화 할당 문법을 통해 props를 사용하면 작업을 더 편하게 할 수 있습니다.  
+propTypes를 사용하면 컴포넌트의 필수 props를 지정(isRequired)하거나 props의 타입을 지정할 수 있습니다.  
+```javascript
+import PropTypes from 'prop-types';
+
+// destructuring assignment
+const MyComponent = ({ name, number, children }) => {
+  return (
+    <div>{name} {number} {children}</div>
+  );
+};
+
+MyComponent.defaultProps = {
+  name: 'default name'
+};
+
+MyComponent.propTypes = {
+  name: PropTypes.string
+  number: PropTypes.number.isRequired
+};
+```
+```javascript
+const App = () => {
+  return (
+    <MyComponent name="React" number={1}>
+      react
+    </MyComponent>
+  );
+};
+```
+클래스형 컴포넌트에서 props를 사용할 때는 render 함수에서 this.props를 조회하면 됩니다.  
+```javascript
+class MyComponent extends Component {
+  render() {
+    const { name, number, children } = this.props;
+    return (
+    <div>{name} {number} {children}</div>
+    );
+  } 
+}
+```
+    
