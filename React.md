@@ -10,25 +10,25 @@
 오직 V(View)만 신경 쓰는 라이브러리입니다.  
 리액트 프로젝트에서 특정 부분이 어떻게 생길지 정하는 선언체를 컴포넌트(component)라고 합니다.  
 
-**초기 렌더링**  
+### 초기 렌더링  
 어떤 UI 관련 프레임워크, 라이브러리를 사용하든지 간에 맨 처음 어떻게 보일지를 정하는 초기 렌더링이 필요합니다.  
 리액트에서는 이를 다루는 render 함수가 있습니다. 이 함수는 컴포넌트가 어떻게 생겼는지 정의하는 역할을 합니다. 뷰가 어떻게 생겼고 어떻게 작동하는지에 대한 정보를 지닌 객체를 반환합니다.  
 최상위 컴포넌트의 렌더링 작업이 끝나면 지니고 있는 정보들을 사용하여 HTML 마크업을 만들고, 이를 우리가 정하는 실제 페이지의 DOM 요소 안에 주입합니다.  
 
-**조화 과정**  
+### 조화 과정 
 리액트에서 뷰를 업데이트할 때는 "업데이트 과정을 거친다"라고 하기보다는 "조화 과정(reconciliation)을 거친다"라고 하는 것이 더 정확한 표현입니다. 컴포넌트에서 데이터에 변화가 있을 때 우리가 보기에는 변화에 따라 뷰가 변형되는 것처럼 보이지만, 사실은 새로운 요소로 갈아 끼우기 때문입니다. 이 작업 또한 render 함수가 맡아서 합니다.  
 컴포넌트는 데이터를 업데이트했을 때 단순히 업데이트한 값을 수정하는 것이 아니라, 새로운 데이터를 가지고 render 함수를 또 다시 호출합니다.  
 render 함수가 반환하는 결과를 곧바로 DOM에 반영하지 않고, 이전에 render 함수가 만들었던 컴포넌트 정보와 현재 render 함수가 만든 컴포넌트 정보를 비교합니다.  
 자바스크립트를 사용하여 두 가지 뷰를 최소한의 연산으로 비교한 후, 둘의 차이를 알아내 최소한의 연산으로 DOM 트리를 업데이트합니다.  
 
-**Virtual DOM**  
+### Virtual DOM
 Virtual DOM을 사용하면 실제 DOM에 접근하여 조작하는 대신, 이를 추상화한 자바스크립트 객체를 구성하여 사용합니다.  
 리액트에서 데이터가 변하여 웹 브라우저에 실제 DOM을 업데이트할 때는 세 가지 절차를 밟습니다.  
 1. 데이터를 업데이트하면 전체 UI를 Virtual DOM에 리렌더링합니다.  
 2. 이전 Virtual DOM에 있던 내용과 현재 내용을 비교합니다.  
 3. 바뀐 부분만 실제 DOM에 적용합니다.  
 
-**번들러<sup>bundler</sup>**  
+### 번들러<sup>bundler</sup> 
 번들러 도구를 사용하면 import로 모듈을 불러왔을 때 불러온 모듈을 모두 합쳐서 하나의 파일을 생성해 줍니다. 또 최적화 과정에서 여러 개의 파일로 분리될 수도 있습니다.  
 대표적인 번들러로 웹팩, Parcel, browserify라는 도구들이 있습니다. 웹팩을 사용하면 SVG 파일과 CSS 파일도 불러와서 사용할 수 있습니다.  
 
@@ -49,9 +49,9 @@ JSX는 편리한 문법이지만, 올바르게 사용하려면 몇 가지 규칙
 리액트를 사용하여 애플리케이션의 인터페이스를 설계할 때 사용자가 볼 수 있는 요소는 여러 가지 컴포넌트로 구성되어 있습니다.  
 컴포넌트의 기능은 단순한 템플릿 이상입니다. 데이터가 주어졌을 때 이에 맞추어 UI를 만들어 주는 것은 물론이고, 라이프사이클 API를 이용하여 컴포넌트가 화면에서 나타날 때, 사라질 때, 변화가 일어날 때 주어진 작업들을 처리할 수 있으며, 임의 메서드를 만들어 특별한 기능을 붙여 줄 수 있습니다.  
 
-**클래스형 컴포넌트**  
+### 클래스형 컴포넌트
 ```javascript
-import { Component } from 'react';
+import React, { Component } from 'react';
 
 class App extends Component {
   render() {
@@ -61,17 +61,17 @@ class App extends Component {
 }
 ```
 
-**모듈 내보내기<sup>export</sup>**  
+### 모듈 내보내기<sup>export</sup>  
 ```javascript
 export default MyComponent;
 ```
 
-**모듈 불러오기<sup>import</sup>**  
+### 모듈 불러오기<sup>import</sup>
 ```javascript
 import MyComponent from './MyComponent';
 ```
 
-**props**  
+### props
 props는 properties를 줄인 표현으로 컴포넌트 속성을 설정할 때 사용하는 요소입니다.  
 props 값은 해당 컴포넌트를 불러와 사용하는 부모 컴포넌트에서 설정할 수 있습니다.  
 props 값은 컴포넌트 함수의 파라미터로 받아 와서 사용할 수 있습니다.  
@@ -126,3 +126,117 @@ class MyComponent extends Component {
 }
 ```
     
+### state
+리액트에서 state는 컴포넌트 내부에서 바뀔 수 있는 값을 의미합니다.  
+두 가지 종류의 state가 있는데 하나는 클래스형 컴포넌트가 지니고 있는 state이고, 다른 하나는 함수형 컴포넌트에서 useState라는 함수를 통해 사용하는 state입니다.  
+
+**클래스형 컴포넌트의 state**  
+컴포넌트에 stat를 설정할 때는 다음과 같이 constructor 메서드를 작성하여 설정합니다.  
+클래스형 컴포넌트에서 constructor를 작성할 때는 반드시 super(props)를 호출해 주어야 합니다.  
+컴포넌트의 state는 객체 형식이어야 합니다.  
+render 함수에서 현재 state를 조회할 때는 this.state를 조회하면 됩니다.  
+this.setState를 사용하여 state에 새로운 값을 넣을 수 있습니다.  
+state 객체 안에는 여러 값이 있을 수 있습니다.  
+```javascript
+constructor(props) {
+  super(props);
+  this.state = {
+    number: 0,
+    fixedNumber: 0
+  };
+}
+render() {
+  const { number } = this.state;
+  return (
+    <div>
+      <h1>{number}</h1>
+      <h2>{fixedNumber}</h2>
+      <button
+        onClick={() => {
+          this.setState({ number: number + 1 });
+        }}
+      >
+        +1
+      </button>
+    </div>
+  );
+}
+```
+constructor 메서드를 선언하지 않고도 state 초깃값을 설정할 수 있습니다.  
+```javascript
+state = {
+  number: 0,
+  fixedNumber: 0
+};
+render() { 
+  const { number, fixedNumber } = this.state;
+  return (...);
+}
+```
+this.setState를 사용하여 state 값을 업데이트할 때는 상태가 비동기적으로 업데이트됩니다. 그래서 this.setState를 두 번 호출해도 state 값이 바로 바뀌지 않습니다.  
+이에 대한 해결책은 this.setState를 사용할 때 객체 대신에 함수를 인자로 넣어 주는 것입니다.  
+함수의 파라미터에 prevState는 기존 상태이고, props는 현재 지니고 있는 props를 가리킵니다. 만약 업데이트하는 과정에서 props가 필요하지 않다면 생략해도 됩니다.  
+```javascript
+<button
+  onClick={() => {
+    this.setState(prevState => {
+      return {
+        number: prevState.number + 1
+      }
+    });
+    this.setState(prevState => ({
+      number: prevState.number + 1
+    }));
+  }}
+>
+  +1
+</button>
+```
+setState를 사용하여 값을 업데이트하고 난 다음에 특정 작업을 하고 싶을 때는 setState의 두 번째 파라미터로 콜백 함수를 등록하여 작업을 처리할 수 있습니다.  
+```javascript
+<button
+  onClick={() => {
+    this.setState(
+      {
+        number: number + 1
+      },
+      () => {
+        console.log('call setState');
+        console.log(this.state);
+      }
+    );
+  }}
+>
+  +1
+</button>
+```  
+<br>  
+
+**함수형 컴포넌트에서 useState 사용하기**  
+useState 함수의 인자에는 상태의 초깃값을 넣어 줍니다. 반드시 초깃값은 객체가 아니어도 상관없습니다.  
+함수를 호출하면 배열이 반환되는데 배열의 첫 번째 원소는 현재 상태이고, 두 번째 원소는 상태를 바꾸어 주는 함수입니다. 배열 비구조화 할당을 통해 이름을 자유롭게 정해 줄 수 있습니다.  
+useState는 한 컴포넌트에서 여러 번 사용해도 상관없습니다.  
+```javascript
+import React, { useState } from 'react';
+
+const Say = () => {
+  const [message, setMessage] = useState('');
+  const onClickEnter = () => setMessage('Hi!');
+  const onClickLeave = () => setMessage('Bye!');
+  
+  const [color, setColor] = useState('black');
+  
+  return (
+    <div>
+      <button onClick={onClickEnter}>enter</button>
+      <button onClick={onClickLeave}>leave</button>
+      <h1 style={{ color }}>{message}</h1>
+      <button style={{ color: 'red' }} onClick={() => setColor('red')}>red</button>
+      <button style={{ color: 'green' }} onClick={() => setColor('green')}>green</button>
+      <button style={{ color: 'blue' }} onClick={() => setColor('blue')}>blue</button>
+    </div>
+  );
+};
+
+export default Say;
+```
