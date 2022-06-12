@@ -410,3 +410,40 @@ handleKeyPress = (e) => {
       />
 (...)
 ```
+
+**함수형 컴포넌트로 구현해 보기**
+```javascript
+(...)
+const [username, setUsername] = useState('');
+const [message, setMessage] = useState('');
+const onChangeUsername = e => setUsername(e.target.value);
+const onChangeMessage = e => setMessage(e.target.value);
+const onClick = () => {
+  alert(username + ': ' + message);
+  setUsername('');
+  setMessage('');
+};
+const onKeyPress = e => {
+  if (e.key === 'Enter') {
+    onClick();
+  }
+};
+(...)
+```
+이번에는 useState를 통해 사용하는 상태에 문자열이 아닌 객체를 넣어 보겠습니다.  
+```javascript
+(...)
+const [form, setForm] = useState({
+  username: '',
+  message: ''
+});
+const { username, message } = form;
+const onChange = e => {
+  const nextForm = {
+    ...form,
+    [e.target.name]: e.target.value
+  };
+  setForm(nextForm);
+};
+(...)
+```
