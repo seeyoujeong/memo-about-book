@@ -5,6 +5,7 @@
 - [JSX](#jsx)
 - [컴포넌트](#컴포넌트)
 - [이벤트 핸들링](#이벤트-핸들링)
+- [ref](#ref)
 
 ## 리액트 시작
 리액트는 자바스크립트 라이브러리로 사용자 인터페이스를 만드는 데 사용합니다.  
@@ -139,6 +140,7 @@ render 함수에서 현재 state를 조회할 때는 this.state를 조회하면 
 this.setState를 사용하여 state에 새로운 값을 넣을 수 있습니다.  
 state 객체 안에는 여러 값이 있을 수 있습니다.  
 ```javascript
+(...)
 constructor(props) {
   super(props);
   this.state = {
@@ -162,9 +164,11 @@ render() {
     </div>
   );
 }
+(...)
 ```
 constructor 메서드를 선언하지 않고도 state 초깃값을 설정할 수 있습니다.  
 ```javascript
+(...)
 state = {
   number: 0,
   fixedNumber: 0
@@ -173,11 +177,13 @@ render() {
   const { number, fixedNumber } = this.state;
   return (...);
 }
+(...)
 ```
 this.setState를 사용하여 state 값을 업데이트할 때는 상태가 비동기적으로 업데이트됩니다. 그래서 this.setState를 두 번 호출해도 state 값이 바로 바뀌지 않습니다.  
 이에 대한 해결책은 this.setState를 사용할 때 객체 대신에 함수를 인자로 넣어 주는 것입니다.  
 함수의 파라미터에 prevState는 기존 상태이고, props는 현재 지니고 있는 props를 가리킵니다. 만약 업데이트하는 과정에서 props가 필요하지 않다면 생략해도 됩니다.  
 ```javascript
+(...)
 <button
   onClick={() => {
     this.setState(prevState => {
@@ -192,9 +198,11 @@ this.setState를 사용하여 state 값을 업데이트할 때는 상태가 비�
 >
   +1
 </button>
+(...)
 ```
 setState를 사용하여 값을 업데이트하고 난 다음에 특정 작업을 하고 싶을 때는 setState의 두 번째 파라미터로 콜백 함수를 등록하여 작업을 처리할 수 있습니다.  
 ```javascript
+(...)
 <button
   onClick={() => {
     this.setState(
@@ -210,6 +218,7 @@ setState를 사용하여 값을 업데이트하고 난 다음에 특정 작업�
 >
   +1
 </button>
+(...)
 ```  
 <br>  
 
@@ -307,8 +316,7 @@ render() {
 <br>
 
 **임의 메서드 만들기**  
-지금까지 이벤트를 처리할 때 랜더링을 하는 동시에 함수를 만들어서 전달해 주었습니다. 이 방법 대신 함수를 미리 준비하여 전달하는 방법도 있습니다.  
-성능상으로는 차이가 거의 없지만, 가독성은 훨씬 높습니다.  
+지금까지 이벤트를 처리할 때 랜더링을 하는 동시에 함수를 만들어서 전달해 주었습니다. 이 방법 대신 함수를 미리 준비하여 전달하는 방법도 있습니다. 성능상으로는 차이가 거의 없지만, 가독성은 훨씬 높습니다.  
 ```javascript
 (...)
 constructor(props) {
@@ -356,6 +364,7 @@ handleClick = () => {
 **input 여러 개 다루기**  
 input이 여러 개일 때는 event 객체를 활요하는 것입니다. e.target.name 값을 사용하여 state를 설정하면 쉽게 해결할 수 있습니다.  
 ```javascript
+(...)
 state = {
   username: '',
   message: ''
@@ -447,3 +456,47 @@ const onChange = e => {
 };
 (...)
 ```
+
+## ref
+ref는 HTML에서 id를 사용하여 DOM에 이름을 다는 것처럼 리액트 프로젝트 내부에서 DOM에 이름을 다는 방법입니다.  
+ref는 DOM을 꼭 직접적으로 건드려야 할 때 사용해야 합니다. 아래는 state만으로 해결할 수 없어서 ref를 사용해야 하는 상황입니다.
+- 특정 input에 포커스 주기
+- 스크롤 박스 조작하기
+- Canvas 요소에 그림 그리기 등
+
+**콜백 함수를 통한 ref 설정**  
+ref를 만드는 가장 기본적인 방법은 콜백 함수를 사용하는 것입니다. ref를 달고자 하는 요소에 ref라는 콜백 함수를 props로 전달해 주면 됩니다. 이 콜백 함수는 ref 값을 파라미터로 전달받습니다. 그리고 함수 내부에서 파라미터로 받은 ref를 컴포넌트의 멤버 변수로 설정해 줍니다.  
+```javascript
+<input ref={(ref) => {this.input=ref}} />
+```
+이렇게 하면 앞으로 this.input은 input 요소의 DOM을 가리킵니다. ref의 이름은 원하는 것으로 자유롭게 지정할 수 있습니다. DOM 타입과 관계없이 this.jeong = ref처럼 마음대로 지정합니다.  
+
+**createRef를 통한 ref 설정**  
+ref를 만드는 또 다른 방법은 리액트에 내장되어 있는 createRef라는 함수를 사용하는 것입니다.  
+createRef를 사용하여 ref를 만들려면 우선 컴포넌트 내부에서 멤버 변수로 React.createRef()를 담아 주어야 합니다. 그리고 해당 멤버 변수를 ref를 달고자 하는 요소에 ref props로 넣어 주면 ref 설정이 완료됩니다.  
+```javascript
+(...)
+input = React.createRef();
+
+handleFocus = () => {
+  this.input.current.focus();
+}
+
+render() {
+  return (
+    <div>
+      <input ref={this.input} />
+    </div>
+  );
+}
+(...)
+```
+설정한 뒤 나중에 ref를 설정해 준 DOM에 접근하려면 this.input.current를 조회하면 됩니다. 콜백 함수를 사용할 때와 다른 점은 이렇게 뒷부분에 .current를 넣어 주어야 한다는 것입니다.  
+**컴포넌트에 ref 달기**  
+리액트에서는 컴포넌트에도 ref를 달 수 있습니다. 이 방법은 주로 컴포넌트 내부에 있는 DOM을 컴포넌트 외부에서 사용할 때 씁니다.
+```javascript
+<MyComponent
+  ref={(ref) => {this.myComponent=ref}}
+/>
+```
+이렇게 하면 MyComponent 내부의 메서드 및 멤버 변수에도 접근할 수 있습니다. 즉, 내부의 ref에도 접근할 수 있습니다.  
