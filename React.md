@@ -6,6 +6,7 @@
 - [컴포넌트](#컴포넌트)
 - [이벤트 핸들링](#이벤트-핸들링)
 - [ref](#ref)
+- [컴포넌트 반복](#컴포넌트-반복)
 
 ## 리액트 시작
 리액트는 자바스크립트 라이브러리로 사용자 인터페이스를 만드는 데 사용합니다.  
@@ -501,3 +502,66 @@ render() {
 />
 ```
 이렇게 하면 MyComponent 내부의 메서드 및 멤버 변수에도 접근할 수 있습니다. 즉, 내부의 ref에도 접근할 수 있습니다.  
+
+## 컴포넌트 반복
+문자열로 구성된 배열을 선언하고 그 배열 값을 사용하여 <li>⋯</li> JSX 코드로 된 배열을 새로 생성한 후 nameList라는 변수에 담습니다.  
+```
+(...)
+const names = ['snowman', 'ice', 'snow', 'wind'];
+const nameList = names.map(name => <li>{name}</li>);
+return <ul>{nameList}</ul>;
+(...)
+```
+위와 같이 작성하면 "key" prop이 없다는 경고 메시지를 표시합니다.  
+
+**key**  
+리액트에서는 key는 컴포넌트 배열을 랜더링했을 때 어떤 원소에 변동이 있었는지 알아내려고 사용합니다. key가 없을 때는 Virtual DOM을 비교하는 과정에서 리스트를 순차적으로 비교하면서 변화를 감지합니다. 하지만 key가 있다면 이 값을 사용하여 어떤 변화가 일어났는지 더욱 빠르게 알아낼 수 있습니다.  
+key 값을 설정할 때는 map 함수의 인자로 전달되는 함수 내부에서 컴포넌트 props를 설정하듯이 설정하면 됩니다. key 값은 언제나 유일해야 합니다.  
+```javascript
+(...)
+const nameList = names.map((name, index) => <li key={index}>{name}</li>;
+(...)
+```
+고유한 값이 없을 때만 index 값을 key로 사용해야 합니다. index를 key로 사용하면 배열이 변경될 때 효율적으로 리렌더링하지 못합니다.  
+
+**데이터 추가/제거 기능 구현하기**  
+래액트에서 상태를 업데이트할 때는 기존 상태를 그대로 두면서 새로운 값을 상태로 설정해야 합니다. 이를 불변성 유지라고 합니다. 불변성 유지를 해 주어야 나중에 리액트 컴포넌트의 성능을 최적화할 수 있습니다.  
+```
+(...)
+const [names, setNames] = useState([
+  { id: 1, text: 'snowman' },
+  { id: 2, text: 'ice' },
+  { id: 3, text: 'snow' },
+  { id: 4, text: 'wind' }
+]);
+const [inputText, setInputText] = useState('');
+const [nextId, setNextId] = useState(5);
+
+const onChange = e => setInputText(e.target.value);
+const onClick = () => {
+  const nextNames = names.concat({
+    id: nextId,
+    text: inputText
+  });
+  setNextId(nextId + 1);
+  setNames(nextNames);
+  setInputText('');
+};
+const onRemove = id => {
+  const nextNames = names.filter(name => name.id !== id);
+  setNames(nextNames);
+};
+const namesList = names.map(name => (
+  <li key={name.id} onDoubleClick={() => onRemove(name.id)}>
+    {name.text}
+  </li>
+));
+return (
+  <>
+    <input value={inputText} onChange={onChange} />
+    <button onClick={onClick}>추가</button>
+    <ul>{namesList}</ul>
+  </>
+);
+(...)
+```
