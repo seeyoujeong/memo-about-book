@@ -526,7 +526,7 @@ const nameList = names.map((name, index) => <li key={index}>{name}</li>;
 
 **데이터 추가/제거 기능 구현하기**  
 래액트에서 상태를 업데이트할 때는 기존 상태를 그대로 두면서 새로운 값을 상태로 설정해야 합니다. 이를 불변성 유지라고 합니다. 불변성 유지를 해 주어야 나중에 리액트 컴포넌트의 성능을 최적화할 수 있습니다.  
-```
+```javascript
 (...)
 const [names, setNames] = useState([
   { id: 1, text: 'snowman' },
