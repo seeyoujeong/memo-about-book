@@ -8,6 +8,7 @@
 - [ref](#ref)
 - [컴포넌트 반복](#컴포넌트-반복)
 - [컴포넌트의 라이프사이클 메서드](#컴포넌트의-라이프사이클-메서드)
+- [Hooks](#hooks)
 
 ## 리액트 시작
 리액트는 자바스크립트 라이브러리로 사용자 인터페이스를 만드는 데 사용합니다.  
@@ -595,3 +596,51 @@ DOM이 생성되고 웹 브라우저상에 나타나는 것을 마운트<sup>mou
 **언마운트**  
 컴포넌트를 DOM에서 제거하는 것을 언마운트<sup>unmount</sup>라고 합니다.  
 - componentWillUnmount: 컴포넌트가 웹 브라우저상에서 사라지기 전에 호출하는 메서드입니다.  
+
+## Hooks
+Hooks는 함수형 컴포넌트에서 다양한 작업을 할 수 있게 해 줍니다.  
+
+### useState
+useState는 가장 기본적인 Hook이며, 함수 컴포넌트에서 가변적인 상태를 지닐 수 있게 해줍니다. 
+```javascript
+const [value, setValue] = useState(0);
+```
+useSate 함수의 파라미터에는 상태의 기본값을 넣어 줍니다. 이 함수가 호출되면 배열을 반환하고 그 배열의 첫 번째 원소는 상태 값, 두 번째 원소는 상태를 설정하는 함수입니다. 이 함수에 파라미터를 넣어서 호출하면 전달받은 파라미터로 값이 바뀌고 컴포넌트가 정상적으로 리렌더링됩니다.   
+
+### useEffect
+useEffect는 리액트 컴포넌트가 렌더링될 때마다 특정 작업을 수행하도록 설정할 수 있는 Hook입니다. 클래스형 컴포넌트의 componentDidMount와 componentDidUpdate를 합친 형태로 보아도 무방합니다.  
+```javascript
+useEffect(() => {
+  console.log('rendering complited');
+});
+```
+<br>
+
+**마운트될 때만 실행하고 싶을 때**  
+useEffect에서 설정한 함수를 컴포넌트가 화면에 맨 처음 렌더링될 때만 실행하고, 업데이트될 때는 실행하지 않으려면 함수의 두 번째 파라미터로 비어 있은 배열을 넣어 주면 됩니다.  
+```javascript
+useEffect(() => {
+  console.log('run only when mounted');
+}, []);
+```
+<br>
+
+**특정 값이 업데이트될 때만 실행하고 싶을 때**  
+useEffect를 사용할 때, 특정 값이 변경될 때만 호출하고 싶을 경우에는 useEffect의 두 번째 파라미터로 전달되는 배열 안에 검사하고 싶은 값을 넣어 주면 됩니다. 배열 안에는 useState를 통해 관리하고 있는 상태를 넣어 주어도 되고, props로 전달받은 값을 넣어 주어도 됩니다.  
+```javascript
+useEffect(() => {
+  console.log(name);
+}, [name]);
+```
+
+**뒷정리하기**  
+컴포넌트가 언마운트되기 전이나 업데이트되기 직전에 어떠한 작업을 수행하고 싶다면 useEffect에서 뒷정리<sup>cleanup</sup> 함수를 반환해 주어야 합니다.  
+```javascript
+useEffect(() => {
+  console.log('effect');
+  return () => {
+    console.log('cleanup');
+  };
+});
+```
+오직 언마운트될 때만 뒷정리 함수를 호출하고 싶다면 useEffect 함수의 두 번째 파라미터에 비어 있는 배열을 넣으면 됩니다.  
