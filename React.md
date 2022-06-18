@@ -688,3 +688,34 @@ const Counter = () => {
 export default Counter;
 ```
 useReducer의 첫 번째 파라미터에는 리듀서 함수를 넣고, 두 번째 파라미터에는 해당 리듀서의 기본값을 넣어 줍니다. 이 Hook을 사용하면 현재 가리키고 있는 상태인 state 값과 액션을 발생시키는 함수인 dispatch 함수를 받아 옵니다. dispatch(action)과 같은 형태로, 함수 안에 파라미터로 액션 값을 넣어 주면 리듀서 함수가 호출되는 구조입니다.  
+
+### useMemo
+useMemo를 사용하면 함수형 컴포넌트 내부에서 발생하는 연산을 최적화할 수 있습니다. 렌더링하는 과정에서 특정 값이 바뀌었을 때만 연산을 실행하고, 원하는 값이 바뀌지 않았다면 이전에 연산했던 결과를 다시 사용하는 방식입니다.  
+```javascript
+(...)
+const getAverage = numbers => {
+  if (number.length === 0) return 0;
+  const sum = numbers.reduce((a, b) => a + b, 0);
+  return sum / numbers.length;
+};
+(...)
+const avg = useMemo(() => getAverage(list), [list]);
+(...)
+```
+
+### useCallback
+useCallback은 useMemo와 상당히 비슷한 함수입니다. 이 Hook을 사용하면 만들어 놨던 함수를 재사용하여 렌더링 성능을 최적화할 수 있습니다.  
+useCallback의 첫 번째 파라미터에는 생성하고 싶은 함수를 넣고, 두 번째 파라미터에는 배열을 넣으면 됩니다. 이 배열에는 어떤 값이 바뀌었을 때 함수를 새로 생성해야 하는지 명시해야 합니다. 함수 내부에서 상태 값에 의존해야 할 때는 그 값을 반드시 두 번째 파라미터 안에 포함시켜 주어야 합니다.  
+```javascript
+(...)
+const onChange = useCallback(e => {
+  setNumber(e.target.value);
+}, []);
+
+const onInsert = useCallback(() => {
+  const nextList = list.concat(parseInt(number));
+  setList(nextList);
+  setNumber('');
+}, [number, list]);
+(...)
+```
