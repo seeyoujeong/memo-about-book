@@ -719,3 +719,52 @@ const onInsert = useCallback(() => {
 }, [number, list]);
 (...)
 ```
+
+### useRef
+useRef Hook은 함수형 컴포넌트에서 ref를 쉽게 사용할 수 있도록 해 줍니다.  
+useRef를 사용하여 ref를 설정하면 useRef를 통해 만든 객체 안의 current 값이 실제 엘리먼트를 가리킵니다.
+```javascript
+(...)
+const inputEl = useRef(null);
+(...)
+const onInsert = 
+(...)
+  inputEl.current.focus();
+(...)
+  <input value={number} onChange={onChange} ref={inputEl} />
+(...)
+```
+추가로 컴포넌트 로컬 변수를 사용해야 할 때도 useRef를 활용할 수 있습니다. 여기서 로컬 변수란 렌더링과 상관없이 바뀔 수 있는 값을 의미합니다.  
+ref 안의 값이 바뀌어도 컴포넌트가 렌더링되지 않는다는 점에는 주의해야 합니다. 렌더링과 관련되지 않은 값을 관리할 때만 사용해야 합니다.  
+```javascript
+(...)
+const id = useRef(1);
+const setId = n => {
+  id.current = n;
+};
+const printId = () => {
+  console.log(id.current);
+};
+(...)
+```
+
+### 커스텀 Hooks 만들기
+여러 컴포넌트에서 비슷한 기능을 공유할 경우, 이를 자신만의 Hook으로 작성하여 로직을 재사용할 수 있습니다.  
+```javascript
+import { useReducer } from 'react';
+
+function reducer(state, action) {
+  return {
+    ...state,
+    [action.name]: action.value
+  };
+}
+
+export default function useInputs(initialFrom) {
+  const [state, dispatch] = useReducer(reducer, initialForm);
+  const onChange = e => {
+    dispatch(e.target);
+  };
+  return [state, onChange];
+}
+```
