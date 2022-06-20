@@ -789,3 +789,42 @@ CSS Module을 사용하면 클래스 이름을 지을 때 그 고유성에 대�
 
 **classnames**  
 classnames는 CSS 클래스를 조건부로 설정할 때 매우 유용한 라이브러리입니다. 또한, CSS Module을 사용할 때 이 라이브러리를 사용하면 여러 클래스를 적용할 때 매우 편리합니다.  
+
+### styled-components
+컴포넌트 스타일링의 또 다른 패러다임은 자바스크립트 파일 안에 스타일을 선언하는 방식입니다. 이 방식을 'CSS-in-JS'라고 부릅니다. CSS-in-JS 라이브러리 중에서 개발자들이 가장 선호하는 라이브러리는 styled-components입니다.  
+styled-components를 사용하면 자바스크립트 파일 하나에 스타일까지 작성할 수 있기 때문에 .css 또는 .scss 확장자를 가진 스타일 파일을 따로 만들지 않아도 된다는 큰 이점이 있습니다.  
+
+**Tagged 템플릿 리터럴**  
+Tagged 템플릿 리터럴을 사용하면 템플릿 사이사이에 들어가는 자바스크립트 객체나 함수의 원본 값을 그대로 추출할 수 있습니다. styled-components는 이러한 속성을 사용하여 styled-components로 만든 컴포넌트의 props를 스타일 쪽에서 쉽게 조회할 수 있도록 해줍니다.  
+
+**스타일링된 엘리먼트 만들기**  
+styled-components를 사용하여 스타일링된 엘리먼트를 만들 때는 컴포넌트 파일의 상단에서 styled를 불러오고, styled.태그명을 사용하여 구현합니다. 사용해야 할 태그명이 유동적이거나 특정 컴포넌트 자체에 스타일링해 주고 싶다면 styled('태그명')이나 styled(컴포넌트)를 사용하여 구현합니다.  
+
+**스타일에서 props 조회하기**  
+styled-components를 사용하면 스타일 쪽에서 컴포넌트에게 전달된 props 값을 참조할 수 있습니다.
+```javascript
+(...)
+const Box = styled.div`
+  background: ${props => props.color || 'blue'};
+(...)
+<Box color="black">(...)</Box>
+(...)
+```
+
+**props에 따른 조건부 스타일링**  
+styled-components에서는 조건부 스타일링을 간단하게 props로 처리할 수 있습니다.  
+```javascript
+import styled, { css } from 'styled-components';
+(...)
+${props => 
+  props.inverted && 
+  css`
+    (...)
+  `};
+(...)
+<Button inverted={true}>(...)</Button>
+(...)
+```
+
+**반응형 디자인**  
+브라우저의 크기에 따른 다른 스타일을 적용하기 위해서는 일반 CSS를 사용할 때와 똑같이 media 쿼리를 사용하면 됩니다.  
