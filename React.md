@@ -854,3 +854,14 @@ export default React.memo((...));
 
 ### react-virtualized를 사용한 렌더링 최적화
 react-virtualized를 사용하면 리스트 컴포넌트에서 스크롤되기 전에 보이지 않는 컴포넌트는 렌더링하지 않고 크기만 차지하게끔 할 수 있습니다. 그리고 만약 스크롤되면 해당 스크롤 위치에서 보여 주어야 할 컴포넌트를 자연스럽게 렌더링시킵니다.  
+
+### immer를 사용한 불변성 유지
+immer를 사용하면 불변성을 유지하는 작업을 매우 간단하게 처리할 수 있습니다.  
+```javascript
+import produce from 'immer';
+const nextState = produce(originalState, draft => {
+  draft.somewhere.deep.inside = 5;
+});
+```
+produce라는 함수는 두 가지 파라미터를 받습니다. 첫 번째 파라미터는 수정하고 싶은 상태이고, 두 번째 파라미터는 상태를 어떻게 업데이트할지 정의하는 함수입니다. 두 번째 파라미터로 전달되는 함수 내부에서 원하는 값을 변경하면, produce 함수가 불변성 유지를 대신해 주면서 새로운 상태를 생성해 줍니다.  
+immer를 사용하여 컴포넌트 상태를 작성할 때는 객체 안에 있는 값을 직접 수정하거나, 배열에 직접적인 변화를 일으키는 push, splice 등의 함수를 사용해도 무방합니다.  
