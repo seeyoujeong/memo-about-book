@@ -12,6 +12,7 @@
 - [컴포넌트 스타일링](#컴포넌트-스타일링)
 - [컴포넌트 성능 최적화](#컴포넌트-성능-최적화)
 - [리액트 라우터로 SPA 개발](#리액트-라우터로-spa-개발)
+- [Context API](#context-api)
 
 ## 리액트 시작
 리액트는 자바스크립트 라이브러리로 사용자 인터페이스를 만드는 데 사용합니다.  
@@ -925,3 +926,16 @@ Switch 컴포넌트는 여러 Route를 감싸서 그중 일치하는 단 하나�
 
 **NavLink**  
 NavLink는 Link와 비슷합니다. 현재 경로와 Link에서 사용하는 경로가 일치하는 경우 특정 스타일 혹은 CSS 클래스를 적용할 수 있는 컴포넌트입니다. NavLink에서 링크가 활성화되었을 때의 스타일을 적용할 때는 activeStyle 값을, CSS 클래스를 적용할 때는 activeClassName 값을 props로 넣어 주면 됩니다.  
+
+## Context API
+Context API는 리액트 프로젝트에서 전역적으로 사용할 데이터가 있을 때 유용한 기능입니다. 이를테면 사용자 로그인 정보, 애플리케이션 환경 설정, 테마 등 여러 종류가 있습니다.  
+
+**새 Context 만들기**  
+새 Context를 만들 때는 createContext 함수를 사용합니다. 파라미터에는 해당 Context의 기본 상태를 지정합니다.  
+```javascript
+import { createContext } from 'react';
+
+const ColorContext = createContext({ color: 'black' });
+
+export default ColorContext;
+```
