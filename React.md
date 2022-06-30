@@ -939,3 +939,40 @@ const ColorContext = createContext({ color: 'black' });
 
 export default ColorContext;
 ```
+
+**Consumer**  
+Consumer라는 컴포넌트를 사용하여 값을 조회할 수 있습니다. 
+```javascript
+(...)
+import ColorContext from '../contexts/color';
+
+const ColorBox = () => {
+  return (
+    <ColorContext.Consumer>
+      {value => (
+        <div
+          style={{
+            width: '64px',
+            height: '64px',
+            background: value.color
+          }}
+        />
+      )}
+    </ColorContext.Consumer>
+  );
+};
+(...)
+```
+Consumer 사이에 중괄호를 열어서 그 안에 함수를 넣어 주었습니다. 이러한 패턴을 Function as a child, 혹은 Render Props라고 합니다. 컴포넌트의 children이 있어야 할 자리에 일반 JSX 혹은 문자열이 아닌 함수를 전달합니다.  
+
+**Provider**  
+Provider를 사용하면 Context의 value를 변경할 수 있습니다. 기존에 createContext 함수를 사용할 때는 파라미터로 Context의 기본값을 넣어 주는데 이 기본값은 Provider를 사용하지 않았을 때만 사용됩니다. 만약 Provider는 사용했는데 value를 명시하지 않았다면, 이 기본값을 사용하지 않기 때문에 오류가 발생합니다.  
+```javascript
+(...)
+    <ColorContext.Provider value={{ color: 'red' }}>
+      <div>
+        <ColorBox />
+      </div>
+    </ColorContext.Provider>
+(...)
+```
