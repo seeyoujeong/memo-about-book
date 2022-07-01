@@ -930,7 +930,7 @@ NavLink는 Link와 비슷합니다. 현재 경로와 Link에서 사용하는 경
 ## Context API
 Context API는 리액트 프로젝트에서 전역적으로 사용할 데이터가 있을 때 유용한 기능입니다. 이를테면 사용자 로그인 정보, 애플리케이션 환경 설정, 테마 등 여러 종류가 있습니다.  
 
-**새 Context 만들기**  
+### 새 Context 만들기
 새 Context를 만들 때는 createContext 함수를 사용합니다. 파라미터에는 해당 Context의 기본 상태를 지정합니다.  
 ```javascript
 import { createContext } from 'react';
@@ -940,7 +940,7 @@ const ColorContext = createContext({ color: 'black' });
 export default ColorContext;
 ```
 
-**Consumer**  
+### Consumer 
 Consumer라는 컴포넌트를 사용하여 값을 조회할 수 있습니다. 
 ```javascript
 (...)
@@ -965,7 +965,7 @@ const ColorBox = () => {
 ```
 Consumer 사이에 중괄호를 열어서 그 안에 함수를 넣어 주었습니다. 이러한 패턴을 Function as a child, 혹은 Render Props라고 합니다. 컴포넌트의 children이 있어야 할 자리에 일반 JSX 혹은 문자열이 아닌 함수를 전달합니다.  
 
-**Provider**  
+### Provider
 Provider를 사용하면 Context의 value를 변경할 수 있습니다. 기존에 createContext 함수를 사용할 때는 파라미터로 Context의 기본값을 넣어 주는데 이 기본값은 Provider를 사용하지 않았을 때만 사용됩니다. 만약 Provider는 사용했는데 value를 명시하지 않았다면, 이 기본값을 사용하지 않기 때문에 오류가 발생합니다.  
 ```javascript
 (...)
@@ -974,5 +974,55 @@ Provider를 사용하면 Context의 value를 변경할 수 있습니다. 기존�
         <ColorBox />
       </div>
     </ColorContext.Provider>
+(...)
+```
+
+### 동적 Context
+Context의 value에는 무조건 상태 값만 있어야 하는 것은 아닙니다. 함수도 전달해 줄 수도 있습니다.  
+```javascript
+(...)
+const ColorContext = createContext({
+  state: { color: 'black', subcolor: 'red' },
+  actions: {
+    setColor: () => {},
+    setSubcolor: () => {}
+  }
+});
+
+const ColorProvider = ({ children }) => {
+  const [color, setColor] = useState('black');
+  const [subcolor, setSubcolor] = useState('red');
+  
+  const value = {
+    state: { color, subcolor },
+    actions: { setColor, setSubcolor }
+  };
+  
+  return (
+    <ColorContext.Provider value={value}>{children}</ColorContext.Provider>
+  );
+};
+
+const { Consumer: ColorConsumer } = ColorContext;
+
+export { ColorProvider, ColorConsumer };
+(...)
+```
+Context에서 값을 동적으로 사용할 때 반드시 묶어줄 필요는 없지만, 이렇게 state와 actions 객체를 따로따로 분리해 주면 나중에 다른 컴포넌트에서 Context의 값을 사용할 때 편합니다.  
+
+### useContext
+리액트에 내장되어 있는 Hooks 중에서 useContext라는 Hook을 사용하면, 함수형 컴포넌트에서 Context를 아주 편하게 사용할 수 있습니다. useContext는 children에 함수를 전달하는 Render Props 패턴을 사용하지 않고 Context 값을 조회할 수 있습니다.  
+```javascript
+(...)
+const { state } = useContext(ColorContext);
+return (
+  <>
+    <div
+      style={{
+        width: '64px',
+        height: '64px',
+        background: state.color
+      }}
+    />
 (...)
 ```
