@@ -1100,3 +1100,21 @@ const unsubscribe = store.subscribe(listener);
 - 파라미터 외의 값에는 의존하면 안 됩니다.  
 - 이전 상태는 절대로 건드리지 않고, 변화를 준 새로운 상태 객체를 만들어서 반환합니다.  
 - 똑같은 파라미터로 호출된 리듀서 함수는 언제나 똑같은 결과 값을 반환해야 합니다.  
+
+### 컨테이너 컴포넌트
+리덕스 스토어와 연동된 컴포넌트를 컨테이너 컴포넌트라고 부릅니다. 컴포넌트를 리덕스와 연동하려면 react-redux에서 제공하는 connect 함수를 사용해야 합니다.  
+```javascript
+connect(mapStateToProps, mapDispatchToProps)(targetComponent)
+```
+mapStateToProps는 리덕스 스토어 안의 상태를 컴포넌트의 props로 넘겨주기 위해 설정하는 함수이고, mapDispatchToProps는 액션 생성 함수를 컴포넌트의 props로 넘겨주기 위해 사용하는 함수입니다.  
+```javascript
+const mapStateToProps = state => ({
+  number: state.counter.number
+});
+
+const mapDispatchToProps = dispatch => ({
+  increase: () => {...},
+  decrease: () => {...},
+});
+```
+mapStateToProps와 mapDispatchProps에서 반환하는 객체 내부의 값들은 컴포넌트의 props로 전달됩니다. mapStateToProps는 state를 파라미터로 받아 오며, 이 값은 현재 스토어가 지니고 있는 상태를 가리킵니다. mapDispatchToProps의 경우 store의 내장 함수 dispatch를 파라미터로 받아 옵니다.  
