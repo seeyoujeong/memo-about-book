@@ -1221,7 +1221,7 @@ HTML 요소의 어트리뷰트는 어트리뷰트 노드로, HTML 요소의 텍�
 **문서 노드<sup>document node</sup>**  
 문서 노드는 DOM 트리의 최상위에 존재하는 루트 노드로서 document 객체를 가리킨다. document 객체는 브라우저가 렌더링한 HTML 문서 전체를 가리키는 객체로서 전역 객체 window의 document 프로퍼티에 바인딩되어 있다. document 객체는 DOM 트리의 루트 노드이므로 DOM 트리의 노드들에 접근하기 위한 진입점<sup>entry point</sup> 역할을 담당한다. 즉, 요소, 어트리뷰트, 텍스트 노드에 접근하려면 문서 노드를 통해야 한다.  
 
-**요소 노드<sup>element node</sup>**
+**요소 노드<sup>element node</sup>**  
 요소 노드는 HTML 요소를 가리키는 객체다. 요소 노드는 HTML 요소 간의 중첩에 의해 부자 관계를 가지며 이 부자 관계를 통해 정보를 구조화한다. 따라서 요소 노드는 문서의 구조를 표현한다고 할 수 있다.  
 
 **어트리뷰트 노드<sup>attribute node</sup>**  
