@@ -3324,7 +3324,7 @@ XMLHttpRequest 객체는 브라우저에서 제공하는 Web API이므로 브라
       <td>HTTP 요청에 에러가 발생한 경우</td>
     </tr>
     <tr>
-      <td>onlead</td>
+      <td>onload</td>
       <td>HTTP 요청이 성공적으로 완료한 경우</td>
     </tr>
   </tbody>
