@@ -1179,7 +1179,7 @@ script 태그의 위치에 따라 HTML 파싱이 블로킹되어 DOM 생성이 �
 
 ### script 태그의 async/defer 어트리뷰트
 자바스크립트 파싱에 의한 DOM 생성이 중단<sup>blocking</sup>되는 문제를 근본적으로 해결하기 위해 HTML5부터 script 태그에 async와 defer 어트리뷰트가 추가되었다.  
-async와 defer 어트리뷰트를 사용하면 HTML 파싱과 외부 자바스크립트 파일의 로가 비동기적<sup>asynchronous</sup>으로 동시에 진행된다.  
+async와 defer 어트리뷰트를 사용하면 HTML 파싱과 외부 자바스크립트 파일의 로드가 비동기적<sup>asynchronous</sup>으로 동시에 진행된다.  
 ```html
 <script async src="example.js"></script>
 <script defer src="example.js"></script>
