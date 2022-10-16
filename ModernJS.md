@@ -512,7 +512,7 @@ LexicalEnvironment 컴포넌트와 VariableEnvironment 컴포넌트로 구성된
    2. this 바인딩  
    3. 외부 렉시컬 환경에 대한 참조 결정  
 
-![execution_context](https://user-images.githubusercontent.com/40534414/145710606-158dbe7b-be8b-4366-a390-8f89294bac23.png)
+![execution_context](https://user-images.githubusercontent.com/40534414/196040024-26e1a87a-232e-444c-b39c-2a40322fd483.png)
 
 ### 실행 컨텍스트와 블록 레벨 스코프  
 let, const 키워드로 선언한 변수는 모든 코드 블록을 지역 스코프로 인정하는 블록 레벨 스코프를 따르기 때문에 선언적 환경 레코드를 갖는 렉시컬 환경을 새롭게 생성하여 기존의 전역 렉시컬 환경을 교체한다.  
