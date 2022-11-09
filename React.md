@@ -14,6 +14,7 @@
 - [리액트 라우터로 SPA 개발](#리액트-라우터로-spa-개발)
 - [Context API](#context-api)
 - [리덕스](#리덕스)
+- [리액트에 리덕스 적용](#리액트에-리덕스-적용)
 
 ## 리액트 시작
 리액트는 자바스크립트 라이브러리로 사용자 인터페이스를 만드는 데 사용합니다.  
@@ -510,7 +511,7 @@ render() {
 
 ## 컴포넌트 반복
 문자열로 구성된 배열을 선언하고 그 배열 값을 사용하여 \<li>⋯\</li> JSX 코드로 된 배열을 새로 생성한 후 nameList라는 변수에 담습니다.  
-```
+```javascript
 (...)
 const names = ['snowman', 'ice', 'snow', 'wind'];
 const nameList = names.map(name => <li>{name}</li>);
@@ -1101,6 +1102,8 @@ const unsubscribe = store.subscribe(listener);
 - 이전 상태는 절대로 건드리지 않고, 변화를 준 새로운 상태 객체를 만들어서 반환합니다.  
 - 똑같은 파라미터로 호출된 리듀서 함수는 언제나 똑같은 결과 값을 반환해야 합니다.  
 
+## 리액트에 리덕스 적용
+
 ### 컨테이너 컴포넌트
 리덕스 스토어와 연동된 컴포넌트를 컨테이너 컴포넌트라고 부릅니다. 컴포넌트를 리덕스와 연동하려면 react-redux에서 제공하는 connect 함수를 사용해야 합니다.  
 ```javascript
@@ -1118,3 +1121,16 @@ const mapDispatchToProps = dispatch => ({
 });
 ```
 mapStateToProps와 mapDispatchProps에서 반환하는 객체 내부의 값들은 컴포넌트의 props로 전달됩니다. mapStateToProps는 state를 파라미터로 받아 오며, 이 값은 현재 스토어가 지니고 있는 상태를 가리킵니다. mapDispatchToProps의 경우 store의 내장 함수 dispatch를 파라미터로 받아 옵니다.  
+
+### useSelector Hook
+useSelector Hook을 사용하면 connect 함수를 사용하지 않고도 리덕스의 상태를 조회할 수 있습니다.  
+```javascript
+const result = useSelector(mapStateToProps);
+```
+
+### useDispatch Hook
+이 Hook은 컴포넌트 내부에서 스토어의 내장 함수 dispatch를 사용할 수 있게 해 줍니다. 컨테이너 컴포넌트에서 액션을 디스패치해야 한다면 이 Hook을 사용하면 됩니다.  
+```javascript
+const dispatch = useDispatch();
+dispatch({ type: 'SAMPLE_ACTION' });
+```
