@@ -15,6 +15,7 @@
 - [Context API](#context-api)
 - [리덕스](#리덕스)
 - [리액트에 리덕스 적용](#리액트에-리덕스-적용)
+- [리덕스 비동기 작업 관리](#리덕스-비동기-작업-관리)
 
 ## 리액트 시작
 리액트는 자바스크립트 라이브러리로 사용자 인터페이스를 만드는 데 사용합니다.  
@@ -1134,3 +1135,11 @@ const result = useSelector(mapStateToProps);
 const dispatch = useDispatch();
 dispatch({ type: 'SAMPLE_ACTION' });
 ```
+
+## 리덕스 비동기 작업 관리
+### redux-saga
+**delay(number)**: 딜레이를 줍니다.  
+**put(action())**: 특정 액션을 디스패치합니다.  
+**takeEvery(actionType, saga)**: 들어오는 모든 액션에 대해 특정 작업을 처리해 줍니다.  
+**takeLatest(actionType, saga)**: 가장 마지막으로 실행된 작업만 수행합니다.  
+**call(promise, argument)**: Promise를 반환하는 함수를 호출하고 기다립니다. 첫번째 파라미터는 함수, 나머지는 해당 함수에 넣을 인수입니다.  
