@@ -965,6 +965,8 @@ var three = arr[2];
 
 // ES6
 const [one, two, three] = arr;
+const [a, b, c = 3] = [1, 2];
+const [x, ...y] = [1, 2, 3]; // 1 [2, 3]
 ```
 
 ### 객체 디스트럭처링 할당
@@ -982,6 +984,10 @@ var lastName = user.lastName;
 const { lastName, firstName } = user;
 // 위와 아래는 동치다.
 const { lastName: lastName, firstName: firstName } = user;
+// 다른 변수 이름
+const { lastName: ln, firstName: fn } = user;
+const { x = 'x', y } = { y: 'y' };
+const { x, ...rest } = { x: 1, y: 2, z: 3 }; // 1 { y: 2, z: 3 }
 ```
 
 ## Set
