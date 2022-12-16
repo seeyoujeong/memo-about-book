@@ -8,6 +8,8 @@
 - [문](#문)  
 - [데이터 타입](#데이터-타입)
 - [연산자](#연산자)
+- [타입 변환](#타입-변환)
+- [단축 평가](#단축-평가)
 - [객체](#객체)  
 - [함수](#함수)  
 - [스코프](#스코프) 
@@ -218,6 +220,40 @@ foo === null; // → true
 
 typeof undeclared; // undefined
 ```
+
+## 타입 변환
+개발자가 의도적으로 값의 타입을 변환하는 것을 명시적 타입 변환<sup>explicit coercion</sup> 또는 타입 캐스팅<sup>type casting</sup>이라 한다.  
+자바스크립트 엔진에 의해 암묵적으로 타입이 자동 변환되는 것을 암묵적 타입 변환<sup>implicit coercion</sup> 또는 타입 강제 변환<sup>type coercion</sup>이라 한다.  
+
+### 숫자 타입으로 변환
+```javascript
+1 / 'one' // → NaN
++'string' // → NaN
++undefined // → NaN
++{} // → NaN
+
++'' // → 0
++[] // → 0
+null // → 0
+false // → 0
+```
+
+### 불리언 타입으로 변환
+아래의 값들은 false로 평가되는 Falsy 값이다.  
+- false
+- undefined
+- null
+- 0, -0
+- NaN
+- ''
+
+```javascript
+!!{}; // → true
+!![]; // → true
+```
+
+## 단축 평가
+
 
 ## 객체  
 자바스크립트를 이루고 있는 거의 ***모든 것***이 객체다.  
