@@ -325,6 +325,14 @@ var counter = {
 |화살표 함수|var add = (x, y) => x + y;|
 |메서드 축약 표현|const obj = {<br>&nbsp;&nbsp;foo() {}<br>};|  
 
+|ES6 함수의 구분|constructor|prototype|super|arguments|
+|---|:---:|:---:|:---:|:---:|
+|일반 함수|Ο|Ο|Χ|Ο|
+|메서드|Χ|Χ|Ο|Ο|
+|화살표 함수|Χ|Χ|Χ|Χ|
+> *ES6 사양에서 메서드는 메서드 축약 표현으로 정의된 함수만을 의미한다.*  
+> *ES6 메서드는 자신을 바인딩한 객체를 가리키는 내부 슬롯 [[HomeObject]]를 갖는다.*
+
 ### 함수를 사용하는 이유
 함수는 코드의 재사용이라는 측면에서 매우 유용하고 유지보수의 편의성, 코드의 신뢰성, 그리고 코드의 가독성을 향상시킨다.  
 
@@ -417,15 +425,6 @@ Function 생성자 함수로 생성한 함수는 클로저를 생성하지 않�
 **encodeURIComponent**: URI 구성 요소를 인수로 전달받아 인코딩한다.  
 **decodeURIComponent**: 매개변수로 전달된 URI 구성 요소를 디코딩한다.  
 
-**ES6에서는 함수를 사용 목적에 따라 세 가지 종류로 명확히 구분했다.**
-|ES6 함수의 구분|constructor|prototype|super|arguments|
-|---|:---:|:---:|:---:|:---:|
-|일반 함수|Ο|Ο|Χ|Ο|
-|메서드|Χ|Χ|Ο|Ο|
-|화살표 함수|Χ|Χ|Χ|Χ|
-> *ES6 사양에서 메서드는 메서드 축약 표현으로 정의된 함수만을 의미한다.*  
-> *ES6 메서드는 자신을 바인딩한 객체를 가리키는 내부 슬롯 [[HomeObject]]를 갖는다.*
-
 ### Rest 파라미터
 함수에 전달된 인수들의 목록을 배열로 전달받는다.  
 Rest 파라미터는 반드시 마지막 파라미터이어야 한다.  
@@ -489,10 +488,12 @@ const 키워드로 선언된 변수에 객체를 할당한 경우 값을 변경�
 
 ## 프로퍼티 어트리뷰트
 내부 슬롯<sup>internal slot</sup>과 내부 메서드<sup>internal method</sup>는 자바스크립트 엔진의 구현 알고리즘을 설명하기 위해 ECMAScript 사양에서 사용하는 의사 프로퍼티<sup>pseudo property</sup>와 의사 메서드<sup>pseudo method</sup>다.  
+내부 슬롯과 내부 메서드는 자바스크립트 엔진의 내부 로직이므로 원칙적으로 자바스크립트는 내부 슬롯과 내부 메서드에 직접적으로 접근하거나 호출할 수 있는 방법을 제공하지 않는다.  
 자바스크립트 엔진은 프로퍼티를 생성할 때 프로퍼티의 상태를 나타내는 프로퍼티 어트리뷰트를 기본값으로 자동 정의한다.  
 프로퍼티의 상태란 프로퍼티의 값<sup>value</sup>, 값의 갱신 가능 여부<sup>writable</sup>, 열거 가능 여부<sup>enumerable</sup>, 재정의 가능 여부<sup>configurable</sup>를 말한다.  
 
-**데이터 프로퍼티<sup>data property</sup>**: 키와 값으로 구성된 일반적인 프로퍼티다.  
+### 데이터 프로퍼티<sup>data property</sup>
+키와 값으로 구성된 일반적인 프로퍼티다.  
 ```javascript
 const person = {
   name: 'Lee'
@@ -502,9 +503,8 @@ console.log(Object.getOwnPropertyDescriptor(person, 'name'));
 // {value: "Lee", writable: true, enumerable: true, configurable: true}
 ```
 
-**접근자 프로퍼티<sup>accessor property</sup>**: 자체적으로는 값을 갖지 않고 다른 데이터 프로퍼티의 값을 읽거나 저장할 때 호출되는 접근자 함수로 구성된 프로퍼티다.  
-- __proto__는 Object.prototype 객체의 접근자 프로퍼티다.  
-
+### 접근자 프로퍼티<sup>accessor property</sup>
+자체적으로는 값을 갖지 않고 다른 데이터 프로퍼티의 값을 읽거나 저장할 때 호출되는 접근자 함수로 구성된 프로퍼티다.  
 ```javascript
 const person = {
   firstName: 'Ungmo',
@@ -522,7 +522,8 @@ const person = {
 };
 ```
 
-**프로퍼티 정의**: 새로운 프로퍼티를 추가하면서 프로퍼티 어트리뷰트를 명시적으로 정의하거나, 기존 프로퍼티의 프로퍼티 어트리뷰트를 재정의하는 것을 말한다.  
+### 프로퍼티 정의
+새로운 프로퍼티를 추가하면서 프로퍼티 어트리뷰트를 명시적으로 정의하거나, 기존 프로퍼티의 프로퍼티 어트리뷰트를 재정의하는 것을 말한다.  
 ```javascript
 const person = {};
 
@@ -533,6 +534,7 @@ Object.defineProperty(person, 'firstName', {
   configurable: true
 });
 
+// 디스크립터 객체의 프로퍼티를 누락시키면 undefined, false가 기본값이다.
 Object.defineProperty(person, 'lastName', {
   value: 'Lee'
 });
@@ -559,6 +561,7 @@ Object.defineProperty(person, 'fullName' {
 |enumerable|[[Enumerable]]|false|
 |configurable|[[Configurable]]|false|
 
+### 객체 변경 방지
 자바스크립트는 객체의 변경을 방지하는 다양한 메서드(얕은 변경 방지<sup>shallow only</sup>)를 제공한다.
 |구분|메서드|추가|삭제|값 읽기|값 쓰기|어트리뷰트 재정의|
 |---|---|:---:|:---:|:---:|:---:|:---:|
@@ -569,12 +572,6 @@ Object.defineProperty(person, 'fullName' {
 **in 연산자**: 객체 내에 특정 프로퍼티가 존재하는지 여부를 확인한다.(확인 대상 객체가 상속받은 모든 프로토타입의 프로퍼티를 확인)  
 **Object.prototype.hasOwnProperty 메서드**: 전달받은 프로퍼티 키가 객체 고유의 프로퍼티 키인 경우에만 true를 반환한다.  
 **for...in 문**: 객체의 프로토타입 체인 상에 존재하는 모든 프로토타입의 프로퍼티 중에서 프로퍼티 어트리뷰트 [[Enumerable]]의 값이 true인 프로퍼티를 순회하며 열거한다.   
-**Object.keys/values/entries 메서드**: keys 메서드는 객체 자신의 열거 가능한 프로퍼티 키를, values 메서드는 프로퍼티 값을, entries 메서드는 프로퍼티 키와 값의 쌍의 배열을 배열로 반환한다.  
-
-### 빌트인 전역 프로퍼티
-**Infinity**: 무한대를 나타내는 숫자값 Infinity를 갖는다.  
-**NaN**: 숫자가 아님(Not-a-Number)을 나타내는 숫자값 NaN을 갖는다.  
-**undefined**: 원시 타입 undefined를 값으로 갖는다.  
 
 ## 프로토타입
 자바스크립트는 프로토타입<sup>prototype</sup>을 기반으로 상속을 구현한다.
