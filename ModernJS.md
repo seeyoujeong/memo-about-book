@@ -144,7 +144,7 @@ let x;
 x = 5;
 
 // 함수 선언문
-function func () {}
+function func() {}
 
 // 조건문
 if (x > 1) { console.log(x); }
