@@ -594,20 +594,24 @@ strict mode에서 일반 함수로서 호출된 모든 함수 내부의 this에�
 클래스 필드에 할당한 화살표 함수 내부에서 참조한 this는 constructor 내부의 this 바인딩과 같다.  
 
 ## 프로토타입
-자바스크립트는 프로토타입<sup>prototype</sup>을 기반으로 상속을 구현한다.
+자바스크립트는 프로토타입<sup>prototype</sup>을 기반으로 상속을 구현한다.  
+
+### 프로토타입 객체
+어떤 객체의 상위 객체의 역할을 하는 객체로서 다른 객체에 공유 프로퍼티(메소드 포함)를 제공한다.  
+프로토타입을 상속받은 하위 객체는 상위 객체의 프로퍼티를 자신의 프로퍼티처럼 자유롭게 사용할 수 있다.  
 
 ```javascript
 function Person(name) {
   this.name = name;
 }
 
-Person.prototype.sayHello = function () {
+Person.prototype.sayHello = function() {
   console.log(`Hi! My name is ${this.name}`);
 };
 
 Person.staticProp = 'static prop';
 
-Person.staticMethod = function () {
+Person.staticMethod = function() {
   console.log('staticMethod');
 };
 ```
