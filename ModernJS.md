@@ -19,6 +19,7 @@
 - [프로퍼티 어트리뷰트](#프로퍼티-어트리뷰트)  
 - [생성자 함수에 의한 객체 생성](#생성자-함수에-의한-객체-생성)
 - [프로토타입](#프로토타입)  
+- [strict mode](#strict-mode)
 - [this](#this)  
 - [실행 컨텍스트](#실행-컨텍스트)  
 - [클로저](#클로저)
@@ -661,6 +662,22 @@ Person.staticMethod = function() {
   console.log('staticMethod');
 };
 ```
+## strict mode
+```javascript
+'use strict';
+```
+strict mode는 자바스크립트 언어의 문법을 좀 더 엄격히 적용하여 오류를 발생시킬 가능성이 높거나 자바스크립트 엔진의 최적화 작업에 문제를 일으킬 수 있는 코드에 대해 명시적인 에러를 발생시킨다.  
+전역에 strict mode를 적용하는 것은 피해야 하고 함수 단위로 strict mode를 적용하는 것도 피해야 한다.  
+
+### strict mode가 발생시키는 에러
+선언하지 않은 변수를 참조하면 ReferenceError가 발생한다.  
+delete 연산자로 변수, 함수, 매개변수를 삭제하면 SyntaxError가 발생한다.  
+중복된 매개변수 이름을 사용하면 SyntaxError가 발생한다.  
+with 문을 사용하면 SyntaxError가 발생한다.  
+
+### strict mode 적용에 의한 변화
+함수를 일반 함수로서 호출하면 this에 undefined가 바인딩된다.  
+매개변수에 전달된 인수를 재할당하여 변경해도 arguments 객체에 반영되지 않는다.  
 
 ## this
 this는 객체 자신의 프로퍼티나 메서드를 참조하기 위한 자기 참조 변수<sup>self-referenceing variable</sup>다.  
