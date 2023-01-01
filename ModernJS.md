@@ -681,15 +681,13 @@ with 문을 사용하면 SyntaxError가 발생한다.
 
 ## this
 this는 객체 자신의 프로퍼티나 메서드를 참조하기 위한 자기 참조 변수<sup>self-referenceing variable</sup>다.  
+자바스크립트의 this는 함수가 호출되는 방식에 따라 this에 바인딩될 값, 즉 this 바인딩이 동적으로 결정된다.  
 
 |함수 호출 방식|this가 가리키는 값(this 바인딩)|
 |---|---|
 |일반 함수로서 호출|전역 객체|
 |메서드로서 호출|메서드를 호출한 객체(마침표 앞의 객체)|
 |생성자 함수로서 호출|생성자 함수가 (미래에) 생성할 인스턴스|  
-> *this 바인딩은 함수 호출 시점에 결정된다.*  
-> *strict mode가 적용된 일반 함수 내부의 this에는 undefined가 바인딩된다.*  
-> *메서드 내부의 this는 메서드를 소유한 객체가 아닌 메서드를 호출한 객체에 바인딩된다.*  
 
 ### Function.prototype.apply/call/bind 메서드
 apply와 call 메서드의 본질적인 기능은 함수를 호출하는 것이다.  
