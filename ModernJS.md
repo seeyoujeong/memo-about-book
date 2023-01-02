@@ -280,9 +280,9 @@ null 병합 연산자 ??는 좌항의 피연산자가 null 또는 undefined인 �
 ```javascript
 var counter = {
   num: 0,                 // 프로퍼티: 객체의 상태를 나타내는 값(data)
-  increase: function () { // 메서드: 프로퍼티(상태 데이터)를 참조하고 조작할 수 있는 동작(behavior)
+  increase() { // 메서드: 프로퍼티(상태 데이터)를 참조하고 조작할 수 있는 동작(behavior)
     this.num++;
-  }
+  },
 };
 ```
 > *객체 리터럴의 중괄호는 코드 블록을 의미하지 않기 때문에 세미콜론을 붙인다.*  
@@ -680,7 +680,8 @@ with 문을 사용하면 SyntaxError가 발생한다.
 매개변수에 전달된 인수를 재할당하여 변경해도 arguments 객체에 반영되지 않는다.  
 
 ## this
-this는 객체 자신의 프로퍼티나 메서드를 참조하기 위한 자기 참조 변수<sup>self-referenceing variable</sup>다.  
+this는 자신이 속한 객체 또는 자신이 생성할 인스턴스를 가리키는 자기 참조 변수<sup>self-referenceing variable</sup>다.  
+this를 통해 자신이 속한 객체 또는 자신이 생성할 인스턴스의 프로퍼티나 메서드를 참조할 수 있다.  
 자바스크립트의 this는 함수가 호출되는 방식에 따라 this에 바인딩될 값, 즉 this 바인딩이 동적으로 결정된다.  
 
 |함수 호출 방식|this가 가리키는 값(this 바인딩)|
@@ -691,6 +692,7 @@ this는 객체 자신의 프로퍼티나 메서드를 참조하기 위한 자기
 
 ### Function.prototype.apply/call/bind 메서드
 apply와 call 메서드의 본질적인 기능은 함수를 호출하는 것이다.  
+apply와 call 메서드는 함수를 호출하면서 첫 번째 인수로 전달한 특정 객체를 호출한 함수의 this에 바인딩한다.  
 apply와 call 메서드의 대표적인 용도는 arguments 객체와 같은 유사 배열 객체에 배열 메서드를 사용하는 경우다.  
 ```javascript
 function getThisBinding() {
