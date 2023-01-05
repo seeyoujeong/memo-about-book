@@ -807,41 +807,44 @@ class Person {
   // static private 필드 정의
   static #tribe = 'human';
   
+  // 생성자
   constructor(name, age) {
     this.name = name;
     this.#age = age;
   }
   
+  // 프로토타입 메서드
   sayHi() {
     console.log(`Hi! My name is ${this.name}`);
   }
   
+  // 정적 메서드
   static sayHello() {
     console.log('Hello!');
   }
 }
 ```
 
-**클래스와 생성자 함수의 차이**  
+#### 클래스와 생성자 함수의 차이
 1. 클래스를 new 연산자 없이 호출하면 에러가 발생한다. 
 2. 클래스는 상속을 지원하는 extends와 super 키워드를 제공한다.
 3. 클래스는 호이스팅이 발생하지 않는 것처럼 동작한다.
 4. 클래스 내의 모든 코드에는 암묵적으로 strict mode가 지정되어 실행되며 strict mode를 해제할 수 없다.
 5. 클래스의 constructor, 프로토타입 메서드, 정적 메서드는 모두 프로퍼티 어트리뷰트 [[Enumerable]]의 값이 false다. 
 
-**정적 메서드와 프로토타입 메서드의 차이**  
+#### 정적 메서드와 프로토타입 메서드의 차이
 1. 정적 메서드와 프로토타입 메서드는 자신이 속해 있는 프로토타입 체인이 다르다.
 2. 정적 메서드는 클래스로 호출하고 프로토타입 메서드는 인스턴스로 호출한다.
 3. 정적 메서드는 인스턴스 프로퍼티를 참조할 수 없지만 프로토타입 메서드는 인스턴스 프로퍼티를 참조할 수 있다.  
 
-**클래스에서 정의한 메서드의 특징**
+#### 클래스에서 정의한 메서드의 특징
 1. function 키워드를 생략한 메서드 축약 표현을 사용한다. 
 2. 객체 리터럴과는 다르게 클래스에 메서드를 정의할 때는 콤마가 필요 없다.
 3. 암묵적으로 strict mode로 실행된다.
 4. for...in 문이나 Object.keys 메서드 등으로 열거할 수 없다.
 5. 내부 메서드 [[Construct]]를 갖지 않는 non-constructor다.  
 
-**super 키워드**
+#### super 키워드
 - super를 호출하면 수퍼클래스의 constructor(super-constructor)를 호출한다.  
   - 서브클래스에서 constructor를 생략하지 않는 경우 서브클래스의 constructor에서 반드시 super를 호출해야한다.
   - 서브클래스의 constructor에서 super를 호출하기 전에는 this를 참조할 수 없다.
