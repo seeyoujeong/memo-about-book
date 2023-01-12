@@ -901,22 +901,22 @@ extends 키워드 다음에는 클래스뿐만 아니라 [[Construct]] 내부 �
 정수 이외의 값을 인덱스처럼 사용하면 요소가 생성되는 것이 아니라 프로퍼티가 생성된다.  
 
 ### 배열 생성
-#### 배열 리터럴
+**배열 리터럴**  
 0개 이상의 요소를 쉼표로 구분하여 대괄호로 묶는다.  
 
-#### Array 생성자 함수 
+**Array 생성자 함수**   
 전달된 인수가 1개이고 숫자인 경우 length 프로퍼티 값이 인수인 희소 배열을 생성한다.  
 전달된 인수가 없는 경우 빈 배열을 생성한다. 즉, 배열 리터럴 []과 같다.  
 전달된 인수가 2개 이상이거나 숫자가 아닌 경우 인수를 요소로 갖는 배열을 생성한다.  
 
-#### Array.of 메서드
+**Array.of 메서드**  
 전달된 인수를 요소로 갖는 배열을 생성한다.  
 
-#### Array.from 메서드
+**Array.from 메서드**  
 유사 배열 객체 또는 이터러블 객체를 인수로 전달받아 배열로 변환하여 반환한다.  
 두 번째 인수로 전달한 콜백 함수를 통해 값을 만들면서 요소를 채울 수 있다.  
 
-#### 유사 배열 객체<sup>array-like object</sup> 
+**유사 배열 객체<sup>array-like object</sup>**  
 마치 배열처럼 인덱스로 프로퍼티 값에 접근할 수 있고 length 프로퍼티를 갖는 객체를 말한다.  
 유사 배열 객체는 length 프로퍼티를 갖기 때문에 for 문으로 순회할 수 있다.  
 인덱스를 나타내는 숫자 형식의 문자열을 프로퍼티 키로 가지므로 마치 배열처럼 인덱스로 프로퍼티 값에 접근할 수 있다.  
@@ -925,54 +925,127 @@ extends 키워드 다음에는 클래스뿐만 아니라 [[Construct]] 내부 �
 ### 배열 메서드
 배열에는 원본 배열(배열 메서드를 호출한 배열, 즉 배열 메서드의 구현체 내부에서 this가 가리키는 객체)을 직접 변경하는 메서드<sup>mutator method</sup>와 원본 배열을 직접 변경하지 않고 새로운 배열을 생성하여 반환하는 메서드<sup>accessor method</sup>가 있다.  
 
-**Array.isArray 메서드**: 전달된 인수가 배열이면 true, 배열이 아니면 false를 반환한다.  
-**Array.prototype.indexOf 메서드**: 원본 배열에서 인수로 전달된 요소를 검색하여 인덱스를 반환한다.  
-**Array.prototype.push 메서드<sup>m</sup>**: 인수로 전달받은 모든 값을 원본 배열의 마지막 요소로 추가하고 변경된 length 프로퍼티 값을 반환한다.  
-**Array.prototype.pop 메서드<sup>m</sup>**: 원본 배열에서 마지막 요소를 제거하고 제거한 요소를 반환한다.  
-**Array.prototype.unshift 메서드<sup>m</sup>**: 인수로 전달받은 모든 값을 원본 배열의 선두에 요소로 추가하고 변경된 length 프로퍼티 값을 반환한다.  
-**Array.prototype.shift 메서드<sup>m</sup>**: 원본 배열에서 첫 번째 요소를 제거하고 제거한 요소를 반환한다.  
-**Array.prototype.concat 메서드**: 인수로 전달된 값들(배열 또는 원시값)을 원본 배열의 마지막 요소로 추가한 새로운 배열을 반환한다. 인수로 전달한 값이 배열인 경우 배열을 해체하여 새로운 배열의 요소로 추가한다.  
-**Array.prototype.splice 메서드<sup>m</sup>**: 원본 배열의 중간에 요소를 추가하거나 중간에 있는 요소를 제거하고 제거한 요소를 반환한다.  
-**Array.prototype.slice 메서드**: 첫 번째 인수로 전달받은 인덱스부터 두 번째 인수로 전달받은 인덱스 이전까지 요소들을 복사하여 배열로 반환한다.  
-**Array.prototype.join 메서드**: 원본 배열의 모든 요소를 문자열로 변환한 후, 인수로 전달받은 문자열로 연결한 문자열을 반환한다.  
-**Array.prototype.reverse 메서드<sup>m</sup>**: 원본 배열의 순서를 반대로 뒤집고 변경된 배열을 반환한다.  
-**Array.prototype.fill 메서드<sup>m</sup>**: 인수로 전달받은 값을 배열의 처음부터 끝까지 요소로 채운다.  
-**Array.prototype.includes 메서드**: 배열 내에 특정 요소가 포함되어 있는지 확인하여 true 또는 false를 반환한다.  
-**Array.prototype.flat 메서드**: 인수로 전달한 깊이만큼 재귀적으로 배열을 평탄화한다.  
+**Array.isArray 메서드**  
+전달된 인수가 배열이면 true, 배열이 아니면 false를 반환한다.  
+
+**Array.prototype.indexOf 메서드**  
+원본 배열에서 인수로 전달된 요소를 검색하여 인덱스를 반환한다.  
+
+**Array.prototype.push 메서드<sup>m</sup>**  
+인수로 전달받은 모든 값을 원본 배열의 마지막 요소로 추가하고 변경된 length 프로퍼티 값을 반환한다.  
+
+**Array.prototype.pop 메서드<sup>m</sup>**  
+원본 배열에서 마지막 요소를 제거하고 제거한 요소를 반환한다.  
+
+**Array.prototype.unshift 메서드<sup>m</sup>**  
+인수로 전달받은 모든 값을 원본 배열의 선두에 요소로 추가하고 변경된 length 프로퍼티 값을 반환한다.  
+
+**Array.prototype.shift 메서드<sup>m</sup>**  
+원본 배열에서 첫 번째 요소를 제거하고 제거한 요소를 반환한다.  
+
+**Array.prototype.concat 메서드**  
+인수로 전달된 값들(배열 또는 원시값)을 원본 배열의 마지막 요소로 추가한 새로운 배열을 반환한다. 인수로 전달한 값이 배열인 경우 배열을 해체하여 새로운 배열의 요소로 추가한다.  
+
+**Array.prototype.splice 메서드<sup>m</sup>**  
+원본 배열의 중간에 요소를 추가하거나 중간에 있는 요소를 제거하고 제거한 요소를 반환한다.  
+
+**Array.prototype.slice 메서드**  
+첫 번째 인수로 전달받은 인덱스부터 두 번째 인수로 전달받은 인덱스 이전까지 요소들을 복사하여 배열로 반환한다.  
+
+**Array.prototype.join 메서드**  
+원본 배열의 모든 요소를 문자열로 변환한 후, 인수로 전달받은 문자열로 연결한 문자열을 반환한다.  
+
+**Array.prototype.reverse 메서드<sup>m</sup>**  
+원본 배열의 순서를 반대로 뒤집고 변경된 배열을 반환한다.  
+
+**Array.prototype.fill 메서드<sup>m</sup>**  
+인수로 전달받은 값을 배열의 처음부터 끝까지 요소로 채운다.  
+
+**Array.prototype.includes 메서드**  
+배열 내에 특정 요소가 포함되어 있는지 확인하여 true 또는 false를 반환한다.  
+
+**Array.prototype.flat 메서드**  
+인수로 전달한 깊이만큼 재귀적으로 배열을 평탄화한다.  
 
 ### 배열 고차 함수
-**Array.prototype.sort 메서드<sup>m</sup>**: 유니코드 코드 포인트의 순서로 배열의 요소를 정렬하고 정렬된 배열을 반환한다.  
-**Array.prototype.forEach 메서드**: 내부에서 반복문을 통해 자신을 호출한 배열을 순회하면서 수행해야 할 처리를 콜백 함수로 전달받아 반복 호출한다.  
-**Array.prototype.map 메서드**: 자신을 호출한 배열의 모든 요소를 순회하면서 인수로 전달받은 콜백 함수를 반복 호출하고 콜백 함수의 반환값들로 구성된 새로운 배열을 반환한다.  
-**Array.prototype.filter 메서드**: 콜백 함수의 true인 요소로만 구성된 새로운 배열을 반환한다.  
-**Array.prototype.reduce 메서드**: 콜백 함수의 반환값을 다음 순회 시에 콜백 함수의 첫 번째 인수로 전달하면서 콜백 함수를 호출하여 하나의 결과값을 만들어 반환한다.  
-**Array.prototype.some 메서드**: 콜백 함수의 반환값이 단 한 번이라도 참이면 true, 모두 거짓이면 false를 반환한다.  
-**Array.prototype.every 메서드**: 콜백 함수의 반환값이 모두 참이면 true, 단 한 번이라도 거짓이면 false를 반환한다.  
-**Array.prototype.find 메서드**: 콜백 함수의 반환값이 true인 첫 번째 요소를 반환하고 true인 요소가 없으면 undefined를 반환한다.  
-**Array.prototype.findIndex 메서드**: 콜백 함수의 반환값이 true인 첫 번째 요소의 인덱스를 반환하고 true인 요소가 없으면 -1을 반환한다.  
-**Array.prototype.flatMap 메서드**: map 메서드를 통해 생성된 새로운 배열을 1단계만 평탄화한다.  
+**Array.prototype.sort 메서드<sup>m</sup>**  
+유니코드 코드 포인트의 순서로 배열의 요소를 정렬하고 정렬된 배열을 반환한다.  
+
+**Array.prototype.forEach 메서드**  
+내부에서 반복문을 통해 자신을 호출한 배열을 순회하면서 수행해야 할 처리를 콜백 함수로 전달받아 반복 호출한다.  
+
+**Array.prototype.map 메서드**  
+자신을 호출한 배열의 모든 요소를 순회하면서 인수로 전달받은 콜백 함수를 반복 호출하고 콜백 함수의 반환값들로 구성된 새로운 배열을 반환한다.  
+
+**Array.prototype.filter 메서드**  
+콜백 함수의 true인 요소로만 구성된 새로운 배열을 반환한다.  
+
+**Array.prototype.reduce 메서드**  
+콜백 함수의 반환값을 다음 순회 시에 콜백 함수의 첫 번째 인수로 전달하면서 콜백 함수를 호출하여 하나의 결과값을 만들어 반환한다.  
+
+**Array.prototype.some 메서드**  
+콜백 함수의 반환값이 단 한 번이라도 참이면 true, 모두 거짓이면 false를 반환한다.  
+
+**Array.prototype.every 메서드**  
+콜백 함수의 반환값이 모두 참이면 true, 단 한 번이라도 거짓이면 false를 반환한다.  
+
+**Array.prototype.find 메서드**  
+콜백 함수의 반환값이 true인 첫 번째 요소를 반환하고 true인 요소가 없으면 undefined를 반환한다.  
+
+**Array.prototype.findIndex 메서드**  
+콜백 함수의 반환값이 true인 첫 번째 요소의 인덱스를 반환하고 true인 요소가 없으면 -1을 반환한다.  
+
+**Array.prototype.flatMap 메서드**  
+map 메서드를 통해 생성된 새로운 배열을 1단계만 평탄화한다.  
 
 ## Number
 ### Number 프로퍼티
-**Number.EPSILON**: 1과 1보다 큰 숫자 중에서 가장 작은 숫자와의 차이와 같다.  
-**Number.MAX_VALUE**: 자바스크립트에서 표현할 수 있는 가장 큰 양수 값이다.  
-**Number.MIN_VALUE**: 자바스크립트에서 표현할 수 있는 가장 작은 양수 값이다.  
-**Number.MAX_SAFE_INTEGER**: 자바스크립트에서 안전하게 표현할 수 있는 가장 큰 정수값이다.  
-**Number.MIN_SAFE_INTEGER**: 자바스크립트에서 안전하게 표현할 수 있는 가장 작은 정수값이다.  
-**Number.POSITIVE_INFINITY**: 양의 무한대를 나타내는 숫자값 Infinity와 같다.  
-**Number.NEGATIVE_INFINITY**: 음의 무한대를 나타내는 숫자값 -Infinity와 같다.  
+**Number.EPSILON**  
+1과 1보다 큰 숫자 중에서 가장 작은 숫자와의 차이와 같다.  
+
+**Number.MAX_VALUE**  
+자바스크립트에서 표현할 수 있는 가장 큰 양수 값이다.  
+
+**Number.MIN_VALUE**  
+자바스크립트에서 표현할 수 있는 가장 작은 양수 값이다.  
+
+**Number.MAX_SAFE_INTEGER**  
+자바스크립트에서 안전하게 표현할 수 있는 가장 큰 정수값이다.  
+
+**Number.MIN_SAFE_INTEGER**  
+자바스크립트에서 안전하게 표현할 수 있는 가장 작은 정수값이다.  
+
+**Number.POSITIVE_INFINITY**  
+양의 무한대를 나타내는 숫자값 Infinity와 같다.  
+
+**Number.NEGATIVE_INFINITY**  
+음의 무한대를 나타내는 숫자값 -Infinity와 같다.  
 
 ### Number 메서드
-**Number.isFinite 메서드**: 인수로 전달된 숫자값을 암묵적으로 타입 변환하지 않고 정상적인 유한수인지 검사하여 불리언 값을 반환한다.  
-**Number.isInteger 메서드**: 인수로 전달된 숫자값을 암묵적으로 타입 변환하지 않고 정수인지 검사하여 불리언 값을 반환한다.  
-**Number.isNaN 메서드**: 인수로 전달된 숫자값을 암묵적으로 타입 변환하지 않고 NaN인지 검사하여 불리언 값을 반환한다.  
-**Number.isSafeInteger 메서드**: 인수로 전달된 숫자값을 암묵적으로 타입 변환하지 않고 안전한 정수인지 검사하여 불리언 값을 반환한다.  
-**Number.prototype.toExponential 메서드**: 숫자를 지수 표기법으로 변환하여 문자열로 반환한다.  
-**Number.prototype.toFixed 메서드**: 숫자를 반올림하여 문자열로 반환한다.  
-**Number.prototype.toPrecision 메서드**: 인수로 전달받은 전체 자릿수까지 유효하도록 나머지 자릿수를 반올림하여 문자열로 반환한다.  
-**Number.prototype.toString 메서드**: 진법을 나타내는 정수값을 인수로 전달하여 숫자를 문자열로 변환하여 반환한다.  
+**Number.isFinite 메서드**  
+인수로 전달된 숫자값을 암묵적으로 타입 변환하지 않고 정상적인 유한수인지 검사하여 불리언 값을 반환한다.  
 
-**지수 표기법**: 매우 크거나 작은 숫자를 표기할 때 주로 사용하며 e(Exponent) 앞에 있는 숫자에 10의 n승을 곱하는 형식으로 수를 나타내는 방식이다.  
+**Number.isInteger 메서드**  
+인수로 전달된 숫자값을 암묵적으로 타입 변환하지 않고 정수인지 검사하여 불리언 값을 반환한다.  
+
+**Number.isNaN 메서드**  
+인수로 전달된 숫자값을 암묵적으로 타입 변환하지 않고 NaN인지 검사하여 불리언 값을 반환한다.  
+
+**Number.isSafeInteger 메서드**  
+인수로 전달된 숫자값을 암묵적으로 타입 변환하지 않고 안전한 정수인지 검사하여 불리언 값을 반환한다.  
+
+**Number.prototype.toExponential 메서드**  
+숫자를 지수 표기법으로 변환하여 문자열로 반환한다.  
+지수 표기법이란 매우 크거나 작은 숫자를 표기할 때 주로 사용하며 e(Exponent) 앞에 있는 숫자에 10의 n승을 곱하는 형식으로 수를 나타내는 방식이다.  
+
+**Number.prototype.toFixed 메서드**  
+숫자를 반올림하여 문자열로 반환한다.  
+
+**Number.prototype.toPrecision 메서드**  
+인수로 전달받은 전체 자릿수까지 유효하도록 나머지 자릿수를 반올림하여 문자열로 반환한다.  
+
+**Number.prototype.toString 메서드**  
+진법을 나타내는 정수값을 인수로 전달하여 숫자를 문자열로 변환하여 반환한다.  
 
 ## Math
 표준 빌트인 객체인 Math는 수학적인 상수와 함수를 위한 프로퍼티와 메서드를 제공한다.  
