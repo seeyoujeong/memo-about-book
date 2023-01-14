@@ -1282,20 +1282,53 @@ const regExp = /com$/;
 String 객체의 메서드는 언제나 새로운 문자열을 반환한다.  
 문자열은 변경 불가능한 원시 값이기 때문에 String 래퍼 객체도 읽기 전용 객체로 제공된다.  
 
-**String.prototype.indexOf 메서드**: 대상 문자열에서 인수로 전달받은 문자열을 검색하여 첫 번째 인덱스를 반환한다.  
-**String.prototype.search 메서드**: 대상 문자열에서 인수로 전달받은 정규 표현식과 매치하는 문자열을 검색하여 일치하는 문자열의 인덱스를 반환한다.  
-**String.prototype.includes 메서드**: 대상 문자열에 인수로 전달받은 문자열이 포함되어 있는지 확인하여 그 결과를 true 또는 false로 반환한다.  
-**String.prototype.startsWith 메서드**: 대상 문자열이 인수로 전달받은 문자열로 시작하는지 확인하여 그 결과를 true 또는 false로 반환한다.  
-**String.prototype.endsWith 메서드**: 대상 문자열이 인수로 전달받은 문자열로 끝나는지 확인하여 그 결과를 true 또는 false로 반환한다.  
-**String.prototype.charAt 메서드**: 대상 문자열에서 인수로 전달받은 인덱스에 위치한 문자를 검색하여 반환한다.  
-**String.prototype.substring 메서드**: 대상 문자열에서 첫 번째 인수로 전달받은 인덱스에 위치하는 문자부터 두 번째 인수로 전달받은 인덱스에 위치하는 문자의 바로 이전 문자까지의 부분 문자열을 반환한다.  
-**String.prototype.slice 메서드**: substring 메서드와 동일하게 동작하지만 음수인 인수를 전달할 수 있다.  
-**String.prototype.toUpperCase 메서드**: 대상 문자열을 모두 대문자로 변경한 문자열을 반환한다.  
-**String.prototype.toLowerCase 메서드**: 대상 문자열을 모두 소문자로 변경한 문자열로 반환한다.  
-**String.prototype.trim 메서드**: 대상 문자열 앞뒤에 공백 문자가 있을 경우 이를 제거한 문자열을 반환한다.  
-**String.prototype.repeat 메서드**: 대상 문자열을 인수로 전달받은 정수만큼 반복해 연결한 새로운 문자열을 반환한다.  
-**String.prototype.replace 메서드**: 대상 문자열에서 첫 번째 인수로 전달받은 문자열 또는 정규 표현식을 검색하여 두 번째 인수로 전달한 문자열로 치환한 문자열을 반환한다.  
-**String.prototype.split 메서드**: 대상 문자열에서 첫 번째 인수로 전달한 문자열 또는 정규 표현식을 검색하여 문자열을 구분한 후 분리된 각 문자열로 이루어진 배열을 반환한다.  
+**String.prototype.indexOf 메서드**  
+대상 문자열에서 인수로 전달받은 문자열을 검색하여 첫 번째 인덱스를 반환한다.  
+검색에 실패하면 -1을 반환한다.  
+
+**String.prototype.search 메서드**  
+대상 문자열에서 인수로 전달받은 정규 표현식과 매치하는 문자열을 검색하여 일치하는 문자열의 인덱스를 반환한다.  
+검색에 실패하면 -1을 반환한다.  
+
+**String.prototype.includes 메서드**  
+대상 문자열에 인수로 전달받은 문자열이 포함되어 있는지 확인하여 그 결과를 true 또는 false로 반환한다.  
+
+**String.prototype.startsWith 메서드**  
+대상 문자열이 인수로 전달받은 문자열로 시작하는지 확인하여 그 결과를 true 또는 false로 반환한다.  
+
+**String.prototype.endsWith 메서드**  
+대상 문자열이 인수로 전달받은 문자열로 끝나는지 확인하여 그 결과를 true 또는 false로 반환한다.  
+
+**String.prototype.charAt 메서드**  
+대상 문자열에서 인수로 전달받은 인덱스에 위치한 문자를 검색하여 반환한다.  
+인덱스가 문자열의 범위를 벗어난 정수인 경우 빈 문자열을 반환한다.  
+
+**String.prototype.substring 메서드**  
+대상 문자열에서 첫 번째 인수로 전달받은 인덱스에 위치하는 문자부터 두 번째 인수로 전달받은 인덱스에 위치하는 문자의 바로 이전 문자까지의 부분 문자열을 반환한다.  
+
+**String.prototype.slice 메서드**  
+substring 메서드와 동일하게 동작하지만 음수인 인수를 전달할 수 있다.  
+
+**String.prototype.toUpperCase 메서드**  
+대상 문자열을 모두 대문자로 변경한 문자열을 반환한다.  
+
+**String.prototype.toLowerCase 메서드**  
+대상 문자열을 모두 소문자로 변경한 문자열로 반환한다.  
+
+**String.prototype.trim 메서드**  
+대상 문자열 앞뒤에 공백 문자가 있을 경우 이를 제거한 문자열을 반환한다.  
+
+**String.prototype.repeat 메서드**  
+대상 문자열을 인수로 전달받은 정수만큼 반복해 연결한 새로운 문자열을 반환한다.  
+인수로 전달받은 정수가 0이면 문자열을 반환하고, 음수이면 RangeError를 발생시킨다.  
+
+**String.prototype.replace 메서드**  
+대상 문자열에서 첫 번째 인수로 전달받은 문자열 또는 정규 표현식을 검색하여 두 번째 인수로 전달한 문자열로 치환한 문자열을 반환한다.  
+검색된 문자열이 여럿 존재할 경우 첫 번째로 검색된 문자열만 치환한다.  
+
+**String.prototype.split 메서드**  
+대상 문자열에서 첫 번째 인수로 전달한 문자열 또는 정규 표현식을 검색하여 문자열을 구분한 후 분리된 각 문자열로 이루어진 배열을 반환한다.  
+두 번째 인수로 배열의 길이를 지정할 수 있다.  
 
 ## Symbol
 심벌<sup>symbol</sup>은 ES6에서 도입된 7번째 데이터 타입으로 변경 불가능한 원시 타입의 값이다.  
