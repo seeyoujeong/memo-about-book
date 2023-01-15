@@ -1337,7 +1337,11 @@ substring 메서드와 동일하게 동작하지만 음수인 인수를 전달�
 심벌 값도 문자열, 숫자, 불리언과 같이 객체처럼 접근하면 암묵적으로 래퍼 객체를 생성한다.  
 심벌 값은 암묵적으로 문자열이나 숫자 타입(불리언 타입은 예외)으로 변환되지 않는다.  
 심벌 값을 프로퍼티 키로 사용하여 생성한 프로퍼티는 for ... in 문이나 Object.keys, Object.getOwnPropertyNames 메서드로 찾을 수 없다.  
+중복될 가능성이 없는 심벌 값으로 프로퍼티 키를 생성하여 안전하게 표준 빌트인 객체를 확장할 수 있다.  
+심벌은 하위 호환성을 보장하기 위해 도입되었다.  
 ```javascript
+// Symbol 함수를 호출하여 유일무이한 심벌 값을 생성한다.
+// Symbol 함수는 전역 심벌 레지스트리에 등록되어 관리되지 않는다.
 const mySymbol = Symbol('name');
 
 console.log(mySymbol.description); // name
@@ -1349,11 +1353,6 @@ const mySymbol2 = Symbol('mySymbol');
 
 console.log(mySymbol1 === mySymbol2); // false
 
-const obj = {
-  // 심벌 값으로 프로퍼티 키를 생성
-  [Symbol('mySymbol')]: 1
-};
-
 // 심벌 값으로 프로퍼티 키를 동적 생성하면 다른 프로퍼티 키와 절대 충돌하지 않아 안전하다.
 Array.prototype[Symbol.for('sum')] = function () {
   return this.reduce((acc, cur) => acc + cur, 0);
@@ -1362,19 +1361,36 @@ Array.prototype[Symbol.for('sum')] = function () {
 [1, 2][Symbol.for('sum')]();
 ```
 
-**Symbol.for 메서드**  
+### Symbol.for 메서드
 인수로 전달받은 문자열을 키로 사용하여 키와 심벌 값의 쌍들이 저장되어 있는 전역 심벌 레지스트리<sup>global symbol registry</sup>에서 해당 키와 일치하는 심벌 값을 검색한다.  
 Symbol.for 메서드를 사용하면 애플리케이션 전역에서 중복되지 않는 유일무이한 상수인 심벌 값을 단 하나만 생성하여 전역 심벌 레지스트리를 통해 공유할 수 있다.  
 - 검색에 성공하면 새로운 심벌 값을 생성하지 않고 검색된 심벌 값을 반환한다.  
 - 검색에 실패하면 새로운 심벌 값을 생성하여 Symbol.for 메서드의 인수로 전달된 키로 전역 심벌 레지스트리에 저장한 후, 생성된 심벌 값을 반환한다.  
 
-**Symbol.keyFor 메서드**  
+### Symbol.keyFor 메서드
 전역 심벌 레지스트리에 저장된 심벌 값의 키를 추출할 수 있다.  
 ```javascript
 const s1 = Symbol.for('mySymbol');
 
 Symbol.keyFor(s1); // mySymbol
 ```
+
+### 심벌과 프로퍼티 키
+심벌 값을 프로퍼티 키로 사용하려면 프로퍼티 키로 사용할 심벌 값에 대괄호를 사용해야 한다.  
+프로퍼티에 접근할 때도 마찬가지로 대괄호를 사용해야 한다.  
+심벌 값으로 프로퍼티 키를 만들면 다른 프로퍼티 키와 절대 충돌하지 않는다.  
+```javascript
+const obj = {
+  // 심벌 값으로 프로퍼티 키를 생성
+  [Symbol.for('mySymbol')]: 1
+};
+
+obj[Symbol.for('mySymbol')];
+```
+
+### Well-known Symbol
+자바스크립트가 기본 제공하는 빌트인 심벌 값을 ECMAScript 사양에서는 Well-known Symbol이라 부른다.  
+Well-known Symbol은 자바스크립트 엔진의 내부 알고리즘에 사용된다.  
 
 ## Iterable
 ### 이터레이션 프로토콜<sup>iteration protocol</sup>
