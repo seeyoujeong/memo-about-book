@@ -1483,6 +1483,8 @@ ES6에서 도입된 스프레드 문법<sup>spread syntax</sup>(전개 문법) .
 ES5에서 구조화된 배열을 디스트럭처링하여 1개 이상의 변수에 할당한다.  
 ES6의 배열 디스트럭처링 할당은 배열의 각 요소를 배열로부터 추출하여 1개 이상의 변수에 할당한다.  
 배열 디스트럭처링 할당의 대상(할당문의 우변)은 이터러블이어야 하며, 할당 기준은 배열의 인덱스다.  
+배열 디스트럭처링 할당을 위한 변수에 기본값을 설정할 수 있다.  
+배열 디스트럭처링 할당을 위한 변수에 Rest 파라미터와 유사하게 Rest 요소 ...을 사용할 수 있다.  
 ```javascript
 const arr = [1, 2, 3];
 
@@ -1493,7 +1495,9 @@ var three = arr[2];
 
 // ES6
 const [one, two, three] = arr;
+// 기본값
 const [a, b, c = 3] = [1, 2];
+// Rest 요소
 const [x, ...y] = [1, 2, 3]; // 1 [2, 3]
 ```
 
@@ -1501,6 +1505,7 @@ const [x, ...y] = [1, 2, 3]; // 1 [2, 3]
 ES5에서 객체의 각 프로퍼티를 객체로부터 디스트럭처링하여 변수에 할당하기 위해서는 프로퍼티 키를 사용해야 한다.  
 ES6의 객체 디스트럭처링 할당은 객체의 각 프로퍼티를 객체로부터 추출하여 1개 이상의 변수에 할당한다.  
 객체 디스트럭처링 할당의 대상(할당문의 우변)은 객체이어야 하며, 할당 기준은 프로퍼티 키다.  
+순서는 의미가 없으며 선언된 변수 이름과 프로퍼티 키가 일치하면 할당된다.  
 ```javascript
 const user = { firstName: 'Ungmo', lastName: 'Lee' };
 
@@ -1512,61 +1517,81 @@ var lastName = user.lastName;
 const { lastName, firstName } = user;
 // 위와 아래는 동치다.
 const { lastName: lastName, firstName: firstName } = user;
-// 다른 변수 이름
+// 객체의 프로퍼티 키와 다른 변수 이름으로 값을 할당
 const { lastName: ln, firstName: fn } = user;
+// 기본값
 const { x = 'x', y } = { y: 'y' };
+// Rest 프로퍼티
 const { x, ...rest } = { x: 1, y: 2, z: 3 }; // 1 { y: 2, z: 3 }
 ```
 
 ## Set
 Set 객체는 중복되지 않는 유일한 값들의 집합<sup>set</sup>이다. 
+Set 객체는 이터러블이고 순회하는 순서는 요소가 추가된 순서를 따른다.  
 |구분|배열|Set 객체|
 |---|:---:|:---:|
 |동일한 값을 중복하여 포함할 수 있다.|Ο|Χ|
 |요소 순서에 의미가 있다.|Ο|Χ|
 |인덱스로 요소에 접근할 수 있다.|Ο|Χ|
 
-**Set 객체의 생성**  
+### Set 객체의 생성
 Set 생성자 함수는 이터러블을 인수로 전달 받아 Set 객체를 생성하고 이때 이터러블의 중복된 값은 Set 객체에 요소로 저장되지 않는다.  
 ```javascript
 const set = new Set([1, 2, 3, 3]);
 console.log(set); // Set(3) {1, 2, 3}
 ```
 
-**Set.prototype.size 프로퍼티**: Set 객체의 요소 개수를 확인한다.  
-**Set.prototype.add 메서드**: Set 객체에 요소를 추가할 때 사용하며 연속적으로 호출할 수 있다.  
-**Set.prototype.has 메서드**: Set 객체에 특정 요소가 존재하는지 확인할 때 사용하며 불리언 값을 반환한다.  
-**Set.prototype.delete 메서드**: Set 객체의 특정 요소를 삭제하고 삭제 성공 여부를 불리언 값으로 반환한다.  
-**Set.prototype.clear 메서드**: Set 객체의 모든 요소를 일괄 삭제하고 언제나 undefined를 반환한다.  
-**Set.prototype.forEach 메서드**: Set 객체의 요소를 순회할 때 사용하며 콜백 함수와 콜백 함수 내부에 3개의 인수를 전달한다.  
+### Set 프로퍼티/메서드
+**Set.prototype.size 프로퍼티**  
+Set 객체의 요소 개수를 확인한다.  
+size 프로퍼티는 setter 함수 없이 getter 함수만 존재하는 접근자 프로퍼티다.  
+
+**Set.prototype.add 메서드**  
+Set 객체에 요소를 추가할 때 사용하며 연속적으로 호출할 수 있다.  
+Set 객체는 NaN과 NaN을 같다고 평가하여 중복 추가를 허용하지 않는다.  
+
+**Set.prototype.has 메서드**  
+Set 객체에 특정 요소가 존재하는지 확인할 때 사용하며 불리언 값을 반환한다.  
+
+**Set.prototype.delete 메서드**  
+Set 객체의 특정 요소를 삭제하고 삭제 성공 여부를 불리언 값으로 반환한다.  
+
+**Set.prototype.clear 메서드**  
+Set 객체의 모든 요소를 일괄 삭제하고 언제나 undefined를 반환한다.  
+
+**Set.prototype.forEach 메서드**  
+Set 객체의 요소를 순회할 때 사용하며 콜백 함수와 콜백 함수 내부에 3개의 인수를 전달한다.  
+- 첫 번째 인수: 현재 순회 중인 요소값
+- 두 번째 인수: 현재 순회 중인 요소값
+- 세 번째 인수: 현재 순회 중인 Set 객체 자체
 
 ### 집합 연산
 Set 객체는 수학적 집합을 구현하기 위한 자료구조다.  
 
 **교집합**  
 ```javascript
-Set.prototype.intersection = function (set) {
+Set.prototype.intersection = function(set) {
   return new Set([...this].filter(v => set.has(v)));
 };
 ```
 
 **합집합**
 ```javascript
-Set.prototype.union = function (set) {
+Set.prototype.union = function(set) {
   return new Set([...this, ...set]);
 };
 ```  
 
 **차집합**
 ```javascript
-Set.prototype.difference = function (set) {
+Set.prototype.difference = function(set) {
   return new Set([...this].filter(v => !set.has(v)));
 };
 ```
 
 **부분 집합과 상위 집합**
 ```javascript
-Set.prototype.isSuperset = function (subset) {
+Set.prototype.isSuperset = function(subset) {
   const supersetArr = [...this];
   return [...subset].every(v => supersetArr.includes(v));
 };
@@ -1574,6 +1599,7 @@ Set.prototype.isSuperset = function (subset) {
 
 ## Map
 Map 객체는 키와 값의 쌍으로 이루어진 컬렉션이다.  
+Map 객체를 순회하는 순서는 요소가 추가된 순서를 따른다.  
 <table>
   <thead>
     <tr>
@@ -1601,7 +1627,7 @@ Map 객체는 키와 값의 쌍으로 이루어진 컬렉션이다.
   </tbody>
 </table>
 
-**Map 객체의 생성**  
+### Map 객체의 생성  
 Map 생성자 함수는 이터러블을 인수로 전달받아 Map 객체를 생성하고 이때 인수로 전달되는 이터러블은 키와 값의 쌍으로 이루어진 요소로 구성되어야 한다.  
 Map 생성자 함수의 인수로 전달한 이터러블에 중복된 키를 갖는 요소가 존재하면 값이 덮어써진다.  
 ```javascript
@@ -1609,16 +1635,42 @@ const map = new Map([['key1', 'value1'], ['key2', 'value2']]);
 console.log(map); // Map(2) {"key1" => "value1", "key2" => "value2"}
 ```  
 
-**Map.prototype.size 프로퍼티**: Map 객체의 요소 개수를 확인한다.  
-**Map.prototype.set 메서드**: Map 객체에 요소를 추가할 때 사용하며 연속적으로 호출할 수 있다.  
-**Map.prototype.get 메서드**: Map 객체에서 특정 요소를 취득할 때 사용하며 인수에 키를 전달하면 인수로 전달한 키를 갖는 값을 반환한다.  
-**Map.prototype.has 메서드**: Map 객체에 특정 요소가 존재하는 확인할 때 사용하며 존재 여부를 나타내는 불리언 값을 반환한다.  
-**Map.prototype.delete 메서드**: Map 객체의 요소를 삭제할 때 사용하며 삭제 성공 여부를 나타내는 불리언 값을 반환한다.  
-**Map.prototype.clear 메서드**: Map 객체의 요소를 일괄 삭제할 때 사용하며 언제나 undefined를 반환한다.  
-**Map.prototype.forEach 메서드**: Map 객체의 요소를 순회할 때 사용하며 콜백 함수와 콜백 함수 내부에 3개의 인수를 전달한다.  
-**Map.prototype.keys 메서드**: Map 객체에서 요소키를 값으로 갖는 이터러블이면서 동시에 이터레이터인 객체를 반환한다.  
-**Map.prototype.values 메서드**: Map 객체에서 요소값을 값으로 갖는 이터러블이면서 동시에 이터레이터인 객체를 반환한다.  
-**Map.prototype.entries 메서드**: Map 객체에서 요소키와 요소값을 값으로 갖는 이터러블이면서 동시에 이터레이터인 객체를 반환한다.  
+### Map 프로퍼티/메서드
+**Map.prototype.size 프로퍼티**  
+Map 객체의 요소 개수를 확인한다.  
+size 프로퍼티는 setter 함수 없이 getter 함수만 존재하는 접근자 프로퍼티다.  
+
+**Map.prototype.set 메서드**  
+Map 객체에 요소를 추가할 때 사용하며 연속적으로 호출할 수 있다.  
+Map 객체는 NaN과 NaN을 같다고 평가하여 중복 추가를 허용하지 않는다.  
+
+**Map.prototype.get 메서드**  
+Map 객체에서 특정 요소를 취득할 때 사용하며 인수에 키를 전달하면 인수로 전달한 키를 갖는 값을 반환한다.  
+Map 객체에서 인수로 전달한 키를 갖는 요소가 존재하지 않으면 undefined를 반환한다.  
+
+**Map.prototype.has 메서드**  
+Map 객체에 특정 요소가 존재하는 확인할 때 사용하며 존재 여부를 나타내는 불리언 값을 반환한다.  
+
+**Map.prototype.delete 메서드**  
+Map 객체의 요소를 삭제할 때 사용하며 삭제 성공 여부를 나타내는 불리언 값을 반환한다.  
+
+**Map.prototype.clear 메서드**  
+Map 객체의 요소를 일괄 삭제할 때 사용하며 언제나 undefined를 반환한다.  
+
+**Map.prototype.forEach 메서드**  
+Map 객체의 요소를 순회할 때 사용하며 콜백 함수와 콜백 함수 내부에 3개의 인수를 전달한다.  
+- 첫 번째 인수: 현재 순회 중인 요소값
+- 두 번째 인수: 현재 순회 중인 요소키
+- 세 번째 인수: 현재 순회 중인 Map 객체 자체
+
+**Map.prototype.keys 메서드**  
+Map 객체에서 요소키를 값으로 갖는 이터러블이면서 동시에 이터레이터인 객체를 반환한다.  
+
+**Map.prototype.values 메서드**  
+Map 객체에서 요소값을 값으로 갖는 이터러블이면서 동시에 이터레이터인 객체를 반환한다.  
+
+**Map.prototype.entries 메서드**  
+Map 객체에서 요소키와 요소값을 값으로 갖는 이터러블이면서 동시에 이터레이터인 객체를 반환한다.  
 
 ## 브라우저의 렌더링 과정
 브라우저는 다음과 같은 과정을 거쳐 렌더링을 수행한다.  
