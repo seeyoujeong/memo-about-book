@@ -1706,7 +1706,7 @@ HTTP/2.0은 커넥션당 여러 개의 요청과 응답, 즉 다중 요청/응�
 ### HTML 파싱과 DOM 생성
 브라우저의 렌더링 엔진은 응답받은 HTML 문서를 파싱하여 브라우저가 이해할 수 있는 자료구조인 DOM<sup>Document Object Model</sup>을 생성한다.  
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/149338518-70b951de-b375-457b-9b8d-55e03543852e.png">
+  <img src="https://user-images.githubusercontent.com/40534414/213160268-a683f5c4-489a-4360-8a5b-d917a4a0adde.png">
 </p>
 
 1. 서버에 존재하던 HTML 파일이 브라우저의 요청에 의해 응답된다. 이때 서버는 브라우저가 요청한 HTML 파일을 읽어 들여 메모리에 저장한 다음 메모리에 저장된 바이트(2진수)를 인터넷을 경유하여 응답한다.  
@@ -1717,6 +1717,9 @@ HTTP/2.0은 커넥션당 여러 개의 요청과 응답, 즉 다중 요청/응�
 
 ### CSS 파싱과 CSSOM 생성
 렌더링 엔진은 DOM을 생성해 나가다가 CSS를 로드하는 link 태그나 style 태그를 만나면 DOM 생성을 일시 중단하고 link 태그의 href 어트리뷰트에 지정된 CSS 파일을 서버에 요청하여 로드한 CSS 파일이나 style 태그 내의 CSS를 HTML과 동일한 파싱 과정(바이트 → 문자 → 토큰 → 노드 → CSSOM)을 거치며 해석하여 CSSOM<sup>CSS Object Model</sup>을 생성한다.  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/40534414/213164333-51ef4a6a-9e67-4ea9-bdc2-273cbb96e0fc.png">
+</p>
 
 ### 렌더 트리 생성
 렌더링 엔진은 서버로부터 응답된 HTML과 CSS를 파싱하여 각각 DOM과 CSSOM를 생성하고 DOM과 CSSOM은 렌더링을 위해 렌더 트리<sup>render tree</sup>로 결합된다.  
