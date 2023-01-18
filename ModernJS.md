@@ -1689,21 +1689,20 @@ Map 객체에서 요소키와 요소값을 값으로 갖는 이터러블이면�
 </p> 
 
 ### 요청과 응답
-브라우저의 핵심 기능은 필요한 리소스(HTML, CSS, 자바스크립트, 이미지, 폰트 등의 정적 파일 또는 서버가 동적으로 생성한 데이터)를 서버에 요청<sup>request</sup>하고 서버로부터 응답<sup>response</sup>받아 브라우저에 시각적으로 렌더링한다.  
-서버에 요청을 전송하기 위해 브라우저는 주소창을 제공한다. 브라우저의 주소창에 URL을 입력하고 엔터 키를 누르면 URL의 호스트 이름이 DNS를 통해 IP 주소로 변환되고 이 IP 주소를 갖는 서버에게 요청을 전송한다.  
+브라우저의 핵심 기능은 필요한 리소스(HTML, CSS, 자바스크립트, 이미지, 폰트 등의 정적 파일 또는 서버가 동적으로 생성한 데이터)를 서버에 요청<sup>request</sup>하고 서버로부터 응답<sup>response</sup>받아 브라우저에 시각적으로 렌더링하는 것이다.    
+서버에 요청을 전송하기 위해 브라우저는 주소창을 제공하는데 이 주소창에 URL을 입력하고 엔터 키를 누르면 URL의 호스트 이름이 DNS를 통해 IP 주소로 변환되고 이 IP 주소를 갖는 서버에게 요청을 전송한다.  
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/148959988-2115cb45-b9a4-4006-b090-d765a05d4586.png">
+  <img src="https://user-images.githubusercontent.com/40534414/213091244-dfc62ad0-ae77-45d4-9503-f2f214bcce94.png">
 </p>
-  
+
 ### HTTP 1.1과 HTTP 2.0
 HTTP<sup>HyperText Transfer Protocol</sup>는 웹에서 브라우저와 서버가 통신하기 위한 프로토콜이다.  
 HTTP/1.1은 기본적으로 커넥션<sup>connection</sup>당 하나의 요청과 응답만 처리한다.  
 HTTP/2.0은 커넥션당 여러 개의 요청과 응답, 즉 다중 요청/응답이 가능하다.  
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/149084933-7f2b0686-e226-45b2-b092-3d1a21c09983.png">
-  <img src="https://user-images.githubusercontent.com/40534414/149084949-56873cb6-ee04-4373-abd3-dde5dc6f6024.png">
+  <img src="https://user-images.githubusercontent.com/40534414/213092896-a2467411-9a7c-4291-9172-6d8deb8398f5.png">
 </p>
-  
+
 ### HTML 파싱과 DOM 생성
 브라우저의 렌더링 엔진은 응답받은 HTML 문서를 파싱하여 브라우저가 이해할 수 있는 자료구조인 DOM<sup>Document Object Model</sup>을 생성한다.  
 <p align="center">
@@ -1720,9 +1719,10 @@ HTTP/2.0은 커넥션당 여러 개의 요청과 응답, 즉 다중 요청/응�
 렌더링 엔진은 DOM을 생성해 나가다가 CSS를 로드하는 link 태그나 style 태그를 만나면 DOM 생성을 일시 중단하고 link 태그의 href 어트리뷰트에 지정된 CSS 파일을 서버에 요청하여 로드한 CSS 파일이나 style 태그 내의 CSS를 HTML과 동일한 파싱 과정(바이트 → 문자 → 토큰 → 노드 → CSSOM)을 거치며 해석하여 CSSOM<sup>CSS Object Model</sup>을 생성한다.  
 
 ### 렌더 트리 생성
-렌더링 엔진은 서버로부터 응답된 HTML과 CSS를 파싱하여 각각 DOM과 CSSOM를 생성하고 DOM과 CSSOM은 렌더링을 위해 렌더 트리<sup>render tree</sup>로 결합한다.  
-렌더 트리는 렌더링을 위한 트리 구조의 자료구조이고 브라우저 화면에 렌더링되는 노드만으로 구성된다.  
+렌더링 엔진은 서버로부터 응답된 HTML과 CSS를 파싱하여 각각 DOM과 CSSOM를 생성하고 DOM과 CSSOM은 렌더링을 위해 렌더 트리<sup>render tree</sup>로 결합된다.  
+렌더 트리는 렌더링을 위한 트리 구조의 자료구조이며 따라서 브라우저 화면에 렌더링되지 않는 노드와 CSS에 의해 비표시되는 노드들은 포함하지 않는다.   
 완성된 렌더 트리는 각 HTML 요소의 레이아웃(위치, 크기)을 계산하는 데 사용되며 브라우저 화면에 픽셀을 렌더링하는 페인팅<sup>painting</sup> 처리에 입력된다.  
+레이아웃 계산과 페인팅을 다시 실행하는 리렌더링은 성능에 악영향을 주는 작업이므로 가급적 리렌더링이 빈번하게 발생하지 않도록 주의할 필요가 있다.  
 <p align="center">
   <img src="https://user-images.githubusercontent.com/40534414/149624849-d207da1f-3630-4650-9df7-e572f0487afa.png">
 </p>
