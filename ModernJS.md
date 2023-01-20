@@ -1772,6 +1772,7 @@ script 태그의 위치에 따라 HTML 파싱이 블로킹되어 DOM 생성이 �
 
 ### script 태그의 async/defer 어트리뷰트
 자바스크립트 파싱에 의한 DOM 생성이 중단<sup>blocking</sup>되는 문제를 근본적으로 해결하기 위해 HTML5부터 script 태그에 async와 defer 어트리뷰트가 추가되었다.  
+src 어트리뷰트가 없는 인라인 자바스크립트에는 사용할 수 없다.  
 async와 defer 어트리뷰트를 사용하면 HTML 파싱과 외부 자바스크립트 파일의 로드가 비동기적<sup>asynchronous</sup>으로 동시에 진행된다.  
 ```html
 <script async src="example.js"></script>
@@ -1782,14 +1783,14 @@ async와 defer 어트리뷰트를 사용하면 HTML 파싱과 외부 자바스�
 자바스크립트의 파싱과 실행은 자바스크립트 파일의 로드가 완료된 직후 진행되며, 이때 HTML 파싱이 중단된다.  
 여러 개의 script 태그에 async 어트리뷰트를 지정하면 script 태그의 순서와는 상관없이 로드가 완료된 자바스크립트부터 먼저 실행되므로 순서가 보장되지 않는다.  
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/150136090-d7fa2f97-8113-4d65-8dac-af2c4976f403.png">
+  <img src="https://user-images.githubusercontent.com/40534414/213607068-2435222e-7130-4322-b20a-197789102307.png">
 </p>
 
 **defer 어트리뷰트**  
 자바스크립트의 파싱과 실행은 HTML 파싱이 완료된 직후, 즉 DOM 생성이 완료된 직후(이때 DOMContentLoaded 이벤트가 발생한다) 진행된다.  
 DOM 생성이 완료된 이후 실행되어야 할 자바스크립트에 유용하다.  
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/150136771-f0987b28-a37b-4989-8ae4-a35d606004b7.png">
+  <img src="https://user-images.githubusercontent.com/40534414/213607082-8d6bf727-9f68-40e7-b5cf-13c9d87753a7.png">
 </p>
 
 ## DOM
