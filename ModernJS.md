@@ -1802,15 +1802,16 @@ DOM은 HTML 문서의 계층적 구조와 정보를 표현하는 것은 물론 �
 HTML 요소<sup>HTML element</sup>는 HTML 문서를 구성하는 개별적인 요소를 의미한다.  
 HTML 요소는 렌더링 엔진에 의해 파싱되어 DOM을 구성하는 요소 노드 객체로 변환된다.  
 HTML 요소의 어트리뷰트는 어트리뷰트 노드로, HTML 요소의 텍스트 콘텐츠는 텍스트 노드로 변환된다.  
+노드 객체도 자바스크립트 객체이므로 프로토타입에 의한 상속 구조를 갖느다.  
+노드 객체에는 노드 객체의 종류, 즉 노드 타입에 상관없이 모든 노드 객체가 공통으로 갖는 기능도 있고, 노드 타입에 따라 고유한 기능도 있다.  
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/150340473-18ffdd99-5c4b-4634-8fbd-557219a5da8a.png" width="630">
-  <img src="https://user-images.githubusercontent.com/40534414/150340480-b48d437f-631d-4dd2-96b2-87d6da6ff691.png" width="332">
+  <img src="https://user-images.githubusercontent.com/40534414/213845717-3d0be552-b60d-4a34-a81a-94a58bb9bf31.png">
 </p>
 
 **트리 자료구조<sup>tree data structure</sup>**  
 트리 자료구조는 부모 노드<sup>parent node</sup>와 자식 노드<sup>child node</sup>로 구성되어 노드 간의 계층적 구조(부자, 형제 관계)를 표현하는 비선형 자료구조를 말한다. 트리 자료구조는 하나의 최상위 노드에서 시작한다. 최상위 노드는 부모 노드가 없으며, 루트 노드<sup>root node</sup>라 한다. 루트 노드는 0개 이상의 자식 노드를 갖는다. 자식 노드가 없는 노드를 리프 노드<sup>leaf node</sup>라 한다.  
-> *비선형<sup>nonlinear</sup> 자료구조는 하나의 자료 뒤에 여러 개의 자료가 존재할 수 있는 자료구조다. (e.g. 트리, 그래프)*  
-> *선형<sup>linear</sup> 자료구조는 하나의 자료 뒤에 하나의 자료만 존재하는 자료구조다. (e.g. 배열, 스택, 큐, 링크드 리스트, 해시 테이블)*  
+> *비선형 <sup>nonlinear</sup> 자료구조는 하나의 자료 뒤에 여러 개의 자료가 존재할 수 있는 자료구조다. (e.g. 트리, 그래프)*  
+> *선형 <sup>linear</sup> 자료구조는 하나의 자료 뒤에 하나의 자료만 존재하는 자료구조다. (e.g. 배열, 스택, 큐, 링크드 리스트, 해시 테이블)*  
 
 **문서 노드<sup>document node</sup>**  
 문서 노드는 DOM 트리의 최상위에 존재하는 루트 노드로서 document 객체를 가리킨다. document 객체는 브라우저가 렌더링한 HTML 문서 전체를 가리키는 객체로서 전역 객체 window의 document 프로퍼티에 바인딩되어 있다. document 객체는 DOM 트리의 루트 노드이므로 DOM 트리의 노드들에 접근하기 위한 진입점<sup>entry point</sup> 역할을 담당한다. 즉, 요소, 어트리뷰트, 텍스트 노드에 접근하려면 문서 노드를 통해야 한다.  
@@ -1823,14 +1824,6 @@ HTML 요소의 어트리뷰트는 어트리뷰트 노드로, HTML 요소의 텍�
 
 **텍스트 노드<sup>text node</sup>**  
 텍스트 노드는 HTML 요소의 텍스트를 가리키는 객체다. 요소 노드가 문서의 구조를 표현한다면 텍스트 노드는 문서의 정보를 표현한다고 할 수 있다. 텍스트 노드는 요소 노드의 자식 노드이며, 자식 노드를 가질 수 없는 리프 노드<sup>leaf node</sup>다. 즉, 텍스트 노드는 DOM 트리의 최종단이다. 따라서 텍스트 노드에 접근하려면 먼저 부모 노드인 요소 노드에 전급해야 한다.  
-
-**노드 객체의 상속 구조**  
-노드 객체도 자바스크립트 객체이므로 프로토타입에 의한 상속 구조를 갖느다.  
-노드 객체에는 노드 객체의 종류, 즉 노드 타입에 상관없이 모든 노드 객체가 공통으로 갖는 기능도 있고, 노드 타입에 따라 고유한 기능도 있다.  
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/150641637-a2ed5cde-f25e-44dd-9ac6-2bba537b0d30.png" height="343">
-  <img src="https://user-images.githubusercontent.com/40534414/150641775-92608ac2-1e1f-436e-ad63-ee862c27f160.png" height="343">
-</p>
 
 ### 요소 노드 취득
 HTML의 구조나 내용 또는 스타일 등을 동적으로 조작하려면 먼저 요소 노드를 취득해야 한다.  
