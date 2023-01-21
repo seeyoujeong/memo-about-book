@@ -1829,7 +1829,7 @@ HTML 요소의 어트리뷰트는 어트리뷰트 노드로, HTML 요소의 텍�
 HTML의 구조나 내용 또는 스타일 등을 동적으로 조작하려면 먼저 요소 노드를 취득해야 한다.  
 요소 노드의 취득은 HTML 요소를 조작하는 시작점이다.  
 
-**id를 이용한 요소 노드 취득**  
+**Document.prototype.getElementById 메서드**  
 Document.prototype.getElementById 메서드는 인수로 전달한 id 어트리뷰트 값을 갖는 하나의 요소 노드를 탐색하여 반환한다.  
 id 값은 HTML 문서 내에서 유일한 값이어야 하며, class 어트리뷰트와는 달리 공백 문자로 구분하여 여러 개의 값을 가질 수 없다.  
 getElementById 메서드는 인수로 전달된 id 값을 갖는 첫 번째 요소 노드만 반환한다.  
@@ -1857,7 +1857,7 @@ id 값과 동일한 이름의 전역 변수가 이미 선언되어 있으면 이
 </html>
 ```
 
-**태그 이름을 이용한 요소 노드 취득**  
+**Document.prototype/Element.prototype.getElementsByTagName 메서드**  
 Document.prototype/Element.prototype.getElementsByTagName 메서드는 인수로 전달한 태그 이름을 갖는 모든 요소 노드들을 탐색하여 반환한다.  
 getElementsByTagName 메서드가 반환하는 DOM 컬렉션 객체인 HTMLCollection 객체는 유사 배열 객체이면서 이터러블이다.  
 인수로 전달된 태그 이름을 갖는 요소가 존재하지 않는 경우 getElementsByTagName 메서드는 빈 HTMLCollection 객체를 반환한다.  
@@ -1887,7 +1887,7 @@ getElementsByTagName 메서드가 반환하는 DOM 컬렉션 객체인 HTMLColle
 </html>
 ```
 
-**class를 이용한 요소 노드 취득**  
+**Document.prototype/Element.prototype.getElementByClassName 메서드**  
 Document.prototype/Element.prototype.getElementByClassName 메서드는 인수로 전달한 class 어트리뷰트 값을 갖는 모든 요소 노드들을 탐색하여 반환한다.  
 인수로 전달할 class 값은 공백으로 구분하여 여러 개의 class를 지정할 수 있다.  
 getElementsByClassName 메서드는 여러 개의 요소 노드 객체를 갖는 DOM 컬렉션 객체인 HTMLCollection 객체를 반환한다.  
@@ -1916,12 +1916,13 @@ getElementsByClassName 메서드는 여러 개의 요소 노드 객체를 갖는
 </html>
 ```
 
-**CSS 선택자를 이용한 요소 노드 취득**  
+**Document.prototype/Element.prototype.querySelector 메서드**  
 Document.prototype/Element.prototype.querySelector 메서드는 인수로 전달한 CSS 선택자를 만족시키는 하나의 요소 노드를 탐색하여 반환한다.  
 인수로 전달한 CSS 선택자를 만족시키는 요소 노드가 여러 개인 경우 첫 번째 요소 노드만 반환한다.  
 인수로 전달된 CSS 선택자를 만족시키는 요소 노드가 존재하지 않는 경우 null을 반환한다.  
 인수로 전달한 CSS 선택자가 문법에 맞지 않는 경우 DOMException 에러가 발생한다.  
 
+**Document.prototype/Element.prototype.querySelectorAll 메서드**  
 Document.prototype/Element.prototype.querySelectorAll 메서드는 인수로 전달한 CSS 선택자를 만족시키는 모든 요소 노드를 탐색하여 반환한다.  
 querySelectorAll 메서드는 여러 개의 요소 노드 객체를 갖는 DOM 컬렉션 객체인 NodeList 객체를 반환한다.  
 인수로 전달된 CSS 선택자를 만족시키는 요소가 존재하지 않는 경우 빈 NodeList 객체를 반환한다.  
@@ -1929,7 +1930,7 @@ querySelectorAll 메서드는 여러 개의 요소 노드 객체를 갖는 DOM �
 
 > *id 어트리뷰트가 있는 요소 노드를 취득하는 경우에는 getElementById 메서드를 사용하고 그 외의 경우에는 querySelector, querySelectorAll 메서드를 사용하는 것을 권장한다.*  
 
-**HTMLCollection과 NodeList**  
+### HTMLCollection과 NodeList  
 HTMLCollection과 NodeList는 모두 유사 배열 객체이면서 이터러블이다.  
 for ... of 문으로 순회할 수 있으며 스프레드 문법을 사용하여 간단히 배열로 변환할 수 있다.  
 노드 객체의 상태 변경과 상관없이 안전하게 DOM 컬렉션을 사용하려면 HTMLCollection이나 NodeList 객체를 배열로 변환하여 사용하는 것을 권장한다.  
@@ -1989,16 +1990,44 @@ childNodes 프로퍼티가 반환하는 NodeList 객체는 실시간으로 노�
 DOM 트리 상의 노드를 탐색할 수 있도록 Node, Element 인터페이스는 트리 탐색 프로퍼티를 제공한다.  
 노드 탐색 프로퍼티는 setter없이 getter만 존재하여 참조만 가능한 읽기 전용 접근자 프로퍼티다.  
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/151559250-638897c8-70ab-448b-a979-9d0dedb65212.png">
+  <img src="https://user-images.githubusercontent.com/40534414/213847294-fde296d4-5932-42f5-a56d-5bf765799a8f.png">
 </p>
 
-**공백 텍스트 노드**  
-HTML 요소 사이의 스페이스, 탭, 줄바꿈(개행) 등의 공백<sup>white space</sup>문자는 텍스트 노드를 생성한다.  
-텍스트 에디터에서 HTML 문서에 스페이스 키, 탭 키, 엔터 키 등을 입력하면 공백 문자가 추가된다.  
-노드를 탐색할 때는 공백 문자가 생성한 공백 텍스트 노드에 주의해야 한다.  
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/151663177-357e25e7-7a9e-4ffc-8ced-f470257e503d.png">
-</p>
+**부모 노드 탐색**  
+부모 노드를 탐색하려면 Node.prototype.parentNode 프로퍼티를 사용한다.  
+텍스트 노드는 DOM 트리의 최종단 노드인 리프 노드이므로 부모 노드가 텍스트 노드인 경우는 없다.  
+
+**형제 노드 탐색**  
+<table>
+  <thead>
+    <tr>
+      <th align="center">프로퍼티</th>
+      <th align="center">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="left">Node.prototype.previousSibling</td>
+      <td align="left">부모 노드가 같은 형제 노드 중에서 자신의 이전 형제 노드를 탐색하여 반환한다.
+        previousSibling 프로퍼티가 반환하는 형제 노드는 요소 노드뿐만 아니라 텍스트 노드일 수도 있다.</td>
+    </tr>
+    <tr>
+      <td align="left">Node.prototype.nextSibling</td>
+      <td align="left">부모 노드가 같은 형제 노드 중에서 자신의 다음 형제 노드를 탐색하여 반환한다. 
+        nextSibling 프로퍼티가 반환하는 형제 노드는 요소 노드뿐만 아니라 텍스트 노드일 수도 있다.</td>
+    </tr>
+    <tr>
+      <td align="left">Element.prototype.previousElementSibling</td>
+      <td align="left">부모 노드가 같은 형제 요소 노드 중에서 자신의 이전 형제 요소 노드를 탐색하여 반환한다. 
+        previousElementSibling 프로퍼티는 요소 노드만 반환한다.</td>
+    </tr>
+    <tr>
+      <td align="left">Element.prototype.nextElementSibling</td>
+      <td align="left">부모 노드가 같은 형제 요소 노드 중에서 자신의 다음 형제 요소 노드를 탐색하여 반환한다. 
+        nextElementSibling 프로퍼티는 요소 노드만 반환한다.</td>
+    </tr>
+  </tbody>
+</table>
 
 **자식 노드 탐색**  
 <table>
@@ -2048,41 +2077,10 @@ hasChildNodes 메서드는 childNodes 프로퍼티와 마찬가지와 텍스트 
 요소 노드의 텍스트 노드는 요소 노드의 자식 노드다.  
 요소 노드의 텍스트 노드는 firstChild 프로퍼티로 접근할 수 있다.  
 
-**부모 노드 탐색**  
-부모 노드를 탐색하려면 Node.prototype.parentNode 프로퍼티를 사용한다.  
-텍스트 노드는 DOM 트리의 최종단 노드인 리프 노드이므로 부모 노드가 텍스트 노드인 경우는 없다.  
-
-**형제 노드 탐색**  
-<table>
-  <thead>
-    <tr>
-      <th align="center">프로퍼티</th>
-      <th align="center">설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td align="left">Node.prototype.previousSibling</td>
-      <td align="left">부모 노드가 같은 형제 노드 중에서 자신의 이전 형제 노드를 탐색하여 반환한다.
-        previousSibling 프로퍼티가 반환하는 형제 노드는 요소 노드뿐만 아니라 텍스트 노드일 수도 있다.</td>
-    </tr>
-    <tr>
-      <td align="left">Node.prototype.nextSibling</td>
-      <td align="left">부모 노드가 같은 형제 노드 중에서 자신의 다음 형제 노드를 탐색하여 반환한다. 
-        nextSibling 프로퍼티가 반환하는 형제 노드는 요소 노드뿐만 아니라 텍스트 노드일 수도 있다.</td>
-    </tr>
-    <tr>
-      <td align="left">Element.prototype.previousElementSibling</td>
-      <td align="left">부모 노드가 같은 형제 요소 노드 중에서 자신의 이전 형제 요소 노드를 탐색하여 반환한다. 
-        previousElementSibling 프로퍼티는 요소 노드만 반환한다.</td>
-    </tr>
-    <tr>
-      <td align="left">Element.prototype.nextElementSibling</td>
-      <td align="left">부모 노드가 같은 형제 요소 노드 중에서 자신의 다음 형제 요소 노드를 탐색하여 반환한다. 
-        nextElementSibling 프로퍼티는 요소 노드만 반환한다.</td>
-    </tr>
-  </tbody>
-</table>
+**공백 텍스트 노드**  
+HTML 요소 사이의 스페이스, 탭, 줄바꿈(개행) 등의 공백<sup>white space</sup>문자는 텍스트 노드를 생성한다.  
+텍스트 에디터에서 HTML 문서에 스페이스 키, 탭 키, 엔터 키 등을 입력하면 공백 문자가 추가된다.  
+노드를 탐색할 때는 공백 문자가 생성한 공백 텍스트 노드에 주의해야 한다.  
 
 ### 노드 정보 취득
 <table>
@@ -2097,29 +2095,25 @@ hasChildNodes 메서드는 childNodes 프로퍼티와 마찬가지와 텍스트 
       <td align="left">Node.prototype.nodeType</td>
       <td align="left">
         <p>노드 객체의 종류, 즉 노드 타입을 나타태는 상수를 반환한다. 노드 타입 상수는 Node에 정의되어 있다.</p>
-        <ul type="square">
-          <li>Node.ELEMENT_NODE: 요소 노드 타입을 나타내는 상수 1을 반환</li>
-          <li>Node.TEXT_NODE: 텍스트 노드 타입을 나타내는 상수 3을 반환</li>
-          <li>Node.DOCUMENT_NODE: 문서 노드 타입을 나타내는 상수 9를 반환</li>
-        </ul>
+        <div>▪︎ Node.ELEMENT_NODE: 요소 노드 타입을 나타내는 상수 1을 반환</divn>
+        <div>▪︎ Node.TEXT_NODE: 텍스트 노드 타입을 나타내는 상수 3을 반환</div>
+        <div>▪︎ Node.DOCUMENT_NODE: 문서 노드 타입을 나타내는 상수 9를 반환</div>
       </td>
     </tr>
     <tr>
       <td align="left">Node.prototype.nodeName</td>
       <td align="left">
         <p>노드의 이름을 문자열로 반환한다.</p>
-        <ul type="square">
-          <li>요소 노드: 대문자 문자열로 태그 이름("UL", "LI" 등)을 반환</li>
-          <li>텍스트 노드: 문자열 "#text"를 반환</li>
-          <li>문서 노드: 문자열 "#document"를 반환</li>
-        </ul>
+        <div>▪︎ 요소 노드: 대문자 문자열로 태그 이름("UL", "LI" 등)을 반환</divn>
+        <div>▪︎ 텍스트 노드: 문자열 "#text"를 반환</div>
+        <div>▪︎ 문서 노드: 문자열 "#document"를 반환</div>
       </td>
     </tr>
   </tbody>
 </table>
   
 ### 요소 노드의 텍스트 조작
-**nodeValue**  
+**nodeValue 프로퍼티**  
 노드 객체의 nodeValue 프로퍼티를 참조하면 노드 객체의 값을 반환한다. 
 노드 객체의 값이란 텍스트 노드의 텍스트다.  
 문서 노드나 요소 노드의 nodeValue 프로퍼티를 참조하면 null을 반환한다.  
@@ -2145,7 +2139,7 @@ hasChildNodes 메서드는 childNodes 프로퍼티와 마찬가지와 텍스트 
 </html>
 ```
 
-**textContent**  
+**textContent 프로퍼티**  
 Node.prototype.textContent 프로퍼티는 요소 노드의 텍스트와 모든 자손 노드의 텍스트를 모두 취득하거나 변경한다.  
 요소 노드의 childNodes 프로퍼티가 반환한 모든 노드들의 텍스트 노드의 값을 모두 반환하는데 HTML 마크업은 무시된다.  
 요소 노드의 textContent 프로퍼티에 문자열을 할당하면 요소 노드의 모든 자식 노드가 제거되고 할당한 문자열이 텍스트로 추가된다.  
