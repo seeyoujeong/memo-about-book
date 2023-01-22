@@ -2166,13 +2166,13 @@ Node.prototype.textContent 프로퍼티는 요소 노드의 텍스트와 모든 
 DOM 조작<sup>DOM manipulation</sup>은 새로운 노드를 생성하여 DOM에 추가하거나 기존 노드를 삭제 또는 교체하는 것을 말한다.  
 DOM 조작에 의해 DOM에 새로운 노드가 추가되거나 삭제되면 리플로우와 리페인트가 발생하는 원인이 되므로 성능에 영향을 준다.  
 
-**innerHTML**  
+**innerHTML 프로퍼티**  
 Element.prototype.innerHTML 프로퍼티는 요소 노드의 HTML 마크업을 취득하거나 변경한다.  
 요소 노드의 innerHTML 프로퍼티를 참조하면 요소 노드의 콘텐츠 영역 내에 포함된 모든 HTML 마크업을 문자열로 반환한다.  
 요소 노드의 innerHTML 프로퍼티에 문자열을 할당하면 요소 노드의 모든 자식 노드가 제거되고 할당한 문자열에 포함되어 있는 HTML 마크업이 파싱되어 요소 노드의 자식 노드로 DOM에 반영된다.  
 사용자로부터 입력받은 데이터<sup>untrusted input data</sup>를 그대로 innerHTML 프로퍼티에 할당하는 것은 크로스 사이트 스크립팅 공격<sup>XSS: Cross-Site Scripting Attacks</sup>에 취약하므로 위험하다.  
 HTML5는 innerHTML 프로퍼티로 삽입된 script 요소 내의 자바스크립트 코드를 실행하지 않는다.  
-요소 노드의 innerHTML 프로퍼티에 HTML 마크업 문자열을 할당하는 경우 요소 노드의 모든 자식 노드를 제거하고 할당한 HTML 마크업 문자열을 파싱하여 DOM을 변경한다.
+innerHTML 프로퍼티에 HTML 마크업 문자열을 할당하면 유지되어도 좋은 기존의 자식 노드까지 모두 제거하고 다시 처음부터 새롭게 자식 노드를 생성하여 DOM에 반영한다.  
 새로운 요소를 삽입할 때 삽입될 위치를 지정할 수 없다.  
 ```html
 <!DOCTYPE html>
@@ -2202,7 +2202,7 @@ Element.prototype.insertAdjacentHTML(position, DOMString) 메서드는 기존 �
 두 번째 인수로 전달한 HTML 마크업 문자열을 파싱하고 그 결과로 생성된 노드를 첫 번째 인수로 전달한 위치에 삽입하여 DOM에 반영한다.  
 innerHTML 프로퍼티보다 효율적이지만 크로스 사이트 스크립팅 공격에 취약하다는 점은 동일하다.  
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/152683631-739f41a6-0880-44ce-990c-5665b0bb00f2.png">
+  <img src="https://user-images.githubusercontent.com/40534414/213898281-e8077916-f0d9-49f7-b34c-92193442cff8.png">
 </p>
 
 ```html
@@ -2256,10 +2256,6 @@ DocumentFragment 노드는 문서, 요소, 어트리뷰트, 텍스트 노드와 
 DocumentFragment 노드는 자식 노드들의 부모 노드로서 별도의 서브 DOM을 구성하여 기존 DOM에 추가하기 위한 용도로 사용한다.  
 DocumentFragment 노드는 기존 DOM과는 별도로 존재하므로 DocumentFragment 노드에 자식 노드를 추가하여도 기존 DOM에는 어떠한 변경도 발생하지 않는다.  
 DocumentFragment 노드를 DOM에 추가하면 자신은 제거되고 자신의 자식 노드만 DOM에 추가된다.  
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/152927922-ceb6c3c7-1430-4488-84fe-b98b1585449c.png">
-</p>
-
 ```html
 <!DOCTYPE html>
 <html>
