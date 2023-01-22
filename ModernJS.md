@@ -2421,7 +2421,7 @@ Node.prototype.removeChild(child) 메서드는 child 매개변수에 인수로 �
 ### 어트리뷰트
 **어트리뷰트 노드와 attributes 프로퍼티**  
 HTML 문서의 구성 요소인 HTML 요소는 여러 개의 어트리뷰트(속성)을 가질 수 있다.  
-HTML 어트리뷰트는 HTML 요소의 시작 태그<sup>start/opening tag</sup>에 어트리뷰트 이름="어트리뷰트 값" 형식으로 정의한다.  
+HTML 어트리뷰트는 HTML 요소의 시작 태그<sup>start/opening tag</sup>에 *어트리뷰트 이름="어트리뷰트 값"* 형식으로 정의한다.  
 HTML 문서가 파싱될 때 HTML 요소의 어트리뷰트는 어트리뷰트 노드로 변환되어 요소 노드와 연결되고 이때 HTML 어트리뷰트당 하나의 어트리뷰트 노드가 생성된다.  
 모든 어트리뷰트 노드의 참조는 유사 배열 객체이자 이터러블인 NamedNodeMap 객체에 담겨서 요소 노드의 attributes 프로퍼티에 저장된다.  
 요소 노드의 모든 어트리뷰트 노드는 요소 노드의 Element.prototype.attributes 프로퍼티로 취득할 수 있다.  
@@ -2441,7 +2441,7 @@ attributes 프로퍼티는 getter만 존재하는 읽기 전용 접근자 프로
     console.log(attributes.id.value); // user
     console.log(attributes.type.value); // text
     console.log(attributes.value.value); // value1
-  <script>
+  </script>
 </body>
 </html>
 ```
