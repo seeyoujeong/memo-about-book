@@ -2591,8 +2591,7 @@ data 어트리뷰트의 data- 접두사 다음에 존재하지 않는 이름을 
 HTMLElement.prototype.style 프로퍼티는 setter와 getter 모두 존재하는 접근자 프로퍼티로서 요소 노드의 인라인 스타일<sup>inline style</sup>을 취득하거나 추가 또는 변경한다.  
 style 프로퍼티를 참조하면 CSSStyleDeclaration 타입의 객체를 반환한다.  
 CSSStyleDeclaration 객체는 다양한 CSS 프로퍼티에 대응하는 프로퍼티를 가지고 있으며, 이 프로퍼티에 값을 할당하면 CSS 프로퍼티가 인라인 스타일로 HTML 요소에 추가되거나 변경된다.  
-CSS 프로퍼티는 케밥 케이스<sup>kebab-case</sup>를 따른다.  
-CSSStyleDeclaration 객체의 프로퍼티는 카멜 케이스를 따른다.  
+CSS 프로퍼티는 케밥 케이스를 따르고 CSSStyleDeclaration 객체의 프로퍼티는 카멜 케이스를 따른다.  
 단위 지정이 필요한 CSS 프로퍼티의 값은 반드시 단위를 지정해야 한다.  
 ```html
 <!DOCTYPE html>
@@ -2621,11 +2620,7 @@ CSSStyleDeclaration 객체의 프로퍼티는 카멜 케이스를 따른다.
 </html>
 ```
 
-**클래스 조작**  
-.으로 시작하는 클래스 선택자를 사용하여 CSS class를 미리 정의한 다음, HTML 요소의 class 어트리뷰트 값을 변경하여 HTML 요소의 스타일을 변경할 수도 있다.  
-class 어트리뷰트에 대응하는 DOM 프로퍼티는 class가 아니라 className과 classList다.  
-
-**className**  
+**Element.prototype.className 프로퍼티**  
 Element.prototype.className 프로퍼티는 setter와 getter 모두 존재하는 접근자 프로퍼티로서 HTML 요소의 class 어트리뷰트 값을 취득하거나 변경한다.  
 요소 노드의 className 프로퍼티를 참조하면 class 어트리뷰트 값을 문자열로 반환하고, 요소 노드의 className 프로퍼티에 문자열을 할당하면 class 어트리뷰트 값을 할당한 문자열로 변경한다.  
 className 프로퍼티는 문자열을 반환하므로 공백으로 구분된 여러 개의 클래스를 반환하는 경우 다루기가 불편하다.  
@@ -2658,7 +2653,7 @@ className 프로퍼티는 문자열을 반환하므로 공백으로 구분된 �
 </html>
 ```
 
-**classList**  
+**Element.prototype.classList 프로퍼티**  
 Element.prototype.classList 프로퍼티는 class 어트리뷰트의 정보를 담은 DOMTokenList 객체를 반환한다.  
 DOMTokenList 객체는 class 어트리뷰트의 정보를 나타내는 컬렉션 객체로서 유사 배열 객체이면서 이터러블이다.  
 ```html
@@ -2729,12 +2724,8 @@ DOMTokenList 객체는 class 어트리뷰트의 정보를 나타내는 컬렉션
   ```
 
 **요소에 적용되어 있는 CSS 스타일 참조**  
-style 프로퍼티는 인라인 스타일만 반환한다. 따라서 클래스를 적용한 스타일이나 상속을 통해 암묵적으로 적용된 스타일은 style 프로퍼티로 참조할 수 없다. HTML 요소에 적용되어 있는 모든 CSS 스타일을 참조해야 할 경우 getComputedStyle 메서드를 사용한다. 
-
-window.getComputedStyle(element[, pseudo]) 메서드는 첫 번째 인수로 전달한 요소 노드에 적용되어 있는 평가된 스타일을 CSSStyleDeclaration 객체에 담아 반환한다.  
-> *평가 스타일<sup>computed style</sup>*  
-> *요소 노드에 적용되어 있는 모든 스타일, 즉 링크 스타일, 임베딩 스타일, 인라인 스타일, 자바스크립트에서 적용한 스타일, 상속된 스타일, 기본(user agent) 스타일 등 모든 스타일이 조합되어 최종적으로 적용된 스타일을 말한다.*  
-
+style 프로퍼티는 인라인 스타일만 반환한다. 따라서 클래스를 적용한 스타일이나 상속을 통해 암묵적으로 적용된 스타일은 style 프로퍼티로 참조할 수 없다. HTML 요소에 적용되어 있는 모든 CSS 스타일을 참조해야 할 경우 **getComputedStyle 메서드**를 사용한다.  
+window.getComputedStyle(element[, pseudo]) 메서드는 첫 번째 인수로 전달한 요소 노드에 적용되어 있는 평가된 스타일(모든 스타일이 조합되어 최종적으로 적용된 스타일을 말한다.)을 CSSStyleDeclaration 객체에 담아 반환한다.  
 getComputedStyle 메서드의 두 번째 인수로 ::after, ::before와 같은 의사 요소를 지정하는 문자열을 전달할 수 있다. 의사 요소가 아닌 일반 요소의 경우 두 번째 인수는 생략한다.  
 ```html
 <!DOCTYPE html>
