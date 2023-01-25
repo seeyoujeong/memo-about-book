@@ -2852,10 +2852,6 @@ getComputedStyle 메서드의 두 번째 인수로 ::after, ::before와 같은 �
       </td>
     </tr>
     <tr>
-      <td>keypress(❌)</td>
-      <td>문자 키를 눌렀을 때 연속적으로 발생한다.</td>
-    </tr>
-    <tr>
       <td>keyup</td>
       <td>누르고 있던 키를 놓았을 때 한 번만 발생한다.</td>
     </tr>
@@ -2890,6 +2886,8 @@ getComputedStyle 메서드의 두 번째 인수로 ::after, ::before와 같은 �
   </tbody>
 </table>
 
+> *focusin, focusout는 addEventListener 메서드 방식을 사용해 등록해야 한다.*
+
 **폼 이벤트**  
 <table>
   <thead>
@@ -2901,7 +2899,7 @@ getComputedStyle 메서드의 두 번째 인수로 ::after, ::before와 같은 �
   <tbody>
     <tr>
       <td>submit</td>
-      <td>form 요소 내의 submit 버튼을 클릭했을 때</td>
+      <td>form 요소 내의 input, select 입력 필드에서 enter 키를 눌렀을 때 혹은 submit 버튼을 클릭했을 때</td>
     </tr>
     <tr>
       <td>reset</td>
@@ -3056,10 +3054,6 @@ window 객체와 Document, HTMLElement 타입의 DOM 노드 객체는 이벤트�
 이벤트 핸들러는 대부분 이벤트를 발생시킬 이벤트 타깃에 바인딩하지만 반드시 타깃에 이벤트 핸들러를 바인딩해야 하는 것은 아니다.  
 이벤트 핸들러는 이벤트 타깃 또는 전파된 이벤트를 캐치할 DOM 노드 객체에 바인딩한다.  
 이벤트 핸들러 프로퍼티 방식은 HTML과 자바스크립트가 뒤섞이는 문제를 해결할 수 있지만 하나의 이벤트 핸들러만 바인딩할 수 있다는 단점이 있다.  
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/155829819-4a6c20f6-a97d-4cc6-bdae-bfb9f4945bbd.png">
-</p>
-
 ```html
 <!DOCTYPE html>
 <html>
@@ -3087,11 +3081,7 @@ window 객체와 Document, HTMLElement 타입의 DOM 노드 객체는 이벤트�
 DOM Level 2에서 도입된 EventTarget.prototype.addEventListener 메서드를 사용하여 이벤트 핸들러를 등록할 수 있다.  
 addEventListener 메서드의 첫 번째 매개변수에는 이벤트의 종류를 나타내는 문자열인 이벤트 타입을 전달하는데 on 접두사를 붙이지 않는다.  
 두 번째 매개변수에는 이벤트 핸들러를 전달한다.  
-마지막 매개변수에는 이벤트를 캐치할 이벤트 전파 단계(캡처링 또는 버블링)를 지정하는데 생략하거나 false를 지정하면 버블링 단계에서 이벤트를 캐치하고, true를 지정하면 캡처링 단계에서 이벤트를 캐치한다.  
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/155881536-1f4ef5ca-b685-4cdd-9237-6141c154a558.png">
-</p>
-  
+마지막 매개변수에는 이벤트를 캐치할 이벤트 전파 단계를 지정하는데 생략하거나 false를 지정하면 버블링 단계에서 이벤트를 캐치하고, true를 지정하면 캡처링 단계에서 이벤트를 캐치한다.  
 addEventListener 메서드 방식은 이벤트 핸들러 프로퍼티에 바인딩된 이벤트 핸들러에 아무런 영향을 주지 않는다.  
 addEventListener 메서드는 하나 이상의 이벤트 핸들러를 등록할 수 있고 등록된 순서대로 호출된다.  
 addEventListener 메서드를 통해 참조가 동일한 이벤트 핸들러를 중복 등록하면 하나의 이벤트 핸들러만 등록된다.  
