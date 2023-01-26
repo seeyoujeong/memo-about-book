@@ -3204,9 +3204,6 @@ addEventListener 메서드에 전달한 인수와 removeEventListener 메서드�
 이벤트가 발생하면 암묵적으로 생성되는 이벤트 객체도 생성자 함수에 의해 생성된다.  
 생성된 이벤트 객체는 생성자 함수와 더불어 생성되는 프로토타입으로 구성된 프로토타입 체인의 일원이 된다.  
 이벤트 객체 중 일부는 사용자의 행위에 의해 생성된 것이고 일부는 자바스크립트 코드에 의해 인위적으로 생성된 것이다.  
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/156312736-8be54941-c58f-4a24-9da4-4a1d211d0b0d.png">
-</p>
 
 **이벤트 객체의 공통 프로퍼티**  
 Event 인터페이스의 이벤트 관련 프로퍼티는 모든 이벤트 객체가 상속받는 공통 프로퍼티다.  
@@ -3245,24 +3242,20 @@ Event 인터페이스의 이벤트 관련 프로퍼티는 모든 이벤트 객�
     <tr>
       <td>bubbles</td>
       <td>
-        <p>이벤트를 버블링으로 전파하는지 여부. 다음 이벤트는 bubbles: false로 버블링하지 않는다.</p>
-        <ul type="square">
-          <li>포커스 이벤트 focus/blur</li>
-          <li>리소스 이벤트 load/unload/abort/error</li>
-          <li>마우스 이벤트 mouseenter/mouseleave</li>
-        </ul>
+        <div>이벤트를 버블링으로 전파하는지 여부. <br>다음 이벤트는 bubbles: false로 버블링하지 않는다.</div>
+        <div>▪︎ 포커스 이벤트 focus/blur</div>
+        <div>▪︎ 리소스 이벤트 load/unload/abort/error</div>
+        <div>▪︎ 마우스 이벤트 mouseenter/mouseleave</div>
       </td>
       <td>boolean</td>
     </tr>
     <tr>
       <td>cancelable</td>
       <td>
-        <p>preventDefault 메서드를 호출하여 이벤트의 기본 동작을 취소할 수 있는지 여부. 다음 이벤트는 cancelable: false로 취소할 수 없다.</p>
-        <ul type="square">
-          <li>포커스 이벤트 focus/blur</li>
-          <li>리소스 이벤트 load/unload/abort/error</li>
-          <li>마우스 이벤트 dblclick/mouseenter/mouseleave</li>
-        </ul>
+        <div>preventDefault 메서드를 호출하여 이벤트의 기본 동작을 취소할 수 있는지 여부. <br>다음 이벤트는 cancelable: false로 취소할 수 없다.</div>
+        <div>▪︎ 포커스 이벤트 focus/blur</div>
+        <div>▪︎ 리소스 이벤트 load/unload/abort/error</div>
+        <div>▪︎ 마우스 이벤트 dblclick/mouseenter/mouseleave</div>
       </td>
       <td>boolean</td>
     </tr>
@@ -3300,7 +3293,7 @@ DOM 트리 상에 존재하는 DOM 요소 노드에서 발생한 이벤트는 DO
 - 타깃 단계<sup>target phase</sup>: 이벤트가 이벤트 타깃에 도달
 - 버블링 단계<sup>bubbling phase</sup>: 이벤트가 하위 요소에서 상위 요소 방향으로 전파
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/156561332-de6cdaa1-f3dc-431e-a87c-ff378737474a.png">
+  <img src="https://user-images.githubusercontent.com/40534414/214782538-508d32d7-6ca0-4dc1-827b-4c9dcafed8cf.png">
 </p>
 
 이벤트 핸들러 어트리뷰트/프로퍼티 방식으로 등록한 이벤트 핸들러는 타깃 단계와 버블링 단계의 이벤트만 캐치할 수 있다.  
