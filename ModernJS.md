@@ -3446,6 +3446,8 @@ stopPropagation 메서드는 하위 DOM 요소의 이벤트를 개별적으로 �
 
 ### 이벤트 핸들러 내부의 this
 **이벤트 핸들러 어트리뷰트 방식**  
+handleClick1 함수는 이벤트 핸들러에 의해 일반 함수로 호출된다.  
+handleClick2 함수에 전달한 this는 암묵적으로 생성된 이벤트 핸들러 내부의 this다. 이 this는 이벤트를 바인딩한 DOM 요소를 가리킨다.  
 ```html
 <!DOCTYPE html>
 <html>
@@ -3459,14 +3461,12 @@ stopPropagation 메서드는 하위 DOM 요소의 이벤트를 개별적으로 �
 
     function handleClick2(button) {
       console.log(button); // 이벤트를 바인딩한 button 요소
-      console.log(this);
+      console.log(this); // window
     }
   </script>
 </body>
 </html>
 ```
-handleClick 함수는 이벤트 핸들러에 의해 일반 함수로 호출된다.  
-이벤트 핸들러를 호출할 때 인수로 전달한 this는 이벤트를 바인딩한 DOM 요소를 가리킨다.  
 
 **이벤트 핸들러 프로퍼티 방식과 addEventListener 메서드 방식**  
 이벤트 핸들러 프로퍼티 방식과 addEventListener 메서드 방식 모두 이벤트 핸들러 내부의 this는 이벤트를 바인딩한 DOM 요소를 가리킨다.  
