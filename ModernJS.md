@@ -3674,7 +3674,7 @@ resize 이벤트 처리나 input 요소에 입력된 값으로 ajax 요청하는
 태스크를 순서대로 하나씩 처리하므로 실행 순서가 보장된다는 장점이 있다.  
 앞선 태스크가 종료할 때까지 이후 태스크들이 블로킹되는 단점이 있다.  
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/158062813-24cd0b0b-615d-42ee-8f0a-878a07d61ee1.png">
+  <img src="https://user-images.githubusercontent.com/40534414/215246348-c3fb18fc-e0c6-4a41-a432-f4ba0ba259e5.png">
 </p>
 
 **비동기<sup>asynchronous</sup> 처리**  
@@ -3682,7 +3682,7 @@ resize 이벤트 처리나 input 요소에 입력된 값으로 ajax 요청하는
 블로킹이 발생하지 않는다는 장점이 있지만, 태스크의 실행 순서가 보장되지 않는 단점이 있다.  
 타이머 함수인 setTimeout과 setInterval, HTTP 요청, 이벤트 핸들러는 비동기 처리 방식으로 동작한다.  
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/158062863-20a3f751-f50b-4c0b-ab84-c61fd4cf568d.png">
+  <img src="https://user-images.githubusercontent.com/40534414/215246308-220e5aa9-a420-4a43-ad60-f8f13f9d728b.png">
 </p>
 
 ### 이벤트 루프와 태스크 큐  
