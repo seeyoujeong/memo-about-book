@@ -3652,11 +3652,11 @@ scroll, resize, input, mousemove 같은 이벤트는 짧은 시간 간격으로 
 디바운스와 스로틀은 짧은 시간 간격으로 연속해서 발생하는 이벤트를 그룹화해서 과도한 이벤트 핸들러의 호출을 방지하는 프로그래밍 기법이다.  
 
 **디바운스**  
-디바운스<sup>debounce</sup>는 짧은 시간 간격으로 이벤트가 연속해서 발생하면 이벤트 핸들러를 호출하지 않다가 일정 시간이 경과한 이후에 이벤트 핸들러가 한 번만 호출되도록 한다.  
+디바운스<sup>debounce</sup>는 짧은 시간 간격으로 이벤트가 연속해서 발생하면 이벤트 핸들러를 호출하지 않다가 일정 시간 동안 이벤트가 더 이상 발생하지 않으면 이벤트 핸들러가 한 번만 호출되도록 한다.  
 resize 이벤트 처리나 input 요소에 입력된 값으로 ajax 요청하는 입력 필드 자동완성<sup>autocomplete</sup> UI 구현, 버튼 중복 클릭 방지 처리 등에 유용하게 사용된다.  
 실무에서는 Underscore의 debounce 함수나 Lodash의 debounce 함수를 사용하는 것을 권장한다.  
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/157873564-52baac30-46b2-46bb-aaad-ae880b26a33f.png">
+  <img src="https://user-images.githubusercontent.com/40534414/215238400-edac2ef4-5899-48dd-ac39-295e844559c8.png">
 </p>
 
 **스로틀**  
@@ -3664,7 +3664,7 @@ resize 이벤트 처리나 input 요소에 입력된 값으로 ajax 요청하는
 스트롤은 scroll 이벤트 처리나 무한 스크롤<sup>infinite scrolling</sup> UI 구현 등에 유용하게 사용된다.  
 실무에서는 Underscore의 throttle 함수나 Lodash의 throttle 함수를 사용하는 것을 권장한다.  
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/158018746-be98583a-cf97-4c32-96ee-1fcf1808210a.png">
+  <img src="https://user-images.githubusercontent.com/40534414/215238676-c259b9ca-0e58-4d91-a4f6-c5f3f76c930e.png">
 </p>
 
 ## 비동기 프로그래밍
