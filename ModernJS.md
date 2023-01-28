@@ -3687,8 +3687,9 @@ resize 이벤트 처리나 input 요소에 입력된 값으로 ajax 요청하는
 
 ### 이벤트 루프와 태스크 큐  
 브라우저가 동작하는 것을 살펴보면 많은 태스크가 동시에 처리되는 것처럼 느껴지는데 이는 자바스크립트의 동시성<sup>concurrency</sup>을 지원하는 이벤트 루프<sup>event loop</sup>가 있기 때문이다.  
+자바스크립트 엔진은 싱글 스레드로 동작하지만 브라우저는 멀티 스레드로 동작한다.  
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/158159837-c37d5e27-ac3d-4ece-8a8f-2de4d2bb81cd.png">
+  <img src="https://user-images.githubusercontent.com/40534414/215250455-f4ef7882-62ce-481e-8cf0-e356e2642730.png">
 </p>
            
 자바스크립트 엔진은 크게 2개의 영역으로 구분할 수 있다.  
