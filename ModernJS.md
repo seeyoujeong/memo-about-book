@@ -3828,13 +3828,11 @@ XMLHttpRequest 객체는 브라우저에서 제공하는 Web API이므로 브라
       <td>readyState</td>
       <td>
         <p>HTTP 요청의 현재 상태를 나타내는 정수. 다음과 같은 XMLHttpRequest의 정적 프로퍼티를 값으로 갖는다.</p>  
-        <ul type="square">
-          <li>UNSENT: 0</li>
-          <li>OPENED: 1</li>
-          <li>HEADERS_RECEIVED: 2</li>
-          <li>LOADING: 3</li>
-          <li>DONE: 4</li>
-        </ul>
+        <div>▪︎ UNSENT: 0</div>
+        <div>▪︎ OPENED: 1</div>
+        <div>▪︎ HEADERS_RECEIVED: 2</div>
+        <div>▪︎ LOADING: 3</div>
+        <div>▪︎ DONE: 4</div>
       </td>
     </tr>
     <tr>
@@ -4055,8 +4053,6 @@ HTTP 요청 메서드가 GET인 경우 send 메서드에 페이로드로 전달�
 setRequestHeader 메서드는 특정 HTTP 요청의 헤더 값을 설정한다.  
 setRequestHeader 메서드는 반드시 open 메서드를 호출한 이후에 호출해야 한다.  
 Content-type은 요청 몸체에 담아 전송할 데이터의 MIME 타입의 정보를 표현한다.  
-HTTP 클라이언트가 서버에 요청할 때 서버가 응답할 데이터의 MIME 타입을 Accept로 지정할 수 있다.  
-Accept 헤더를 설정하지 않으면 send 메서드가 호출될 때 Accept 헤더가 */\*으로 전송된다.  
 <table>
   <thead>
     <tr>
@@ -4080,6 +4076,8 @@ Accept 헤더를 설정하지 않으면 send 메서드가 호출될 때 Accept �
   </tbody>
 </table>
 
+HTTP 클라이언트가 서버에 요청할 때 서버가 응답할 데이터의 MIME 타입을 Accept로 지정할 수 있다.  
+Accept 헤더를 설정하지 않으면 send 메서드가 호출될 때 Accept 헤더가 */\*으로 전송된다.  
 ```javascript
 xhr.setRequestHeader('content-type', 'application/json');
 xhr.setRequestHeader('accept', 'application/json');
