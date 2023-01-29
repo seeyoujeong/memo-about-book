@@ -3728,7 +3728,7 @@ Ajax<sup>Asynchronous JavaScript and XML</sup>란 자바스크립트를 사용�
 Ajax는 브라우저에서 제공하는 Web API인 XMLHttpRequest 객체를 기반으로 동작한다.  
 XMLHttpRequest는 HTTP 비동기 통신을 위한 메서드와 프로퍼티를 제공한다.  
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/40534414/158800526-2f619150-b2ab-4732-adb9-dd15f13855d7.png">
+  <img src="https://user-images.githubusercontent.com/40534414/215301662-d738a2fd-fccb-4c48-9bb3-eaea6527e35b.png">
 </p>
 
 Ajax는 전통적인 방식과 비교했을 때 다음과 같은 장점이 있다.  
