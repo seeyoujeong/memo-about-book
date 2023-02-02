@@ -4221,7 +4221,9 @@ const promise = new Promise((resolve, reject) => {
 > 일단 settled 상태가 되면 더는 다른 상태로 변화할 수 없다.  
 
 ### 프로미스의 후속 처리 메서드
-프로미스의 비동기 처리 상태가 변화하면 후속 처리 메서드에 인수로 전달한 콜백 함수가 선택적으로 호출된다.  
+프로미스의 비동기 처리 상태가 변화하면 후속 처리 메서드에 인수로 전달한 콜백 함수가 선택적으로 호출된다. 이때 후속 처리 메서드의 콜백 함수에 프로미스의 처리 결과가 인수로 전달된다.  
+모든 후속 처리 메서드는 프로미스를 반환하며, 비동기로 동작한다.  
+후속 처리 메서드의 콜백 함수가 프로미스가 아닌 값을 반환하더라도 그 값을 암묵적으로 resolve 또는 reject하여 프로미스를 생성해 반환한다.  
 
 **Promise.prototype.then**  
 then 메서드는 두 개의 콜백 함수를 인수로 전달받는다.  
@@ -4348,7 +4350,6 @@ Promise.all([
 **Promise.race**  
 Promise.race 메서드는 프로미스를 요소로 갖는 배열 등의 이터러블을 인수로 전달 받는다.  
 Promise.race 메서드는 가장 먼저 fulfilled 상태가 된 프로미스의 처리 결과를 resolve하는 새로운 프로미스를 반환한다.  
-Promise.race 메서드에 전달된 프로미스가 하나라도 rejected 상태가 되면 에러를 reject하는 새로운 프로미스를 즉시 반환한다.  
 ```javascript
 Promise.race([
   new Promise(resolve => setTimeout(() => resolve(1), 3000)),
