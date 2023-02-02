@@ -4398,9 +4398,13 @@ fetch 함수는 XMLHttpRequest 객체와 마찬가지로 HTTP 요청 전송 기�
 fetch 함수는 XMLHttpRequest 객체보다 사용법이 간단하고 프로미스를 지원하기 때문에 비동기 처리를 위한 콜백 패턴의 단점에서 자유롭다.  
 fetch 함수에는 HTTP 요청을 전송할 URL과 HTTP 요청 메서드, HTTP 요청 헤더, 페이로드 등을 설정한 객체를 전달한다.  
 fetch 함수는 HTTP 응답을 나타내는 Response 객체를 래핑한 Promise 객체를 반환한다.  
+fetch 함수가 반환하는 프로미스는 기본적으로 HTTP 에러가 발생해도 에러를 reject하지 않고 불리언 타입의 ok 상태를 false로 설정한 Response 객체를 resolve한다.  
+오프라인 등의 네트워크 장애나 CORS 에러에 의해 요청이 완료되지 못한 경우에만 프로미스를 reject한다.  
 ```
 const promise = fetch(url [, options])
 ```
+
+**Response.prototype.json 메서드**  
 Response.prototype.json 메서드는 Response 객체에서 HTTP 응답 몸체<sup>response.body</sup>를 취득하여 역직렬화한다.  
 ```javascript
 fetch('https://jsonplaceholder.typicode.com/todos/1')
