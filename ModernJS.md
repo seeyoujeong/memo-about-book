@@ -4573,8 +4573,8 @@ const errorClass = new ErrorClass();
 
 **await 키워드**  
 await 키워드는 프로미스가 settled 상태가 될 때까지 대기하다가 settled 상태가 되면 프로미스가 resolve한 처리 결과를 반환한다.  
-await 키워드는 반드시 async 함수 내부에서 사용해야 한고 프로미스 앞에서 사용해야 한다.  
-모든 프로미스에 await 키워드를 사용하는 것은 주의해야 한다.  
+await 키워드는 반드시 async 함수 내부에서 사용해야 하고 반드시 프로미스 앞에서 사용해야 한다.  
+모든 프로미스에 await 키워드를 사용하는 것은 주의해야 한다. 서로 연관이 없이 개별적으로 수행되는 비동기 처리에는 await 키워드를 사용할 필요가 없다.  
 ```javascript
 async function foo() {
   const a = await new Promise(resolve => setTimeout(() => resolve(1), 3000));
@@ -4602,6 +4602,7 @@ boo(); // 약 3초 소요
 **에러 처러**  
 async/await에서 에러 처리는 try...catch 문을 사용할 수 있다.  
 콜백 함수를 인수로 전달받는 비동기 함수와는 달리 프로미스를 반환하는 비동기 함수는 명시적으로 호출할 수 있기 때문에 호출자가 명확하다.  
+async 함수 내에서 catch 문은 try 코드 블록 내의 모든 문에서 발생한 일반적인 에러까지 모두 캐치할 수 있다.  
 async 함수 내에서 catch 문을 사용해서 에러 처리를 하지 않으면 async 함수는 발생한 에러를 reject하는 프로미스를 반환한다.  
 
 ## 에러 처리
