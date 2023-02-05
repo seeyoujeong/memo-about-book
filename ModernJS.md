@@ -202,7 +202,7 @@ ECMAScript 사양은 문자열과 숫자 타입 외의 데이터 타입의 크�
 연산자<sup>operator</sup>는 하나 이상의 표현식을 대상으로 연산을 수행해 하나의 값을 만든다.  
 
 ### 증가/감소 연산자
-전위 증가/감소 연산자는 먼저 피연산자의 값을 증가/감소시킨 후, 다른 연산을 수행한다.  
+전위 증가/감소 연산자는 먼저 피연산자<sup>operand</sup>의 값을 증가/감소시킨 후, 다른 연산을 수행한다.  
 후위 증가/감소 연산자는 먼저 다른 연산을 수행한 후, 피연산자의 값을 증가/감소시킨다.  
 
 ### 일치 비교 연산자
@@ -256,7 +256,7 @@ false // → 0
 ```
 
 ## 단축 평가
-단축 평가는 표현식을 평가하는 도중에 평가 결과가 확정된 경우 나머지 평가 과정을 생략하는 것을 말한다.  
+단축 평가<sup>short-circuit evaluation</sup>는 표현식을 평가하는 도중에 평가 결과가 확정된 경우 나머지 평가 과정을 생략하는 것을 말한다.  
 |단축 평가 표현식|평가 결과|
 |:--:|:--:|
 |true \|\| anything|true|
@@ -264,11 +264,11 @@ false // → 0
 |true && anything|anything|
 |false && anything|false|
 
-### 옵셔널 체이닝 
-옵셔널 체이닝 연산자 ?.는 좌항의 피연산자가 null 또는 undefined인 경우 undefined를 반환하고, 그렇지 않으면 우항의 프로퍼티 참조를 이어간다.  
+### 옵셔널 체이닝
+옵셔널 체이닝<sup>optional chaining</sup> 연산자 ?.는 좌항의 피연산자가 null 또는 undefined인 경우 undefined를 반환하고, 그렇지 않으면 우항의 프로퍼티 참조를 이어간다.  
 
 ### null 병합 연산자
-null 병합 연산자 ??는 좌항의 피연산자가 null 또는 undefined인 경우 우항의 피연산자를 반환하고, 그렇지 않으면 좌항의 피연산자를 반환한다.  
+null 병합<sup>nullish coalescing</sup> 연산자 ??는 좌항의 피연산자가 null 또는 undefined인 경우 우항의 피연산자를 반환하고, 그렇지 않으면 좌항의 피연산자를 반환한다.  
 
 ## 객체  
 자바스크립트를 이루고 있는 거의 ***모든 것***이 객체다.  
@@ -392,7 +392,7 @@ Function 생성자 함수로 생성한 함수는 클로저를 생성하지 않�
 콜백 함수로서 전달된 함수 리터럴은 고차 함수가 호출될 때마다 평가되어 함수 객체를 생성한다.  
 
 ### 순수함수와 비순수 함수
-함수형 프로그래밍에서는 어떤 외부 상태에 의존하지도 않고 변경하지도 않는, 즉 부수 효과가 없는 함수를 **순수 함수**라 한다.  
+함수형 프로그래밍에서는 어떤 외부 상태에 의존하지도 않고 변경하지도 않는, 즉 부수 효과<sup>side effect</sup>가 없는 함수를 **순수 함수**라 한다.  
 외부 상태에 의존하거나 외부 상태를 변경하는, 즉 부수 효과가 있는 함수를 **비순수 함수**라고 한다.  
 순수 함수는 일반적으로 최소 하나 이상의 인수를 전달받는다.  
 함수가 외부 상태를 변경하면 상태 변화를 추적하기 어려워진다.  
@@ -637,7 +637,7 @@ Object.prototype을 프로토타입 체인의 종점(end of prototype chain)이�
 
 ### 오버라이딩과 프로퍼티 섀도잉
 프로토타입 프로퍼티와 같은 이름의 인스턴스 프로퍼티가 추가되면 인스턴스 프로퍼티가 프로토타입 메서드를 오버라이딩하고 프로토타입 프로퍼티는 가려진다.  
-상속 관계에 의해 프로퍼티가 가려지는 현상을 프로퍼티 섀도잉이라 한다.  
+상속 관계에 의해 프로퍼티가 가려지는 현상을 프로퍼티 섀도잉<sup>property shadowing</sup>이라 한다.  
 하위 객체를 통해 프로토타입의 프로퍼티를 변경 또는 삭제하는 것은 불가능하다.  
 
 ### 프로토타입의 교체
@@ -4651,7 +4651,19 @@ throw된 에러를 어디에서도 캐치하지 않으면 프로그램은 강제
 태스크 큐나 마이크로태스크 큐에 일시 저장되는 콜백 함수는 콜 스택으로 푸시되어 실행될 때 가장 하부에 존재하게 되므로 에러를 전파할 호출자가 존재하지 않는다.  
 
 ## 모듈
+모듈<sup>module</sup>이란 애플리케이션을 구성하는 개별적 요소로서 재사용 가능한 코드 조각을 말한다.  
+모듈이 성립하려면 모듈은 자신만의 파일 스코프(모듈 스코프)를 가질 수 있어야 한다.  
+자신만의 파일 스코프를 갖는 모듈의 모든 자산은 캡슐화되어 다른 모듈에서 접근할 수 없다.  
+모듈은 공개가 필요한 자산에 한정하여 명시적으로 선택적 공개가 가능하다. 이를 export라 한다.  
+모듈 사용자가 모듈이 공개한 자산 중 일부 또는 전체를 선택해 자신의 스코프 내로 불러들여 재사용할 수 있다. 이를 import라 한다.  
+
+### 자바스크립트와 모듈
+자바스크립트는 모듈이 성립하기 위해 필요한 파일 스코프와 import, export를 지원하지 않았다.  
+자바스크립트 파일을 여러 개의 파일로 분리하여 script 태그로 로드해도 분리된 자바스크립트 파일들은 결국 하나의 자바스크립트 파일 내에 있는 것처럼 동작한다.  
+분리된 자바스크립트 파일들의 전역 변수가 중복되는 등의 문제가 발생할 수 있다.  
+
 ### ES6 모듈(ESM)
+ES6에서는 클라이언트 사이드 자바스크립트에서도 동작하는 모듈 기능을 추가했다.  
 script 태그에 type="module" 어트리뷰트를 추가하면 로드된 자바스크립트 파일은 모듈로서 동작한다.  
 일반적인 자바스크립트 파일이 아닌 ESM임을 명확히 하기 위해 ESM의 파일 확장자는 mjs를 사용할 것을 권장한다.  
 ESM에는 클래스와 마찬가지로 기본적으로 strict mode가 적용된다.  
@@ -4736,32 +4748,19 @@ export default x => x * x;
 // => SyntaxError: Unexpected token 'const'
 ```
 ```javascript
+// app.js
 import square from './test.mjs';
 
 console.log(square(3);
 ```
 
 ---
-연산자<sup>operator</sup>  
-피연산자<sup>operand</sup>  
-부수 효과<sup>side effect</sup>  
-암묵적 타입 변환<sup>implicit coercion</sup> 또는 타입 강제 변환<sup>type coercion</sup>  
+
 동등 비교<sup>loose equality</sup>(값)  
 일치 비교<sup>strict equality</sup>(값과 타입)  
-삼항 조건 연산자<sup>temary operator</sup>(값으로 평가할 수 있는 표현식인 문)  
-폴스루<sup>fall through</sup>  
+삼항 조건 연산자<sup>ternary operator</sup>(값으로 평가할 수 있는 표현식인 문)  
+폴 스루<sup>fall through</sup>  
 레이블 문<sup>label statement</sup>  
-명시적 타입 변환<sup>explicit coercion</sup> 또는 타입 캐스팅<sup>type casting</sup>  
-단축 평가<sup>short-circuit evaluation</sup>  
-옵셔널 체이닝<sup>optional chaining</sup>(?.)  
-null 병합<sup>nullish coalescing</sup>(??)  
 계산된 프로퍼티 이름<sup>computed property name</sup>  
-얕은 복사<sup>shallow copy</sup>와 깊은 복사<sup>deep copy</sup>  
-암묵적 결합<sup>implicit coupling</sup>  
-일시적 사각지대<sup>Temporal Dead Zone, TDZ</sup>(스코프 시작 시점부터 초기화 시작 시점까지 변수를 참조할 수 없는 구간)  
-프로퍼티 디스크립터<sup>PropertyDescriptor</sup> 객체  
-바인딩<sup>name binding</sup>(식별자와 값을 연결하는 과정을 의미)  
 스코프 세이프 생성자 패턴<sup>scope-safe constructor</sup>  
-프로퍼티 섀도잉<sup>property shadowing</sup>  
 암묵적 전역<sup>implicit global</sup>  
-공백 텍스트 노드
