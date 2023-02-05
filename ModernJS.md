@@ -4545,7 +4545,7 @@ async 함수가 명시적으로 프로미스를 반환하지 않더라도 async 
 클래스의 constructor 메서드는 async 메서드가 될 수 없는데 constructor 메서드는 인스턴스를 반환해야 하지만 async 함수는 언제나 프로미스를 반환해야 한다.  
 ```javascript
 async function foo(n) { return n; }
-foo.(1).then(v => console.log(v)); // 1
+foo(1).then(v => console.log(v)); // 1
 
 const bar = async function (n) { return n; };
 bar(2).then(v => console.log(v)); // 2
