@@ -47,6 +47,7 @@
 - [제너레이터와 async/await](#generator_and_async/await)
 - [에러 처리](#에러-처리)
 - [모듈](#모듈)
+- [Babel과 Webpack](#babel과-webpack)
 
 ## 변수
 변수<sup>variable</sup>는 하나의 값을 저장하기 위해 확보한 메모리 공간 자체 또는 그 메모리 공간을 식별하기 위해 붙인 이름을 말한다.  
@@ -4753,6 +4754,27 @@ import square from './test.mjs';
 
 console.log(square(3);
 ```
+
+## Babel과 Webpack
+### Babel
+Babel은 최신 사양의 소스코드를 IE 같은 구형 브라우저에서도 동작하는 ES5 사양의 소스코드로 변환해주는 트랜스파일러<sup>transpiler</sup>다.  
+Babel을 사용하기 위한 개발 환경 구축은 아래와 같다.  
+1. Babel 설치
+2. Bable 프리셋 설치와 babel.config.json 설정 파일 작성
+3. 별도의 플러그인이 필요한 경우 Babel 플러그인 설치
+4. 트랜스파일링
+5. 브라우저에서 모듈 로딩 테스트
+
+### Webpack
+Webpack은 의존 관계에 있는 자바스크립트, CSS, 이미지 등의 리소스들을 하나(또는 여러 개)의 파일로 번들링하는 모듈 번들러<sup>module bundler</sup>다.  
+Webpack을 사용하면 의존 모듈이 하나의 파일로 번들링되므로 별도의 모듈 로더가 필요 없다.  
+여러 개의 자바스크립트 파일을 하나로 번들링하므로 HTML 파일에서 script 태그로 여러 개의 자바스크립트 파일을 로드해야 하는 번거로움도 사라진다.  
+Webpack과 Babel을 이용하여 개발 환경 구축은 아래와 같다.
+1. Webpack 설치
+2. babel-loader 설치
+3. webpack.config.js 설정 파일 작성
+4. ES5 사양으로 대체할 수 없는 기능이 있을 경우 babel-polyfill 설치
+5. Webpack을 실행하여 트랜스파일링 및 번들링
 
 ---
 
