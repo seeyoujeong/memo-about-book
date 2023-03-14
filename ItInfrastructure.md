@@ -182,10 +182,12 @@ CPU에 가까운 쪽이 1초당 전송량이 크다는 것을 알 수 있다.
 버스 흐름에서 중요한 것은 CPU와 장치 사이에 병목 현상이 없어야 한다는 것이다.  
 시스템 설계 시에 특히 놓치기 쉬운 것이 외부 장치 연결 시의 버스 대역에 관한 것이다.  
 
-> **SSD 규격**
+> **SSD 규격**  
 > SATA(Serial ATA) -> SAS(Serial Attached SCSI) -> NVMe(NVM Express) 순으로 속도가 빠르다.  
 
 ### 처리 흐름
+CPU가 PCI 컨트롤러 역할을 하고 있어서 그림이 약간 복잡하지만, 아래 구조도 시간이 지남에 따라 바뀔 것이다.  
+![cpu_to_storage](https://user-images.githubusercontent.com/40534414/224868346-f90b3239-789f-45dd-af32-c432644ba9ef.png)
 
 
 ## 3계층형 시스템을 살펴보자
