@@ -748,6 +748,45 @@ componentDidMount() { ... }
 shouldComponentUpdate(nextProps, nextState) { ... }
 ```
 
+#### getSnapshotBeforeUpdate 메서드
+
+이 메서드는 render에서 만들어진 결과물이 브라우저에 실제로 반영되기 직전에 호출된다.  
+이 메서드에서 반환하는 값은 componentDidUpdate에서 세 번째 파라미터인 snapshot 값으로 전달받을 수 있고 주로 업데이트하기 직전의 값을 참고할 일이 있을 때 활용된다.
+
+```
+getSnapshotBeforeUpdate(prevProps, prevState) { ... }
+```
+
+#### componentDidUpdate 메서드
+
+이 메서드는 리렌더링을 완료한 후 실행한다.  
+업데이트가 끝난 직후이므로, DOM 관련 처리를 해도 무방하다.  
+여기서는 prevProps 또는 prevState를 사용하여 컴포넌트가 이전에 가졌던 데이터에 접근할 수 있다.  
+getSnapshotBeforeUpdate에서 반환한 값이 있다면 여기서 snapshot 값을 전달받을 수 있다.
+
+```
+componentDidUpdate(prevProps, prevState, snapshot) { ... }
+```
+
+#### componentWillUnmount 메서드
+
+이 메서드는 컴포넌트를 DOM에서 제거할 때 실행한다.  
+componentDidMount에서 등록한 이벤트, 타이머, 직접 생성한 DOM이 있다면 여기서 제거 작업을 해야 한다.
+
+```
+componentWillUnmount() { ... }
+```
+
+#### componentDidCatch 메서드
+
+이 메서드는 컴포넌트 렌더링 도중에 에러가 발생했을 때 애플리케이션이 먹통이 되지 않고 오류 UI를 보여 줄 수 있게 해 준다.  
+error는 파라미터에 어떤 에러가 발생했는지 알려 주며, info 파라미터는 어디에 있는 코드에서 요류가 발생했는지에 대한 정보를 준다.  
+이 메서드를 사용할 때는 컴포넌트 자신에게 발생하는 에러를 잡아낼 수 없고 자신의 this.props.children으로 전달되는 컴포넌트에서 발생하는 에러만 잡아낼 수 있다.
+
+```
+componentDidCatch(error, info) { ... }
+```
+
 ## Hooks
 
 Hooks는 함수 컴포넌트에서 다양한 작업을 할 수 있게 해 줍니다.
