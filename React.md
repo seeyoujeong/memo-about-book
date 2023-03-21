@@ -530,8 +530,8 @@ const onChange = event => {
 
 ## ref
 
-ref는 HTML에서 id를 사용하여 DOM에 이름을 다는 것처럼 리액트 프로젝트 내부에서 DOM에 이름을 다는 방법입니다.  
-ref는 DOM을 꼭 직접적으로 건드려야 할 때 사용해야 합니다. 아래는 state만으로 해결할 수 없어서 ref를 사용해야 하는 상황입니다.
+ref는 HTML에서 id를 사용하여 DOM에 이름을 다는 것처럼 리액트 프로젝트 내부에서 DOM에 이름을 다는 방법이다.  
+ref는 DOM을 꼭 직접적으로 건드려야 할 때 사용해야 한다. 아래는 state만으로 해결할 수 없어서 ref를 사용해야 하는 상황이다.
 
 - 특정 input에 포커스 주기
 - 스크롤 박스 조작하기
@@ -539,7 +539,7 @@ ref는 DOM을 꼭 직접적으로 건드려야 할 때 사용해야 합니다. �
 
 ### 콜백 함수를 통한 ref 설정
 
-ref를 만드는 가장 기본적인 방법은 콜백 함수를 사용하는 것입니다. ref를 달고자 하는 요소에 ref라는 콜백 함수를 props로 전달해 주면 됩니다. 이 콜백 함수는 ref 값을 파라미터로 전달받습니다. 그리고 함수 내부에서 파라미터로 받은 ref를 컴포넌트의 멤버 변수로 설정해 줍니다.
+ref를 만드는 가장 기본적인 방법은 콜백 함수를 사용하는 것이다. ref를 달고자 하는 요소에 ref라는 콜백 함수를 props로 전달해 주면 된다. 이 콜백 함수는 ref 값을 파라미터로 전달받는다. 그리고 함수 내부에서 파라미터로 받은 ref를 컴포넌트의 멤버 변수로 설정해 준다.
 
 ```javascript
 <input
@@ -549,12 +549,13 @@ ref를 만드는 가장 기본적인 방법은 콜백 함수를 사용하는 것
 />
 ```
 
-이렇게 하면 앞으로 this.input은 input 요소의 DOM을 가리킵니다. ref의 이름은 원하는 것으로 자유롭게 지정할 수 있습니다. DOM 타입과 관계없이 this.jeong = ref처럼 마음대로 지정합니다.
+이렇게 하면 앞으로 this.input은 input 요소의 DOM을 가리킨다.  
+ref의 이름은 원하는 것으로 자유롭게 지정할 수 있다. DOM 타입과 관계없이 this.jeong = ref처럼 마음대로 지정하면 된다.
 
 ### createRef를 통한 ref 설정
 
-ref를 만드는 또 다른 방법은 리액트에 내장되어 있는 createRef라는 함수를 사용하는 것입니다.  
-createRef를 사용하여 ref를 만들려면 우선 컴포넌트 내부에서 멤버 변수로 React.createRef()를 담아 주어야 합니다. 그리고 해당 멤버 변수를 ref를 달고자 하는 요소에 ref props로 넣어 주면 ref 설정이 완료됩니다.
+ref를 만드는 또 다른 방법은 리액트에 내장되어 있는 createRef라는 함수를 사용하는 것이다.  
+createRef를 사용하여 ref를 만들려면 우선 컴포넌트 내부에서 멤버 변수로 React.createRef()를 담아 주어야 한다. 그리고 해당 멤버 변수를 ref를 달고자 하는 요소에 ref props로 넣어 주면 ref 설정이 완료된다.
 
 ```javascript
 (...)
@@ -574,11 +575,11 @@ render() {
 (...)
 ```
 
-설정한 뒤 나중에 ref를 설정해 준 DOM에 접근하려면 this.input.current를 조회하면 됩니다. 콜백 함수를 사용할 때와 다른 점은 이렇게 뒷부분에 .current를 넣어 주어야 한다는 것입니다.
+설정한 뒤 나중에 ref를 설정해 준 DOM에 접근하려면 this.input.current를 조회하면 된다. 콜백 함수를 사용할 때와 다른 점은 이렇게 뒷부분에 .current를 넣어 주어야 한다는 것이다.
 
 ### 컴포넌트에 ref 달기
 
-리액트에서는 컴포넌트에도 ref를 달 수 있습니다. 이 방법은 주로 컴포넌트 내부에 있는 DOM을 컴포넌트 외부에서 사용할 때 씁니다.
+리액트에서는 컴포넌트에도 ref를 달 수 있다. 이 방법은 주로 컴포넌트 내부에 있는 DOM을 컴포넌트 외부에서 사용할 때 쓴다.
 
 ```javascript
 <MyComponent
@@ -588,11 +589,11 @@ render() {
 />
 ```
 
-이렇게 하면 MyComponent 내부의 메서드 및 멤버 변수에도 접근할 수 있습니다. 즉, 내부의 ref에도 접근할 수 있습니다.
+이렇게 하면 MyComponent 내부의 메서드 및 멤버 변수에도 접근할 수 있다. 즉, 내부의 ref에도 접근할 수 있다.
 
 ## 컴포넌트 반복
 
-문자열로 구성된 배열을 선언하고 그 배열 값을 사용하여 \<li>⋯\</li> JSX 코드로 된 배열을 새로 생성한 후 nameList라는 변수에 담습니다.
+아래와 같이 문자열로 구성된 배열을 선언하고 그 배열 값을 사용하여 \<li>⋯\</li> JSX 코드로 된 배열을 새로 생성한 후 nameList라는 변수에 담고 렌더링을 하면 "key" prop이 없다는 경고 메시지가 표시된다.
 
 ```javascript
 (...)
@@ -602,12 +603,10 @@ return <ul>{nameList}</ul>;
 (...)
 ```
 
-위와 같이 작성하면 "key" prop이 없다는 경고 메시지를 표시합니다.
-
 ### key
 
-리액트에서는 key는 컴포넌트 배열을 랜더링했을 때 어떤 원소에 변동이 있었는지 알아내려고 사용합니다. key가 없을 때는 Virtual DOM을 비교하는 과정에서 리스트를 순차적으로 비교하면서 변화를 감지합니다. 하지만 key가 있다면 이 값을 사용하여 어떤 변화가 일어났는지 더욱 빠르게 알아낼 수 있습니다.  
-key 값을 설정할 때는 map 함수의 인자로 전달되는 함수 내부에서 컴포넌트 props를 설정하듯이 설정하면 됩니다. key 값은 언제나 유일해야 합니다.
+리액트에서는 key는 컴포넌트 배열을 랜더링했을 때 어떤 원소에 변동이 있었는지 알아내려고 사용한다. key가 없을 때는 Virtual DOM을 비교하는 과정에서 리스트를 순차적으로 비교하면서 변화를 감지한다. 하지만 key가 있다면 이 값을 사용하여 어떤 변화가 일어났는지 더욱 빠르게 알아낼 수 있다.  
+key 값을 설정할 때는 map 함수의 인자로 전달되는 함수 내부에서 컴포넌트 props를 설정하듯이 설정하면 된다. key 값은 언제나 유일해야 한다.
 
 ```javascript
 (...)
@@ -615,24 +614,24 @@ const nameList = names.map((name, index) => <li key={index}>{name}</li>;
 (...)
 ```
 
-고유한 값이 없을 때만 index 값을 key로 사용해야 합니다. index를 key로 사용하면 배열이 변경될 때 효율적으로 리렌더링하지 못합니다.
+고유한 값이 없을 때만 index 값을 key로 사용해야 한다. index를 key로 사용하면 배열이 변경될 때 효율적으로 리렌더링하지 못한다.
 
 ### 데이터 추가/제거 기능 구현하기
 
-래액트에서 상태를 업데이트할 때는 기존 상태를 그대로 두면서 새로운 값을 상태로 설정해야 합니다. 이를 불변성 유지라고 합니다. 불변성 유지를 해 주어야 나중에 리액트 컴포넌트의 성능을 최적화할 수 있습니다.
+래액트에서 상태를 업데이트할 때는 기존 상태를 그대로 두면서 새로운 값을 상태로 설정해야 한다. 이를 불변성 유지라고 한다. 불변성 유지를 해 주어야 나중에 리액트 컴포넌트의 성능을 최적화할 수 있다.
 
 ```javascript
 (...)
 const [names, setNames] = useState([
-  { id: 1, text: 'snowman' },
-  { id: 2, text: 'ice' },
-  { id: 3, text: 'snow' },
-  { id: 4, text: 'wind' }
+  { id: 1, text: "snowman" },
+  { id: 2, text: "ice" },
+  { id: 3, text: "snow" },
+  { id: 4, text: "wind" },
 ]);
 const [inputText, setInputText] = useState('');
 const [nextId, setNextId] = useState(5);
 
-const onChange = e => setInputText(e.target.value);
+const onChange = event => setInputText(event.target.value);
 const onClick = () => {
   const nextNames = names.concat({
     id: nextId,
@@ -651,6 +650,7 @@ const namesList = names.map(name => (
     {name.text}
   </li>
 ));
+
 return (
   <>
     <input value={inputText} onChange={onChange} />
@@ -663,39 +663,90 @@ return (
 
 ## 컴포넌트의 라이프사이클 메서드
 
-모든 리액트 컴포넌트에는 라이프사이클이 존재합니다. 컴포넌트의 수명은 페이지에 렌더링되기 전인 준비 과정에서 시작하여 페이지에서 사라질 때 끝납니다.  
-라이프사이클 메서드는 클래스형 컴포넌트에서만 사용할 수 있습니다.  
-라이프사이클 메서드의 종류는 총 아홉 가지입니다. Will 접두사가 붙은 메서드는 어떤 작업을 작동하기 전에 실행되는 메서드이고, Did 접두사가 붙은 메서드는 어떤 작업을 작동한 후에 실행되는 메서드입니다. 이 메서드들은 컴포넌트 클래스에서 덮어 써 선언함으로써 사용할 수 있습니다.
-라이프사이클은 총 세 가지, 즉 마운트, 업데이트, 언마운트 카테고리로 나눕니다.
+모든 리액트 컴포넌트에는 라이프사이클이 존재한다. 컴포넌트의 수명은 페이지에 렌더링되기 전인 준비 과정에서 시작하여 페이지에서 사라질 때 끝난다.  
+라이프사이클 메서드는 클래스형 컴포넌트에서만 사용할 수 있다.  
+라이프사이클 메서드의 종류는 총 아홉 가지이다. Will 접두사가 붙은 메서드는 어떤 작업을 작동하기 전에 실행되는 메서드이고, Did 접두사가 붙은 메서드는 어떤 작업을 작동한 후에 실행되는 메서드이다. 이 메서드들은 컴포넌트 클래스에서 덮어 써 선언함으로써 사용할 수 있다.  
+라이프사이클은 총 세 가지, 즉 마운트, 업데이트, 언마운트 카테고리로 나뉜다.
 
-**마운트**  
-DOM이 생성되고 웹 브라우저상에 나타나는 것을 마운트<sup>mount</sup>라고 합니다. 이때 호출하는 메서드는 다음과 같습니다.
+### 마운트
 
-- constructor: 컴포넌트를 새로 만들 때마다 호출되는 클래스 생성자 메서드입니다.
-- getDerivedStateFromProps: props에 있는 값을 state에 넣을 때 사용하는 메서드입니다.
-- render: UI를 렌더링하는 메서드입니다.
-- componentDidMount: 컴포넌트가 웹 브라우저상에 나타난 후 호출하는 메서드입니다.
+DOM이 생성되고 웹 브라우저상에 나타나는 것을 마운트<sup>mount</sup>라고 한다. 이때 호출하는 메서드는 다음과 같다.
 
-**업데이트**  
-컴포넌트는 다음과 같은 총 네 가지 경우에 업데이트합니다.
+- constructor: 컴포넌트를 새로 만들 때마다 호출되는 클래스 생성자 메서드이다.
+- getDerivedStateFromProps: props에 있는 값을 state에 넣을 때 사용하는 메서드이다.
+- render: UI를 렌더링하는 메서드이다.
+- componentDidMount: 컴포넌트가 웹 브라우저상에 나타난 후 호출하는 메서드이다.
+
+### 업데이트
+
+컴포넌트는 다음과 같은 총 네 가지 경우에 업데이트한다.
 
 1. props가 바뀔 때
 2. state가 바뀔 때
 3. 부모 컴포넌트가 리렌더링될 때
 4. this.forceUpdate로 강제로 렌더링을 트리거할 때
 
-이렇게 컴포넌트를 업데이트할 때는 다음 메서드를 호출합니다.
+이렇게 컴포넌트를 업데이트할 때는 다음 메서드를 호출한다.
 
-- getDerivedStateFromProps: props의 변화에 따라 state 값에도 변화를 주고 싶을 때 사용합니다. 업데이트가 시작하기 전에도 호출됩니다.
-- shouldComponentUpdate: 컴포넌트가 리렌더링을 해야 할지 말아야 할지를 결정하는 메서드입니다. true를 반환하면 다음 라이프사이클 메서드를 계속 실행하고, false를 반환하면 작업을 중지합니다.
-- render: 컴포넌트를 리렌더링합니다.
-- getSnapshotBeforeUpdate: 컴포넌트 변화를 DOM에 반영하기 바로 직전에 호출하는 메서드입니다.
-- componentDidUpdate: 컴포넌트의 업데이트 작업이 끝난 후 호출하는 메서드입니다.
+- getDerivedStateFromProps: 이 메서드는 마운트 과정에서도 호출되며, 업데이트가 시작하기 전에도 호출된다. props의 변화에 따라 state 값에도 변화를 주고 싶을 때 사용한다.
+- shouldComponentUpdate: 컴포넌트가 리렌더링을 해야 할지 말아야 할지를 결정하는 메서드이다. true를 반환하면 다음 라이프사이클 메서드를 계속 실행하고, false를 반환하면 작업을 중지한다.
+- render: 컴포넌트를 리렌더링한다.
+- getSnapshotBeforeUpdate: 컴포넌트 변화를 DOM에 반영하기 바로 직전에 호출하는 메서드이다.
+- componentDidUpdate: 컴포넌트의 업데이트 작업이 끝난 후 호출하는 메서드이다.
 
-**언마운트**  
-컴포넌트를 DOM에서 제거하는 것을 언마운트<sup>unmount</sup>라고 합니다.
+### 언마운트
 
-- componentWillUnmount: 컴포넌트가 웹 브라우저상에서 사라지기 전에 호출하는 메서드입니다.
+컴포넌트를 DOM에서 제거하는 것을 언마운트<sup>unmount</sup>라고 한다.
+
+- componentWillUnmount: 컴포넌트가 웹 브라우저상에서 사라지기 전에 호출하는 메서드이다.
+
+### 라이프사이클 메서드 살펴보기
+
+#### render() 함수
+
+이 메서드는 컴포넌트 모양새를 정의한다. 라이프사이클 메서드 중 유일한 필수 메서드이다.  
+이 메서드 안에서 this.props와 this.state에 접근할 수 있으며, 리액트 요소를 반환한다.  
+이 메서드 안에서는 이벤트 설정이 아닌 곳에서 setState를 사용하면 안되며, 브라우저의 DOM에 접근해서도 안된다.  
+DOM 정보를 가져오거나 state에 변화를 줄 때는 componentDidMount에서 처리해야 한다.
+
+```
+render() { ... }
+```
+
+#### constructor 메서드
+
+이 메서드는 컴포넌트의 생성자 메서드로 컴포넌트를 만들 때 처음으로 실행되고 초기 state를 정할 수 있다.
+
+```
+constructor(props) { ... }
+```
+
+#### getDerivedStateFromProps 메서드
+
+props로 받아 온 값을 state에 동기화시키는 용도로 사용하며, 컴포넌트가 마운트될 때와 업데이트될 때 호출된다.
+
+```
+static getDerivedStateFromProps(nextProps, prevState) { ... }
+```
+
+#### componentDidMount 메서드
+
+이 메서드는 컴포넌트를 만들고, 첫 렌더링을 다 마친 후 실행한다.  
+이 안에서 라이브러리의 함수를 호출하거나 이벤트 등록, 비동기 작업을 처리하면 된다.
+
+```
+componentDidMount() { ... }
+```
+
+#### shouldComponentUpdate 메서드
+
+이 메서드는 props 또는 state를 변경했을 때, 리렌더링을 시작할지 여부를 지정하는 메서드이다.  
+이 메서드는 반드시 true 값 또는 false 값을 반환해야 한다. 기본적으로 언제나 true 값을 반환하지만 false 값을 반환하면 업데이트 과정은 여기서 중지된다.  
+이 메서드 안에서 현재 props와 state는 this.props와 this.state로 접근하고, 새로 설정될 props 또는 state는 nextProps와 nextState로 접근할 수 있다.
+
+```
+shouldComponentUpdate(nextProps, nextState) { ... }
+```
 
 ## Hooks
 
