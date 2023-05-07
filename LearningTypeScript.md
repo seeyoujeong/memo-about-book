@@ -638,3 +638,22 @@ class Jeong extends Person {
   }
 }
 ```
+
+### 추상 클래스
+
+추상화하려는 클래스 이름과 메서드 앞에 타입스크립트의 abstract 키워드를 추가한다.  
+추상화 메서드 선언은 추상화 기본 클래스에서 메서드의 본문을 제공하는 것을 건너뛰고, 대신 인터페이스와 동일한 방식으로 선언된다.
+추상 클래스를 직접 인스턴스화할 수 없다.
+추상 클래스는 클래스의 세부 사항이 채워질 거라 예상되는 프레임워크에서 자주 사용된다.
+
+```typescript
+abstract class School {
+  abstract getStudentTypes(): string[];
+}
+
+class Preschool extends School {
+  getStudentTypes() {
+    return ["preschooler"];
+  }
+}
+```
