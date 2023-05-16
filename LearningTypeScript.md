@@ -871,3 +871,56 @@ class MoviePart implements ActingCredit<string> {
 #### _정적 클래스 제네릭_
 
 정적 클래스 메서드는 자체 타입 매개변수를 선언할 수 있지만 클래스에 선언된 어떤 타입 매개변수에도 접근할 수 없다.
+
+### 제네릭 타입 별칭
+
+제네릭 타입 별칭은 일반적으로 제네릭 함수의 타입을 설명하는 함수와 함께 사용된다.
+
+```typescript
+type CreateValue<Input, Output> = (input: Input) => Output;
+```
+
+#### _제네릭 판별된 유니언_
+
+데이터의 성공적인 결과 또는 오류로 인한 실패를 나타내는 제네릭 '결과' 타입을 만들기 위해 타입 인수를 추가하는 방법이 있다.
+
+```typescript
+type Result<Data> = FailureResult | SuccessfulResult<Data>;
+
+interface FailureResult {
+  error: Error;
+  succeeded: false;
+}
+
+interface SuccessfulResult<Data> {
+  data: Data;
+  succeeded: true;
+}
+```
+
+### 제네릭 제한자
+
+타입스크립트는 제네릭 타입 매개변수의 동작을 수정하는 구문도 제공한다.
+
+#### _제네릭 기본값_
+
+타입 매개변수 선언 뒤에 =와 기본 타입을 배치해 타입 인수를 명시적으로 제공할 수 있다.  
+기본값은 타입 인수가 명시적으로 선언되지 않고 유추할 수 없는 모든 후속 타입에 사용된다.  
+타입 매개변수는 동일한 선언 안의 앞선 타입 매개변수를 기본값으로 가질 수 있다.  
+모든 기본 타입 매개변수는 기본 함수 매개변수처럼 선언 목록의 제일 마지막에 와야 한다.
+
+### 제한된 제네릭 타입
+
+타입스크립트는 타입 매개변수가 타입을 확장해야 한다고 선언할 수 있으며 별칭 타입에만 허용되는 작업이다.  
+타입 매개변수를 제한하는 구문은 매개변수 이름 뒤에 extends 키워드를 배치하고 그 뒤에 이를 제한할 타입을 배치한다.
+
+#### _keyof와 제한된 타입 매개변수_
+
+extends와 keyof를 함께 사용하면 타입 매개변수를 이전 타입 매개변수의 키로 제한할 수 있다.  
+제네릭 타입의 키를 지정하는 유일한 방법이다.
+
+```typescript
+function get<T, Key extends keyof T>(container: T, key: Key) {
+  return container[key];
+}
+```
