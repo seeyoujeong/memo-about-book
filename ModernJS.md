@@ -810,12 +810,16 @@ Person.staticMethod = function () {
 
 ## strict mode
 
-```javascript
-"use strict";
-```
-
 strict mode는 자바스크립트 언어의 문법을 좀 더 엄격히 적용하여 오류를 발생시킬 가능성이 높거나 자바스크립트 엔진의 최적화 작업에 문제를 일으킬 수 있는 코드에 대해 명시적인 에러를 발생시킨다.  
-전역에 strict mode를 적용하는 것은 피해야 하고 함수 단위로 strict mode를 적용하는 것도 피해야 한다.
+전역과 함수 단위로 strict mode를 적용하는 것은 피해야 하며 즉시 실행 함수로 감싼 스크립트 단위로 적용하는 것이 바람직하다.
+
+```javascript
+(function () {
+  "use strict";
+
+  // ...
+})();
+```
 
 ### strict mode가 발생시키는 에러
 
