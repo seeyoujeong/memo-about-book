@@ -1273,3 +1273,62 @@ declarationMap 컴파일러 옵션은 원본 소스 파일에 해당하는 각 .
 
 다른 도구를 이용해 소스 파일을 컴파일하고, 자바스크립트를 출력하는 프로젝트에서 타입스크립트는 파일 생성을 모두 건너뛰도록 지시할 수 있다.  
 noEmit 컴파일러 옵션을 활성화하면 타입스크립트가 온전히 타입 검사기로만 작동한다.
+
+### 타입 검사
+
+대부분의 타입스크립트 구성 옵션은 타입 검사기를 제어한다.  
+구성 옵션을 어떻게 구성하는지에 따라 느슨하거나 엄격하게 타입 검사를 실행한다.
+
+#### _lib_
+
+타입스크립트가 런타임 환경에 있다고 가정하는 전역 API는 lib 컴파일러 옵션으로 구성할 수 있다.  
+lib 컴파일러 옵션은 브라우저 타입 포함을 나타내는 dom과 target 컴파일러 옵션을 기본값으로 하는 문자열 배열을 사용한다.  
+lib 설정을 변경하는 유일한 이유는 브라우저에서 실행되지 않는 프로젝트에서 dom을 제거하기 위함이다.  
+최신 자바스크립트 API를 지원하기 위해 폴리필을 사용하는 프로젝트에서 옵션을 사용해 ECMA스크립트 특정 버전을 추가할 수 있다.  
+올바른 런타임 폴리필을 모두 제공하지 않는 상태에서 lib을 수정하지 않도록 주의해야 한다.
+
+#### _skipLibCheck_
+
+타입스크립트는 소스 코드에 명시적으로 포함되지 않은 선언 파일에서 타입 검사를 건너뛰도록 하는 skipLibCheck 컴파일러 옵션을 제공한다.  
+skipLibCheck 옵션은 공유된 라이브러리의 정의가 서로 다르고 충돌할 수 있는 패키지의 의존성을 많이 사용하는 애플리케이션에 유용하다.  
+skipLibCheck는 타입 검사 일부를 건너뛰는 작업으로 타입스크립트 성능을 개선한다.
+
+#### _엄격 모드_
+
+타입스크립트의 타입 검사 컴파일러 옵션 대부분은 타입스크립트의 엄격 모드로 그룹화된다.  
+엄격한 컴파일러 옵션은 기본적으로 false이고, 활성화되면 타입 검사기에 일부 추가적인 검사를 켜도록 지시한다.
+
+#### _noImplicitAny_
+
+noImplicitAny 컴파일러 옵션은 암시적 any로 대체될 때 타입스크립트에 타입 검사 오류가 발생하도록 지시한다.  
+noImplicitAny 오류는 오류가 발생한 위치에 타입 애너테이션을 추가하면 대부분 해결된다.
+
+#### _strictFunctionTypes_
+
+strictFunctionTypes 컴파일러 옵션은 함수 매개변수 타입을 약간 더 엄격하게 검사한다.  
+매개변수가 다른 타입의 매개변수 하위 타입인 경우 함수 타입은 더 이상 다른 함수 타입에 할당 가능한 것으로 간주되지 않는다.  
+strictFunctionTypes가 true이면 contravariant, false이면 bivariant이다.
+
+```typescript
+function checkOnNumber(containsA: (input: number | string) => boolean) {
+  return containsA(1337);
+}
+
+function stringContainsA(input: string) {
+  return !!input.match(/a/i);
+}
+
+checkOnNumber(stringContainsA); // Error
+```
+
+#### _strictNullChecks_
+
+strictNullChecks 플래그를 비활성화하면 코드의 모든 타입에 null | undefined가 추가되고, 모든 변수가 null 또는 undefined를 받을 수 있도록 허용한다.
+
+#### _strictPropertyInitialization_
+
+strictPropertyInitialization 플래그는 초기화가 없고, 생성자에 확실하게 할당되지 않는 클래스 속성에서 타입 오류를 발생시킨다.
+
+#### _useUnknownInCatchVariables_
+
+useUnknownInCatchVariables 플래그는 타입스크립트의 기본 catch 절 error 타입을 unknown으로 변경한다.
