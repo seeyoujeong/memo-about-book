@@ -1332,3 +1332,54 @@ strictPropertyInitialization 플래그는 초기화가 없고, 생성자에 확�
 #### _useUnknownInCatchVariables_
 
 useUnknownInCatchVariables 플래그는 타입스크립트의 기본 catch 절 error 타입을 unknown으로 변경한다.
+
+### 모듈
+
+타입스크립트는 가장 합리적인 사용자 영역 모듈 구성을 나타내는 구성 옵션을 제공하기 위해 최선을 다한다.  
+새로운 타입스크립트 프로젝트 대부분은 표준화된 ECMA스크립트 모듈 구문으로 작성된다.
+
+#### _module_
+
+타입스크립트는 어떤 모듈 시스템으로 변환된 코드를 사용할지 결정하기 위해 module 컴파일러 옵션을 제공한다.  
+ECMA스크립트 모듈로 소스 코드를 작성할 때 타입스크립트는 module 값에 따라 export와 import 문을 다른 모듈 시스템으로 변환할 수 있다.  
+target 컴파일러 옵션이 "es3" 또는 "es5"인 경우 module 컴파일러 옵션의 기본값은 "commonjs"가 된다.  
+그렇지 않으면 ECMA스크립트 모듈로 출력하도록 지정하기 위해 module 컴파일러 옵션은 "es2015"로 기본 설정된다.
+
+#### _moduleResolution_
+
+모듈 해석<sup>module resolution</sup>은 import에서 가져온 경로가 module에 매핑되는 과정이다.  
+타입스크립트는 해당 과정에 로직을 지정하는 데 사용할 수 있는 moduleResolution 옵션을 제공한다.  
+일반적으로 node와 nodenext 중 하나를 제공하는 것을 선호한다.
+
+#### _CommonJS와의 상호 운용성_
+
+자바스크립트 모듈로 작업할 때 모듈의 기본 내보내기와 네임스페이스 출력 간에는 차이점이 있다.  
+모듈의 기본 내보내기는 내보낸 객체의 .default 속성이다.  
+모듈의 네임스페이스 내보내기는 내보낸 객체 자체이다.
+
+| 구문 영역             | CommonJS                                  | ECMA스크립트 모듈              |
+| --------------------- | ----------------------------------------- | ------------------------------ |
+| 기본 내보내기         | module.exports.default = value;           | export default value;          |
+| 기본 가져오기         | const { default: value } = require("...") | import value from "...";       |
+| 네임스페이스 내보내기 | module.exports = value;                   | 지원 안 함                     |
+| 네임스페이스 가져오기 | const value = require("...")              | import \* as value from "..."; |
+
+#### _esModuleInterop_
+
+esModuleInterop 구성 옵션은 module이 "es2015" 또는 "esnext"와 같은 ECMA스크립트 모듈 형식이 아닌 경우 타입스크립트에서 내보낸 자바스크립트 코드에 소량의 로직을 추가한다.  
+해당 로직은 ECMA스크립트 모듈이 기본 또는 네임스페이스 가져오기에 대한 ECMA스크립트 모듈의 규칙을 준수하지 않는 경우에도 모듈에서 가져올 수 있도록 한다.  
+esModuleInterop을 활성화하는 이유 중 하나는 기본 내보내기를 제공하지 않는 "react" 같은 패키지를 위해서다.  
+esModuleInterop은 내보낸 자바스크립트 코드가 가져오기로 작동하는 방식에 대해서만 직접 변경한다.
+
+#### _allowSyntheticDefaultImports_
+
+allowSyntheticDefaultImports 컴파일러 옵션은 ECMA스크립트 모듈이 호환되지 않는 CommonJS 네임스페이스 내보내기 파일에서 기본 가져오기를 할 수 있음을 타입 시스템에 알린다.  
+allowSyntheticDefaultImports 컴파일러 옵션은 다음 중 하나가 true인 경우에만 true로 기본 설정된다.
+
+- module이 "system"인 경우
+- esModuleInterop이 true이고 module이 "es2015" 또는 "esnext"와 같은 ECMA스크립트 모듈 형식이 아닌 경우
+
+#### _isolatedModules_
+
+한 번에 하나의 파일에서만 작동하는 바벨과 같은 외부 트랜스파일러는 타입 시스템 정보를 사용해 자바스크립트를 내보낼 수 없다.  
+프로젝트에서 타입스크립트가 아닌 다른 도구를 사용해 자바스크립트로 변환하는 경우에는 isolatedModules를 활성화하는 것이 좋다.
