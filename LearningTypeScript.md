@@ -227,7 +227,18 @@ type User = {
 #### _유추된 객체 타입 유니언_
 
 변수에 여러 객체 타입 중 하나가 될 수 있는 초깃값이 주어지면 타입스크립트는 해당 타입을 객체 타입 유니언으로 유추한다.  
+유니언 타입은 가능한 각 객체 타입을 구성하고 있는 요소를 모두 가질 수 있다.  
 객체 타입에 정의된 각각의 가능한 속성은 비록 초깃값이 없는 선택적(?) 타입이지만 각 객체 타입의 구성 요소로 주어진다.
+
+```typescript
+const poem =
+  Math.random() > 0.5
+    ? { name: "The Double Image", pages: 7 }
+    : { name: "Her Kind", rhymes: true };
+// Type:
+// { name: string; pages: number; rhymes?: undefined; } |
+// { name: string; pages?: undefined; rhymes: boolean; }
+```
 
 #### _명시된 객체 타입 유니언_
 
