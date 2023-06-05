@@ -1553,3 +1553,18 @@ namespace Randomized {
   console.log(`My value is ${value}`);
 }
 ```
+
+### 타입 전용 가져오기와 내보내기
+
+타입 전용 가져오기와 내보내기는 매우 유용하며 내보내진 자바스크립트 출력에 어떠한 복잡성도 추가하지 않는다.  
+타입스크립트의 트랜스파일러는 자바스크립트 런타임에서 사용되지 않으므로 파일의 가져오기와 내보내기에서 타입 시스템에서만 사용되는 값을 제거한다.  
+타입스크립트는 export와 import 선언에서 개별적으로 가져온 이름 또는 전체 객체 앞에 type 제한자를 추가할 수 있다.
+
+```typescript
+import { type TypeOne, value } from "my-example-types";
+import type { TypeTwo } from "my-example-types";
+import type DefaultType from "my-example-types";
+
+export { type TypeOne, value };
+export type { DefaultType, TypeTwo };
+```
