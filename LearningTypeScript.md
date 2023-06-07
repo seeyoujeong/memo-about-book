@@ -16,6 +16,7 @@
 - [IDE 기능 사용](#IDE-기능-사용)
 - [구성 옵션](#구성-옵션)
 - [구문 확장](#구문-확장)
+- [타입 운영](#타입-운영)
 
 ## 타입스크립트란
 
@@ -1567,4 +1568,88 @@ import type DefaultType from "my-example-types";
 
 export { type TypeOne, value };
 export type { DefaultType, TypeTwo };
+```
+
+## 타입 운영
+
+타입스크립트는 타입 시스템에서 타입을 정의할 수 있는 기능을 제공한다.  
+다른 타입을 기준으로 타입을 혼합, 일치, 수정할 수 있다.
+
+### 매핑된 타입
+
+타입스크립트는 다른 타입의 속성을 기반으로 새로운 타입을 생성하는 구문을 제공한다.  
+타입스크립트의 매핑된 타입은 다른 타입을 가져와서 해당 타입의 각 속성에 대해 일부 작업을 수행하는 타입이다.  
+매핑된 타입은 키 집합의 각 키에 대한 새로운 속성을 만들어 새로운 타입을 생성한다.  
+`[K in OriginalType]`과 같은 `in`을 사용해 다른 타입으로부터 계산된 타입을 사용한다.  
+매핑된 타입에 대한 일반적인 사용 사례는 유니언 타입에 존재하는 각 문자열 리터럴을 키로 가진 객체를 생성하는 것이다.
+
+```typescript
+type Animals = "dog" | "cat" | "monkey";
+
+type AnimalCounts = {
+  [K in Animals]: number;
+};
+```
+
+#### _타입에서 매핑된 타입_
+
+일반적으로 매핑된 타입은 존재하는 타입에 keyof 연산자를 사용해 키를 가져오는 방식으로 작동한다.  
+존재하는 타입의 키를 매핑하도록 타입에 지시하면 새로운 타입으로 매핑한다.  
+각 매팽된 타입 멤버 값은 동일한 키 아래에서 원래 타입의 해당 멤버 값을 참조할 수 있다.
+
+```typescript
+interface BirdVariants {
+  dove: string;
+  eagle: boolean;
+}
+
+type NullableBirdVariants = {
+  [K in keyof BirdVariants]: BirdVariants[K] | null,
+};
+```
+
+매핑된 타입은 객체 타입의 메서드와 속성 구문을 구분하지 않는다.  
+매핑된 타입은 메서드를 원래 타입의 속성으로 취급한다.
+
+```typescript
+interface Researcher {
+  researchMethod(): void;
+  researchProperty: () => string;
+}
+
+type JustProperties<T> = {
+  [K in keyof T]: T[K];
+};
+
+type ResearcherProperties = JustProperties<Researcher>;
+// {
+//   researchMethod: () => void;
+//   researchProperty: () => string;
+// }
+```
+
+#### _제한자 변경_
+
+매핑된 타입은 원래 타입의 멤버에 대해 접근 제어 제한자인 `readonly`와 `?`도 변경 가능하다.  
+전형적인 인터페이스와 동일한 구문을 사용해 매핑된 타입의 멤버에 `readonly`와 `?`를 배치할 수 있다.  
+새로운 타입의 제한자 앞에 `-`를 추가해 제한자를 제거한다.  
+`readonly`나 `?:`을 작성하는 대신 `-readonly` 또는 `-?:`을 사용한다.
+
+#### _제네릭 매핑된 타입_
+
+매핑된 타입의 완전한 힘은 제네릭과 결합해 단일 타입의 매핑을 다른 타입에서 재사용할 수 있도록 하는 것에서 나온다.  
+매핑된 타입은 매핑된 타입 자체의 타입 매개변수를 포함해 `keyof`로 해당 스코프에 있는 모든 타입 이름에 접근할 수 있다.  
+제네릭 매핑된 타입은 데이터가 애플리케이션을 통해 흐를 때 데이터가 어떻게 변형되는지 나타낼 때 아주 유용하다.
+
+```typescript
+type MakeReadonly<T> = {
+  readonly [K in keyof T]: T[K];
+};
+
+interface Species {
+  genus: string;
+  name: string;
+}
+
+type ReadonlySpecies = MakeReadonly<Species>;
 ```
