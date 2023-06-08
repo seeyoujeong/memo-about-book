@@ -1653,3 +1653,38 @@ interface Species {
 
 type ReadonlySpecies = MakeReadonly<Species>;
 ```
+
+### 조건부 타입
+
+타입스크립트의 타입 시스템은 이전 타입에 대한 논리적인 검사를 바탕으로 새로운 구성(타입)을 생성한다.  
+조건부 타입의 개념은 기존 타입을 바탕으로 두 가지 가능한 타입 중 하나로 확인되는 타입이다.  
+조건부 타입에서 논리적 검사는 항상 `extends`의 왼쪽 타입이 오른쪽 타입이 되는지 또는 할당 가능한지 여부에 있다.
+
+```typescript
+type CheckStringAgainstNumber = string extends number ? true : false;
+```
+
+#### _제네릭 조건부 타입_
+
+조건부 타입은 조건부 타입 자체의 타입 매개변수를 포함한 해당 스코프에서 모든 타입 이름을 확인할 수 있다.  
+즉, 모든 다른 타입을 기반으로 새로운 타입을 생성하기 위해 재사용 가능한 제네릭 타입을 작성할 수 있다.  
+조건부 타입은 객체 멤버 검색 구문을 사용해서 제공된 타입의 멤버에 접근할 수 있고, `extends` 절과 결과 타입에서 그 정보를 사용할 수 있다.  
+조건부 제네릭 타입에도 적합한 한 가지 패턴은 함수에 제공된 옵션 객체를 기반으로 함수의 반환 타입을 변경하는 것이다.
+
+```typescript
+type CallableSetting<T> = T extends () => any ? T : () => T;
+
+interface QueryOptions {
+  throwIfNotFound: boolean;
+}
+
+type QueryResult<Options extends QueryOptions> =
+  Options["throwIfNotFound"] extends true ? string : string | undefined;
+```
+
+#### _타입 분산_
+
+조건부 타입은 유니언에 분산된다.  
+결과 타입은 각 구성 요소(유니언 타입 안의 타입들)에 조건부 타입을 적용하는 유니언이 됨을 의미한다.  
+`ConditionalType<T | U>`는 `Conditional<T> | Conditional<U>`와 같다.  
+조건부 타입은 전체 유니언 타입이 아니라 유니언 타입의 각 구성 요소에 로직을 적용한다.
