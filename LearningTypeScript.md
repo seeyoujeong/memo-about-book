@@ -1688,3 +1688,38 @@ type QueryResult<Options extends QueryOptions> =
 결과 타입은 각 구성 요소(유니언 타입 안의 타입들)에 조건부 타입을 적용하는 유니언이 됨을 의미한다.  
 `ConditionalType<T | U>`는 `Conditional<T> | Conditional<U>`와 같다.  
 조건부 타입은 전체 유니언 타입이 아니라 유니언 타입의 각 구성 요소에 로직을 적용한다.
+
+#### _유추된 타입_
+
+조건부 타입은 `extends` 절에 `infer` 키워드를 사용해 조건의 임의의 부분에 접근한다.  
+`extends` 절에 타입에 대한 `infer` 키워드와 새 이름을 배치하면 조건부 타입이 true인 경우 새로운 타입을 사용할 수 있음을 의미한다.  
+유추된 타입은 재귀적 조건부 타입을 생성하는 데에도 사용할 수 있다.
+
+```typescript
+type ArrayItems<T> = T extends (infer Item)[] ? Item : T;
+
+type ArrayItemsRecursive<T> = T extends (infer Item)[]
+  ? ArrayItemsRecursive<Item>
+  : T;
+```
+
+#### _매핑된 조건부 타입_
+
+매핑된 타입의 기존 타입의 모든 멤버에 변경 사항을 적용하고 조건부 타입은 하나의 기존 타입에 변경 사항을 적용한다.  
+이 둘을 함께 사용하면 제네릭 템플릿 타입의 각 멤버에 조건부 로직을 적용할 수 있다.
+
+```typescript
+type MakeAllMembersFunctions<T> = {
+  [K in keyof T]: T[K] extends (...args: any[]) => any ? T[K] : () => T[K];
+};
+
+type MemberFunctions = MakeAllMembersFunctions<{
+  alreadyFunction: () => string;
+  notYetFunction: number;
+}>;
+// Type:
+// {
+//    alreadyFunction: () => string,
+//    notYetFunction: () => number,
+// {
+```
