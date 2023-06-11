@@ -1723,3 +1723,143 @@ type MemberFunctions = MakeAllMembersFunctions<{
 //    notYetFunction: () => number,
 // {
 ```
+
+### never
+
+#### _never와 교차, 유니언 타입_
+
+never가 교차 타입과 유니언 타입을 함께 사용하면 다음과 같이 작동한다.
+
+- 교차 타입에 있는 never는 교차 타입을 never로 만든다.
+- 유니언 타입에 있는 never는 무시된다.
+
+```typescript
+type NeverIntersection = never & string; // Type: never
+type NeverUnion = never | string; // Type: string;
+```
+
+#### _never와 조건부 타입_
+
+제네릭 조건부 타입은 일반적으로 유니언에서 타입을 필터링하기 위해 never를 사용한다.  
+never는 유니언에서 무시되기 때문에 유니언 타입에서 제네릭 조건부의 결과는 never가 아닌 것이 된다.
+
+```typescript
+type OnlyStrings<T> = T extends string ? T : never;
+
+type RedOrBlue = OnlyStrings<"red" | "blue" | 0 | false>; // Type: "red" | "blue"
+```
+
+never는 또한 제네릭 타입에 대한 타입 유틸리티를 만들 때 유추된 조건부 타입과 결합된다.  
+`infer`가 있는 타입 추론은 조건부 타입이 true가 되어야 하므로 false인 경우를 절대 사용하지 않아야 한다.  
+바로 이때 never를 사용하면 적합하다.
+
+```typescript
+type FirstParameter<T extends (...args: any[]) => any> = T extends (
+  arg: infer Arg
+) => any
+  ? Arg
+  : never;
+
+type GetsString = FirstParameter<(arg0: string) => void>; // Type: string
+```
+
+#### _never와 매핑된 타입_
+
+유니언에서 never의 동작은 매핑된 타입에서 멤버를 필터링할 때도 유용하다.  
+다음 세 가지 타입 시스템 기능을 사용해 객체의 키를 필터링한다.
+
+- 유니언에서 never는 무시된다.
+- 매핑된 타입은 타입의 멤버를 매핑할 수 있다.
+- 조건부 타입은 조건이 충족되는 경우 타입을 never로 변환하는 데 사용할 수 있다.
+
+세 가지 기능을 함께 사용하면 원래 타입의 각 멤버를 원래 키 또는 never로 변경하는 매핑된 타입을 만들 수 있다.  
+`[keyof T]`로 해당 타입의 멤버를 요청하면 모든 매핑된 타입의 결과 유니언이 생성되고 never는 필터링된다.
+
+```typescript
+type OnlyStringProperties<T> = {
+  [K in keyof T]: T[K] extends string ? K : never;
+}[keyof T];
+
+interface AllEventData {
+  participants: string[];
+  location: string;
+  name: string;
+  year: number;
+}
+
+type OnlyStringEventData = OnlyStringProperties<AllEventData>; // "location" | "name"
+```
+
+### 템플릿 리터럴 타입
+
+템플릿 리터럴 타입은 문자열 타입이 패턴에 맞는지를 나타내는 타입스크립트 구문이다.  
+템플릿 리터럴 타입은 템플릿 리터럴 문자열처럼 보이지만 추정할 수 있는 원시 타입 또는 원시 타입 유니언이 있다.  
+템플릿 리터럴 타입을 더 좁은 문자열 패턴으로 제한하기 위해 포괄적인 string 원시 타입 대신 문자열 리터럴 타입과 그 유니언을 타입 보간법에 사용할 수 있다.  
+템플릿 리터럴 타입은 제한된 허용 문자열 집합과 일치해야 하는 문자열을 설명하는 데 유용하다.  
+타입스크립트는 템플릿 리터럴 타입이 string, number, bigint, boolean, null, undefined와 같은 모든 원시 타입(symbol 제외) 또는 그 조합을 포함하도록 허용한다.
+
+```typescript
+type Brightness = "dark" | "light";
+type Color = "blue" | "red";
+
+type BrightnessAndColor = `${Brightness}-${Color}`;
+```
+
+#### _고유 문자열 조작 타입_
+
+문자열 타입 작업을 지원하기 위해 타입스크립트는 문자열을 가져와 문자열에 일부 조작을 적용하는 고유 제네릭 유틸리티 타입을 제공한다.
+
+- Uppercase: 문자열 리터럴 타입을 대문자로 변환한다.
+- Lowercase: 문자열 리터럴 타입을 소문자로 변환한다.
+- Capitalize: 문자열 리터럴 타입의 첫 번째 문자를 대문자로 변환한다.
+- Uncapitalize: 문자열 리터럴 타입의 첫 번째 문자를 소문자로 변환한다.
+
+#### _템플릿 리터럴 키_
+
+템플릿 리터럴 타입은 원시 문자열 타입과 문자열 리터럴 사이의 중간 지점이므로 여전히 문자열이다.  
+템플릿 리터럴 타입은 문자열 리터럴을 사용할 수 있는 모든 위치에서 사용 가능하다.
+
+```typescript
+type DataKey = "location" | "name" | "year";
+
+type ExistenceChecks = {
+  [K in `check${Capitalize<DataKey>}`]: () => boolean;
+};
+```
+
+#### _매핑된 타입 키 다시 매핑하기_
+
+타입스크립트는 템플릿 리터럴 타입을 사용해 원래 멤버를 기반으로 매핑된 타입의 멤버에 대한 새로운 키를 생성할 수 있다.  
+매핑된 타입에서 인덱스 시그니처에 대한 템플릿 리터럴 타입 다음에 `as` 키워드를 배치하면 결과 타입의 키는 템플릿 리터럴 타입과 일치하도록 변경된다.  
+키를 다시 매핑하는 작업과 다른 타입 운영을 결합해 기존 타입 형태를 기반으로 하는 매핑된 타입을 생성할 수 있다.
+
+```typescript
+const config = {
+  location: "unkown",
+  name: "anonymous",
+  year: 0,
+};
+
+type LazyValues = {
+  [K in keyof typeof config as `${K}Lazy`]: () => Promise<(typeof config)[K]>;
+};
+```
+
+제네릭 타입에서 다시 매핑된 템플릿 리터럴 타입 키를 사용하려고 하면 타입스크립트는 템플릿 리터럴 타입에서 symbol을 사용할 수 없다는 오류를 발생시킨다.  
+이러한 제한 사항을 피하기 위해 string과 교차 타입을 사용하여 문자열이 될 수 있는 타입만 사용하도록 강제한다.  
+string & symbol은 never가 되므로 전체 템플릿 문자열은 never가 되고 타입스크립트는 이를 무시하게 된다.
+
+```typescript
+type TurnIntoGettersDirect<T> = {
+  [K in keyof T as `get${K}`]: () => T[K]; // Error
+};
+
+type TurnIntoGetters<T> = {
+  [K in keyof T as `get${string & K}`]: () => T[K];
+};
+```
+
+### 타입 운영과 복잡성
+
+타입 운영을 사용해야 하는 경우에는 향후 코드를 읽어야 하는 모든 개발자를 위해 가능한 최소한으로 사용하도록 노력해야 한다.  
+코드를 읽는 사람이 이해하기 쉬운 이름을 사용하고, 미래에 코드를 읽을 때 어려움을 겪을 수 있다고 생각되는 모든 부분에 설명을 남겨야 한다.
