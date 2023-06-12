@@ -35,7 +35,7 @@
 
 ##
 
-### LearningTypeScript.md (진행중)
+### LearningTypeScript.md
 **러닝 타입스크립트** <sub>안정적인 웹 프로젝트 운영을 위한 타입스크립트의 모든 것</sub>  
 조시 골드버그 지음 | 한빛미디어  
 
