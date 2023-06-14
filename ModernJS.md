@@ -1327,7 +1327,7 @@ Date 객체에 날짜를 나타내는 정수를 설정한다.
 Date 객체의 요일(0 ~ 6)을 나타내는 정수를 반환한다.
 
 **Date.prototype.getHours 메서드**  
-Date 객체의 시간(0 ~ 23)dmf 나타내는 정수를 반환한다.
+Date 객체의 시간(0 ~ 23)을 나타내는 정수를 반환한다.
 
 **Date.prototype.setHours 메서드**  
 Date 객체에 시간을 나타내는 정수를 설정한다.
