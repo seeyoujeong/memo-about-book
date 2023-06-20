@@ -3387,8 +3387,6 @@ getComputedStyle 메서드의 두 번째 인수로 ::after, ::before와 같은 �
 HTML 요소의 어트리뷰트 중에는 이벤트에 대응하는 이벤트 핸들러 어트리뷰트가 있다.  
 이벤트 핸들러 어트리뷰트의 이름은 onclick과 같이 on 접두사와 이벤트의 종류를 나타내는 이벤트 타입으로 이루어져 있다.  
 이벤트 핸들러 어트리뷰트 값으로 함수 호출문 등의 문을 할당하면 이벤트 핸들러가 등록된다.  
-주의할 점은 이벤트 핸들러 어트리뷰트 값으로 함수 참조가 아닌 함수 호출문 등의 문을 할당한다는 것이다.  
-함수 참조가 아니라 함수 호출문을 등록하면 함수 호출문의 평가 결과가 이벤트 핸들러로 등록된다.  
 이벤트 핸들러 어트리뷰트 값은 사실 암묵적으로 생성될 이벤트 핸들러의 함수 몸체를 의미한다.  
 어트리뷰트는 파싱되어 함수를 암묵적으로 생성하고, 이벤트 핸들러 어트리뷰트 이름과 동일한 키 이벤트 핸들러 프로퍼티에 할당한다.  
 이벤트 핸들러 어트리뷰트 값으로 함수 참조를 할당해야 한다면 이벤트 핸들러에 인수를 전달하기 곤란하다.  
@@ -3407,11 +3405,11 @@ CBD<sup>Component Based Development</sup>에서는 이벤트 핸들러 어트리
       }
 
       /*
-    암묵적으로 생성
-    function onclick(event) {
-      sayHi('Jeong');
-    }
-    */
+      암묵적으로 생성
+      function onclick(event) {
+        sayHi('Jeong');
+      }
+      */
     </script>
   </body>
 </html>
@@ -3884,9 +3882,9 @@ _※ 클래스에서 이벤트 핸들러를 바인딩하는 경우 this에 주�
 
           this.$button.onclick = this.increase;
           /*
-        해결방법1
-        this.$button.onclick = this.increase.bind(this);
-        */
+          해결방법1
+          this.$button.onclick = this.increase.bind(this);
+          */
         }
 
         increase() {
@@ -3896,11 +3894,11 @@ _※ 클래스에서 이벤트 핸들러를 바인딩하는 경우 this에 주�
         }
 
         /* 
-      해결방법2
-      클래스 필드 정의
-      이때 이벤트 핸들러 increase는 프로토타입 메서드가 아닌 인스턴스 메서드가 된다. 
-      increase = () => this.$button.textContent = ++this.count;
-      */
+        해결방법2
+        클래스 필드 정의
+        이때 이벤트 핸들러 increase는 프로토타입 메서드가 아닌 인스턴스 메서드가 된다. 
+        increase = () => this.$button.textContent = ++this.count;
+        */
       }
 
       new App();
@@ -3938,15 +3936,15 @@ _※ 클래스에서 이벤트 핸들러를 바인딩하는 경우 this에 주�
       };
 
       /*
-    // 이벤트 핸들러를 반환하는 함수
-    const checkUserNameLength = min => e => {
-      $msg.textContent 
-        = $input.value.length < min ? `이름은 ${min}자 이상 입력해 주세요` : '';
-    };
-    
-    // 이벤트 핸들러를 반환하는 함수를 호출하면서 인수를 전달한다.                               
-    $input.onblur = checkUserNameLength(MIN_USER_NAME_LENGTH);
-    */
+      // 이벤트 핸들러를 반환하는 함수
+      const checkUserNameLength = min => e => {
+        $msg.textContent 
+          = $input.value.length < min ? `이름은 ${min}자 이상 입력해 주세요` : '';
+      };
+      
+      // 이벤트 핸들러를 반환하는 함수를 호출하면서 인수를 전달한다.                               
+      $input.onblur = checkUserNameLength(MIN_USER_NAME_LENGTH);
+      */
     </script>
   </body>
 </html>
@@ -3956,8 +3954,7 @@ _※ 클래스에서 이벤트 핸들러를 바인딩하는 경우 this에 주�
 
 **커스텀 이벤트 생성**  
 이벤트 생성자 함수를 호출하여 명시적으로 생성한 이벤트 객체는 임의의 이벤트 타입을 지정할 수 있는데 이처럼 개발자의 의도로 생성된 이벤트를 커스텀 이벤트라 한다.  
-이벤트 생성자 함수는 첫 번째 인수로 이벤트 타입을 나타내는 문자열을 전달받는다.  
-CustomEvent 이벤트 생성자 함수를 사용한다.  
+기존 이벤트 타입이 아닌 임의의 문자열을 사용하여 새로운 이벤트 타입을 지정할 경우 CustomEvent 이벤트 생성자 함수를 사용한다.  
 커스텀 이벤트 객체는 bubbles와 cancelable 프로퍼티의 값이 false로 기본 설정된다.  
 이벤트 객체 고유의 프로퍼티 값을 지정하려면 이벤트 생성자 함수의 두 번째 인수로 프로퍼티를 전달한다.  
 이벤트 생성자 함수로 생성한 커스텀 이벤트는 isTrusted 프로퍼티의 값이 언제나 false다.
