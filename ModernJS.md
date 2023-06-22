@@ -276,12 +276,12 @@ typeof undeclared; // undefined
 ### 숫자 타입으로 변환
 
 ```javascript
-1 / "one" + // → NaN
-  "string" + // → NaN
-  undefined + // → NaN
-  {} + // → NaN
-  "" + // → 0
-  []; // → 0
+1 / "one"; // → NaN
++"string"; // → NaN
++undefined; // → NaN
++{}; // → NaN
++""; // → 0
++[]; // → 0
 null; // → 0
 false; // → 0
 ```
