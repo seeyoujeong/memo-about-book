@@ -5057,7 +5057,7 @@ async/await는 프로미스의 후속 처리 메서드 없이 마치 동기 처�
 **async 함수**  
 async 함수는 async 키워드를 사용해 정의하며 언제나 프로미스를 반환한다.  
 async 함수가 명시적으로 프로미스를 반환하지 않더라도 async 함수는 암묵적으로 반환값을 resolve하는 프로미스를 반환한다.  
-클래스의 constructor 메서드는 async 메서드가 될 수 없는데 constructor 메서드는 인스턴스를 반환해야 하지만 async 함수는 언제나 프로미스를 반환해야 한다.
+클래스의 constructor 메서드는 async 메서드가 될 수 없는데 그 이유는 constructor 메서드는 인스턴스를 반환해야 하지만 async 함수는 언제나 프로미스를 반환해야 하기 때문이다.
 
 ```javascript
 async function foo(n) { return n; }
