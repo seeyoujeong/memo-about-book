@@ -3640,12 +3640,12 @@ Event 인터페이스의 이벤트 관련 프로퍼티는 모든 이벤트 객�
     </tr>
     <tr>
       <td>defaultPrevented</td>
-      <td>preventDefault 메서드를 호출하여 이벤트를 취소했는지 여부</td>
+      <td>preventDefault 메서드를 호출하여 이벤트를 취소했는지 여부.</td>
       <td>boolean</td>
     </tr>
     <tr>
       <td>isTrusted</td>
-      <td>사용자의 행위에 의해 발생한 이벤트인지 여부. 인위적으로 발생시킨 이벤트인 경우 false다.</td>
+      <td>사용자의 행위에 의해 발생한 이벤트인지 여부. <br>인위적으로 발생시킨 이벤트인 경우 false다.</td>
       <td>boolean</td>
     </tr>
     <tr>
