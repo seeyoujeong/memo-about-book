@@ -1,0 +1,11 @@
+{
+	"include": ["."],
+	"compilerOptions": {
+    "target": "ES6",
+		"outDir": "dist",
+		"allowJs": true,
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+    "moduleResolution": "node"
+	}
+}
