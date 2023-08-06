@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            const keyboardEvent = new KeyboardEvent('keyup', { key: 'Enter' });
+            console.log(keyboardEvent.type);
+
+            const customEvent = new CustomEvent('foo');
+            console.log(customEvent.type);
+
+            console.log(customEvent.bubbles);
+            console.log(customEvent.cancelable);
+
+            const mouseEvent = new MouseEvent('click', {
+                bubbles: true,
+                cancelable: true,
+                clientX: 50,
+                clientY: 100
+            });
+
+            console.log(mouseEvent.bubbles);
+            console.log(mouseEvent.cancelable);
+
+            console.log(mouseEvent.clientX);
+            console.log(mouseEvent.clientY);
+
+            console.log(keyboardEvent.key);
+
+            console.log(customEvent.isTrusted);
+        </script>
+    </body>
+</html>
+

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <input type="checkbox">
+        <em class="message">off</em>
+        <script>
+            const $checkbox = document.querySelector('input[type=checkbox]');
+            const $msg = document.querySelector('.message');
+
+            $checkbox.onchange = e => {
+                console.log(Object.getPrototypeOf(e) === Event.prototype);
+                console.log(e.target === e.currentTarget);
+
+                $msg.textContent = e.target.checked ? 'on' : 'off';
+            };
+        </script>
+    </body>
+</html>

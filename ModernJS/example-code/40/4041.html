@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <button class="btn">0</button>
+        <script>
+            class App {
+                constructor() {
+                    this.$button = document.querySelector('.btn');
+                    this.count = 0;
+
+                    // increase 메서드 내부의 this가 인스턴스를 가리키도록 함
+                    this.$button.onclick = this.increase.bind(this);
+
+                    // increase 메서드를 이벤트 핸들러로 등록
+                    // this.$button.onclick = this.increase;
+                }
+
+                increase() {
+                    // this는 DOM 요소(this.$button)를 가리킨다.
+                    this.$button.textContent = ++this.count;
+                }
+
+                // increase = () => this.$button.textContent = ++this.count;
+            }
+
+            new App();
+        </script>
+    </body>
+</html>

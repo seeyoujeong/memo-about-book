@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <button>Click me!</button>
+        <script>
+            const $button = document.querySelector('button');
+
+            $button.onclick = function () {
+                console.log('[이벤트 핸들러 프로퍼티 방식]button click');
+            };
+
+            $button.addEventListener('click', function () {
+                console.log('[addEventListener 메서드 방식]button click[1]');
+            });
+
+            $button.addEventListener('click', function () {
+                console.log('[addEventListener 메서드 방식]button click[2]');
+            });
+
+            const handleClick = () => console.log('[참조]button click');
+
+            // 참조가 동일한 이벤트 핸들러를 중복 등록하면 하나의 핸들러만 등록
+            $button.addEventListener('click', handleClick);
+            $button.addEventListener('click', handleClick);
+
+            $button.removeEventListener('click', handleClick, true); // 실패
+            $button.removeEventListener('click', handleClick);
+
+            $button.addEventListener('click', function foo() {
+                console.log('[기명 이벤트 핸들러]button click');
+
+                // 단 한 번만 호출
+                $button.removeEventListener('click', foo);
+            });
+
+            $button.addEventListener('click', function () {
+                console.log('[무기명 이벤트 핸들러]button click');
+
+                // strict mode에서 사용 금지
+                $button.removeEventListener('click', arguments.callee);
+            });
+
+            // removeEventListener 메서드로 이벤트 핸들러 제거 불가
+            // 이벤트 핸들러 프로퍼티에 null을 할당하여 이벤트 핸들러 제거
+            // $button.onclick = null;
+        </script>
+    </body>
+</html>

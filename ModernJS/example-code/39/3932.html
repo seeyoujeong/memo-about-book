@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <ul id="fruits">
+            <li class="apple">Apple</li>
+            <li class="banana">Banana</li>
+            <li class="orange">Orange</li>
+        </ul>
+    </body>
+    <script>
+        const $banana = document.querySelector('.banana');
+
+        console.log($banana);
+        console.log($banana.parentNode);
+
+        const $apple = document.getElementsByClassName('apple');
+        
+        console.log($apple);
+        console.log($apple[0].parentElement);
+    </script>
+</html>

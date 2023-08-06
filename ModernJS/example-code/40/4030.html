@@ -1,0 +1,24 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <style>
+            html, body { height: 100%; }
+        </style>
+    </head>
+    <body>
+        <p>버블링과 캡처링 이벤트 <button>버튼</button></p>
+        <script>
+            document.body.addEventListener('click', () => {
+                console.log('Handler for body.');
+            });
+
+            document.querySelector('p').addEventListener('click', () => {
+                console.log('Handler for paragraph.');
+            }, true);
+
+            document.querySelector('button').addEventListener('click', () => {
+                console.log('Handler for button.');
+            });
+        </script>
+    </body>
+</html>

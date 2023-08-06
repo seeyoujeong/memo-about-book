@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <input id="user" type="text" value="ungmo2">
+        <script>
+            const $input = document.getElementById('user');
+
+            $input.value = 'foo';
+
+            console.log($input.value);
+
+            $input.oninput = () => {
+                console.log('value 프로퍼티 값', $input.value);
+            }
+
+            console.log('value 어트리뷰트 값', $input.getAttribute('value'));
+
+            $input.id = 'foo';
+
+            console.log($input.id);
+            console.log($input.getAttribute('id'));
+        </script>
+    </body>
+</html>

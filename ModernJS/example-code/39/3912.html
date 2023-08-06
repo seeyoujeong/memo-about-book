@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <ul id="fruits">
+            <li class="apple">Apple</li>
+            <li class="banana">Banana</li>
+            <li class="orange">Orange</li>
+        </ul>
+        <div class="banana">Banana</div>
+        <script>
+            const $bananasFromDocument = document.getElementsByClassName('banana');
+            console.log($bananasFromDocument);
+
+            const $fruits = document.getElementById('fruits');
+            const $bananasFromFruits = $fruits.getElementsByClassName('banana');
+
+            console.log($bananasFromFruits);
+        </script>
+    </body>
+</html>

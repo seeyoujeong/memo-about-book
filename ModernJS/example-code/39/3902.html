@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <input type="text">
+        <script>
+            const $input = document.querySelector('input');
+
+            console.log(
+                Object.getPrototypeOf($input) === HTMLInputElement.prototype,
+                Object.getPrototypeOf(HTMLInputElement.prototype) === HTMLElement.prototype,
+                Object.getPrototypeOf(HTMLElement.prototype) === Element.prototype,
+                Object.getPrototypeOf(Element.prototype) === Node.prototype,
+                Object.getPrototypeOf(Node.prototype) === EventTarget.prototype,
+                Object.getPrototypeOf(EventTarget.prototype) === Object.prototype
+            );
+        </script>
+    </body>
+</html>

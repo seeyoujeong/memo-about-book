@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <button class="btn1">0</button>
+        <button class="btn2">0</button>
+        <button class="btn3">0</button>
+        <button class="btn4">0</button>
+        <script>
+            const $button1 = document.querySelector('.btn1');
+            const $button2 = document.querySelector('.btn2');
+            
+            const $button3 = document.querySelector('.btn3');
+            const $button4 = document.querySelector('.btn4');
+
+            $button1.onclick = function (e) {
+                console.log(this);
+                console.log(e.currentTarget);
+                console.log(this === e.currentTarget);
+
+                ++this.textContent;
+            };
+
+            $button2.addEventListener('click', function (e) {
+                console.log(this);
+                console.log(e.currentTarget);
+                console.log(this === e.currentTarget);
+
+                ++this.textContent;
+            });
+
+            $button3.onclick = e => {
+                console.log(this);
+                console.log(e.currentTarget);
+                console.log(this === e.currentTarget);
+
+                // window.textContent에 NaN(undefined + 1)을 할당
+                ++this.textContent;
+            };
+
+            $button4.addEventListener('click', e => {
+                console.log(this);
+                console.log(e.currentTarget);
+                console.log(this === e.currentTarget);
+
+                // window.textContent에 NaN(undefined + 1)을 할당
+                ++this.textContent;
+            });
+        </script>
+    </body>
+</html>

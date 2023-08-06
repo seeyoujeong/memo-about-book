@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="foo"></div>
+        <script>
+            // 전역 변수가 암묵적으로 선언
+            console.log(foo === document.getElementById('foo'));
+
+            delete foo; // 암묵적 전역으로 생성된 전역 프로퍼티만 삭제
+            console.log(foo);
+
+            // let foo = 1; // id값과 동일한 이름의 전역 변수가 이미 있으면 재할당X
+        </script>
+    </body>
+</html>

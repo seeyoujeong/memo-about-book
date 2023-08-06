@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <input type="text">
+        <script>
+            document.querySelector('input').oninput = function () {
+                console.log(this.value);
+                // 이벤트 핸들러에서의 반환은 의미가 없음.
+                return this.value;
+            }
+
+            let g = 0;
+            setTimeout(() => { g = 100; }, 0);
+            console.log(g);
+        </script>
+    </body>
+</html>

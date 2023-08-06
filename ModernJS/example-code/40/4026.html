@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <input type="text">
+        <em class="message"></em>
+        <script>
+            const $input = document.querySelector('input[type=text]');
+            const $msg = document.querySelector('.message');
+
+            $input.onkeyup = e => {
+                if (e.key !== 'Enter') return;
+
+                $msg.textContent = e.target.value;
+                e.target.value = '';
+            };
+        </script>
+    </body>
+</html>

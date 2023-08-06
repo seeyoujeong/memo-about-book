@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            const promiseGet = url => {
+                return new Promise((resolve, reject) => {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('GET', url);
+                    xhr.send();
+
+                    xhr.onload = () => {
+                        if (xhr.status === 200) {
+                            resolve(JSON.parse(xhr.response));
+                        } else {
+                            reject(new Error(xhr.status));
+                        }
+                    };
+                });
+            };
+
+            const wrongUrl = 'https://jsonplaceholder.typicode.com/XXX/1';
+
+            promiseGet(wrongUrl)
+                .then(res => console.log(res))
+                .catch(err => console.error(err));
+                // .then(undefined, err => console.error(err)); <- catch의 내부
+
+            promiseGet('https://jsonplaceholder.typicode.com/todos/1').then(
+                res => console.xxx(res),
+                err => console.error(err)
+            ); // 두 번째 콜백 함수는 첫 번째 콜백 함수에서 발생한 에러를 캐치하지 못함
+
+            promiseGet('https://jsonplaceholder.typicode.com/todos/1')
+                .then(res => console.xxx(res))
+                .catch(err => console.error(err));
+        </script>
+    </body>
+</html>

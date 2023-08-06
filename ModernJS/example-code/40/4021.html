@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            let e = new Event('foo');
+            console.log(e);
+            console.log(e.type);
+            console.log(e instanceof Event);
+            console.log(e instanceof Object);
+
+            e = new FocusEvent('focus');
+            console.log(e);
+
+            e = new MouseEvent('click');
+            console.log(e);
+
+            e = new KeyboardEvent('keyup');
+            console.log(e);
+
+            e = new InputEvent('change');
+            console.log(e);
+        </script>
+    </body>
+</html>
+

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                color: red;
+            }
+            .box {
+                width: 100px;
+                height: 50px;
+                background-color: cornsilk;
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">Box</div>
+        <script>
+            const $box = document.querySelector('.box');
+
+            const computedStyle = window.getComputedStyle($box);
+            console.log(computedStyle);
+
+            console.log(computedStyle.width);
+            console.log(computedStyle.height);
+            console.log(computedStyle.backgroundColor);
+            console.log(computedStyle.border);
+
+            console.log(computedStyle.color);
+
+            console.log(computedStyle.display);
+        </script>
+    </body>
+</html>

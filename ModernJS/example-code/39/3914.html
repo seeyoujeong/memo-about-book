@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <ul>
+            <li class="apple">Apple</li>
+            <li class="banana">Banana</li>
+            <li class="orange">Orange</li>
+        </ul>
+        <script>
+            const $elems = document.querySelectorAll('ul > li');
+            console.log($elems);
+
+            $elems.forEach(elem => { elem.style.color = 'red'; })
+
+            const $elem = document.querySelector('.banana');
+
+            $elem.style.color = 'blue';
+        </script>
+    </body>
+</html>

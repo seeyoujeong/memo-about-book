@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <ul id="fruits">
+            <li>Apple</li>
+            <li>Banana</li>
+        </ul>
+    </body>
+    <script>
+        const $fruits = document.getElementById('fruits');
+
+        const { childNodes } = $fruits;
+        console.log(childNodes instanceof NodeList);
+
+        console.log(childNodes);
+
+        // for (let i = 0; i < childNodes.length; i++) {
+        //     $fruits.removeChild(childNodes[i]);
+        // }
+
+        [...childNodes].forEach(childNode => {
+            $fruits.removeChild(childNode);
+        });
+
+        console.log(childNodes);
+    </script>
+</html>

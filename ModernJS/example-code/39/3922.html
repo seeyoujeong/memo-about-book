@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        .red { color: red; }
+        .blue { color: blue; }
+    </style>
+</head>
+<html>
+    <body>
+        <ul id="fruits">
+            <li class="red">Apple</li>
+            <li class="red">Banana</li>
+            <li class="red">Orange</li>
+        </ul>
+        <script>
+            const $elems = document.querySelectorAll('.red');
+
+            $elems.forEach(elem => elem.className = 'blue');
+        </script>
+    </body>
+</html>

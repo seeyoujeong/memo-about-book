@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <ul>
+            <li id="apple">Apple</li>
+            <li id="banana">Banana</li>
+            <li id="orange">Orange</li>
+        </ul>
+        <ul>
+            <li id="banana">Apple</li>
+            <li id="banana">Banana</li>
+            <li id="banana">Orange</li>
+        </ul>
+        <script>
+            const $elem = document.getElementById('banana');
+            const $elem1 = document.getElementById('grape');
+
+            $elem.style.color = 'red';
+            $elem1.style.color = 'red'; // Error
+        </script>
+    </body>
+</html>
