@@ -162,7 +162,23 @@ person.toFixed(); // Error
 #### _참 검사를 통한 내로잉_
 
 타입스크립트는 잠재적인 값 중 truthy로 확인된 일부에 한해서만 변수의 타입을 좁힐 수 있다.  
-논리 연산자인 `&&`와 `?`는 참 여부를 검사하는 일을 잘 수행한다. 하지만 참 여부 확인 외에 다른 기능(빈 문자열인지 undefined인지)은 제공하지 않는다.
+논리 연산자인 `&&`와 `?`는 참 여부를 검사하는 일을 잘 수행한다. 하지만 참 여부 확인 외에 다른 기능은 제공하지 않는다.  
+`string | undefined` 값에 대해 알고 있는 것이 falsy라면, 그것이 빈 문자열인지 undefined인지는 알 수 없다.
+
+```typescript
+geneticist && geneticist.toUpperCase(); // Ok: string | undefined
+geneticist?.toUpperCase(); // Ok: string | undefined
+```
+
+```typescript
+let biologist = Math.random() > 0.5 && "Rachel Carson";
+
+if (biologist) {
+  biologist; // Type: string
+} else {
+  biologist; // Type: false | string
+}
+```
 
 #### _초깃값이 없는 변수_
 
