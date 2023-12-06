@@ -56,7 +56,7 @@
 
 ##
 
-### EffectiveTypeScript (진행중)
+### EffectiveTypeScript
 
 **이펙티브 타입스크립트** <sub>동작 원리의 이해와 구체적인 조언 62가지</sub>  
 댄 밴더캄 지음 | 인사이트
