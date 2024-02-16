@@ -4899,7 +4899,7 @@ fetch 함수는 HTTP 응답을 나타내는 Response 객체를 래핑한 Promise
 fetch 함수가 반환하는 프로미스는 기본적으로 HTTP 에러가 발생해도 에러를 reject하지 않고 불리언 타입의 ok 상태를 false로 설정한 Response 객체를 resolve한다.  
 오프라인 등의 네트워크 장애나 CORS 에러에 의해 요청이 완료되지 못한 경우에만 프로미스를 reject한다.
 
-```
+```javascript
 const promise = fetch(url [, options])
 ```
 
