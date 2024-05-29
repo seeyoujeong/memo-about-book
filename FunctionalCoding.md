@@ -162,3 +162,56 @@
 - 재사용성
   - 규칙: 아래쪽에 함수가 적을수록 더 재사용하기 좋다.
   - 핵심: 낮은 수준의 단계로 함수를 빼내면 재사용성이 더 높아진다.
+
+## 일급 함수
+
+### 일급 값
+
+일급 값은 아래와 같은 일을 할 수 있다.
+
+- 변수에 할당
+- 함수의 인자로 넘기기
+- 함수의 리턴값으로 받기
+- 배열이나 객체에 담기
+
+### 고차 함수
+
+고차 함수는 인자로 함수를 받거나 리턴값으로 함수를 리턴할 수 있는 함수를 말한다.  
+함수를 일급 값으로 사용할 수 있는 언어에서 고차 함수를 만들 수 있다.
+
+### 암묵적 인자 드러내기
+
+함수 이름에 있는 암묵적 인자는 함수의 이름으로 구분하는 코드의 냄새이다. 이 냄새는 코드로 다룰 수 없는 함수 이름 대신 일급 값인 인자로 바꾸기 암묵적 인자 드러내기 리팩터링을 적용해서 없앨 수 있다.
+
+```javascript
+// 리팩터링 전
+function setPriceByName(cart, name, price) {
+  var item = cart[name];
+  var newItem = objectSet(item, "price", price);
+  var newCart = objectSet(cart, name, newItem);
+  return newCart;
+}
+
+// 리팩터링 후
+function setFieldByName(cart, name, field, value) {
+  var item = cart[name];
+  var newItem = objectSet(item, field, value);
+  var newCart = objectSet(cart, name, newItem);
+  return newCart;
+}
+```
+
+### 본문을 콜백으로 바꾸기
+
+동작을 추상화하기 위해 본문을 콜백으로 바꾸기 리팩터링을 사용할 수 있다.  
+서로 다른 함수의 동작 차이를 일급 함수 인자로 만든다.
+
+```javascript
+function withLogging(f) {
+  try {
+    f();
+  } catch (error) {
+    logToSnapErrors(error);
+  }
+}
+```
