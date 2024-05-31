@@ -215,3 +215,20 @@ function withLogging(f) {
   }
 }
 ```
+
+### 함수를 리턴하는 함수
+
+코드에 반복되는 부분을 줄이기 위해 고차 함수를 사용하는 것이 중요하다.  
+고차 함수는 많은 중복 코드를 없애 주지만 가독성을 해칠 수도 있다.
+
+```javascript
+function wrapLogging(f) {
+  return function (arg) {
+    try {
+      f(arg);
+    } catch (error) {
+      logToSnapErrors(error);
+    }
+  };
+}
+```
