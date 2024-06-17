@@ -232,3 +232,58 @@ function wrapLogging(f) {
   };
 }
 ```
+
+## 함수형 도구 체이닝
+
+체이닝을 통해 여러 단계를 하나로 조합할 수 있다.
+
+```javascript
+function biggestPurchasesBestCustomers(customers) {
+  var bestCustomers = filter(
+    customers,
+    (customer) => customer.purchases.length >= 3
+  );
+  var biggestPurchases = map(bestCustomers, (customer) =>
+    maxKey(customer.purchases, { total: 0 }, (purchase) => purchase.total)
+  );
+
+  return biggestPurchases;
+}
+```
+
+각 단계에 이름을 붙이거나 콜백에 이름을 붙여서 체인을 명확하게 만들 수 있다.
+
+```javascript
+// 단계에 이름 붙이기
+function selectBestCustomers(customers) {
+  return filter(customers, (customer) => customer.purchases.length >= 3);
+}
+
+// ...
+var bestCustomers = selectBestCustomers(customers);
+// ...
+```
+
+```javascript
+// 콜백에 이름 붙이기
+function isGoodCustomer(customers) {
+  return customer.purchases.length >= 3;
+}
+
+// ...
+var bestCustomers = filter(customers, isGoodCustomer);
+// ...
+```
+
+스트림 결합을 통해 체인을 최적화할 수 있다.
+
+```javascript
+// 값 하나에 map() 두 번 사용
+var names = map(customers, getFullName);
+var nameLengths = map(names, stringLength);
+
+// map()을 한 번 사용
+var nameLengths = map(customers, (customer) =>
+  stringLength(getFullName(customer))
+);
+```
