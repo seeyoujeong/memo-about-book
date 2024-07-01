@@ -287,3 +287,48 @@ var nameLengths = map(customers, (customer) =>
   stringLength(getFullName(customer))
 );
 ```
+
+## 중첩된 데이터에 함수형 도구 사용하기
+
+### 객체를 다루기 위한 고차 함수
+
+`update()`를 사용하면 객체 안에서 값을 꺼내 변경하고 다시 설정하는 일을 수동으로 하지 않아도 된다.
+
+```javascript
+function update(object, key, modify) {
+  var value = object[key];
+  var newValue = modify(value);
+  var newObject = objectSet(object, key, newValue);
+  return newObject;
+}
+```
+
+### 중첩된 객체를 다루기 위한 고차 함수
+
+`nestedUpdate()`는 바꾸려고 하는 값이 어디 있는지 가리키는 키 경로만 알면 중첩된 데이터를 쉽게 바꿀 수 있다.
+
+```javascript
+function nestedUpdate(object, keys, modify) {
+  if (keys.length === 0) {
+    return modify(object);
+  }
+
+  var key1 = keys[0];
+  var restOfKeys = drop_first(keys);
+
+  return update(object, key1, function (value1) {
+    return nestedUpdate(value1, restOfKeys, modify);
+  });
+}
+```
+
+### 안전한 재귀 사용법
+
+1. 재귀를 멈추려면 종료 조건이 필요하다.
+2. 재귀 함수는 최소 하나의 재귀 호출이 있어야 한다.
+3. 최소 하나 이상의 인자가 점점 줄어들어야 한다.
+
+### 깊이 중첩된 데이터에 추상화 벽 사용하기
+
+깊이 중첩된 데이터는 모든 데이터 구조와 어떤 경로에 어떤 키가 있는지 기억해야 하므로 이해하기 어렵다.  
+많은 키를 가지고 있는 깊이 중첩된 구조에 추상화 벽을 사용하면 알아야 할 것이 줄어듭니다.
