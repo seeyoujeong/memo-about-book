@@ -333,7 +333,7 @@ function nestedUpdate(object, keys, modify) {
 깊이 중첩된 데이터는 모든 데이터 구조와 어떤 경로에 어떤 키가 있는지 기억해야 하므로 이해하기 어렵다.  
 많은 키를 가지고 있는 깊이 중첩된 구조에 추상화 벽을 사용하면 알아야 할 것이 줄어듭니다.
 
-## 타임라인 격리하기
+## 타임라인
 
 타임라인은 액션을 순서대로 나열한 것이다.  
 타임라인 다이어그램은 시간에 따른 액션 순서를 시각적으로 표시한 것이다.
@@ -381,3 +381,48 @@ function nestedUpdate(object, keys, modify) {
 3. 공유하는 자원이 적을수록 이해하기 쉽다.
 4. 자원을 공유한다면 서로 조율해야 한다.
 5. 시간을 일급으로 다룬다.
+
+### 타임라인 단순화하기
+
+플랫폼의 스레드 모델에 따라 다이어그램을 단순하게 만들 수 있다.  
+자바스크립트에서 단순화하는 단계는 아래와 같다.
+
+1. 하나의 타임라인에 있는 모든 액션을 하나로 통합한다.
+2. 타임라인이 끝나는 곳에서 새로운 타임라인이 하나 생긴다면 통합한다.
+3. 순서에 제약이 있는 경우 점선을 추가한다.
+
+### 타임라인 사이에 자원 공유하기
+
+자원을 안전하게 공유하기 위해 동시성 기본형을 사용하면 된다.  
+동시성 기본형은 자원을 안전하게 공유할 수 있는 재사용 가능한 코드를 말한다.
+
+```javascript
+function Queue(worker) {
+  var queue_items = [];
+  var working = false;
+
+  function runNext() {
+    if (working) return;
+    if (queue_items.length === 0) return;
+
+    working = true;
+
+    var item = queue_items.shift();
+
+    worker(item.data, function (val) {
+      working: false;
+      setTimeout(item.callback, 0, val);
+      runNext();
+    });
+  }
+
+  return function (data, callback) {
+    queue_items.push({
+      data: data,
+      callback: callback || function () {},
+    });
+
+    setTimeount(runNext, 0);
+  };
+}
+```
