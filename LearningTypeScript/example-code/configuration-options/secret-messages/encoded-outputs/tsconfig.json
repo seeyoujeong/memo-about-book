@@ -1,9 +1,0 @@
-{
-	"include": ["."],
-	"exclude": ["*.verify.ts"],
-	"compilerOptions": {
-		"declaration": true,
-		"sourceMap": true,
-		"declarationMap": true,
-	}
-}
