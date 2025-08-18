@@ -34,6 +34,10 @@
   쏙쏙 들어오는 함수형 코딩 <sub>심플한 코드로 복잡한 소프트웨어 길들이기</sub>  
   에릭 노먼드 지음 | 제이펍
 
+- **TuckerGolang**  
+  Tucker의 Go 언어 프로그래밍 <sub>Golang 입문부터 HTTPS, RESTful API, Gin, gnet, gRPC을 활용하는 서버 네트워크 기법까지</sub>  
+  공봉식 지음 | 골든래빗
+
 ## 읽은 목록
 
 | 완독일     | 이름                              |
