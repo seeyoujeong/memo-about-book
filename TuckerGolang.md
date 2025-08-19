@@ -1,5 +1,11 @@
 # Tucker의 Go 언어 프로그래밍
 
+## 목차
+
+- [문법](#문법)
+- [데이터 타입](#데이터-타입)
+- [패키지](#패키지)
+
 ## 문법
 
 ### 변수
@@ -749,3 +755,156 @@ func main() {
 	wg.Wait()
 }
 ```
+
+## 패키지
+
+Go 언어에서 코드를 묶는 가장 큰 단위를 패키지라고 한다.  
+Go 언어는 `main()` 함수를 포함한 `main` 패키지를 시작점으로 한다.  
+Go 언어에서는 패키지명을 쉽고 간단하며 소문자로 할 것을 권장한다.  
+패키지명은 가져오는 경로의 가장 마지막 폴더명이며 첫 글자가 대문자로 시작하는 이름은 외부로 노출된다.
+
+```go
+package main
+
+import (
+	"fmt"
+	"math/rand"
+)
+
+func main() {
+	fmt.Println(rand.Int())
+}
+```
+
+별칭을 사용해 겹치는 패키지명을 구별할 수 있다.  
+사용하지 않는 패키지가 있으면 에러가 발생하는데 부가효과를 얻고자 임포트하는 경우에는 밑줄을 패키지명 앞에 붙여주면 된다.  
+외부 패키지는 `GOPATH/pkg/mod` 폴더에 버전별로 설치된다.
+
+```go
+import (
+	"text/template"
+	htemplate "html/template"
+	_ "github.com/mattn/go-sqlite3"
+)
+```
+
+### Go 모듈
+
+Go 모듈은 Go 패키지들을 모아놓은 Go 프로젝트 단위이며 1.16 버전부터 Go 모듈 사용이 기본이 됐다.  
+`go build`를 하려면 반드시 Go 모듈 루트 폴더에 `go.mod`파일이 있어야 한다.  
+`go.mod`에는 Go 버전과 외부 패키지 등이 명시되어 있으며 `go.sum`에는 외부 패키지 버전 정보를 담고 있다.  
+Go 모듈은 `go mod init [모듈명]` 명령을 통해 만들 수 있다.  
+같은 Go 모듈 아래에 있는 패키지는 Go 모듈명 아래 위치하도록 해서 임포트한다.  
+`go mod tidy` 명령은 Go 모듈에 필요한 패키지를 찾아서 다운로드해준다.
+
+### 패키지 간 임포트/익스포트
+
+패키지명은 폴더명과 같아야 하며 대문자로 시작하는 식별자만 익스포트된다.  
+같은 패키지 내에서는 모든 식별자에 접근 가능하다.  
+임포트 경로는 `go.mod`의 모듈명 기준이다.  
+하위 폴더에서 상위 폴더의 코드를 가져올 때는 절대 경로로 임포트하면 된다.  
+아래의 구조를 예시로 보면 `utils` 폴더에 속한 파일들은 `package utils` 를 선언해주고 `main.go` 에서 임포트해서 쓸땐 `“myproject/utils”`로 가져오면 된다.
+
+```
+myproject/
+├── go.mod
+├── main.go
+├── utils/
+│   ├── math.go
+│   └── string.go
+└── models/
+    └── user.go
+```
+
+```
+// go.mod
+
+module myproject
+
+go 1.24.4
+```
+
+```go
+// utils/math.go
+
+package utils
+
+// 익스포트됨 (대문자 시작)
+func Add(a, b int) int {
+    return a + b
+}
+
+// 익스포트되지 않음 (소문자 시작)
+func multiply(a, b int) int {
+    return a * b
+}
+
+// 익스포트됨
+const PI = 3.14159
+
+// 익스포트되지 않음
+const version = "1.0"
+```
+
+```go
+// utils/string.go
+
+package utils
+
+func GetPI() float64 {
+	return PI // 같은 패키지의 상수
+}
+```
+
+```go
+// models/user.go
+
+package models
+
+// 익스포트되는 구조체
+type User struct {
+    Name string    // 익스포트되는 필드
+    age  int      // 익스포트되지 않는 필드
+}
+
+// 익스포트되는 생성자 함수
+func NewUser(name string) *User {
+    return &User{
+        Name: name,
+        age:  0,
+    }
+}
+
+// 익스포트되는 메서드
+func (u *User) GetAge() int {
+    return u.age
+}
+
+// 익스포트되지 않는 메서드
+func (u *User) setAge(age int) {
+    u.age = age
+}
+```
+
+```go
+package main
+
+import (
+    "fmt"
+    "myproject/utils"  // 상대 경로로 임포트
+    "myproject/models"
+)
+
+func main() {
+    result := utils.Add(5, 3)  // 패키지명.함수명
+    fmt.Println(result)
+
+    user := models.NewUser("홍길동")
+    fmt.Println(user.Name)
+}
+```
+
+### 패키지 초기화
+
+패키지를 임포트하면 컴파일러는 패키지 내 전역 변수를 초기화하고 패키지에 `init()` 함수가 있다면 호출해 패키지를 초기화한다.  
+`init()` 함수는 입력 매개변수와 반환값이 없어야 한다.
