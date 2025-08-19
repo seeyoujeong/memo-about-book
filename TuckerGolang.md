@@ -241,3 +241,511 @@ defer f.Close()
 
 fmt.Fprinln(f, "Hello")
 ```
+
+## 데이터 타입
+
+### 숫자
+
+크기를 신경 쓰지 않는 경우 보통 `int`, `float64`를 사용한다.  
+정수의 기본값은 `0`이고 실수의 기본값은 `0.0`이다.  
+실숫값을 표현할 때 정확한 값이 아닌 타입이 허용하는 범위에서 가장 가까운 근삿값으로 표현된다.
+
+- uint, uint8 ~ 64
+- int, int8 ~ 64
+- float32, 64 (IEEE-754)
+- complex64, 128 (복소수)
+- byte (uint8의 별칭)
+- rune (int32의 별칭, UTF-8의 문자 하나)
+
+### 불리언
+
+`bool`로 선언하고 `true`, `false`을 쓰며 기본값은 `false`이다.
+
+### 문자열
+
+`string`으로 선언하고 큰따옴표나 백쿼트로 감싸면 된다. 기본값은 빈 문자열이다.  
+백쿼트로 문자열을 묶으면 특수 문자가 일반 문자처럼 처리된다.  
+Go 언어는 UTF-8 문자코드를 표준 문자코드로 사용한다.  
+문자 하나를 표현하는 데 `rune` 타입을 사용한다.  
+`len()` 함수를 사용하면 문자열 바이트 크기를 알 수 있고 글자 수는 알 수 없다.  
+`[]rune` 타입으로 타입 변환하면 글자 수를 알 수 있다.  
+`string` 타입은 `[]byte` 타입과 `[]rune` 타입으로 상호 변환이 가능하다.  
+한 글자씩 순회하는 방법은 `[]rune`으로 타입 변환하거나 `range` 키워드를 이용하면 된다.
+
+```go
+str := "Hello 월드"
+arr := []rune(str)
+
+for i := 0; i < len(arr); i++ {
+	fmt.Println(arr[i])
+}
+
+for _, v := range str {
+	fmt.Println(v)
+}
+```
+
+`string` 타입의 구조는 메모리 주소와 길이를 필드로 갖는 구조체다.  
+다른 변수에 대입하면 구조체 크기만큼 메모리가 복사된다.
+
+```go
+type StringHeader struct {
+	Data uintptr
+	Len int
+}
+```
+
+합 연산으로 두 문자열을 더할 때마다 새로운 메모리 공간을 할당하므로 메모리 공간 낭비가 생긴다.  
+`strings` 패키지의 `Builder`를 사용하면 낭비를 없앨 수 있다.
+
+```go
+var builder strings.Builder
+
+builder.WriteRune('a')
+builder.WriteRune('b')
+
+builder.String() // "ab"
+```
+
+### 배열
+
+고정된 길이의 같은 타입을 가질 수 있다.  
+`...`를 사용해 길이를 생략할 수 있다.  
+`range` 키워드를 통해 순회할 수 있으며 인덱스와 값을 받는다.  
+배열간 대입은 메모리 주소를 복사하는게 아닌 값을 복사한다.
+
+```go
+var nums [5]int
+
+days := [3]string{"monday", "tuesday", "wednesday"}
+
+var s = [5]int{1:10, 3:30}
+
+x := [...]int{10, 20, 30}
+
+for i, v := range arr { ... }
+
+a := [2][3]int {
+	{1, 2, 3},
+	{4, 5, 6}, // 쉼표를 찍어줘야 함
+}
+```
+
+### 슬라이스
+
+동적 배열인 슬라이스는 `[]타입`으로 선언하면 된다.  
+슬라이스는 배열을 가리키는 포인터와 요소 개수를 나타내는 len, 전체 배열 길이를 나타내는 cap 필드로 구성된 구조체다.  
+순회는 인덱스로 접근하거나 `range` 를 이용하면 된다.
+
+```go
+var slice1 = []int{1, 2, 3}
+var slice2 = []int{1, 5:2, 10:3}
+var slice3 = make([]int, 3)
+
+for i := 0; i < len(slice1); i++ {
+	fmt.Println(slice1[i])
+}
+
+for i, v := range slice2 { ... }
+```
+
+`append()` 함수로 슬라이스에 요소를 추가할 수 있다.  
+기존의 슬라이스를 변경하는 게 아닌 새로운 슬라이스를 반환한다.  
+기존 슬라이스의 남은 빈 공간의 개수보다 추가하는 요소의 개수가 작거나 같으면 기존 슬라이스를 반환한다.
+
+```go
+var slice = []int{1, 2, 3}
+
+slice2 = append(slice, 3, 4)
+
+var slice3 = make([]int, 3, 5)
+
+slice4 := append(slice3, 4, 5)
+
+slice3[1] = 6
+
+fmt.Print(slice4) // [0, 6, 0, 4, 5]
+```
+
+슬라이싱을 통해 배열과 슬라이스의 일부를 집어낼 수 있다.  
+새로운 배열이 만들어지는 게 아니라 배열의 일부를 포인터로 가리키는 슬라이스를 만들어낼 뿐이다.  
+시작인덱스를 생략하면 처음부터 가져오고 끝인덱스를 생략하면 끝까지 가져온다. 그리고 둘 다 생략하면 전체를 가져온다.  
+인덱스 3개로 슬라이싱하면 cap 크기를 조절할 수 있다.
+
+```go
+array := [5]int{1, 2, 3, 4, 5}
+slice := array[1:2] // len: 1, cap: 4
+
+slice = append(slice, 500)
+
+fmt.Print(array) // [1, 2, 500, 4, 5]
+```
+
+슬라이스를 복제하거나 요소를 삭제, 추가는 아래와 같이 하면 된다.
+
+```go
+slice2 := append([]int{}, slice1...) // 복제
+
+slice = append(slice[:idx], slice[idx+1:]...) // 삭제
+
+slice = append(slice, 0) // 추가
+copy(slice[idx+1:], slice[idx:]) // 복사 위치, 복사 대상
+slice[idx] = 100
+```
+
+### 구조체
+
+초깃값을 생략하면 모든 필드가 기본값으로 초기화된다.  
+일부 필드값만 초기화할 때는 ‘필드명: 필드값’ 형식으로 초기화한다.  
+구조체 값을 복사하면 모든 필드값이 복사된다.
+
+```go
+type House struct {
+	Address string
+	Size int
+	Price float64
+}
+
+var house House = House{"서울시", 30, 9.80}
+
+var house House = House{ Size: 28, Price: 10.0 }
+```
+
+구조체 안에 포함된 다른 구조체의 필드명을 생략하면 점 한 번만으로 접근할 수 있다.  
+중복된 필드명이 존재한다면 하위 구조체로 직접 접근하면 된다.
+
+```go
+type User struct {
+	Name string
+	Age  int
+	Level int
+}
+
+type VIPUser struct {
+	User // 필드명 생략
+	Level int
+}
+
+func main() {
+	vip := VIPUser{
+		User{"a", 10, 3},
+		3,
+	}
+
+	fmt.Println(vip.Name)
+	fmt.Println(vip.Level) // VIPUser의 Level
+	fmt.Print(vip.User.Level) // 직접 접근
+}
+```
+
+구조체를 정의할 때 메모리 정렬로 인해 메모리 패딩이 발생하므로 메모리 낭비를 줄이려면 작은 크기 필드값을 앞에 배치한다.
+
+```go
+type Item1 struct { // 40바이트
+	A int8 // 1바이트
+	B int // 8바이트
+	C int8 // 1바이트
+	D int // 8바이트
+	E int8 // 1바이트
+}
+
+type Item2 struct { // 24바이트
+	A int8 // 1바이트
+	C int8 // 1바이트
+	E int8 // 1바이트
+	B int // 8바이트
+	D int // 8바이트
+}
+```
+
+### 포인터
+
+포인터는 메모리 주소를 값으로 갖는 타입이며 기본값은 `nil`이다.
+
+```go
+var a int = 100
+var p *int
+
+p = &a
+
+*p = 200
+
+fmt.Print(a) // 200
+```
+
+포인터 변수에 구조체를 생성해 주소를 초깃값으로 대입하는 방법은 아래와 같다.
+
+```go
+var data1 *Data = &Data{}
+data2 := &Data{3, 4}
+var data3 = new(Data) // 원하는 값으로 초기화 불가능
+```
+
+구조체 포인터 변수의 필드값에 접근할 때 Go 언어에서는 `obj.val`라고만 써도 동작한다.
+
+### 함수 타입
+
+함수 시작 지점을 가리키는 값이며 포인터처럼 함수를 가리킨다고 해서 함수 포인터라고 부른다.  
+`func (int, int) int`처럼 선언하며 기본값은 `nil`이다.
+
+### 인터페이스
+
+인터페이스 선언은 `type`을 쓴 뒤 인터페이스명을 쓰고 `interface` 키워드를 쓴다. 그런 뒤 중괄호 안에 메서드 집합을 쓰면 된다.  
+인터페이스 변수의 기본값은 `nil`이다.  
+오버로딩 기능은 없다.
+
+```go
+type TempInter interface {
+	A()
+	B(c int) int
+}
+```
+
+인터페이스 구현 여부는 메서드 셋으로 결정된다. 메서드 셋은 다음 규칙을 따른다.
+
+- 값 타입 `T`의 메서드 셋:
+  - `T`의 값 리시버 메서드만 포함된다.
+- 포인터 타입 `*T`의 메서드 셋:
+  - `T`의 값 리시버 + 포인터 리시버 메서드 모두 포함된다.
+
+```go
+type Sender interface {
+	Send(parcel string)
+}
+
+func SendBook(name string, sender Sender) {
+	sender.Send(name)
+}
+
+type Post struct {}
+
+func (p *Post) Send(parcel string) {
+	fmt.Println(parcel)
+}
+
+post1 := Post{}
+sendBook("이름", post1) // Error: 값 리시버 메서드만 포함
+
+post2 := &Post{}
+sendBook("이름", post2)
+```
+
+인터페이스안에 다른 인터페이스를 포함할 수 있으며 합집합이라고 생각하면 된다.
+
+```go
+type Reader interface {
+	Read() (n int, err error)
+	Close() error
+}
+
+type Writer interface {
+	Write() (n int, err error)
+	Close() error
+}
+
+type ReadWriter interface {
+	Reader
+	Writer
+}
+```
+
+빈 인터페이스는 어떤 값이든 받을 수 있는 함수, 메서드, 변수값을 만들 때 사용한다.
+
+```go
+func PrintVal(v interface{}) {
+	switch t := v.(type) {
+	case int: ...
+	case float64: ...
+	case string: ...
+	default: ...
+}
+```
+
+인터페이스 변수를 다른 구체화된 타입으로 타입 단언할 수 있다.  
+타입 단언은 `val.(ConcreteType)`으로 할 수 있다.  
+구체화된 타입이 인터페이스 메서드 집합을 포함하고 있지 않으면 컴파일 에러가 발생한다.
+
+```go
+type Stringer interface {
+	String() string
+}
+
+type Student struct {}
+
+var stringer Stringer
+stringer.(*Student) // 컴파일 에러
+```
+
+단언하려는 타입이 인터페이스를 이미 포함하고 있다고 하더라도 실제 인터페이스 변수가 가리키는 인스턴스가 단언하려는 타입이 아닌 경우에는 런타임 에러가 발생한다.
+
+```go
+type Stringer interface {
+	String() string
+}
+
+type Student struct {}
+
+func (a *Student) String() string { ... }
+
+type Actor struct {}
+
+func (a *Actor) String() string { ... }
+
+func ConvertType(stringer Stringer) {
+	student := stringer.(*Student) // 런타임 에러
+	...
+}
+
+actor := &Actor{}
+
+ConvertType(actor)
+```
+
+인터페이스는 구체화된 타입뿐 아니라 다른 인터페이스로 타입 단언할 수 있다.  
+인터페이스가 가리키는 실제 인스턴스가 단언하고자 하는 다른 인터페이스를 포함하지 않으면 런타임 에러가 난다.  
+Go 언어에서는 인터페이스에서 다른 인터페이스로 타입 단언하는 것은 문법적으로 문제 없다고 취급하기 때문에 런타임 에러가 난다.
+
+```go
+var a AInterface = ConcreteType{}
+b := a.(BInterface)
+```
+
+타입 단언 가능 여부를 확인하여 런타임 에러가 발생하지 않는 방법은 타입 단언 반환값을 두 개의 변수로 받아서 타입 단언 가능 여부를 두 번째 반환값으로 받는 것이다.
+
+```go
+func ReadFile(reader Reader) {
+	if c, ok := reader.(Closer); ok {
+		c.Close()
+	}
+}
+```
+
+빈 인터페이스 변수에 기본 타입값을 대입할 때 Go 언어에서는 빈 인터페이스를 만들어서 기본 타입값을 가리키도록 한다. 그래서 아래 예제의 변수들은 서로 다른 주소값을 가지고 있다.
+
+```go
+
+var v1 int = 3
+var v2 interface{} = &v1
+var v3 int = *(v2.(*int))
+
+fmt.Printf("v1: %x\n", &v1)
+fmt.Printf("v2: %x\n", &v2)
+fmt.Printf("v3: %x\n", &v3)
+
+```
+
+### 맵
+
+키와 값 형태로 데이터를 저장하는 자료구조이며 입력한 순서가 보장되지 않는다.  
+맵은 내부적으로 포인터를 가진 구조이므로 다른 변수에 대입해도 전체 값이 복사되지 않는다.  
+요소를 삭제할 땐 `delete(맵 변수, 키)` 함수를 사용하면 된다.  
+값이 0일 때와 아예 요소가 없을 때 둘 다 0이 출력되기 때문에 복수 반환을 받아서 확인해야 한다.
+
+```go
+type Product struct {
+	Name string
+	Price int
+}
+
+func main() {
+	m := make(map[int]Product)
+
+	m[16] = Product{ "볼펜", 500 }
+	m[46] = Product{ "지우개", 200 }
+	m[78] = Product{ "자", 1000 }
+	m[345] = Product{ "샤프", 3000 }
+	m[897] = Product{ "샤프심", 500 }
+
+	for k, v := range m {
+		fmt.Println(k, v)
+	}
+
+	if v, ok := m[3]; ok {
+		fmt.Println(v)
+	}
+}
+```
+
+### 채널
+
+고루틴 간 메시지를 전달하는 메시지 큐이다.  
+`make()` 함수로 채널을 만들 수 있고 타입은 `chan [타입]` 으로 선언하면 된다.  
+채널에 데이터를 넣고 뺄 때는 `<-` 연산자를 이용하면 된다.  
+버퍼를 가진 채널은 `make()` 함수의 두번째 인수에 버퍼 크기를 넣어서 만들면 된다. 만약 버퍼를 초과한 상태에서 데이터를 빼가지 않으면 데드락이 발생한다.  
+`for range` 구문을 사용하면 채널에서 데이터를 계속 기다릴 수 있으며 채널을 다 사용하면 `close()` 함수를 호출해 채널을 닫아줘야 데드락에 안걸린다.
+
+```go
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+
+func square(wg *sync.WaitGroup, ch chan int) {
+	for n := range ch {
+		fmt.Printf("Square: %d\n", n * n)
+		time.Sleep(time.Second)
+	}
+
+	wg.Done()
+}
+
+func main() {
+	var wg sync.WaitGroup
+	ch := make(chan int, 1)
+
+	wg.Add(1)
+	go square(&wg, ch)
+
+	for i := range 10 {
+		ch <- i * 2
+	}
+	close(ch)
+
+	wg.Wait()
+}
+```
+
+select문을 통해 여러 채널을 동시에 기다릴 수 있다.  
+하나의 case만 처리되면 종료되기 때문에 for문과 함께 사용해야 한다.
+
+```go
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+
+func square(wg *sync.WaitGroup, ch chan int) {
+	tick := time.Tick(time.Second)
+	terminate := time.After(10 * time.Second)
+
+	for {
+		select {
+		case <- tick:
+			fmt.Println("Tick")
+		case <- terminate:
+			fmt.Println("Terminated!")
+			wg.Done()
+			return
+		case n := <- ch:
+			fmt.Printf("Square: %d\n", n * n)
+			time.Sleep(time.Second)
+		}
+	}
+}
+
+func main() {
+	var wg sync.WaitGroup
+	ch := make(chan int)
+
+	wg.Add(1)
+	go square(&wg, ch)
+
+	for i := range 10 {
+		ch <- i * 2
+	}
+
+	wg.Wait()
+}
+```
