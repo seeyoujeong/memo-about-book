@@ -5,6 +5,9 @@
 - [문법](#문법)
 - [데이터 타입](#데이터-타입)
 - [패키지](#패키지)
+- [메서드](#메서드)
+- [에러 처리](#에러-처리)
+- [스택 메모리와 힙 메모리](#스택-메모리와-힙-메모리)
 
 ## 문법
 
@@ -908,3 +911,179 @@ func main() {
 
 패키지를 임포트하면 컴파일러는 패키지 내 전역 변수를 초기화하고 패키지에 `init()` 함수가 있다면 호출해 패키지를 초기화한다.  
 `init()` 함수는 입력 매개변수와 반환값이 없어야 한다.
+
+## 메서드
+
+패키지 내 선언된 구조체, 별칭 타입들을 리시버로 사용해 메서드를 정의할 수 있다.  
+포인터 메서드를 호출하면 메모리의 주솟값이 복사되어 원본값을 수정할 수 있지만 값 타입 메서드를 호출하면 리시버 타입의 모든 값이 복사되어 원본값은 수정할 수 없다.  
+포인터 변수로 값 타입 메서드를 호출하면 자동으로 값 타입으로 변환하여 호출해주며 그 반대도 마찬가지다.
+
+```go
+type account struct {
+	balance int
+}
+
+func (a *account) withdrawMethod(amount int) { // 포인터 메서드
+	a.balance -= amount
+}
+
+a := &account{ 100 }
+
+a.withdrawMethod(30)
+
+type myInt int
+
+func (x myInt) add(y int) int { // 값 타입 메서드
+	return int(x) + y
+}
+
+var x myInt = 10
+
+x.add(30)
+```
+
+## 에러 처리
+
+`fmt` 패키지의 `Errorf()` 함수나 `errors` 패키지의 `New()` 함수를 이용하면 `error`를 생성할 수 있다.  
+`error` 타입은 인터페이스로 문자열을 반환하는 `Error()` 메서드로 구성되어 있다.  
+`fmt` 패키지는 내부적으로 타입이 `error`인지 확인하고 `Error()`를 호출해주는 로직을 포함하고 있다.
+
+```go
+fmt.Errorf("에러!")
+errors.New("에러!")
+```
+
+```go
+type PasswordError struct {
+	Len int
+	RequireLen int
+}
+
+func (err PasswordError) Error() string {
+	return "암호 길이가 짧습니다."
+}
+
+func RegisterAccount(name, password string) error {
+	if len(password) < 8 {
+		return PasswordError{ len(password), 8 }
+	}
+
+	return nil
+}
+
+func main() {
+	err := RegisterAccount("myID", "myPw")
+
+	if err != nil {
+		if errInfo, ok := err.(PasswordError); ok {
+			fmt.Printf("%v Len:%d RequireLen:%d\n",
+					errInfo, errInfo.Len, errInfo.RequireLen)
+		}
+	} else {
+		fmt.Println("회원 가입됐습니다.")
+	}
+}
+```
+
+에러를 감싸서 새로운 에러를 만들 수 있다.  
+감싸진 에러가 특정 타입인 경우 `errors` 패키지의 `As()` 함수를 이용해 꺼내올 수 있다.
+
+```go
+import (
+	"errors"
+	"fmt"
+)
+
+// 1. 커스텀 에러 타입 정의
+type MyError struct {
+	msg string
+}
+
+func (e *MyError) Error() string {
+	return e.msg
+}
+
+// 2. 커스텀 에러 생성
+func Error1() error {
+	return &MyError{msg: "에러1 발생"}
+}
+
+// 3. 에러 래핑
+func Error2() error {
+	err := Error1()
+
+	if err != nil {
+		return fmt.Errorf("에러2 발생: %w", err)
+	}
+	return nil
+}
+
+// 4. 래핑된 에러를 추출
+func main() {
+	err := Error2()
+
+	var innerErr *MyError
+	if errors.As(err, &innerErr) {
+		fmt.Println("내부 에러:", innerErr)
+	} else {
+		fmt.Println("MyError 타입이 아님")
+	}
+}
+
+```
+
+`panic()` 함수를 사용하면 프로그램을 바로 종료시킬 수 있다.  
+패닉 발생 시 `defer` 함수들이 실행되면서 그 안에서 `recover()` 함수가 호출되면 복구 가능하다.
+
+```go
+type MyError struct {
+    Msg string
+}
+
+func (e MyError) Error() string {
+    return e.Msg
+}
+
+func doSomething() {
+    panic(MyError{Msg: "Something went wrong!"}) // 특정 타입 패닉
+}
+
+func main() {
+    defer func() {
+        if r := recover(); r != nil {
+            // 타입 단언으로 검사
+            if myErr, ok := r.(MyError); ok {
+                fmt.Println("Recovered from MyError:", myErr.Msg)
+            } else {
+                fmt.Println("Recovered from unknown panic:", r)
+            }
+        }
+    }()
+
+    doSomething()
+}
+```
+
+## 스택 메모리와 힙 메모리
+
+스택 메모리는 함수 내부에서만 사용 가능한 영역이다.  
+Go 언어는 탈출 분석를 해서 어느 메모리에 할당할 지를 결정한다.  
+Go 언어는 어떤 타입이나 메모리 할당 함수에 의해서 스택 메모리를 사용할지 힙 메모리를 사용할지를 결정하는 게 아닌 메모리 공간이 함수 외부로 공개되는지 여부를 자동으로 검사해서 스택 메모리에 할당할지 힙 메모리에 할당할지 결정한다.
+
+```go
+type User struct {
+	Name string
+	Age int
+}
+
+func NewUser(name string, age int) *User {
+  var u = User{name, age}
+  return &u // 탈출 분석으로 u 메모리가 사라지지 않음
+}
+
+func main() {
+	userPointer := NewUser("AAA", 23)
+
+	fmt.Println(userPointer)
+}
+```
