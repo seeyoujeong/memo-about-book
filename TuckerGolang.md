@@ -8,6 +8,7 @@
 - [메서드](#메서드)
 - [에러 처리](#에러-처리)
 - [스택 메모리와 힙 메모리](#스택-메모리와-힙-메모리)
+- [고루틴](#고루틴)
 
 ## 문법
 
@@ -1085,5 +1086,149 @@ func main() {
 	userPointer := NewUser("AAA", 23)
 
 	fmt.Println(userPointer)
+}
+```
+
+## 고루틴
+
+고루틴은 Go 언어에서 관리하는 경량 스레드이며 함수나 명령을 동시에 수행할 때 사용한다.
+
+### 사용 방법
+
+`go` 키워드를 쓰고 함수를 호출하면 해당 함수를 수행하는 새로운 고루틴을 생성한다.  
+메인 함수가 종료되면 실행 중인 고루틴은 모두 즉시 종료되므로 `sync` 패키지의 `WaitGroup` 객체를 사용해야 한다.
+
+```go
+import (
+	"fmt"
+	"sync"
+)
+
+var wg sync.WaitGroup
+
+func SumAtoB(a, b int) {
+	sum := 0
+
+	for i := a; i <= b; i++ {
+		sum += i
+	}
+
+	fmt.Printf("%d부터 %d까지 합께는 %d입니다.\n", a, b, sum)
+	wg.Done() // 작업이 완료됨을 표시
+}
+
+func main() {
+	wg.Add(10)	// 총 작업 개수 설정
+	for i := 0; i < 10; i++ {
+		go SumAtoB(1, 1000000000)
+	}
+
+	wg.Wait() // 모든 작업이 완료되길 기다림
+
+	fmt.Println("모든 계산이 완료됐습니다.")
+}
+```
+
+### 동작 방법
+
+고루틴은 명령을 수행하는 단일 흐름으로 OS 스레드를 이용하는 경량 스레드이다.  
+Go 언어에서는 CPU 코어, OS 스레드, 고루틴을 서로 조율하여 사용해 고루틴을 효율적으로 다룬다.  
+main 루틴만 존재하면 OS 스레드를 하나 만들어 첫 번째 코어와 연결하고 OS 스레드에서 고루틴을 실행한다.  
+여분의 코어가 존재한다면 OS 스레드를 생성하여 고루틴을 실행할 수 있다.  
+여분의 코어가 없다면 남는 코어가 생길 때까지 고루틴들은 대기한다.  
+코어와 스레드는 변경되지 않고 오직 고루틴만 옮겨 다니기 때문에 컨텍스트 스위칭 비용이 발생하지 않는 장점이 있다.
+
+### 뮤텍스
+
+같은 메모리 공간에 동시에 접근하면 동시성 문제를 일으킬 수 있다. 이때 뮤텍스를 이용하면 자원 접근 권한을 통제할 수 있다.  
+뮤텍스의 `Lock()` 메서드를 호출해 뮤텍스를 획득하고 `Unlock()` 메서드를 호출해 반납한다.  
+이미 다른 고루틴이 뮤텍스를 획득했다면 나중에 호출한 고루틴은 앞서 획득한 뮤텍스가 반납될 때까지 대기한다.
+
+```go
+import "sync"
+
+var mutex sync.Mutex
+
+func f1() {
+	mutex.Lock()
+	defer mutex.Unlock()
+	...
+}
+```
+
+### 컨텍스트
+
+`context` 패키지에서 제공하는 기능으로 작업을 지시할 때 작업 가능, 시간, 작업 취소 등의 조건을 지시할 수 있는 작업 명세서 역할을 한다.  
+컨텍스트 관련 함수를 쓸 때 상위 컨텍스트가 없다면 가장 기본적인 컨텍스트인 `context.Background()`를 사용하면된다.  
+`context.WithCancel()` 함수는 취소 가능한 컨텍스트를 생성하며 반환값의 첫 번째는 컨텍스트 객체이고 두 번째는 취소 함수이다.  
+`context.WithTimeout()` 함수는 작업 시간을 설정할 수 있는 컨텍스트를 생성하며 반환값의 첫 번째는 컨텍스트 객체이고 두 번째는 취소 함수이다.
+
+```go
+import (
+	"context"
+	"fmt"
+	"sync"
+	"time"
+)
+
+var wg sync.WaitGroup
+
+func main() {
+	wg.Add(1)
+	ctx, cancel := context.WithCancel(context.Background())
+	go PrintEverySecond(ctx)
+	time.Sleep(5 * time.Second)
+	cancel()
+
+	wg.Wait()
+}
+
+func PrintEverySecond(ctx context.Context) {
+	tick := time.Tick(time.Second)
+
+	for {
+		select {
+		case <- ctx.Done():
+			wg.Done();
+			return
+		case <- tick:
+			fmt.Println("Tick")
+		}
+	}
+}
+```
+
+`context.WithValue()` 함수는 특정 값을 설정할 수 있는 컨텍스트로 특정 키로 값을 읽어올 수 있다. 여러 값을 설정하고 싶다면 상위 컨텍스트에 여러번 등록하면 된다.
+
+```go
+import (
+	"context"
+	"fmt"
+	"sync"
+	"time"
+)
+
+var wg sync.WaitGroup
+
+func main() {
+	wg.Add(1)
+
+	ctx, cancel := context.WithCancel(context.Background())
+	ctx = context.WithValue(ctx, "number", 9)
+	go square(ctx)
+
+	time.Sleep(3 * time.Second)
+	cancel()
+
+	wg.Wait()
+}
+
+func square(ctx context.Context) {
+	if v := ctx.Value("number"); v != nil {
+		n := v.(int)
+		fmt.Printf("Square:%d", n * n)
+	}
+
+	wg.Done()
 }
 ```
