@@ -9,6 +9,7 @@
 - [에러 처리](#에러-처리)
 - [스택 메모리와 힙 메모리](#스택-메모리와-힙-메모리)
 - [고루틴](#고루틴)
+- [제네릭](#제네릭)
 
 ## 문법
 
@@ -1232,3 +1233,75 @@ func square(ctx context.Context) {
 	wg.Done()
 }
 ```
+
+## 제네릭
+
+제네릭 함수를 정의하기 위해선 함수명 뒤에 대괄호 내부에 타입 파라미터를 적으면 된다.  
+타입 파라미터는 필요에 따라 쉼표로 구분하여 여러 개를 적을 수 있다.  
+타입 파라미터가 하나인 경우 서로 다른 타입의 인수를 사용하면 에러가 발생한다.
+
+```go
+func Print1[T any](a, b T) {
+	return fmt.Print(a, b)
+}
+
+func Print2(a, b any) { // any는 빈 인터페이스의 별칭
+	return fmt.Print(a, b)
+}
+
+func Print3(a, b interface{}) {
+	return fmt.Print(a, b)
+}
+
+Print1(1, "Hello") // 에러
+Print2(1, "Hello")
+Print3(1, "Hello")
+```
+
+`|`을 사용해 여러 타입에 대한 타입 제한을 할 수 있으며 `interface` 키워드를 통해 타입 제한만 따로 정의할 수 있다.  
+`~`을 사용하면 해당 타입을 기본으로 하는 모든 별칭 타입들까지 포함시킬 수 있다.  
+타입 제한 정의가 `interface` 키워드를 사용하기 때문에 일반 인터페이스처럼 메서드 조건까지 추가 할 수 있지만 타입 파라미터에서만 사용할 수 있다.
+
+```go
+type Integer interface {
+	~int8 | ~int16 | ~int32 | ~int64 | ~int
+}
+
+func add[T Integer](a, b T) T {
+	return a + b
+}
+
+type MyInt int
+
+func main() {
+	var a MyInt = 3
+	var b MyInt = 4
+	add(a, b)
+}
+```
+
+빈 인터페이스와 제네릭의 차이점은 빈 인터페이스를 이용하면 모든 타입값을 가질 수 있으나 그 값을 사용할 때 실제 타입값으로 타입 단언을 해야 하고, 넣을 때 값의 타입과 뺄 때 값의 타입을 정확히 알고 있어야 한다는 문제가 있다. 반면 제네릭 타입을 사용하는 경우 타입 파라미터에 의해서 필드 타입이 결정되므로 값을 사용할 때 타입 단언이 필요 없다.
+
+```go
+type NodeType1 struct {
+	val interface{}
+	next *NodeType1
+}
+
+type NodeType2[T any] struct {
+	val T
+	next *NodeType2[T]
+}
+
+func main() {
+	node1 := &NodeType1{val: 1}
+	node2 := &NodeType2[int]{val: 2}
+
+	var v1 int = node1.val.(int)
+	var v2 int = node2.val
+
+	fmt.Print(v1, v2)
+}
+```
+
+제네릭 함수나 타입의 경우 하나의 함수나 타입처럼 보이지만 실제로는 컴파일 타임에 사용한 타입 파라미터별로 새로운 함수나 타입을 생성해서 사용한다. 따라서 컴파일 시간이 증가하며 실행 파일 크기도 늘어난다.
